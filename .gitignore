@@ -11,3 +11,17 @@
 *.lai
 *.la
 *.a
+
+// for visual studio
+Debug
+Release
+*.ilk
+*.tlog
+*.obj
+*.sdf
+*.idb
+*.pdb
+*.lib
+*.aps
+
+!/3rdparty/protobuf_lib/*.lib
