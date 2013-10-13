@@ -25,3 +25,4 @@ Release
 *.aps
 
 !/3rdparty/protobuf_lib/*.lib
+!/protocol/tools/ProtoGen_Net/*.pdb
