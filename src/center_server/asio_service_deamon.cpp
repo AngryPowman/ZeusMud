@@ -1,6 +1,8 @@
 #include <tcp_server.h>
 #include "asio_service_deamon.h"
 #include "io_dispatcher.h"
+//#include <Poco/Data/Common.h>
+//#include <Poco/Data/SQLite/Connector.h>
 
 AsioServiceDeamon::AsioServiceDeamon()
 {
@@ -11,7 +13,6 @@ AsioServiceDeamon::~AsioServiceDeamon()
     this->stop();
     SAFE_DELETE(_service);
     SAFE_DELETE(_server);
-    //delete _network_service;
 }
 
 void AsioServiceDeamon::start(const std::string& serviceName, 
@@ -24,9 +25,6 @@ void AsioServiceDeamon::start(const std::string& serviceName,
 
     //create tcp server instance
     _server = new TcpServer(InetAddress(36911), *_service, threadNum);
-
-    //create network service instance
-    //_network_service = new NetworkService();
 
     //register io events
     IODispatcher io_dispatcher;

@@ -52,14 +52,14 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);BOOST_ALL_NO_LIB</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../venus_net;../../3rdparty;../../3rdparty/poco/Data/SQLite/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../venus_net;../../3rdparty;../../3rdparty/poco/Data/SQLite/include;../../3rdparty/poco/Data/include;../../3rdparty/poco/Foundation/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>venus_net.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/poco/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/lib/poco_libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "../../output/mud_server" mkdir "../../output/mud_server"
@@ -75,7 +75,7 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);BOOST_ALL_NO_LIB</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../venus_net;../../3rdparty;../../3rdparty/poco/Data/SQLite/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../venus_net;../../3rdparty;../../3rdparty/poco/Data/SQLite/include;../../3rdparty/poco/Data/include;../../3rdparty/poco/Foundation/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -84,7 +84,7 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>venus_net.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/poco/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/lib/poco_libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "../../output/mud_server" mkdir "../../output/mud_server"
@@ -93,6 +93,7 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="asio_service_deamon.h" />
+    <ClInclude Include="game_service.h" />
     <ClInclude Include="session.h" />
     <ClInclude Include="io_dispatcher.h" />
     <ClInclude Include="opcodes_handler.h" />

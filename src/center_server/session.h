@@ -7,6 +7,8 @@
 #include <packet.h>
 #include <tcp_connection.h>
 #include "opcodes.h"
+//#include <Poco/Data/Common.h>
+//#include <Poco/Data/SQLite/Connector.h>
 
 class Session
 {
@@ -64,10 +66,15 @@ public:
         printf("[User Login] -> (Username='%s', Password='%s')", request.email().c_str(), request.password().c_str());
 
         Protocol::S2CLoginRsp login_response;
-        login_response.set_login_result(false);
+        login_response.set_login_result(true);
         login_response.set_failed_reason("你是个逗比，所以不让你登录。");
 
         send_message<Protocol::S2CLoginRsp>(Opcodes::S2CLoginRsp, login_response);
+    }
+
+    void user_register_handler(const NetworkMessage& message)
+    {
+    
     }
 
 private:

@@ -99,6 +99,9 @@
     <ClInclude Include="protocol\10001_S2CLoginRsp.pb.h">
       <Filter>protocol\protobuf</Filter>
     </ClInclude>
+    <ClInclude Include="service.h">
+      <Filter>framework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

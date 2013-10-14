@@ -24,7 +24,6 @@ public:
 private:
     std::string _serviceName;
     TcpServer* _server;
-    //NetworkService* _network_service;
 };
 
 #endif

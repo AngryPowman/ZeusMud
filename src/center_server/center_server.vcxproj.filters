@@ -19,6 +19,7 @@
     <ClInclude Include="session_manager.h">
       <Filter>network</Filter>
     </ClInclude>
+    <ClInclude Include="game_service.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="center_server.cpp" />
@@ -30,11 +31,11 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="main">
-      <UniqueIdentifier>{48bbb617-7366-4ab5-a8e3-2b48e4fa9fad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="network">
       <UniqueIdentifier>{46983ab3-028f-4e44-bb4f-e33bf7bbbdcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="obj">
+      <UniqueIdentifier>{45fd41eb-bfeb-491e-bf4f-76a338bd84d9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
