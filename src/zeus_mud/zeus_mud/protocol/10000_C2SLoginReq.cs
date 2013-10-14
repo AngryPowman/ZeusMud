@@ -15,12 +15,12 @@ namespace Protocol
   {
     public C2SLoginReq() {}
     
-    private string _username;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"username", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string username
+    private string _email;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"email", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string email
     {
-      get { return _username; }
-      set { _username = value; }
+      get { return _email; }
+      set { _email = value; }
     }
     private string _password;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"password", DataFormat = global::ProtoBuf.DataFormat.Default)]

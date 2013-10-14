@@ -19,6 +19,9 @@ namespace zeus_mud
         public frmLogin()
         {
             InitializeComponent();
+
+            //登录消息注册
+            OpcodesHandler.registerHandler(Opcodes.S2CLoginRsp, this.userLoginCallback);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -26,35 +29,45 @@ namespace zeus_mud
             this.Close();
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            frmRegister register = new frmRegister();
-            register.ShowDialog();
+            if (GlobalObject.RegisterForm == null) GlobalObject.RegisterForm = new frmRegister();
+            GlobalObject.RegisterForm.ShowDialog();
         }
 
-        private void btnLogin_Click_1(object sender, EventArgs e)
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             if (txtUsername.TextLength == 0 || txtPassword.TextLength == 0)
             {
                 return;
             }
 
-            if (NetworkEvent.connectToServer("127.0.0.1", 36911) == true)
+            if (NetworkEvent.connectToServer(GlobalObject.DefaultServer, GlobalObject.DefaultPort) == true)
             {
-                NetworkEvent.sendLoginRequest(txtUsername.Text, txtPassword.Text);
+                userLoginRequest(txtUsername.Text, txtPassword.Text);
             }
         }
 
-        private void frmLogin_Load(object sender, EventArgs e)
+        //========================================用户登录========================================
+
+        /// <summary>
+        /// 登录请求
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        public void userLoginRequest(string email, string password)
         {
-            NetworkEvent.init();
+            Protocol.C2SLoginReq request = new Protocol.C2SLoginReq();
+            request.email = email;
+            request.password = password;
+
+            NetworkEvent.sendPacket<Protocol.C2SLoginReq>(request);
         }
 
+        /// <summary>
+        /// 登录返回
+        /// </summary>
+        /// <param name="stream"></param>
         public void userLoginCallback(MemoryStream stream)
         {
             Protocol.S2CLoginRsp response = NetworkEvent.parseMessage<Protocol.S2CLoginRsp>(stream);
@@ -66,8 +79,15 @@ namespace zeus_mud
             }
             else
             {
-                MessageBox.Show(this, Encoding.Default.GetString( response.failed_reason), "登录失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Encoding.Default.GetString(response.failed_reason), "登录失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        //========================================================================================
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            NetworkEvent.init();
         }
     }
 }

@@ -35,7 +35,7 @@ void protobuf_AssignDesc_10000_5fC2SLoginReq_2eproto() {
   GOOGLE_CHECK(file != NULL);
   C2SLoginReq_descriptor_ = file->message_type(0);
   static const int C2SLoginReq_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SLoginReq, username_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SLoginReq, email_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SLoginReq, password_),
   };
   C2SLoginReq_reflection_ =
@@ -79,9 +79,9 @@ void protobuf_AddDesc_10000_5fC2SLoginReq_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\02710000_C2SLoginReq.proto\022\010Protocol\"1\n\013C"
-    "2SLoginReq\022\020\n\010username\030\001 \002(\t\022\020\n\010password"
-    "\030\002 \002(\t", 86);
+    "\n\02710000_C2SLoginReq.proto\022\010Protocol\".\n\013C"
+    "2SLoginReq\022\r\n\005email\030\001 \002(\t\022\020\n\010password\030\002 "
+    "\002(\t", 83);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "10000_C2SLoginReq.proto", &protobuf_RegisterTypes);
   C2SLoginReq::default_instance_ = new C2SLoginReq();
@@ -99,7 +99,7 @@ struct StaticDescriptorInitializer_10000_5fC2SLoginReq_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int C2SLoginReq::kUsernameFieldNumber;
+const int C2SLoginReq::kEmailFieldNumber;
 const int C2SLoginReq::kPasswordFieldNumber;
 #endif  // !_MSC_VER
 
@@ -119,7 +119,7 @@ C2SLoginReq::C2SLoginReq(const C2SLoginReq& from)
 
 void C2SLoginReq::SharedCtor() {
   _cached_size_ = 0;
-  username_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  email_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   password_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -129,8 +129,8 @@ C2SLoginReq::~C2SLoginReq() {
 }
 
 void C2SLoginReq::SharedDtor() {
-  if (username_ != &::google::protobuf::internal::kEmptyString) {
-    delete username_;
+  if (email_ != &::google::protobuf::internal::kEmptyString) {
+    delete email_;
   }
   if (password_ != &::google::protobuf::internal::kEmptyString) {
     delete password_;
@@ -162,9 +162,9 @@ C2SLoginReq* C2SLoginReq::New() const {
 
 void C2SLoginReq::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_username()) {
-      if (username_ != &::google::protobuf::internal::kEmptyString) {
-        username_->clear();
+    if (has_email()) {
+      if (email_ != &::google::protobuf::internal::kEmptyString) {
+        email_->clear();
       }
     }
     if (has_password()) {
@@ -183,14 +183,14 @@ bool C2SLoginReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required string username = 1;
+      // required string email = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_username()));
+                input, this->mutable_email()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->username().data(), this->username().length(),
+            this->email().data(), this->email().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
@@ -234,13 +234,13 @@ bool C2SLoginReq::MergePartialFromCodedStream(
 
 void C2SLoginReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required string username = 1;
-  if (has_username()) {
+  // required string email = 1;
+  if (has_email()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->username().data(), this->username().length(),
+      this->email().data(), this->email().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->username(), output);
+      1, this->email(), output);
   }
 
   // required string password = 2;
@@ -260,14 +260,14 @@ void C2SLoginReq::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* C2SLoginReq::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required string username = 1;
-  if (has_username()) {
+  // required string email = 1;
+  if (has_email()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->username().data(), this->username().length(),
+      this->email().data(), this->email().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->username(), target);
+        1, this->email(), target);
   }
 
   // required string password = 2;
@@ -291,11 +291,11 @@ int C2SLoginReq::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required string username = 1;
-    if (has_username()) {
+    // required string email = 1;
+    if (has_email()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->username());
+          this->email());
     }
 
     // required string password = 2;
@@ -332,8 +332,8 @@ void C2SLoginReq::MergeFrom(const ::google::protobuf::Message& from) {
 void C2SLoginReq::MergeFrom(const C2SLoginReq& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_username()) {
-      set_username(from.username());
+    if (from.has_email()) {
+      set_email(from.email());
     }
     if (from.has_password()) {
       set_password(from.password());
@@ -362,7 +362,7 @@ bool C2SLoginReq::IsInitialized() const {
 
 void C2SLoginReq::Swap(C2SLoginReq* other) {
   if (other != this) {
-    std::swap(username_, other->username_);
+    std::swap(email_, other->email_);
     std::swap(password_, other->password_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

@@ -45,6 +45,7 @@
             this.btnExit.TabIndex = 8;
             this.btnExit.Text = "不玩了";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnLogin
             // 
@@ -54,7 +55,7 @@
             this.btnLogin.TabIndex = 9;
             this.btnLogin.Text = "进入游戏";
             this.btnLogin.UseVisualStyleBackColor = true;
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click_1);
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // label3
             // 
@@ -78,12 +79,13 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(58, 39);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '哈';
+            this.txtPassword.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(222, 21);
             this.txtPassword.TabIndex = 10;
             // 
             // txtUsername
             // 
+            this.txtUsername.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.txtUsername.Location = new System.Drawing.Point(58, 12);
             this.txtUsername.MaxLength = 32;
             this.txtUsername.Name = "txtUsername";

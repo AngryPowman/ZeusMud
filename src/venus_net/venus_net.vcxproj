@@ -104,6 +104,8 @@
     <ClInclude Include="protobuf.h" />
     <ClInclude Include="protocol\10000_C2SLoginReq.pb.h" />
     <ClInclude Include="protocol\10001_S2CLoginRsp.pb.h" />
+    <ClInclude Include="protocol\10002_C2SRegisterReq.pb.h" />
+    <ClInclude Include="protocol\10003_S2CRegisterRsp.pb.h" />
     <ClInclude Include="socket.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -116,6 +118,8 @@
     <ClCompile Include="error_code.cpp" />
     <ClCompile Include="protocol\10000_C2SLoginReq.pb.cc" />
     <ClCompile Include="protocol\10001_S2CLoginRsp.pb.cc" />
+    <ClCompile Include="protocol\10002_C2SRegisterReq.pb.cc" />
+    <ClCompile Include="protocol\10003_S2CRegisterRsp.pb.cc" />
     <ClCompile Include="socket.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

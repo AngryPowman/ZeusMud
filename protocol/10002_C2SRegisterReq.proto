@@ -1,0 +1,9 @@
+package Protocol;
+
+message C2SRegisterReq {
+	required string email = 1;
+	required string password = 2;
+	required bytes nickname = 3;
+	optional bool gender = 4;
+	optional uint32 BWH = 5;
+}

@@ -11,6 +11,10 @@ namespace RobotWatchman
     class GlobalObject
     {
         public static frmLogin LoginForm { get; set; }
+        public static frmRegister RegisterForm { get; set; }
         public static frmGameMain GameMainForm { get; set; }
+
+        public static string DefaultServer { get {return "127.0.0.1";}}
+        public static UInt16 DefaultPort { get {return 36911;}}
     }
 }

@@ -48,6 +48,10 @@ public:
                 handler->message_handler(session, network_message);
             }
         }
+        else
+        {
+            std::cout << "No registered event handler for Opcode " << opcode << std::endl;
+        }
     }
 
     void ConnectionClosed(const TcpConnectionPtr& connection)

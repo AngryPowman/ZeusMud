@@ -13,8 +13,6 @@
 *.a
 
 // for visual studio
-Debug
-Release
 *.ilk
 *.tlog
 *.obj
@@ -23,6 +21,16 @@ Release
 *.pdb
 *.lib
 *.aps
+*.opensdf
 
 !/3rdparty/protobuf_lib/*.lib
 !/protocol/tools/ProtoGen_Net/*.pdb
+/src/center_server/Debug
+/src/center_server/Release
+/src/venus_net/Debug
+/src/venus_net/Release
+/src/zeus_mud/Debug
+/src/zeus_mud/Release
+/src/zeus_mud/ipch
+/src/zeus_mud/zeus_mud/obj
+/src/zeus_mud/zeus_mud/bin

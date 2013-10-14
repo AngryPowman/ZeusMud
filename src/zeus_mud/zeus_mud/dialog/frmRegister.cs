@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RobotWatchman;
+using RobotWatchman.network;
 
 namespace zeus_mud.dialog
 {
@@ -15,6 +19,10 @@ namespace zeus_mud.dialog
         public frmRegister()
         {
             InitializeComponent();
+
+            //注册消息
+            OpcodesHandler.registerHandler(Opcodes.S2CRegisterRsp, this.userRegisterCallback);
+
             rdMale.Checked = true;
             rdFemale_CheckedChanged(rdMale, null);
         }
@@ -22,20 +30,10 @@ namespace zeus_mud.dialog
         private void rdFemale_CheckedChanged(object sender, EventArgs e)
         {
             pnlBWH.Visible = rdFemale.Checked;
-            if (rdFemale.Checked == true)
-            {
-                groupBox1.Height = 295;
-                btnOk.Top = 339;
-                btnCancel.Top = 339;
-                this.Height = 408;
-            }
-            else
-            {
-                groupBox1.Height = 169;
-                btnOk.Top = 213;
-                btnCancel.Top = 213;
-                this.Height = 276;
-            }
+            groupBox1.Height = (pnlBWH.Visible == true ? pnlBWH.Top + pnlBWH.Height : pnlBWH.Top) + 2;
+            btnOk.Top = groupBox1.Top + groupBox1.Height + 4;
+            btnCancel.Top = groupBox1.Top + groupBox1.Height + 4;
+            this.Height = btnOk.Top + btnOk.Height + 46;
         }
 
         private void rdMale_CheckedChanged(object sender, EventArgs e)
@@ -67,5 +65,53 @@ namespace zeus_mud.dialog
         {
             label11.Text = trackBar3.Value.ToString();
         }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            if (NetworkEvent.isConnected() == false)
+            {
+                if (NetworkEvent.connectToServer(GlobalObject.DefaultServer, GlobalObject.DefaultPort) == false)
+                {
+                    MessageBox.Show(this, "连接注册服务器失败！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            userRegisterRequest(txtEmail.Text, txtPassword.Text, txtNickname.Text);
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start(linkLabel1.Text); 
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        //========================================用户注册========================================
+        void userRegisterRequest(string email, string password_plainText, string nickname)
+        {
+            Protocol.C2SRegisterReq request = new Protocol.C2SRegisterReq();
+            request.email = email;
+            request.password = password_plainText;
+            request.nickname = Encoding.Default.GetBytes(nickname);
+
+            NetworkEvent.sendPacket<Protocol.C2SRegisterReq>(request);
+        }
+
+        public void userRegisterCallback(MemoryStream stream)
+        {
+            Protocol.S2CRegisterRsp response = NetworkEvent.parseMessage<Protocol.S2CRegisterRsp>(stream);
+            if (response.register_result == false)
+            {
+                MessageBox.Show(this, "注册失败，不知道为什么", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //=======================================================================================
     }
 }

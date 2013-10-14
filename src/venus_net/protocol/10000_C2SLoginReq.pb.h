@@ -91,17 +91,17 @@ class C2SLoginReq : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required string username = 1;
-  inline bool has_username() const;
-  inline void clear_username();
-  static const int kUsernameFieldNumber = 1;
-  inline const ::std::string& username() const;
-  inline void set_username(const ::std::string& value);
-  inline void set_username(const char* value);
-  inline void set_username(const char* value, size_t size);
-  inline ::std::string* mutable_username();
-  inline ::std::string* release_username();
-  inline void set_allocated_username(::std::string* username);
+  // required string email = 1;
+  inline bool has_email() const;
+  inline void clear_email();
+  static const int kEmailFieldNumber = 1;
+  inline const ::std::string& email() const;
+  inline void set_email(const ::std::string& value);
+  inline void set_email(const char* value);
+  inline void set_email(const char* value, size_t size);
+  inline ::std::string* mutable_email();
+  inline ::std::string* release_email();
+  inline void set_allocated_email(::std::string* email);
 
   // required string password = 2;
   inline bool has_password() const;
@@ -117,14 +117,14 @@ class C2SLoginReq : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:Protocol.C2SLoginReq)
  private:
-  inline void set_has_username();
-  inline void clear_has_username();
+  inline void set_has_email();
+  inline void clear_has_email();
   inline void set_has_password();
   inline void clear_has_password();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::std::string* username_;
+  ::std::string* email_;
   ::std::string* password_;
 
   mutable int _cached_size_;
@@ -144,73 +144,73 @@ class C2SLoginReq : public ::google::protobuf::Message {
 
 // C2SLoginReq
 
-// required string username = 1;
-inline bool C2SLoginReq::has_username() const {
+// required string email = 1;
+inline bool C2SLoginReq::has_email() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void C2SLoginReq::set_has_username() {
+inline void C2SLoginReq::set_has_email() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void C2SLoginReq::clear_has_username() {
+inline void C2SLoginReq::clear_has_email() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void C2SLoginReq::clear_username() {
-  if (username_ != &::google::protobuf::internal::kEmptyString) {
-    username_->clear();
+inline void C2SLoginReq::clear_email() {
+  if (email_ != &::google::protobuf::internal::kEmptyString) {
+    email_->clear();
   }
-  clear_has_username();
+  clear_has_email();
 }
-inline const ::std::string& C2SLoginReq::username() const {
-  return *username_;
+inline const ::std::string& C2SLoginReq::email() const {
+  return *email_;
 }
-inline void C2SLoginReq::set_username(const ::std::string& value) {
-  set_has_username();
-  if (username_ == &::google::protobuf::internal::kEmptyString) {
-    username_ = new ::std::string;
+inline void C2SLoginReq::set_email(const ::std::string& value) {
+  set_has_email();
+  if (email_ == &::google::protobuf::internal::kEmptyString) {
+    email_ = new ::std::string;
   }
-  username_->assign(value);
+  email_->assign(value);
 }
-inline void C2SLoginReq::set_username(const char* value) {
-  set_has_username();
-  if (username_ == &::google::protobuf::internal::kEmptyString) {
-    username_ = new ::std::string;
+inline void C2SLoginReq::set_email(const char* value) {
+  set_has_email();
+  if (email_ == &::google::protobuf::internal::kEmptyString) {
+    email_ = new ::std::string;
   }
-  username_->assign(value);
+  email_->assign(value);
 }
-inline void C2SLoginReq::set_username(const char* value, size_t size) {
-  set_has_username();
-  if (username_ == &::google::protobuf::internal::kEmptyString) {
-    username_ = new ::std::string;
+inline void C2SLoginReq::set_email(const char* value, size_t size) {
+  set_has_email();
+  if (email_ == &::google::protobuf::internal::kEmptyString) {
+    email_ = new ::std::string;
   }
-  username_->assign(reinterpret_cast<const char*>(value), size);
+  email_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* C2SLoginReq::mutable_username() {
-  set_has_username();
-  if (username_ == &::google::protobuf::internal::kEmptyString) {
-    username_ = new ::std::string;
+inline ::std::string* C2SLoginReq::mutable_email() {
+  set_has_email();
+  if (email_ == &::google::protobuf::internal::kEmptyString) {
+    email_ = new ::std::string;
   }
-  return username_;
+  return email_;
 }
-inline ::std::string* C2SLoginReq::release_username() {
-  clear_has_username();
-  if (username_ == &::google::protobuf::internal::kEmptyString) {
+inline ::std::string* C2SLoginReq::release_email() {
+  clear_has_email();
+  if (email_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
   } else {
-    ::std::string* temp = username_;
-    username_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    ::std::string* temp = email_;
+    email_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
     return temp;
   }
 }
-inline void C2SLoginReq::set_allocated_username(::std::string* username) {
-  if (username_ != &::google::protobuf::internal::kEmptyString) {
-    delete username_;
+inline void C2SLoginReq::set_allocated_email(::std::string* email) {
+  if (email_ != &::google::protobuf::internal::kEmptyString) {
+    delete email_;
   }
-  if (username) {
-    set_has_username();
-    username_ = username;
+  if (email) {
+    set_has_email();
+    email_ = email;
   } else {
-    clear_has_username();
-    username_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    clear_has_email();
+    email_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 

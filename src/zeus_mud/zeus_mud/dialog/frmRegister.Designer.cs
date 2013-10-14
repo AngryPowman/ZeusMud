@@ -32,25 +32,27 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnlBWH = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.trackBar3 = new System.Windows.Forms.TrackBar();
             this.trackBar2 = new System.Windows.Forms.TrackBar();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.rdFemale = new System.Windows.Forms.RadioButton();
             this.rdMale = new System.Windows.Forms.RadioButton();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtNickname = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.pnlBWH.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
@@ -69,20 +71,22 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.pnlBWH);
             this.groupBox1.Controls.Add(this.rdFemale);
             this.groupBox1.Controls.Add(this.rdMale);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtPassword);
+            this.groupBox1.Controls.Add(this.txtEmail);
+            this.groupBox1.Controls.Add(this.txtNickname);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(5, 38);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(261, 283);
+            this.groupBox1.Size = new System.Drawing.Size(261, 307);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "注册信息";
@@ -97,7 +101,7 @@
             this.pnlBWH.Controls.Add(this.trackBar3);
             this.pnlBWH.Controls.Add(this.trackBar2);
             this.pnlBWH.Controls.Add(this.trackBar1);
-            this.pnlBWH.Location = new System.Drawing.Point(6, 169);
+            this.pnlBWH.Location = new System.Drawing.Point(6, 187);
             this.pnlBWH.Name = "pnlBWH";
             this.pnlBWH.Size = new System.Drawing.Size(179, 113);
             this.pnlBWH.TabIndex = 4;
@@ -110,6 +114,42 @@
             this.label8.Size = new System.Drawing.Size(41, 12);
             this.label8.TabIndex = 9;
             this.label8.Text = "三  围";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(149, 65);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(11, 12);
+            this.label11.TabIndex = 8;
+            this.label11.Text = "0";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(149, 37);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(11, 12);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(149, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(11, 12);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 95);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(101, 12);
+            this.label7.TabIndex = 8;
+            this.label7.Text = "这完全不算是隐私";
             // 
             // trackBar3
             // 
@@ -144,7 +184,7 @@
             // rdFemale
             // 
             this.rdFemale.AutoSize = true;
-            this.rdFemale.Location = new System.Drawing.Point(54, 146);
+            this.rdFemale.Location = new System.Drawing.Point(54, 164);
             this.rdFemale.Name = "rdFemale";
             this.rdFemale.Size = new System.Drawing.Size(47, 16);
             this.rdFemale.TabIndex = 3;
@@ -157,7 +197,7 @@
             // 
             this.rdMale.AutoSize = true;
             this.rdMale.Cursor = System.Windows.Forms.Cursors.Default;
-            this.rdMale.Location = new System.Drawing.Point(138, 146);
+            this.rdMale.Location = new System.Drawing.Point(138, 164);
             this.rdMale.Name = "rdMale";
             this.rdMale.Size = new System.Drawing.Size(47, 16);
             this.rdMale.TabIndex = 3;
@@ -165,27 +205,20 @@
             this.rdMale.UseVisualStyleBackColor = true;
             this.rdMale.CheckedChanged += new System.EventHandler(this.rdMale_CheckedChanged);
             // 
-            // textBox2
+            // txtPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(54, 80);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '●';
-            this.textBox2.Size = new System.Drawing.Size(197, 21);
-            this.textBox2.TabIndex = 1;
+            this.txtPassword.Location = new System.Drawing.Point(54, 80);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '●';
+            this.txtPassword.Size = new System.Drawing.Size(197, 21);
+            this.txtPassword.TabIndex = 1;
             // 
-            // textBox3
+            // txtNickname
             // 
-            this.textBox3.Location = new System.Drawing.Point(54, 107);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(197, 21);
-            this.textBox3.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(54, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(197, 21);
-            this.textBox1.TabIndex = 1;
+            this.txtNickname.Location = new System.Drawing.Point(54, 137);
+            this.txtNickname.Name = "txtNickname";
+            this.txtNickname.Size = new System.Drawing.Size(197, 21);
+            this.txtNickname.TabIndex = 1;
             // 
             // label3
             // 
@@ -199,7 +232,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 146);
+            this.label6.Location = new System.Drawing.Point(7, 164);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 12);
             this.label6.TabIndex = 0;
@@ -208,7 +241,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(7, 110);
+            this.label5.Location = new System.Drawing.Point(7, 140);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 12);
             this.label5.TabIndex = 0;
@@ -216,12 +249,33 @@
             // 
             // label4
             // 
-            this.label4.ForeColor = System.Drawing.Color.Blue;
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(52, 45);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(199, 27);
+            this.label4.Size = new System.Drawing.Size(199, 17);
             this.label4.TabIndex = 0;
-            this.label4.Text = "最好不要用非法字符，服务器没做什么判断可能会挂掉";
+            this.label4.Text = "系统将根据你的邮箱获取Gravatar.";
+            // 
+            // btnOk
+            // 
+            this.btnOk.Location = new System.Drawing.Point(191, 351);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(75, 23);
+            this.btnOk.TabIndex = 2;
+            this.btnOk.Text = "确认";
+            this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnCancel.Location = new System.Drawing.Point(110, 351);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 2;
+            this.btnCancel.Text = "取消";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label2
             // 
@@ -230,69 +284,40 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
             this.label2.TabIndex = 0;
-            this.label2.Text = "用户名";
+            this.label2.Text = "邮  箱";
             // 
-            // btnOk
+            // txtEmail
             // 
-            this.btnOk.Location = new System.Drawing.Point(191, 320);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 2;
-            this.btnOk.Text = "确认";
-            this.btnOk.UseVisualStyleBackColor = true;
+            this.txtEmail.Location = new System.Drawing.Point(54, 20);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(197, 21);
+            this.txtEmail.TabIndex = 1;
             // 
-            // btnCancel
+            // label12
             // 
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.btnCancel.Location = new System.Drawing.Point(110, 320);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 2;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(52, 62);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(49, 17);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "详情：";
             // 
-            // label9
+            // linkLabel1
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(149, 10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(11, 12);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "0";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(149, 37);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(11, 12);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "0";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(149, 65);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(11, 12);
-            this.label11.TabIndex = 8;
-            this.label11.Text = "0";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 95);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(137, 12);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "节操什么的已经不重要了";
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(88, 62);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(137, 12);
+            this.linkLabel1.TabIndex = 5;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "http://cn.gravatar.com";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(271, 355);
+            this.ClientSize = new System.Drawing.Size(271, 377);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.groupBox1);
@@ -317,12 +342,10 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtNickname;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rdFemale;
         private System.Windows.Forms.RadioButton rdMale;
@@ -338,5 +361,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

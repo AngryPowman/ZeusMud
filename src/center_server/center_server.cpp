@@ -7,11 +7,10 @@
 
 int main(int argc, char* argv[])
 {
-
     try
     {
         AsioServiceDeamon serviceEntry;
-        serviceEntry.start("robot_service", 1);
+        serviceEntry.start("ZuesMud_Service", 1);
     }
     catch (...)
     {

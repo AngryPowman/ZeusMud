@@ -87,10 +87,16 @@
     <ClInclude Include="object_pool.hpp">
       <Filter>framework</Filter>
     </ClInclude>
-    <ClInclude Include="protocol\10001_S2CLoginRsp.pb.h">
+    <ClInclude Include="protocol\10002_C2SRegisterReq.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\10003_S2CRegisterRsp.pb.h">
       <Filter>protocol\protobuf</Filter>
     </ClInclude>
     <ClInclude Include="protocol\10000_C2SLoginReq.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\10001_S2CLoginRsp.pb.h">
       <Filter>protocol\protobuf</Filter>
     </ClInclude>
   </ItemGroup>
@@ -115,6 +121,12 @@
     </ClCompile>
     <ClCompile Include="tcp_server.cpp">
       <Filter>network\tcp\tcp_server</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\10002_C2SRegisterReq.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\10003_S2CRegisterRsp.pb.cc">
+      <Filter>protocol\protobuf</Filter>
     </ClCompile>
     <ClCompile Include="protocol\10000_C2SLoginReq.pb.cc">
       <Filter>protocol\protobuf</Filter>

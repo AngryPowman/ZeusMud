@@ -10,8 +10,10 @@ namespace RobotWatchman.network
 {
     enum Opcodes
     {
-        C2SLoginReq = 10000,            //登录请求
-        S2CLoginRsp = 10001,            //登录回应
+        C2SLoginReq     = 10000,            //登录请求
+        S2CLoginRsp     = 10001,            //登录回应
+        C2SRegisterReq  = 10002,            //注册请求
+        S2CRegisterRsp  = 10003,            //注册回应
     }
 
     public delegate void NetworkMessageCallback(MemoryStream stream);
@@ -22,10 +24,9 @@ namespace RobotWatchman.network
 
     class OpcodesHandler
     {
-        private Dictionary<Opcodes, Handler> _handlers = new Dictionary<Opcodes, Handler>();
+        private static  Dictionary<Opcodes, Handler> _handlers = new Dictionary<Opcodes, Handler>();
         public OpcodesHandler()
         {
-            addHandler(Opcodes.S2CLoginRsp, GlobalObject.LoginForm.userLoginCallback);
         }
 
         public Handler getHandler(Opcodes opcode)
@@ -33,7 +34,7 @@ namespace RobotWatchman.network
             return _handlers[opcode];
         }
 
-        public void addHandler(Opcodes opcode, NetworkMessageCallback cb)
+        public static void registerHandler(Opcodes opcode, NetworkMessageCallback cb)
         {
             Handler handler = new Handler();
             handler.callback = cb;

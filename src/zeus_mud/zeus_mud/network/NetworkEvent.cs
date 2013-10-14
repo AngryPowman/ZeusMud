@@ -16,6 +16,7 @@ namespace RobotWatchman.network
     {
         private static OpcodesHandler _opcodeHandler = new OpcodesHandler();
         private static Dictionary<string, UInt32> _opcodesTable = new Dictionary<string, UInt32>();
+
         public static void init()
         {
             foreach (Opcodes opcode in Enum.GetValues(typeof(Opcodes)))
@@ -64,18 +65,11 @@ namespace RobotWatchman.network
             }
         }
 
-        /// <summary>
-        /// 机器人验证请求
-        /// </summary>
-        /// <param name="verify_key"></param>
-        public static void sendLoginRequest(string username, string password)
+        public static bool isConnected()
         {
-            Protocol.C2SLoginReq request = new Protocol.C2SLoginReq();
-            request.username = username;
-            request.password = password;
-
-            sendPacket<Protocol.C2SLoginReq>(request);
+            return _clientSocket.Connected;
         }
+
 
         /*******************************************************************************************
         /* 网络事件
@@ -142,7 +136,7 @@ namespace RobotWatchman.network
             //GlobalObject.MainForm.addLog(log);
         }
 
-        private static void sendPacket<T>(T message)
+        public static void sendPacket<T>(T message)
         { 
             // Serialize body data first
             MemoryStream streamBody = new MemoryStream();

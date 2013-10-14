@@ -61,7 +61,7 @@ public:
         Protocol::C2SLoginReq request;
         message.parse(request);
 
-        printf("[User Login] -> (Username='%s', Password='%s')", request.username().c_str(), request.password().c_str());
+        printf("[User Login] -> (Username='%s', Password='%s')", request.email().c_str(), request.password().c_str());
 
         Protocol::S2CLoginRsp login_response;
         login_response.set_login_result(false);
