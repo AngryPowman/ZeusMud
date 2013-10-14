@@ -61,6 +61,10 @@
       <AdditionalDependencies>venus_net.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/poco/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>if not exist "../../output/mud_server" mkdir "../../output/mud_server"
+xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -82,6 +86,10 @@
       <AdditionalDependencies>venus_net.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/poco/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>if not exist "../../output/mud_server" mkdir "../../output/mud_server"
+xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="asio_service_deamon.h" />
