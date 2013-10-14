@@ -25,13 +25,12 @@
 
 !/3rdparty/protobuf_lib/*.lib
 !/protocol/tools/ProtoGen_Net/*.pdb
-/src/center_server/Debug
-/src/center_server/Release
-/src/venus_net/Debug
-/src/venus_net/Release
-/src/zeus_mud/Debug
-/src/zeus_mud/Release
-/src/zeus_mud/ipch
-/src/zeus_mud/zeus_mud/obj
-/src/zeus_mud/zeus_mud/bin
-/src/zeus_mud/ipch
+/3rdparty/poco/bin
+/3rdparty/poco/lib
+obj/
+bin/
+ipch/
+Debug/
+Release/
+/output/mud_client/*.exe
+/output/mud_server/*.exe
