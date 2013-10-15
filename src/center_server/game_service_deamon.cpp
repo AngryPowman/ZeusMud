@@ -1,8 +1,7 @@
 #include <tcp_server.h>
 #include "game_service_deamon.h"
 #include "io_dispatcher.h"
-//#include <Poco/Data/Common.h>
-//#include <Poco/Data/SQLite/Connector.h>
+#include "game_service.h"
 
 GameServiceDeamon::GameServiceDeamon(const std::string& service_name, IOService& io_service)
     : Venus::NetworkServiceDeamon(service_name, io_service)
@@ -17,6 +16,9 @@ GameServiceDeamon::~GameServiceDeamon()
 
 void GameServiceDeamon::start(const uint16& port, const uint32& threadNum/* = Venus::smart_thread_nums()*/)
 {
+    //initialize game service data
+    GameService::getInstance().initialize();
+
     //create tcp server instance
     _server = new TcpServer(InetAddress(port), this->service(), threadNum);
 

@@ -14,18 +14,15 @@
     <ClInclude Include="opcodes_handler.h">
       <Filter>handler</Filter>
     </ClInclude>
-    <ClInclude Include="game_service_deamon.h">
-      <Filter>network</Filter>
-    </ClInclude>
+    <ClInclude Include="game_service_deamon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="center_server.cpp" />
     <ClCompile Include="opcodes_handler.cpp">
       <Filter>handler</Filter>
     </ClCompile>
-    <ClCompile Include="game_service_deamon.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
+    <ClCompile Include="game_service_deamon.cpp" />
+    <ClCompile Include="game_service.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="network">

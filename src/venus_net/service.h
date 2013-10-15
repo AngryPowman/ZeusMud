@@ -7,12 +7,12 @@ namespace Venus
 {
     class Service
     {
-    public:
-        Service(const std::string& service_name);
-        virtual ~Service();
+    protected:
+        Service(){}
+        virtual ~Service(){}
 
-    public:
-        virtual void initialize() = 0;
+    protected:
+        virtual bool initialize() = 0;
         virtual void destroy() = 0;
     };
 }

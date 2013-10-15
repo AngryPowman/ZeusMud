@@ -3,6 +3,8 @@
 
 #include <assert.h>
 
+namespace Venus
+{
 template<class T, bool mustDelete = true>
 class Singleton
 {
@@ -74,5 +76,6 @@ protected:
 };
 
 template <typename T> T* SingletonEx<T>::instance_m = nullptr;
+}
 
 #endif // __SINGLETON_H__
