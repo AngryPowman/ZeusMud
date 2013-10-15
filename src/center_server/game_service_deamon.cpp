@@ -1,30 +1,24 @@
 #include <tcp_server.h>
-#include "asio_service_deamon.h"
+#include "game_service_deamon.h"
 #include "io_dispatcher.h"
 //#include <Poco/Data/Common.h>
 //#include <Poco/Data/SQLite/Connector.h>
 
-AsioServiceDeamon::AsioServiceDeamon()
+GameServiceDeamon::GameServiceDeamon(const std::string& service_name, IOService& io_service)
+    : Venus::NetworkServiceDeamon(service_name, io_service)
 {
 }
 
-AsioServiceDeamon::~AsioServiceDeamon()
+GameServiceDeamon::~GameServiceDeamon()
 {
     this->stop();
-    SAFE_DELETE(_service);
     SAFE_DELETE(_server);
 }
 
-void AsioServiceDeamon::start(const std::string& serviceName, 
-                              const uint32_t& threadNum/* = irene::net_params::smart_thread_nums()*/)
+void GameServiceDeamon::start(const uint16& port, const uint32& threadNum/* = Venus::smart_thread_nums()*/)
 {
-    _serviceName = serviceName;
-
-    //create io service instance
-    _service = new IOService;
-
     //create tcp server instance
-    _server = new TcpServer(InetAddress(36911), *_service, threadNum);
+    _server = new TcpServer(InetAddress(port), this->service(), threadNum);
 
     //register io events
     IODispatcher io_dispatcher;
@@ -47,7 +41,7 @@ void AsioServiceDeamon::start(const std::string& serviceName,
     _server->start();
 }
 
-void AsioServiceDeamon::stop()
+void GameServiceDeamon::stop()
 {
     _server->stop();
 }

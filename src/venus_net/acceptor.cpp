@@ -1,5 +1,4 @@
-﻿#include "stdafx.h"
-#include "acceptor.h"
+﻿#include "acceptor.h"
 #include "tcp_connection.h"
 #include "network_common.h"
 #include "io_service.h"

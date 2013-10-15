@@ -1,32 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="asio_service_deamon.h">
-      <Filter>network</Filter>
-    </ClInclude>
     <ClInclude Include="io_dispatcher.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="opcodes_handler.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="service_deamon.h">
-      <Filter>network</Filter>
-    </ClInclude>
-    <ClInclude Include="session.h">
       <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="session_manager.h">
       <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="game_service.h" />
+    <ClInclude Include="session.h">
+      <Filter>handler</Filter>
+    </ClInclude>
+    <ClInclude Include="opcodes_handler.h">
+      <Filter>handler</Filter>
+    </ClInclude>
+    <ClInclude Include="game_service_deamon.h">
+      <Filter>network</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="center_server.cpp" />
-    <ClCompile Include="asio_service_deamon.cpp">
-      <Filter>network</Filter>
-    </ClCompile>
     <ClCompile Include="opcodes_handler.cpp">
+      <Filter>handler</Filter>
+    </ClCompile>
+    <ClCompile Include="game_service_deamon.cpp">
       <Filter>network</Filter>
     </ClCompile>
   </ItemGroup>
@@ -34,8 +31,8 @@
     <Filter Include="network">
       <UniqueIdentifier>{46983ab3-028f-4e44-bb4f-e33bf7bbbdcd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="obj">
-      <UniqueIdentifier>{45fd41eb-bfeb-491e-bf4f-76a338bd84d9}</UniqueIdentifier>
+    <Filter Include="handler">
+      <UniqueIdentifier>{d4a463a3-b6ff-4a3f-b51e-ff454c1a783e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

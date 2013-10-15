@@ -20,9 +20,7 @@
 
 #define MAX_RECV_LEN    (1024 * 4)
 
-namespace irene
-{
-namespace net_params
+namespace Venus
 {
     inline int32_t smart_thread_nums()
     {
@@ -36,7 +34,6 @@ namespace net_params
     }
 
     inline uint32_t max_recv_length() { return MAX_RECV_LEN; }
-}
 }
 
 struct NetworkMessage

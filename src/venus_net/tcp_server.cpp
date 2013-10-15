@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "inet_address.h"
 #include "tcp_server.h"
 #include "network_common.h"

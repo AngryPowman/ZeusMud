@@ -1,4 +1,3 @@
-#include "stdafx.h"
 #include "tcp_client.h"
 #include "tcp_connection.h"
 

@@ -1,16 +1,15 @@
 // center_server.cpp : 定义控制台应用程序的入口点。
 //
 
-#include "asio_service_deamon.h"
-#include "ascii.h"
-#include "socket.h"
+#include "game_service_deamon.h"
 
 int main(int argc, char* argv[])
 {
     try
     {
-        AsioServiceDeamon serviceEntry;
-        serviceEntry.start("ZuesMud_Service", 1);
+        IOService service;
+        GameServiceDeamon serviceEntry("ZeusMud_Service", service);
+        serviceEntry.start(36911);
     }
     catch (...)
     {

@@ -1,15 +1,14 @@
 #ifndef INET_ADDRESS_H_
 #define INET_ADDRESS_H_
 
-#include <string>
-#include <cstdint>
+#include "common.h"
 
 class InetAddress
 {
 public:
     /// Constructs an endpoint with given port number.
     /// Mostly used in TcpServer listening
-    explicit InetAddress(uint16_t port)
+    explicit InetAddress(const uint16& port)
     {
         _host = "0.0.0.0";
         _port = port;
@@ -18,7 +17,7 @@ public:
     /// Constructs an endpoint with given ip and port.
     /// @address - ip should be "1.2.3.4"
     /// @port - host
-    InetAddress(const std::string& host, uint16_t port)
+    InetAddress(const std::string& host, const uint16& port)
     {
         _host = host;
         _port = port;

@@ -92,16 +92,15 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="asio_service_deamon.h" />
+    <ClInclude Include="game_service_deamon.h" />
     <ClInclude Include="game_service.h" />
     <ClInclude Include="session.h" />
     <ClInclude Include="io_dispatcher.h" />
     <ClInclude Include="opcodes_handler.h" />
-    <ClInclude Include="service_deamon.h" />
     <ClInclude Include="session_manager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="asio_service_deamon.cpp" />
+    <ClCompile Include="game_service_deamon.cpp" />
     <ClCompile Include="center_server.cpp" />
     <ClCompile Include="opcodes_handler.cpp" />
   </ItemGroup>

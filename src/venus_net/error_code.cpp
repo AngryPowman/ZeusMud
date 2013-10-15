@@ -9,7 +9,6 @@
 
 //----------------------------------------------------------------------------//
 
-#include "stdafx.h"
 #include <boost/config/warning_disable.hpp>
 
 // define BOOST_SYSTEM_SOURCE so that <boost/system/config.hpp> knows

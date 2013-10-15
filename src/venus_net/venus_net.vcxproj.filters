@@ -1,12 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="main">
-      <UniqueIdentifier>{e5f893f8-3fd4-48ec-9155-f3797827331c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="base">
-      <UniqueIdentifier>{c72c058d-87de-49e0-9f8f-a7b4b0b130ad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="network">
       <UniqueIdentifier>{df8b2053-2381-41a6-89fb-2271f81b3c7a}</UniqueIdentifier>
     </Filter>
@@ -31,23 +25,17 @@
     <Filter Include="network\network_common\asio_error">
       <UniqueIdentifier>{c7047036-3308-4fd4-9458-b60cd0f8b45f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="framework\service_template">
+      <UniqueIdentifier>{ab08001b-0d30-404e-b541-acb0a4836b9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\memory">
+      <UniqueIdentifier>{ba9ce467-7f06-40f5-9b26-f37f83b18329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="framework\stream">
+      <UniqueIdentifier>{abde0155-7fc8-487d-bb5a-15b93b806cc0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="targetver.h">
-      <Filter>main</Filter>
-    </ClInclude>
-    <ClInclude Include="byte_buffer.h">
-      <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="endian.h">
-      <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="inet_address.h">
-      <Filter>base</Filter>
-    </ClInclude>
-    <ClInclude Include="stdafx.h">
-      <Filter>main</Filter>
-    </ClInclude>
     <ClInclude Include="opcodes.h">
       <Filter>protocol</Filter>
     </ClInclude>
@@ -56,9 +44,6 @@
     </ClInclude>
     <ClInclude Include="local_free_on_destruction.hpp">
       <Filter>network\network_common\asio_error</Filter>
-    </ClInclude>
-    <ClInclude Include="common.h">
-      <Filter>base</Filter>
     </ClInclude>
     <ClInclude Include="network_common.h">
       <Filter>network\network_common</Filter>
@@ -84,9 +69,6 @@
     <ClInclude Include="tcp_server.h">
       <Filter>network\tcp\tcp_server</Filter>
     </ClInclude>
-    <ClInclude Include="object_pool.hpp">
-      <Filter>framework</Filter>
-    </ClInclude>
     <ClInclude Include="protocol\10002_C2SRegisterReq.pb.h">
       <Filter>protocol\protobuf</Filter>
     </ClInclude>
@@ -100,13 +82,34 @@
       <Filter>protocol\protobuf</Filter>
     </ClInclude>
     <ClInclude Include="service.h">
+      <Filter>framework\service_template</Filter>
+    </ClInclude>
+    <ClInclude Include="service_deamon.h">
+      <Filter>framework\service_template</Filter>
+    </ClInclude>
+    <ClInclude Include="network_service_deamon.h">
+      <Filter>framework\service_template</Filter>
+    </ClInclude>
+    <ClInclude Include="object_pool.hpp">
+      <Filter>framework\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="byte_buffer.h">
+      <Filter>framework\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="endian.h">
+      <Filter>framework\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
       <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton.h">
+      <Filter>framework</Filter>
+    </ClInclude>
+    <ClInclude Include="inet_address.h">
+      <Filter>network\network_common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>main</Filter>
-    </ClCompile>
     <ClCompile Include="error_code.cpp">
       <Filter>network\network_common\asio_error</Filter>
     </ClCompile>
