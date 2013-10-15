@@ -24,6 +24,7 @@
 *.opensdf
 
 !/3rdparty/protobuf_lib/*.lib
+!/lib/poco_libs/*.lib
 !/protocol/tools/ProtoGen_Net/*.pdb
 /3rdparty/poco/bin
 /3rdparty/poco/lib
