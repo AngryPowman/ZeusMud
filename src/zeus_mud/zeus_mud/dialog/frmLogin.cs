@@ -22,6 +22,8 @@ namespace zeus_mud
 
             //登录消息注册
             OpcodesHandler.registerHandler(Opcodes.S2CLoginRsp, this.userLoginCallback);
+            txtUsername.Text = "wjk";
+            txtPassword.Text = "WJK123";
         }
 
         private void btnExit_Click(object sender, EventArgs e)
