@@ -20,7 +20,6 @@ public:
         Poco::Data::SQLite::Connector::enableSharedCache(false);
         Poco::Data::Session session("SQLite", "./data/zeus_mud.db");
         Poco::Data::Statement stmt(session);
-        std::vector<std::string> _emails;
         stmt << "SELECT email FROM users", Poco::Data::into(_emails), Poco::Data::now;
         
         std::cout << _emails.size() << std::endl;
@@ -31,7 +30,7 @@ public:
 
     }
 private:
-    
+    std::vector<std::string> _emails;
 };
 
 #endif
