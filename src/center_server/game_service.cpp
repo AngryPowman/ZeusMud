@@ -17,9 +17,10 @@ bool GameService::initialize()
     try
     {
         std::cout << "registering database ..." << std::endl;
-        registerDatabase();
-
-        GameDatabaseSession::getInstance().test();
+        if (registerDatabase() == true)
+        {
+            GameDatabaseSession::getInstance().test();
+        }
     }
     catch (...)
     {

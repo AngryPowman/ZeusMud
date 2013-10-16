@@ -17,22 +17,21 @@ public:
 public:
     void test()
     {
-        Poco::Data::Session session(Poco::Data::SessionFactory::instance().create("SQLite", "./data/zeus_mud.db"));
-        //Poco::Data::Statement stmt(session);
-
-        std::vector<std::string> emails;
-        session << "SELECT email FROM users", Poco::Data::into(emails), Poco::Data::now;
-        //session.close();
-        //session.execute();
-        //session.close();
-
-        /*std::cout << emails.size() << std::endl;
-        for (size_t i = 0; i < emails.size(); ++i)
+        Poco::Data::SQLite::Connector::enableSharedCache(true);
+        Poco::Data::Session session("SQLite", "./data/zeus_mud.db");
+        Poco::Data::Statement stmt(session);
+        std::vector<std::string> _emails;
+        stmt << "SELECT email FROM users", Poco::Data::into(_emails);
+        
+        std::cout << _emails.size() << std::endl;
+        for (size_t i = 0; i < _emails.size(); ++i)
         {
-            std::cout << emails[i] << std::endl;
+            std::cout << _emails[i] << std::endl;
         }
-        emails.clear();*/
+
     }
+private:
+    
 };
 
 #endif
