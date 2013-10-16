@@ -17,11 +17,11 @@ public:
 public:
     void test()
     {
-        Poco::Data::SQLite::Connector::enableSharedCache(true);
+        Poco::Data::SQLite::Connector::enableSharedCache(false);
         Poco::Data::Session session("SQLite", "./data/zeus_mud.db");
         Poco::Data::Statement stmt(session);
         std::vector<std::string> _emails;
-        stmt << "SELECT email FROM users", Poco::Data::into(_emails);
+        stmt << "SELECT email FROM users", Poco::Data::into(_emails), Poco::Data::now;
         
         std::cout << _emails.size() << std::endl;
         for (size_t i = 0; i < _emails.size(); ++i)
