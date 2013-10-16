@@ -1,6 +1,7 @@
 #include "game_service.h"
 #include <Poco/Data/Common.h>
 #include <Poco/Data/SQLite/Connector.h>
+#include "game_database_session.h"
 
 GameService::GameService()
 {
@@ -17,6 +18,8 @@ bool GameService::initialize()
     {
         std::cout << "registering database ..." << std::endl;
         registerDatabase();
+
+        GameDatabaseSession::getInstance().test();
     }
     catch (...)
     {

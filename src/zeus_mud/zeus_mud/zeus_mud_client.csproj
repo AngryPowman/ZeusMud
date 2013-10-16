@@ -76,6 +76,9 @@
     <Compile Include="protocol\10001_S2CLoginRsp.cs" />
     <Compile Include="protocol\10002_C2SRegisterReq.cs" />
     <Compile Include="protocol\10003_S2CRegisterRsp.cs" />
+    <EmbeddedResource Include="dialog\frmGameMain.resx">
+      <DependentUpon>frmGameMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dialog\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>

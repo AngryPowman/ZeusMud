@@ -2,6 +2,7 @@
 #define __SINGLETON_H__
 
 #include <assert.h>
+#include "common.h"
 
 namespace Venus
 {

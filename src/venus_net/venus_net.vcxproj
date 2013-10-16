@@ -92,6 +92,7 @@
   <ItemGroup>
     <ClInclude Include="acceptor.h" />
     <ClInclude Include="byte_buffer.h" />
+    <ClInclude Include="db_cached_manager.h" />
     <ClInclude Include="endian.h" />
     <ClInclude Include="inet_address.h" />
     <ClInclude Include="io_service.h" />
