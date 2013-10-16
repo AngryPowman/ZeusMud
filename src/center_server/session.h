@@ -7,8 +7,7 @@
 #include <packet.h>
 #include <tcp_connection.h>
 #include "opcodes.h"
-//#include <Poco/Data/Common.h>
-//#include <Poco/Data/SQLite/Connector.h>
+#include "game_database_session.h"
 
 class Session
 {
@@ -66,8 +65,9 @@ public:
         printf("[User Login] -> (Username='%s', Password='%s')", request.email().c_str(), request.password().c_str());
 
         Protocol::S2CLoginRsp login_response;
-        login_response.set_login_result(true);
-        login_response.set_failed_reason("你是个逗比，所以不让你登录。");
+        bool exists = GameDatabaseSession::getInstance().checkUserExists(request.email());
+        login_response.set_login_result(exists);
+        login_response.set_failed_reason(exists == true ? "" : "用户不存在。");
 
         send_message<Protocol::S2CLoginRsp>(Opcodes::S2CLoginRsp, login_response);
     }

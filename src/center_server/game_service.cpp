@@ -3,6 +3,13 @@
 #include <Poco/Data/SQLite/Connector.h>
 #include "game_database_session.h"
 
+#define CHECK_INITIALIZE(result, x, s) \
+    if (result) \
+        std::cout << x << std::endl; \
+    else \
+        std::cout << s << std::endl;
+
+
 GameService::GameService()
 {
 }
@@ -16,11 +23,7 @@ bool GameService::initialize()
 {
     try
     {
-        std::cout << "registering database ..." << std::endl;
-        if (registerDatabase() == true)
-        {
-            GameDatabaseSession::getInstance().test();
-        }
+        CHECK_INITIALIZE(registerDatabase(), "Database registered OK.", "Database register failed.");
     }
     catch (...)
     {
