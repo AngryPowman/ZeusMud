@@ -44,10 +44,16 @@ namespace zeus_mud
                 return;
             }
 
-            if (NetworkEvent.connectToServer(GlobalObject.DefaultServer, GlobalObject.DefaultPort) == true)
+            if (NetworkEvent.isConnected() == false)
             {
-                userLoginRequest(txtUsername.Text, txtPassword.Text);
+                if (NetworkEvent.connectToServer(GlobalObject.DefaultServer, GlobalObject.DefaultPort) == false)
+                {
+                    MessageBox.Show(this, "连接服务器失败！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
+
+            userLoginRequest(txtUsername.Text, txtPassword.Text);
         }
 
         //========================================用户登录========================================

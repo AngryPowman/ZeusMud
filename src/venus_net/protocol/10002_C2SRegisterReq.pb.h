@@ -127,12 +127,12 @@ class C2SRegisterReq : public ::google::protobuf::Message {
   inline ::std::string* release_nickname();
   inline void set_allocated_nickname(::std::string* nickname);
 
-  // optional bool gender = 4;
+  // optional int32 gender = 4;
   inline bool has_gender() const;
   inline void clear_gender();
   static const int kGenderFieldNumber = 4;
-  inline bool gender() const;
-  inline void set_gender(bool value);
+  inline ::google::protobuf::int32 gender() const;
+  inline void set_gender(::google::protobuf::int32 value);
 
   // optional uint32 BWH = 5;
   inline bool has_bwh() const;
@@ -159,7 +159,7 @@ class C2SRegisterReq : public ::google::protobuf::Message {
   ::std::string* email_;
   ::std::string* password_;
   ::std::string* nickname_;
-  bool gender_;
+  ::google::protobuf::int32 gender_;
   ::google::protobuf::uint32 bwh_;
 
   mutable int _cached_size_;
@@ -389,7 +389,7 @@ inline void C2SRegisterReq::set_allocated_nickname(::std::string* nickname) {
   }
 }
 
-// optional bool gender = 4;
+// optional int32 gender = 4;
 inline bool C2SRegisterReq::has_gender() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -400,13 +400,13 @@ inline void C2SRegisterReq::clear_has_gender() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void C2SRegisterReq::clear_gender() {
-  gender_ = false;
+  gender_ = 0;
   clear_has_gender();
 }
-inline bool C2SRegisterReq::gender() const {
+inline ::google::protobuf::int32 C2SRegisterReq::gender() const {
   return gender_;
 }
-inline void C2SRegisterReq::set_gender(bool value) {
+inline void C2SRegisterReq::set_gender(::google::protobuf::int32 value) {
   set_has_gender();
   gender_ = value;
 }

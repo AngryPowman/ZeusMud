@@ -8,6 +8,7 @@
 #include <tcp_connection.h>
 #include "opcodes.h"
 #include "game_database_session.h"
+#include "game_util.h"
 
 class Session
 {
@@ -57,8 +58,6 @@ public:
 public:
     void user_login_handler(const NetworkMessage& message)
     {
-        std::cout << "enter login handler, session id = " << _sessionId << std::endl;
-
         Protocol::C2SLoginReq request;
         message.parse(request);
 
@@ -74,7 +73,34 @@ public:
 
     void user_register_handler(const NetworkMessage& message)
     {
-    
+        Protocol::C2SRegisterReq request;
+        message.parse(request);
+
+        printf("[User Register] -> (Username='%s', Nickname='%s')", request.email().c_str(), request.nickname().c_str());
+
+        Protocol::S2CRegisterRsp register_response;
+        bool exists = GameDatabaseSession::getInstance().checkUserExists(request.email());
+        if (exists == true)
+        {
+            register_response.set_register_result(false);
+            register_response.set_failed_reason("注册失败，该用户已存在，请换个拉风点的邮箱帐号。");
+        }
+        else
+        {
+            GameDatabaseSession::getInstance().insertNewUserRecord(
+                GameUtil::getInstance().toUniqueId(request.email()),
+                request.email(),
+                request.password(),
+                (uint8)request.gender(),
+                request.nickname(),
+                _connection->getPeerAddress().host(),
+                Poco::Timestamp().epochTime());
+            
+            register_response.set_register_result(true);
+            register_response.set_failed_reason("");
+        }
+
+        send_message<Protocol::S2CRegisterRsp>(Opcodes::S2CRegisterRsp, register_response);
     }
 
 private:

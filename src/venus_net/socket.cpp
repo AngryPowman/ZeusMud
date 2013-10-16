@@ -118,6 +118,11 @@ tcp::socket& Socket::socket()
     return _socket;
 }
 
+const InetAddress& Socket::getPeerAddress() const
+{
+    return _peerAddress;
+}
+
 bool Socket::is_open() const
 {
     return _socket.is_open();
@@ -150,6 +155,10 @@ void Socket::on_error(const boost::system::error_code& error)
 void Socket::handle_connected(const boost::system::error_code& error)
 {
     HANDLE_ERROR_PROCESS(error);
+
+    _peerAddress = InetAddress(
+        _socket.remote_endpoint().address().to_string(), 
+        _socket.remote_endpoint().port());
 
     if (_connected_callback)
         _connected_callback();

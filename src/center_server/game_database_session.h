@@ -16,60 +16,27 @@ public:
     ~GameDatabaseSession();
 
 public:
-    /*void test()
-    {
-        std::vector<std::string> _emails;
-
-        _db_stmt << "SELECT email FROM users", Poco::Data::into(_emails), Poco::Data::now;
-
-        std::cout << (_emails).size() << std::endl;
-        for (size_t i = 0; i < (_emails).size(); ++i)
-        {
-            std::cout << _emails[i] << std::endl;
-        }
-    }*/
-
     //====================================================================
     // 登录系统
     //====================================================================
-    bool checkUserExists(const std::string& email)
-    {
-        Poco::Data::Statement stmt(*_db_session);
-        stmt << "SELECT email FROM users WHERE email = :email", Poco::Data::use(email);
 
-        uint32 count = stmt.execute();
+    //检查数据库中一个用户是否存在
+    bool checkUserExists(const std::string& email);
 
-        if (count > 0)
-        {
-            printf("User '%s' has been exists.", email.c_str());
-            return true;
-        }
-
-        printf("User '%s' not exists.", email.c_str());
-
-        stmt.done();
-        return false;
-    }
-
-    void insertNewUserRecord(const DBUser& user)
-    {
-        *_db_stmt << 
-            "INSERT INTO users(user_id, email, password, gender, nickname, register_ip, register_timestamp) "
-            "VALUES(:user_id, :email, :password, :gender, :nickname, :register_ip, register_timestamp);",
-            Poco::Data::use(user.user_id),
-            Poco::Data::use(user.email),
-            Poco::Data::use(user.password_hash),
-            Poco::Data::use(user.gender),
-            Poco::Data::use(user.nickname),
-            Poco::Data::use(user.register_ip),
-            Poco::Data::use(user.register_timestamp);
-
-        _db_stmt->execute();
-    }
+    //插入新的用户记录
+    void insertNewUserRecord(
+        uint64 user_id, 
+        const std::string& email,
+        const std::string& password,
+        uint8 gender,
+        const std::string& nickname,
+        const std::string& register_ip,
+        uint64 register_timestamp
+    );
 
 private:
-    Poco::Data::Session* _db_session;
-    Poco::Data::Statement* _db_stmt;
+    Poco::Data::Session _db_session;
+    Poco::Data::Statement _db_stmt;
 };
 
 #endif

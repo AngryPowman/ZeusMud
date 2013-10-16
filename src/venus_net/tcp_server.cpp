@@ -79,9 +79,9 @@ void TcpServer::newConnectionCallback(const TcpConnectionPtr& connection)
 {
     std::cout << "thread id = " << std::this_thread::get_id() << std::endl;
 
-    tcp::socket& socket = connection->socket();
-    std::string remote_address = socket.remote_endpoint().address().to_string();
-    uint16 remote_port = socket.remote_endpoint().port();
+    const Socket& socket = connection->socket();
+    const std::string& remote_address = socket.getPeerAddress().host();
+    uint16 remote_port = socket.getPeerAddress().port();
     InetAddress peerAddress(remote_address, remote_port);
 
     //callbacks

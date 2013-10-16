@@ -9,7 +9,7 @@
 using namespace boost::asio::ip;
 
 class Socket
-    : private boost::noncopyable
+    : public boost::noncopyable
 {
     //raw callback types
     typedef std::function<void ()> ConnectedCallback;
@@ -39,6 +39,7 @@ public:
     bool is_open() const;
     byte* get_recv_buffer();
     tcp::socket& socket();
+    const InetAddress& getPeerAddress() const;
 
 public:
     inline void set_connected_callback(const ConnectedCallback& callback)
@@ -71,6 +72,7 @@ private:
     tcp::socket _socket;
     boost::asio::strand _strand;
     boost::array<byte, MAX_RECV_LEN> _recv_buffer;
+    InetAddress _peerAddress;
 };
 
 #endif

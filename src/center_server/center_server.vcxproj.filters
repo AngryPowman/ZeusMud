@@ -27,6 +27,9 @@
     <ClInclude Include="db_player.h">
       <Filter>data\dbc</Filter>
     </ClInclude>
+    <ClInclude Include="game_util.h">
+      <Filter>util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="center_server.cpp" />
@@ -51,6 +54,9 @@
     </Filter>
     <Filter Include="data\dbc">
       <UniqueIdentifier>{313b450e-3572-462c-b8ea-ba83d7e4851d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="util">
+      <UniqueIdentifier>{272cf44c-a21d-48c1-9afe-899b9432cc93}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

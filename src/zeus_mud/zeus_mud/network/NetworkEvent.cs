@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProtoBuf;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace RobotWatchman.network
 {
@@ -96,31 +97,39 @@ namespace RobotWatchman.network
 
         private static void onReceived(IAsyncResult result)
         {
-            Socket socket = (Socket)result.AsyncState;
-            int bytesReceived = socket.EndReceive(result);
-
-            if (bytesReceived == 0)
+            try
             {
-                onDisconnected();
-                return;
+                Socket socket = (Socket)result.AsyncState;
+                int bytesReceived = socket.EndReceive(result);
+                socket.BeginReceive(_recvBuffer, 0, _recvBuffer.Length, SocketFlags.None, new AsyncCallback(onReceived), _clientSocket);
+                if (bytesReceived == 0)
+                {
+                    onDisconnected();
+                    return;
+                }
+
+                MemoryStream streamPacket = new MemoryStream(_recvBuffer);
+                BinaryReader reader = new BinaryReader(streamPacket);
+                UInt32 len = reader.ReadUInt32();
+                UInt32 opcode = reader.ReadUInt32();
+
+                UInt32 messageLen = len - HEADER_LENGTH;
+                byte[] message = new byte[messageLen];
+                reader.Read(message, 0, message.Length);
+
+                Handler handlerInfo = _opcodeHandler.getHandler((Opcodes)opcode);
+                if (handlerInfo != null && handlerInfo.callback != null)
+                {
+                    GlobalObject.LoginForm.Invoke(handlerInfo.callback, new MemoryStream(message));
+                }
+
+                Console.WriteLine("received {0} bytes.", bytesReceived);
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
 
-            MemoryStream streamPacket = new MemoryStream(_recvBuffer);
-            BinaryReader reader = new BinaryReader(streamPacket);
-            UInt32 len = reader.ReadUInt32();
-            UInt32 opcode = reader.ReadUInt32();
-
-            UInt32 messageLen = len - HEADER_LENGTH;
-            byte[] message = new byte[messageLen];
-            reader.Read(message, 0, message.Length);
-
-            Handler handlerInfo = _opcodeHandler.getHandler((Opcodes)opcode);
-            if (handlerInfo != null && handlerInfo.callback != null)
-            {
-                GlobalObject.LoginForm.Invoke(handlerInfo.callback, new MemoryStream(message));
-            }
-
-            Console.WriteLine("received {0} bytes.", bytesReceived);
         }
 
         private static void onDisconnected()

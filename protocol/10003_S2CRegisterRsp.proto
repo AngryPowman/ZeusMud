@@ -2,4 +2,5 @@ package Protocol;
 
 message S2CRegisterRsp {
 	required bool register_result = 1;
+	optional bytes failed_reason = 2;
 }
