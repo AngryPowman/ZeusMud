@@ -42,7 +42,7 @@
             this.btnExit.Location = new System.Drawing.Point(124, 79);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
-            this.btnExit.TabIndex = 8;
+            this.btnExit.TabIndex = 4;
             this.btnExit.Text = "不玩了";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -52,7 +52,7 @@
             this.btnLogin.Location = new System.Drawing.Point(205, 79);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
-            this.btnLogin.TabIndex = 9;
+            this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "进入游戏";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -81,7 +81,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(222, 21);
-            this.txtPassword.TabIndex = 10;
+            this.txtPassword.TabIndex = 2;
             // 
             // txtUsername
             // 
@@ -90,14 +90,14 @@
             this.txtUsername.MaxLength = 32;
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(222, 21);
-            this.txtUsername.TabIndex = 11;
+            this.txtUsername.TabIndex = 1;
             // 
             // btnRegister
             // 
             this.btnRegister.Location = new System.Drawing.Point(12, 79);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(63, 23);
-            this.btnRegister.TabIndex = 8;
+            this.btnRegister.TabIndex = 3;
             this.btnRegister.Text = "注册";
             this.btnRegister.UseVisualStyleBackColor = true;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
