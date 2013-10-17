@@ -97,9 +97,10 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     <ClInclude Include="game_database_session.h" />
     <ClInclude Include="game_service_deamon.h" />
     <ClInclude Include="game_service.h" />
+    <ClInclude Include="game_session.h" />
     <ClInclude Include="game_sql.h" />
     <ClInclude Include="game_util.h" />
-    <ClInclude Include="session.h" />
+    <ClInclude Include="network_session.h" />
     <ClInclude Include="io_dispatcher.h" />
     <ClInclude Include="opcodes_handler.h" />
     <ClInclude Include="session_manager.h" />
@@ -110,6 +111,7 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     <ClCompile Include="game_service_deamon.cpp" />
     <ClCompile Include="center_server.cpp" />
     <ClCompile Include="opcodes_handler.cpp" />
+    <ClCompile Include="network_session.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

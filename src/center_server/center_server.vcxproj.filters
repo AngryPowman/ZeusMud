@@ -8,9 +8,6 @@
       <Filter>network</Filter>
     </ClInclude>
     <ClInclude Include="game_service.h" />
-    <ClInclude Include="session.h">
-      <Filter>handler</Filter>
-    </ClInclude>
     <ClInclude Include="opcodes_handler.h">
       <Filter>handler</Filter>
     </ClInclude>
@@ -30,6 +27,12 @@
     <ClInclude Include="game_util.h">
       <Filter>util</Filter>
     </ClInclude>
+    <ClInclude Include="network_session.h">
+      <Filter>handler</Filter>
+    </ClInclude>
+    <ClInclude Include="game_session.h">
+      <Filter>handler</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="center_server.cpp" />
@@ -40,6 +43,9 @@
     <ClCompile Include="game_service.cpp" />
     <ClCompile Include="game_database_session.cpp">
       <Filter>data</Filter>
+    </ClCompile>
+    <ClCompile Include="network_session.cpp">
+      <Filter>handler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +63,9 @@
     </Filter>
     <Filter Include="util">
       <UniqueIdentifier>{272cf44c-a21d-48c1-9afe-899b9432cc93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="handler\login">
+      <UniqueIdentifier>{87ffc5bc-8f6b-46cd-b3cd-c9828f0c31a4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -33,12 +33,12 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnFight = new System.Windows.Forms.Button();
             this.lvRooms = new System.Windows.Forms.ListView();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chCount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chLevel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txt1Email = new System.Windows.Forms.TextBox();
             this.txt1Name = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -88,6 +88,26 @@
             this.lvRooms.View = System.Windows.Forms.View.Details;
             this.lvRooms.SelectedIndexChanged += new System.EventHandler(this.lvRooms_SelectedIndexChanged);
             // 
+            // chName
+            // 
+            this.chName.Text = "玩家名称";
+            this.chName.Width = 178;
+            // 
+            // chCount
+            // 
+            this.chCount.Text = "人数";
+            this.chCount.Width = 94;
+            // 
+            // chLevel
+            // 
+            this.chLevel.Text = "等级";
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "a8457564gw1e91gsqeac6j203c03c745.jpg");
+            // 
             // txtEmail
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -108,26 +128,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "a8457564gw1e91gsqeac6j203c03c745.jpg");
-            // 
-            // chName
-            // 
-            this.chName.Text = "玩家名称";
-            this.chName.Width = 178;
-            // 
-            // chCount
-            // 
-            this.chCount.Text = "人数";
-            this.chCount.Width = 94;
-            // 
-            // chLevel
-            // 
-            this.chLevel.Text = "等级";
             // 
             // txt1Email
             // 
@@ -278,6 +278,7 @@
             this.Controls.Add(this.btnRefresh);
             this.Name = "frmGameMain";
             this.Text = "frmGameMain";
+            this.Load += new System.EventHandler(this.frmGameMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);

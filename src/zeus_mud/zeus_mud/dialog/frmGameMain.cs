@@ -46,5 +46,10 @@ namespace zeus_mud.dialog
         {
 
         }
+
+        private void frmGameMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
