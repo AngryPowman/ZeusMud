@@ -68,6 +68,37 @@ namespace zeus_mud.dialog
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            //========================
+            // ● 验证结果 缓存
+            //========================
+            ValidateResult valResult;
+          
+            //============================================
+            // ● 分别验证邮箱密码昵称
+            //============================================
+            valResult = GameUtil.checkEmail(txtEmail.Text);
+            if (valResult.Result == false)
+            {
+                MessageBox.Show(this, valResult .FailedReason, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            
+            valResult = GameUtil.checkPassword(txtPassword.Text);
+            if (valResult.Result == false)
+            {
+                MessageBox.Show(this, valResult .FailedReason, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            valResult = GameUtil.checkNickname(txtNickname.Text);
+            if (valResult.Result == false)
+            {
+                MessageBox.Show(this, valResult .FailedReason, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            //===================================
+            // ● 发送注册请求
+            //===================================
             if (NetworkEvent.isConnected() == false)
             {
                 if (NetworkEvent.connectToServer(GlobalObject.DefaultServer, GlobalObject.DefaultPort) == false)

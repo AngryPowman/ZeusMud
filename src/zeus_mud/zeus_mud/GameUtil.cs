@@ -24,16 +24,45 @@ namespace zeus_mud
         //======================================================================
         // ● 检查资料合法性
         //======================================================================
-        static ValidateResult checkEmail(string email)
+        public static ValidateResult checkEmail(string email)
         {
+            if (email.Length == 0)
+            {
+                return new ValidateResult(false, "你先把邮箱填了吧");
+            }
+            if (email.IndexOf(" ") > 0)
+            {
+                return new ValidateResult(false, "邮箱不能含有空格");
+            }
             Regex regex = new Regex("w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*");
             return new ValidateResult(regex.Match(email).Success, "邮箱地址不合法。");
         }
 
-        static ValidateResult checkPassword(string password)
+        public static ValidateResult checkPassword(string password)
         {
+            if (password.Length == 0)
+            {
+                return new ValidateResult(false, "你先把密码填了吧");
+            }
+            if (password.IndexOf(" ") > 0)
+            {
+                return new ValidateResult(false, "密码不能含有空格");
+            }
             Regex regex = new Regex("^[a-zA-Z][a-zA-Z0-9_@#]{3,32}$");
             return new ValidateResult(regex.Match(password).Success, "密码必须由3-32个大小写字母、下划线、数字组成。");
+        }
+
+        public static ValidateResult checkNickname(string nickname)
+        {
+            if (nickname.Length == 0)
+            {
+                return new ValidateResult(false, "你先把昵称填了吧");
+            }
+            if (nickname.IndexOf(" ") > 0)
+            {
+                return new ValidateResult(false, "昵称不能含有空格");
+            }
+            return new ValidateResult(true, "合法昵称");
         }
     }
 }
