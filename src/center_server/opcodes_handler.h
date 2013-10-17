@@ -36,7 +36,7 @@ public:
 		return _instance;
 	}
 
-	OpcodeHandler* operator[](uint32_t opcode)
+	OpcodeHandler* operator[](uint32 opcode)
 	{
 		OpcodeHandlerMap::iterator iter = _opcodeTable.find(opcode);
 		if (iter != _opcodeTable.end())

@@ -85,7 +85,7 @@ void protobuf_AddDesc_10002_5fC2SRegisterReq_2eproto() {
     "\n\03210002_C2SRegisterReq.proto\022\010Protocol\"`"
     "\n\016C2SRegisterReq\022\r\n\005email\030\001 \002(\t\022\020\n\010passw"
     "ord\030\002 \002(\t\022\020\n\010nickname\030\003 \002(\014\022\016\n\006gender\030\004 "
-    "\001(\010\022\013\n\003BWH\030\005 \001(\r", 136);
+    "\001(\005\022\013\n\003BWH\030\005 \001(\r", 136);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "10002_C2SRegisterReq.proto", &protobuf_RegisterTypes);
   C2SRegisterReq::default_instance_ = new C2SRegisterReq();
@@ -129,7 +129,7 @@ void C2SRegisterReq::SharedCtor() {
   email_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   password_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  gender_ = false;
+  gender_ = 0;
   bwh_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -190,7 +190,7 @@ void C2SRegisterReq::Clear() {
         nickname_->clear();
       }
     }
-    gender_ = false;
+    gender_ = 0;
     bwh_ = 0u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -250,13 +250,13 @@ bool C2SRegisterReq::MergePartialFromCodedStream(
         break;
       }
 
-      // optional bool gender = 4;
+      // optional int32 gender = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_gender:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &gender_)));
           set_has_gender();
         } else {
@@ -324,9 +324,9 @@ void C2SRegisterReq::SerializeWithCachedSizes(
       3, this->nickname(), output);
   }
 
-  // optional bool gender = 4;
+  // optional int32 gender = 4;
   if (has_gender()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->gender(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->gender(), output);
   }
 
   // optional uint32 BWH = 5;
@@ -369,9 +369,9 @@ void C2SRegisterReq::SerializeWithCachedSizes(
         3, this->nickname(), target);
   }
 
-  // optional bool gender = 4;
+  // optional int32 gender = 4;
   if (has_gender()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->gender(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->gender(), target);
   }
 
   // optional uint32 BWH = 5;
@@ -411,9 +411,11 @@ int C2SRegisterReq::ByteSize() const {
           this->nickname());
     }
 
-    // optional bool gender = 4;
+    // optional int32 gender = 4;
     if (has_gender()) {
-      total_size += 1 + 1;
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->gender());
     }
 
     // optional uint32 BWH = 5;

@@ -28,6 +28,7 @@ public:
         return _socket->handle();
     }
     void setInetAddress(const InetAddress& inetAddress);
+    const InetAddress& getPeerAddress();
     void connectAsync();
     void connectAsync(const InetAddress& inetAddress);
     void shutdown();
@@ -35,7 +36,7 @@ public:
     void writeAsync(const byte* data, size_t size);
     void writeAsync(const uint32& opcode, const byte* data, size_t size);
     void readAsync();
-    tcp::socket& socket();
+    Socket& socket();
     bool is_open();
 
 public:

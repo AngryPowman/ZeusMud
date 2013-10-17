@@ -98,17 +98,32 @@ class S2CRegisterRsp : public ::google::protobuf::Message {
   inline bool register_result() const;
   inline void set_register_result(bool value);
 
+  // optional bytes failed_reason = 2;
+  inline bool has_failed_reason() const;
+  inline void clear_failed_reason();
+  static const int kFailedReasonFieldNumber = 2;
+  inline const ::std::string& failed_reason() const;
+  inline void set_failed_reason(const ::std::string& value);
+  inline void set_failed_reason(const char* value);
+  inline void set_failed_reason(const void* value, size_t size);
+  inline ::std::string* mutable_failed_reason();
+  inline ::std::string* release_failed_reason();
+  inline void set_allocated_failed_reason(::std::string* failed_reason);
+
   // @@protoc_insertion_point(class_scope:Protocol.S2CRegisterRsp)
  private:
   inline void set_has_register_result();
   inline void clear_has_register_result();
+  inline void set_has_failed_reason();
+  inline void clear_has_failed_reason();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* failed_reason_;
   bool register_result_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_10003_5fS2CRegisterRsp_2eproto();
   friend void protobuf_AssignDesc_10003_5fS2CRegisterRsp_2eproto();
@@ -144,6 +159,76 @@ inline bool S2CRegisterRsp::register_result() const {
 inline void S2CRegisterRsp::set_register_result(bool value) {
   set_has_register_result();
   register_result_ = value;
+}
+
+// optional bytes failed_reason = 2;
+inline bool S2CRegisterRsp::has_failed_reason() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void S2CRegisterRsp::set_has_failed_reason() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void S2CRegisterRsp::clear_has_failed_reason() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void S2CRegisterRsp::clear_failed_reason() {
+  if (failed_reason_ != &::google::protobuf::internal::kEmptyString) {
+    failed_reason_->clear();
+  }
+  clear_has_failed_reason();
+}
+inline const ::std::string& S2CRegisterRsp::failed_reason() const {
+  return *failed_reason_;
+}
+inline void S2CRegisterRsp::set_failed_reason(const ::std::string& value) {
+  set_has_failed_reason();
+  if (failed_reason_ == &::google::protobuf::internal::kEmptyString) {
+    failed_reason_ = new ::std::string;
+  }
+  failed_reason_->assign(value);
+}
+inline void S2CRegisterRsp::set_failed_reason(const char* value) {
+  set_has_failed_reason();
+  if (failed_reason_ == &::google::protobuf::internal::kEmptyString) {
+    failed_reason_ = new ::std::string;
+  }
+  failed_reason_->assign(value);
+}
+inline void S2CRegisterRsp::set_failed_reason(const void* value, size_t size) {
+  set_has_failed_reason();
+  if (failed_reason_ == &::google::protobuf::internal::kEmptyString) {
+    failed_reason_ = new ::std::string;
+  }
+  failed_reason_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* S2CRegisterRsp::mutable_failed_reason() {
+  set_has_failed_reason();
+  if (failed_reason_ == &::google::protobuf::internal::kEmptyString) {
+    failed_reason_ = new ::std::string;
+  }
+  return failed_reason_;
+}
+inline ::std::string* S2CRegisterRsp::release_failed_reason() {
+  clear_has_failed_reason();
+  if (failed_reason_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = failed_reason_;
+    failed_reason_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void S2CRegisterRsp::set_allocated_failed_reason(::std::string* failed_reason) {
+  if (failed_reason_ != &::google::protobuf::internal::kEmptyString) {
+    delete failed_reason_;
+  }
+  if (failed_reason) {
+    set_has_failed_reason();
+    failed_reason_ = failed_reason;
+  } else {
+    clear_has_failed_reason();
+    failed_reason_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 

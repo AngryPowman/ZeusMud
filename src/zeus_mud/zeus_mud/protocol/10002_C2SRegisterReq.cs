@@ -37,10 +37,10 @@ namespace Protocol
       set { _nickname = value; }
     }
 
-    private bool _gender = default(bool);
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"gender", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(default(bool))]
-    public bool gender
+    private int _gender = default(int);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"gender", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(int))]
+    public int gender
     {
       get { return _gender; }
       set { _gender = value; }

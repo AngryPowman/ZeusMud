@@ -22,6 +22,15 @@ namespace Protocol
       get { return _register_result; }
       set { _register_result = value; }
     }
+
+    private byte[] _failed_reason = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"failed_reason", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public byte[] failed_reason
+    {
+      get { return _failed_reason; }
+      set { _failed_reason = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

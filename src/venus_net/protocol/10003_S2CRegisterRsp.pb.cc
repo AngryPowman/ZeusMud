@@ -34,8 +34,9 @@ void protobuf_AssignDesc_10003_5fS2CRegisterRsp_2eproto() {
       "10003_S2CRegisterRsp.proto");
   GOOGLE_CHECK(file != NULL);
   S2CRegisterRsp_descriptor_ = file->message_type(0);
-  static const int S2CRegisterRsp_offsets_[1] = {
+  static const int S2CRegisterRsp_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CRegisterRsp, register_result_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CRegisterRsp, failed_reason_),
   };
   S2CRegisterRsp_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -78,9 +79,9 @@ void protobuf_AddDesc_10003_5fS2CRegisterRsp_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\03210003_S2CRegisterRsp.proto\022\010Protocol\")"
+    "\n\03210003_S2CRegisterRsp.proto\022\010Protocol\"@"
     "\n\016S2CRegisterRsp\022\027\n\017register_result\030\001 \002("
-    "\010", 81);
+    "\010\022\025\n\rfailed_reason\030\002 \001(\014", 104);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "10003_S2CRegisterRsp.proto", &protobuf_RegisterTypes);
   S2CRegisterRsp::default_instance_ = new S2CRegisterRsp();
@@ -99,6 +100,7 @@ struct StaticDescriptorInitializer_10003_5fS2CRegisterRsp_2eproto {
 
 #ifndef _MSC_VER
 const int S2CRegisterRsp::kRegisterResultFieldNumber;
+const int S2CRegisterRsp::kFailedReasonFieldNumber;
 #endif  // !_MSC_VER
 
 S2CRegisterRsp::S2CRegisterRsp()
@@ -118,6 +120,7 @@ S2CRegisterRsp::S2CRegisterRsp(const S2CRegisterRsp& from)
 void S2CRegisterRsp::SharedCtor() {
   _cached_size_ = 0;
   register_result_ = false;
+  failed_reason_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -126,6 +129,9 @@ S2CRegisterRsp::~S2CRegisterRsp() {
 }
 
 void S2CRegisterRsp::SharedDtor() {
+  if (failed_reason_ != &::google::protobuf::internal::kEmptyString) {
+    delete failed_reason_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -154,6 +160,11 @@ S2CRegisterRsp* S2CRegisterRsp::New() const {
 void S2CRegisterRsp::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     register_result_ = false;
+    if (has_failed_reason()) {
+      if (failed_reason_ != &::google::protobuf::internal::kEmptyString) {
+        failed_reason_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -173,6 +184,20 @@ bool S2CRegisterRsp::MergePartialFromCodedStream(
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &register_result_)));
           set_has_register_result();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_failed_reason;
+        break;
+      }
+
+      // optional bytes failed_reason = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_failed_reason:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_failed_reason()));
         } else {
           goto handle_uninterpreted;
         }
@@ -203,6 +228,12 @@ void S2CRegisterRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->register_result(), output);
   }
 
+  // optional bytes failed_reason = 2;
+  if (has_failed_reason()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      2, this->failed_reason(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -214,6 +245,13 @@ void S2CRegisterRsp::SerializeWithCachedSizes(
   // required bool register_result = 1;
   if (has_register_result()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->register_result(), target);
+  }
+
+  // optional bytes failed_reason = 2;
+  if (has_failed_reason()) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        2, this->failed_reason(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -230,6 +268,13 @@ int S2CRegisterRsp::ByteSize() const {
     // required bool register_result = 1;
     if (has_register_result()) {
       total_size += 1 + 1;
+    }
+
+    // optional bytes failed_reason = 2;
+    if (has_failed_reason()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
+          this->failed_reason());
     }
 
   }
@@ -262,6 +307,9 @@ void S2CRegisterRsp::MergeFrom(const S2CRegisterRsp& from) {
     if (from.has_register_result()) {
       set_register_result(from.register_result());
     }
+    if (from.has_failed_reason()) {
+      set_failed_reason(from.failed_reason());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -287,6 +335,7 @@ bool S2CRegisterRsp::IsInitialized() const {
 void S2CRegisterRsp::Swap(S2CRegisterRsp* other) {
   if (other != this) {
     std::swap(register_result_, other->register_result_);
+    std::swap(failed_reason_, other->failed_reason_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

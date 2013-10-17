@@ -30,6 +30,11 @@ void TcpConnection::setInetAddress(const InetAddress& inetAddress)
     _inetAddress = inetAddress;
 }
 
+const InetAddress& TcpConnection::getPeerAddress()
+{
+    return _socket->getPeerAddress();
+}
+
 void TcpConnection::connectAsync()
 {
     _socket->start_connect(_inetAddress.host(), _inetAddress.port());
@@ -77,9 +82,9 @@ void TcpConnection::readAsync()
     _socket->start_receive();
 }
 
-tcp::socket& TcpConnection::socket()
+Socket& TcpConnection::socket()
 {
-    return _socket->socket();
+    return *_socket;
 }
 
 bool TcpConnection::is_open()

@@ -108,7 +108,7 @@ namespace zeus_mud.dialog
             Protocol.S2CRegisterRsp response = NetworkEvent.parseMessage<Protocol.S2CRegisterRsp>(stream);
             if (response.register_result == false)
             {
-                MessageBox.Show(this, "注册失败，不知道为什么", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, Encoding.Default.GetString(response.failed_reason), "注册失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
