@@ -68,6 +68,10 @@ namespace zeus_mud.dialog
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            txtEmail.Text = txtEmail.Text.Trim();
+            txtPassword.Text = txtPassword.Text.Trim();
+            txtNickname.Text = txtNickname.Text.Trim();
+            
             //========================
             // ● 验证结果 缓存
             //========================

@@ -31,7 +31,7 @@ namespace zeus_mud
             {
                 return new ValidateResult(false, "你先把邮箱填了吧");
             }
-            if (email.IndexOf(" ") > 0)
+            if (email.IndexOf(" ") > -1)
             {
                 return new ValidateResult(false, "邮箱不能含有空格");
             }
@@ -45,7 +45,7 @@ namespace zeus_mud
             {
                 return new ValidateResult(false, "你先把密码填了吧");
             }
-            if (password.IndexOf(" ") > 0)
+            if (password.IndexOf(" ") > -1)
             {
                 return new ValidateResult(false, "密码不能含有空格");
             }
@@ -60,7 +60,7 @@ namespace zeus_mud
             {
                 return new ValidateResult(false, "你先把昵称填了吧");
             }
-            if (nickname.IndexOf(" ") > 0)
+            if (nickname.IndexOf(" ") > -1)
             {
                 return new ValidateResult(false, "昵称不能含有空格");
             }
