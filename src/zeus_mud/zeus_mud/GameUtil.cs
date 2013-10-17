@@ -26,6 +26,7 @@ namespace zeus_mud
         //======================================================================
         public static ValidateResult checkEmail(string email)
         {
+            email.Trim();
             if (email.Length == 0)
             {
                 return new ValidateResult(false, "你先把邮箱填了吧");
@@ -34,7 +35,7 @@ namespace zeus_mud
             {
                 return new ValidateResult(false, "邮箱不能含有空格");
             }
-            Regex regex = new Regex("w+([-+.]w+)*@w+([-.]w+)*.w+([-.]w+)*");
+            Regex regex = new Regex(@"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
             return new ValidateResult(regex.Match(email).Success, "邮箱地址不合法。");
         }
 
@@ -54,6 +55,7 @@ namespace zeus_mud
 
         public static ValidateResult checkNickname(string nickname)
         {
+            nickname.Trim();
             if (nickname.Length == 0)
             {
                 return new ValidateResult(false, "你先把昵称填了吧");
