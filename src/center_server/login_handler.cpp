@@ -12,19 +12,19 @@ void GameSession::user_login_handler(const NetworkMessage& message)
     Protocol::C2SLoginReq request;
     message.parse(request);
 
-    printf("[User Login] -> (Username='%s', Password='%s')", request.email().c_str(), request.password().c_str());
+    printf("[User Login] -> (Username='%s', Password='%s')\n", request.email().c_str(), request.password().c_str());
 
     //≈–∂œ” œ‰’ ∫≈∑«∑®
     if (GameUtil::getInstance().checkEmailValid(request.email()) == false)
     {
-        printf("register email '%s' invalid, register failed.", request.email().c_str());
+        printf("register email '%s' invalid, register failed.\n", request.email().c_str());
         return;
     }
 
     //≈–∂œ√‹¬Îhash∑«∑®
     if (GameUtil::getInstance().checkPasswordHashValid(request.password()) == false)
     {
-        printf("register password '%s' not a legal MD5 hash, register failed.", request.email().c_str());
+        printf("register password '%s' not a legal MD5 hash, register failed.\n", request.password().c_str());
         return;
     }
 
@@ -41,19 +41,19 @@ void GameSession::user_register_handler(const NetworkMessage& message)
     Protocol::C2SRegisterReq request;
     message.parse(request);
 
-    printf("[User Register] -> (Username='%s', Nickname='%s')", request.email().c_str(), request.nickname().c_str());
+    printf("[User Register] -> (Username='%s', Nickname='%s')\n", request.email().c_str(), request.nickname().c_str());
 
     //≈–∂œ” œ‰’ ∫≈∑«∑®
     if (GameUtil::getInstance().checkEmailValid(request.email()) == false)
     {
-        printf("register email '%s' invalid, register failed.", request.email().c_str());
+        printf("register email '%s' invalid, register failed.\n", request.email().c_str());
         return;
     }
 
     //≈–∂œ√‹¬Îhash∑«∑®
     if (GameUtil::getInstance().checkPasswordHashValid(request.password()) == false)
     {
-        printf("register password '%s' not a legal MD5 hash, register failed.", request.email().c_str());
+        printf("register password '%s' not a legal MD5 hash, register failed.\n", request.password().c_str());
         return;
     }
 

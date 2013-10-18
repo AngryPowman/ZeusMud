@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -130,9 +131,12 @@ namespace zeus_mud.dialog
         //========================================用户注册========================================
         void userRegisterRequest(string email, string password_plainText, string nickname)
         {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] passwordHash = md5.ComputeHash(Encoding.Default.GetBytes(password_plainText));
+
             Protocol.C2SRegisterReq request = new Protocol.C2SRegisterReq();
             request.email = email;
-            request.password = password_plainText;
+            request.password = GameUtil.toMD5(password_plainText);
             request.nickname = Encoding.Default.GetBytes(nickname);
 
             NetworkEvent.sendPacket<Protocol.C2SRegisterReq>(request);
@@ -144,6 +148,13 @@ namespace zeus_mud.dialog
             if (response.register_result == false)
             {
                 MessageBox.Show(this, Encoding.Default.GetString(response.failed_reason), "注册失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show(this, "注册成功，现在你可以体验精彩的游戏了。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                GlobalObject.LoginForm.txtUsername.Text = txtEmail.Text;
+                GlobalObject.LoginForm.txtPassword.Text = txtPassword.Text;
+                this.Close();
             }
         }
 

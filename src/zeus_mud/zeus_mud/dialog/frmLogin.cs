@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using zeus_mud.dialog;
+using System.Security.Cryptography;
 
 namespace zeus_mud
 {
@@ -67,7 +68,7 @@ namespace zeus_mud
         {
             Protocol.C2SLoginReq request = new Protocol.C2SLoginReq();
             request.email = email;
-            request.password = password;
+            request.password = GameUtil.toMD5(password);
 
             NetworkEvent.sendPacket<Protocol.C2SLoginReq>(request);
         }
