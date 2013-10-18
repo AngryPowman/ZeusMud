@@ -15,9 +15,9 @@ public:
 public:
     void NewConnectionHandler(const TcpConnectionPtr& connection, const InetAddress& peerAddress)
     {
-        Session* session = SessionPool::instance().acquire(connection->handle());
+        GameSession* session = SessionPool::getInstance().acquire(connection->handle());
         session->set_connection_ptr(connection);
-        SessionManager::instance().add_session(session);
+        GameSessionManager::getInstance().add_session(session);
         std::cout << "New Session [NativeHandle = " << connection->handle() << ", Peer = " << peerAddress.toIpHost() << "]" << std::endl;
     }
 
@@ -38,7 +38,7 @@ public:
         OpcodeHandler* handler = OpcodeTable::instance()[opcode];
         if (handler != nullptr)
         {
-            Session* session = SessionManager::instance().get(connection->handle());
+            GameSession* session = GameSessionManager::getInstance().get(connection->handle());
             if (session != nullptr)
             {
                 NetworkMessage network_message;
@@ -57,10 +57,10 @@ public:
     void ConnectionClosed(const TcpConnectionPtr& connection)
     {
         std::cout << "Connection closed handler." << std::endl;
-        Session* session = SessionManager::instance().get(connection->handle());
+        GameSession* session = GameSessionManager::getInstance().get(connection->handle());
         session->set_connection_ptr(nullptr);
-        SessionManager::instance().remove_session(session);
-        SessionPool::instance().release(session);
+        GameSessionManager::getInstance().remove_session(session);
+        SessionPool::getInstance().release(session);
     }
 
 };

@@ -3,12 +3,8 @@
 
 #include <common.h>
 #include <network_common.h>
-#include <protobuf.h>
 #include <packet.h>
 #include <tcp_connection.h>
-#include "opcodes.h"
-#include "game_database_session.h"
-#include "game_util.h"
 
 class NetworkSession
 {
@@ -18,8 +14,10 @@ public:
 
 public:
     void set_connection_ptr(const TcpConnectionPtr& connection);
+    TcpConnectionPtr& connection();
     uint64 session_id() const;
 
+protected:
     template <typename T> void send_message(uint32 opcode, const T& message)
     {
         if (_connection != nullptr)
@@ -40,10 +38,6 @@ public:
             SAFE_DELETE_ARR(message_data);
         }
     }
-
-public:
-    void user_login_handler(const NetworkMessage& message);
-    void user_register_handler(const NetworkMessage& message);
 
 private:
     uint64 _sessionId;

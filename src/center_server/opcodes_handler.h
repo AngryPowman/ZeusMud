@@ -4,10 +4,10 @@
 #include <common.h>
 #include <network_common.h>
 
-class Session;
+class GameSession;
 struct OpcodeHandler
 {
-    typedef std::function<void (Session*, const NetworkMessage&)> MessageHandler;
+    typedef std::function<void (GameSession*, const NetworkMessage&)> MessageHandler;
 
     OpcodeHandler(){}
     OpcodeHandler(const std::string& name, const MessageHandler& handler) :

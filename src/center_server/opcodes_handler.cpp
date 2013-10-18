@@ -1,9 +1,9 @@
 #include "opcodes.h"
 #include "opcodes_handler.h"
-#include "session.h"
+#include "game_session.h"
 
-#define MAKE_MESSAGE_HANDLER(message_name, func_name) \
-    OpcodeHandler(message_name, std::bind(&Session::func_name, std::placeholders::_1, std::placeholders::_2));
+#define MAKE_MESSAGE_HANDLER(m, f) \
+    OpcodeHandler(m, std::bind(&GameSession::f, std::placeholders::_1, std::placeholders::_2));
     
 
 OpcodeTable::OpcodeTable()

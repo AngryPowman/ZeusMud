@@ -47,6 +47,12 @@
     <ClCompile Include="network_session.cpp">
       <Filter>handler</Filter>
     </ClCompile>
+    <ClCompile Include="game_session.cpp">
+      <Filter>handler</Filter>
+    </ClCompile>
+    <ClCompile Include="login_handler.cpp">
+      <Filter>handler\login</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="network">

@@ -2,46 +2,35 @@
 #define SESSION_MANAGER_H_
 
 #include <object_pool.hpp>
-#include "session.h"
+#include <singleton.h>
+#include "game_session.h"
 
 class SessionPool
+    : public Venus::Singleton<SessionPool>
 {
 public:
-    static SessionPool& instance()
-    {
-        static SessionPool sessionPool;
-        return sessionPool;
-    }
-
     ~SessionPool()
     {
     }
 
-    Session* acquire(uint64_t session_id)
+    GameSession* acquire(const uint64& session_id)
     {
         return _sessionPool.acquire(session_id);
     }
 
-    void release(Session* session)
+    void release(GameSession* session)
     {
         _sessionPool.release(session);
     }
 
 private:
-    SessionPool() {}
-    ObjectPool<Session> _sessionPool;
+    ObjectPool<GameSession> _sessionPool;
 };
 
-class SessionManager
+class GameSessionManager
+    : public Venus::Singleton<GameSessionManager>
 {
-    typedef std::hash_map<uint64_t, Session*> SessionTable;
-
-public:
-    static SessionManager& instance()
-    {
-        static SessionManager sessionManager;
-        return sessionManager;
-    }
+    typedef std::hash_map<uint64, GameSession*> SessionTable;
 
 public:
     bool init()
@@ -54,7 +43,7 @@ public:
     }
 
 public:
-    void add_session(Session* session)
+    void add_session(GameSession* session)
     {
         if (get(session->session_id()) == nullptr)
         {
@@ -64,7 +53,7 @@ public:
         }
     }
 
-    void remove_session(uint64_t session_id)
+    void remove_session(uint64 session_id)
     {
         SessionTable::const_iterator iter = _sessionList.find(session_id);
         if (iter != _sessionList.end())
@@ -75,12 +64,12 @@ public:
         }
     }
 
-    void remove_session(Session* session)
+    void remove_session(GameSession* session)
     {
         remove_session(session->session_id());
     }
 
-    Session* get(uint64_t session_id)
+    GameSession* get(uint64 session_id)
     {
         SessionTable::const_iterator iter = _sessionList.find(session_id);
         if (iter != _sessionList.end())
@@ -92,7 +81,6 @@ public:
     }
 
 private:
-    SessionManager(){}
     SessionTable _sessionList;
     std::mutex _mutex;
 };
