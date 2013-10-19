@@ -47,7 +47,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions);BOOST_ALL_NO_LIB</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../3rdparty;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../3rdparty;../../3rdparty/poco/Data/SQLite/include;../../3rdparty/poco/Data/include;../../3rdparty/poco/Foundation/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -71,7 +71,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions);BOOST_ALL_NO_LIB</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../../3rdparty;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../3rdparty;../../3rdparty/poco/Data/SQLite/include;../../3rdparty/poco/Data/include;../../3rdparty/poco/Foundation/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -98,6 +98,7 @@
     <ClInclude Include="io_service.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="local_free_on_destruction.hpp" />
+    <ClInclude Include="logger.h" />
     <ClInclude Include="network_common.h" />
     <ClInclude Include="network_service_deamon.h" />
     <ClInclude Include="object_pool.hpp" />

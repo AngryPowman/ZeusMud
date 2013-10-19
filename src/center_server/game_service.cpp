@@ -1,7 +1,10 @@
 #include "game_service.h"
 #include <Poco/Data/Common.h>
 #include <Poco/Data/SQLite/Connector.h>
+#include <Poco/Logger.h>
+#include <Poco/FileChannel.h>
 #include "game_database_session.h"
+#include "global_instance.h"
 
 #define CHECK_INITIALIZE(result, x, s) \
     if (result) \
@@ -23,6 +26,7 @@ bool GameService::initialize()
 {
     try
     {
+        CHECK_INITIALIZE(initPocoLogger(), "Server logger initialize OK.", "Server logger initialize failed.");
         CHECK_INITIALIZE(registerDatabase(), "Database registered OK.", "Database register failed.");
     }
     catch (...)
@@ -37,6 +41,20 @@ bool GameService::initialize()
 void GameService::destroy()
 {
     unregisterDatabase();
+}
+
+bool GameService::initPocoLogger()
+{
+    Poco::AutoPtr<Poco::FileChannel> pChannel(new Poco::FileChannel);
+    pChannel->setProperty("path", "server.log");
+    pChannel->setProperty("rotation", "2 K");
+    pChannel->setProperty("archive", "timestamp");
+
+    Poco::Logger::root().setChannel(pChannel);
+
+    //g_Logger = Poco::Logger::get("ServerLogger");
+
+    return true;
 }
 
 bool GameService::registerDatabase()

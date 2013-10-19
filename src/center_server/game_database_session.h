@@ -23,6 +23,12 @@ public:
     //检查数据库中一个用户是否存在
     bool checkUserExists(const std::string& email);
 
+    //检查数据库中昵称是否存在
+    bool checkNicknameExists(const std::string& nickname);
+
+    //验证帐号和密码是否匹配
+    bool userAuth(const std::string& email, const std::string& pass_hash);
+
     //插入新的用户记录
     void insertNewUserRecord(
         uint64 user_id, 

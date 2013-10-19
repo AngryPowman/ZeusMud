@@ -16,6 +16,7 @@ public:
     void destroy();
     
 private:
+    bool initPocoLogger();
     bool registerDatabase();
     void unregisterDatabase();
 };

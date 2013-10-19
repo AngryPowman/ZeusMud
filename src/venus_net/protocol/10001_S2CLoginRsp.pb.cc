@@ -81,7 +81,7 @@ void protobuf_AddDesc_10001_5fS2CLoginRsp_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\02710001_S2CLoginRsp.proto\022\010Protocol\":\n\013S"
     "2CLoginRsp\022\024\n\014login_result\030\001 \002(\010\022\025\n\rfail"
-    "ed_reason\030\002 \002(\014", 95);
+    "ed_reason\030\002 \001(\014", 95);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "10001_S2CLoginRsp.proto", &protobuf_RegisterTypes);
   S2CLoginRsp::default_instance_ = new S2CLoginRsp();
@@ -191,7 +191,7 @@ bool S2CLoginRsp::MergePartialFromCodedStream(
         break;
       }
 
-      // required bytes failed_reason = 2;
+      // optional bytes failed_reason = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -228,7 +228,7 @@ void S2CLoginRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->login_result(), output);
   }
 
-  // required bytes failed_reason = 2;
+  // optional bytes failed_reason = 2;
   if (has_failed_reason()) {
     ::google::protobuf::internal::WireFormatLite::WriteBytes(
       2, this->failed_reason(), output);
@@ -247,7 +247,7 @@ void S2CLoginRsp::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->login_result(), target);
   }
 
-  // required bytes failed_reason = 2;
+  // optional bytes failed_reason = 2;
   if (has_failed_reason()) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
@@ -270,7 +270,7 @@ int S2CLoginRsp::ByteSize() const {
       total_size += 1 + 1;
     }
 
-    // required bytes failed_reason = 2;
+    // optional bytes failed_reason = 2;
     if (has_failed_reason()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::BytesSize(
@@ -327,7 +327,7 @@ void S2CLoginRsp::CopyFrom(const S2CLoginRsp& from) {
 }
 
 bool S2CLoginRsp::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   return true;
 }

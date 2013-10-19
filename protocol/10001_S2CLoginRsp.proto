@@ -2,5 +2,5 @@ package Protocol;
 
 message S2CLoginRsp {
 	required bool login_result = 1;
-	required bytes failed_reason = 2;
+	optional bytes failed_reason = 2;
 }

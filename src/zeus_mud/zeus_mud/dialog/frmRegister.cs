@@ -137,7 +137,7 @@ namespace zeus_mud.dialog
             Protocol.C2SRegisterReq request = new Protocol.C2SRegisterReq();
             request.email = email;
             request.password = GameUtil.toMD5(password_plainText);
-            request.nickname = Encoding.Default.GetBytes(nickname);
+            request.nickname = Encoding.UTF8.GetBytes(nickname);
 
             NetworkEvent.sendPacket<Protocol.C2SRegisterReq>(request);
         }

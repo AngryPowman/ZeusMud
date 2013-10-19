@@ -33,6 +33,7 @@
     <ClInclude Include="game_session.h">
       <Filter>handler</Filter>
     </ClInclude>
+    <ClInclude Include="global_instance.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="center_server.cpp" />

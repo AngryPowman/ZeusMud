@@ -37,6 +37,9 @@
     <Filter Include="framework\database">
       <UniqueIdentifier>{604076c7-f628-49ab-a922-cff0ff04ba45}</UniqueIdentifier>
     </Filter>
+    <Filter Include="framework\logger">
+      <UniqueIdentifier>{04c46ac2-d64c-41b5-844a-3c88e54f81cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="opcodes.h">
@@ -113,6 +116,9 @@
     </ClInclude>
     <ClInclude Include="db_cached_manager.h">
       <Filter>framework\database</Filter>
+    </ClInclude>
+    <ClInclude Include="logger.h">
+      <Filter>framework\logger</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
