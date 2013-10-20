@@ -14,7 +14,7 @@ Socket::~Socket()
     if (is_open())
         close();
 
-    std::cout << "Socket Destroyed." << std::endl;
+    debug_log("Socket Destroyed.");
 }
 
 bool Socket::connect(const std::string& host, uint16 port)
@@ -60,7 +60,7 @@ void Socket::start_send(const byte* data, size_t size, const SendCallback* callb
 {
     if (data == nullptr || size == 0)
     {
-        std::cout << "empty data." << std::endl;
+        error_log("empty data.");
         return;
     }
 
@@ -78,7 +78,7 @@ void Socket::start_send(const byte* data, size_t size, const SendCallback* callb
         boost::asio::placeholders::bytes_transferred
         )
         )
-        );
+       );
 }
 
 void Socket::start_receive(const ReceiveCallback* callback/* = nullptr*/)
@@ -96,7 +96,7 @@ void Socket::start_receive(const ReceiveCallback* callback/* = nullptr*/)
         boost::asio::placeholders::bytes_transferred
         )
         )
-        );
+       );
 }
 
 
@@ -135,8 +135,8 @@ byte* Socket::get_recv_buffer()
 
 void Socket::on_error(const boost::system::error_code& error)
 {
-    std::cout << "Socket Error : oops, connection lost :(" << std::endl;
-    std::cout << "Socket Error : " << error.message() << std::endl;
+    error_log("Socket Error : oops, connection lost :(");
+    error_log("Socket Error : %s", error.message().c_str());
 
     shutdown();
     switch (error.value())

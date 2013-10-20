@@ -9,7 +9,7 @@ TcpServer::TcpServer(const InetAddress& listenAddress, IOService& service, uint3
     _started(false),
     _signals(service.service())
 {
-    std::cout << "Server starting ..." << std::endl;
+    debug_log("Server starting ...");
 
     //Ìí¼Ó²¶×½ÐÅºÅ
     _signals.add(SIGINT);
@@ -22,7 +22,7 @@ TcpServer::TcpServer(const InetAddress& listenAddress, IOService& service, uint3
 
     _acceptor.setAcceptedCallback(
         std::bind(&TcpServer::newConnectionCallback, this, std::placeholders::_1)
-        );
+       );
 }
 
 TcpServer::~TcpServer()
@@ -52,7 +52,7 @@ void TcpServer::stop()
 
     //close all alived connections
     // ...
-    std::cout << "Server stopped." << std::endl;
+    debug_log("Server stopped.");
 }
 
 void TcpServer::setNewConnectionCallback(const NewConnectionCallback& cb)
@@ -77,7 +77,7 @@ void TcpServer::setConnectionClosedCallback(const ConnectionClosedCallback& cb)
 
 void TcpServer::newConnectionCallback(const TcpConnectionPtr& connection)
 {
-    std::cout << "thread id = " << std::this_thread::get_id() << std::endl;
+    debug_log("thread id = %d", std::this_thread::get_id());
 
     const Socket& socket = connection->socket();
     const std::string& remote_address = socket.getPeerAddress().host();

@@ -28,7 +28,7 @@ public:
                 obj->~_Ty();
                 free(obj);
             }
-        );
+       );
     }
 
 public:
@@ -129,7 +129,7 @@ private:
         for (size_t i = 0; i < size; ++i)
             _free_objects.push(&obj[i]);
 
-        std::cout << "allocated free objects = " << size << ", total bytes = " << size *  sizeof(obj[0]) << std::endl;
+        debug_log("allocated free objects = %d, total bytes = %d", size, size *  sizeof(obj[0]));
     }
 
 private:

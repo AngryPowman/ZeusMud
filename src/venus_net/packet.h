@@ -17,7 +17,7 @@ struct SERVER_DECL ServerPacket
     ~ServerPacket()
     {
         SAFE_DELETE_ARR(message);
-        std::cout << "packet destroy safely." << std::endl;
+        debug_log("packet destroy safely.");
     }
 
     size_t len;

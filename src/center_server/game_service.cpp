@@ -28,7 +28,7 @@ bool GameService::initialize()
     }
     catch (...)
     {
-        std::cout << "An unknown exception occured when initialize game service. Aborted." << std::endl;
+        error_log("An unknown exception occured when initialize game service. Aborted.");
         return false;
     }
 

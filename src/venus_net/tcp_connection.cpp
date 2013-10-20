@@ -22,7 +22,7 @@ TcpConnection::~TcpConnection()
     SAFE_DELETE(_socket);
 
     _buffer.clear();
-    std::cout << "connection destroyed." << std::endl;
+    debug_log("connection destroyed.");
 }
 
 void TcpConnection::setInetAddress(const InetAddress& inetAddress)
@@ -65,7 +65,7 @@ void TcpConnection::writeAsync(const uint32& opcode, const byte* message_data, s
 {
     if (message_data == nullptr || message_size == 0)
     {
-        std::cout << "empty data." << std::endl;
+        error_log("empty data.");
         return;
     }
 
@@ -114,7 +114,7 @@ void TcpConnection::setConnectedCallback(const ConnectionConnectedCallback& cb)
 
 void TcpConnection::on_connected()
 {
-    std::cout << "connection has been connected." << std::endl;
+    debug_log("connection has been connected.");
 
     readAsync();
     if (_connectedCallback)
@@ -125,14 +125,14 @@ void TcpConnection::on_write(
     std::size_t bytes_transferred           // Number of bytes sent.
 )
 {
-    std::cout << "bytes_transferred = " << bytes_transferred << std::endl;
+    debug_log("bytes_transferred = %d", bytes_transferred);
     if (_writeCompletedCallback)
     {
         _writeCompletedCallback(shared_from_this(), bytes_transferred);
     }
     else
     {
-        std::cout << "write complected." << std::endl;
+        debug_log("write complected.");
     }
 }
 
@@ -159,7 +159,7 @@ void TcpConnection::on_read(const byte* data, size_t bytes_transferred)
         //数据包长度大于最大接收长度视为非法，干掉
         if (packet_len >= MAX_RECV_LEN || read_buffer.size() >= MAX_RECV_LEN || bytes_transferred != packet_len)
         {
-            std::cout << "Warning: Read packet header length " << packet_len << " bytes (which is too large) on peer socket. (Invalid Packet?)" << std::endl;
+            warning_log("Warning: Read packet header length %d bytes (which is too large) on peer socket. (Invalid Packet?)", packet_len);
             shutdown();
             return;
         }
@@ -198,7 +198,7 @@ void TcpConnection::on_read(const byte* data, size_t bytes_transferred)
         }
         else
         {
-            std::cout << "Warnning : empty proto message or not set read callback instance." << std::endl;
+            warning_log("Warnning : empty proto message or not set read callback instance.");
         }
     }
 

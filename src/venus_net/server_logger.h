@@ -7,6 +7,7 @@
 #include <Poco/ConsoleChannel.h>
 #include <Poco/AutoPtr.h>
 #include <Poco/LogStream.h>
+#include <Poco/Path.h>
 #include "singleton.h"
 
 class ServerLogger
@@ -61,7 +62,7 @@ private:
     FileChannelLogger::getInstance().format_log(fmt, __VA_ARGS__)
 
 #define fatal_log(fmt, ...) \
-    poco_debug(__G_LOGGER__, __FORMAT__(fmt, __VA_ARGS__))
+    __G_LOGGER__.debug(__FORMAT__(fmt, __VA_ARGS__), __FILE__, __LINE__)
 
 #define error_log(fmt, ...) \
     poco_error(__G_LOGGER__, __FORMAT__(fmt, __VA_ARGS__))
@@ -73,7 +74,7 @@ private:
     poco_information(__G_LOGGER__, __FORMAT__(fmt, __VA_ARGS__))
 
 #define debug_log(fmt, ...) \
-    poco_debug(__G_LOGGER__, __FORMAT__(fmt, __VA_ARGS__))
+    __G_LOGGER__.debug(__FORMAT__(fmt, __VA_ARGS__), Poco::Path(__FILE__).getFileName().c_str(), __LINE__)
 
 #define trace_log(fmt, ...) \
     poco_trace(__G_LOGGER__, __FORMAT__(fmt, __VA_ARGS__))

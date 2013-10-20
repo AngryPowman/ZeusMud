@@ -137,7 +137,7 @@ public:
 
     template <typename T> T read(size_t pos) const
     {
-        if(pos + sizeof(T) > size())
+        if (pos + sizeof(T) > size())
         {
             return (T)0;
         } 

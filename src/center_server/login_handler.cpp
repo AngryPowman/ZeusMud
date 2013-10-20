@@ -12,8 +12,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
     Protocol::C2SLoginReq request;
     message.parse(request);
 
-    printf("[User Login] -> (Username='%s', Password='%s')\n", request.email().c_str(), request.password().c_str());
-    debug_log("[User Login] -> (Username='%s', Password='%s')\n", request.email().c_str(), request.password().c_str());
+    debug_log("[User Login] -> (Username='%s', Password='%s')", request.email().c_str(), request.password().c_str());
 
     //ÅĞ¶ÏÓÊÏäÕÊºÅ·Ç·¨
     if (GameUtil::getInstance().checkEmailValid(request.email()) == false)
@@ -23,7 +22,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
         login_response.set_failed_reason("ÓÊÏäÕÊºÅ·Ç·¨¡£");
         send_message<Protocol::S2CLoginRsp>(Opcodes::S2CLoginRsp, login_response);
 
-        printf("login email '%s' invalid, login failed.\n", request.email().c_str());
+        debug_log("login email '%s' invalid, login failed.", request.email().c_str());
         return;
     }
 
@@ -35,7 +34,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
         login_response.set_failed_reason("ÃÜÂë·Ç·¨¡£");
         send_message<Protocol::S2CLoginRsp>(Opcodes::S2CLoginRsp, login_response);
 
-        printf("login password '%s' not a legal MD5 hash, login failed.\n", request.password().c_str());
+        debug_log("login password '%s' not a legal MD5 hash, login failed.", request.password().c_str());
         return;
     }
 
@@ -44,7 +43,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
     bool user_exists = GameDatabaseSession::getInstance().checkUserExists(request.email());
     if (user_exists == true)
     {
-        printf("User ('%s') not exists.\n", request.email().c_str());
+        debug_log("User ('%s') not exists.", request.email().c_str());
 
         //ÑéÖ¤ÕÊºÅºÍÃÜÂëÊÇ·ñÆ¥Åä
         bool auth_result = GameDatabaseSession::getInstance().userAuth(request.email(), request.password());
@@ -53,13 +52,13 @@ void GameSession::user_login_handler(const NetworkMessage& message)
         if (auth_result == false)
         {
             //ÕÊºÅºÍÃÜÂë²»Æ¥Åä
-            printf("email('%s') and password('%s') not match.\n", request.email().c_str(), request.password().c_str());
+            debug_log("email('%s') and password('%s') not match.", request.email().c_str(), request.password().c_str());
             login_response.set_failed_reason("ÕÊºÅºÍÃÜÂë²»Æ¥Åä¡£");
         }
         else
         {
             //ÑéÖ¤³É¹¦
-            printf("email('%s') and password('%s') matched, authentication success.\n", request.email().c_str(), request.password().c_str());
+            debug_log("email('%s') and password('%s') matched, authentication success.", request.email().c_str(), request.password().c_str());
         }
     }
     else
@@ -77,7 +76,7 @@ void GameSession::user_register_handler(const NetworkMessage& message)
     Protocol::C2SRegisterReq request;
     message.parse(request);
 
-    printf("[User Register] -> (Username='%s', Nickname='%s')\n", request.email().c_str(), request.nickname().c_str());
+    debug_log("[User Register] -> (Username='%s', Nickname='%s')", request.email().c_str(), request.nickname().c_str());
 
     //ÅĞ¶ÏÓÊÏäÕÊºÅ·Ç·¨
     if (GameUtil::getInstance().checkEmailValid(request.email()) == false)
@@ -87,7 +86,7 @@ void GameSession::user_register_handler(const NetworkMessage& message)
         register_respone.set_failed_reason("ÓÊÏäÕÊºÅ·Ç·¨¡£");
         send_message<Protocol::S2CRegisterRsp>(Opcodes::S2CRegisterRsp, register_respone);
 
-        printf("register email '%s' invalid, register failed.\n", request.email().c_str());
+        debug_log("register email '%s' invalid, register failed.", request.email().c_str());
         return;
     }
 
@@ -99,7 +98,7 @@ void GameSession::user_register_handler(const NetworkMessage& message)
         register_respone.set_failed_reason("ÃÜÂë·Ç·¨¡£");
         send_message<Protocol::S2CRegisterRsp>(Opcodes::S2CRegisterRsp, register_respone);
 
-        printf("register password '%s' not a legal MD5 hash, register failed.\n", request.password().c_str());
+        debug_log("register password '%s' not a legal MD5 hash, register failed.", request.password().c_str());
         return;
     }
 
@@ -112,7 +111,7 @@ void GameSession::user_register_handler(const NetworkMessage& message)
         register_respone.set_failed_reason("×¢²áÊ§°Ü£¬¸ÃÓÊÏäÕÊºÅÒÑ´æÔÚ¡£");
         send_message<Protocol::S2CRegisterRsp>(Opcodes::S2CRegisterRsp, register_respone);
 
-        printf("register user '%s' exists, register failed.\n", request.email().c_str());
+        debug_log("register user '%s' exists, register failed.", request.email().c_str());
         return;
     }
     
@@ -125,7 +124,7 @@ void GameSession::user_register_handler(const NetworkMessage& message)
         register_respone.set_failed_reason("×¢²áÊ§°Ü£¬¸ÃêÇ³ÆÒÑ´æÔÚ¡£");
         send_message<Protocol::S2CRegisterRsp>(Opcodes::S2CRegisterRsp, register_respone);
 
-        printf("register nickname '%s' exists, register failed.\n", request.nickname().c_str());
+        debug_log("register nickname '%s' exists, register failed.", request.nickname().c_str());
         std::wcout << request.nickname().c_str() << std::endl;
         return;
     }
@@ -145,5 +144,5 @@ void GameSession::user_register_handler(const NetworkMessage& message)
 
     send_message<Protocol::S2CRegisterRsp>(Opcodes::S2CRegisterRsp, register_respone);
 
-    printf("register success.\n");
+    debug_log("register success.");
 }

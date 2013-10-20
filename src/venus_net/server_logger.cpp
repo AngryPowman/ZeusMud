@@ -63,7 +63,7 @@ bool FileChannelLogger::initLogger(const std::string& path)
 
     //日志格式化
     Poco::AutoPtr<Poco::PatternFormatter> patternFormatter(new Poco::PatternFormatter());  
-    patternFormatter->setProperty("pattern", "[%Y-%m-%d %H:%M:%S.(%i) %U:%u] %p : %t");
+    patternFormatter->setProperty("pattern", "[%Y-%m-%d %H:%M:%S.%i %U:%u] %p : %t");
 
     Poco::AutoPtr<Poco::Channel> file_channel(new Poco::FormattingChannel(patternFormatter, _file_channel));
     Poco::AutoPtr<Poco::Channel> consle_channel(new Poco::FormattingChannel(patternFormatter, _console_channel));
@@ -75,16 +75,6 @@ bool FileChannelLogger::initLogger(const std::string& path)
 
     Poco::Logger& logger = getLogger();
     logger.setChannel(splitter_channel);
-
-    /*Poco::LogStream& logStream = getLogStream();
-
-    logStream.warning() << "This is a warning." << std::endl;  
-    logStream.error() << "This is a error" << std::endl;
-    logStream.trace() << "This is a trace." << std::endl;
-    logStream.fatal() << "this is a fatal" << std::endl;
-    logStream.critical() << "this is a critical" << std::endl;
-    logStream.information() << "this is a information" << std::endl;
-    logStream.debug() << "this is a debug" << std::endl;*/
 
     return true;
 }

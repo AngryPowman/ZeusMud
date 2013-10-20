@@ -38,3 +38,5 @@ Release/
 /output/mud_server/*.exe
 
 /output/mud_server/*.log
+/src/center_server/*.user
+/src/venus_net/*.user

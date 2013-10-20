@@ -11,9 +11,9 @@ Acceptor::Acceptor(const InetAddress& listenAddress, IOService& service, uint32_
     _listenning(false),
     _threadNums(threadNums)
 {
-    std::cout << "Acceptor starting ..." << std::endl;
-    std::cout << "  >> Listen Address = " << _listenAddr.toIpHost() << std::endl;
-    std::cout << "  >> I/O-Thread Numbers = " << threadNums << std::endl;
+    debug_log("Acceptor starting ...");
+    debug_log("  >> Listen Address = %s", _listenAddr.toIpHost().c_str());
+    debug_log("  >> I/O-Thread Numbers = %d", threadNums);
 
     //绑定地址
     boost::asio::ip::address address;
@@ -22,7 +22,7 @@ Acceptor::Acceptor(const InetAddress& listenAddress, IOService& service, uint32_
     _acceptor.open(tcp::v4());
     _acceptor.bind(endpoint);
 
-    std::cout << "Acceptor started." << std::endl;
+    debug_log("Acceptor started.");
 }
 
 Acceptor::~Acceptor()
@@ -44,7 +44,7 @@ void Acceptor::listen(int32_t backlog/* = socket_base::max_connections*/)
     _acceptor.listen(backlog);
     _listenning = true;
 
-    std::cout << "Listenning ... " << std::endl;
+    debug_log("Listenning ... ");
 }
 
 void Acceptor::startAccept()
@@ -62,7 +62,7 @@ void Acceptor::startAccept()
             new std::thread(
                 boost::bind(&boost::asio::io_service::run, &_io_service.service())
             )
-        );
+       );
         threads.push_back(t);
     }
 
@@ -76,7 +76,7 @@ void Acceptor::stopAccept()
 {
     _io_service.service().stop();
     _acceptor.close();
-    std::cout << "Acceptor stopped." << std::endl;
+    debug_log("Acceptor stopped.");
 }
 
 bool Acceptor::listenning() const { return _listenning; }
@@ -97,7 +97,7 @@ void Acceptor::accept()
         _strand.wrap(
             std::bind(&Acceptor::acceptHandler, this, new_connection)
         )
-    );
+   );
 }
 
 void Acceptor::acceptHandler(const TcpConnectionPtr& connection)
