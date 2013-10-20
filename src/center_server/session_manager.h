@@ -1,8 +1,8 @@
 #ifndef SESSION_MANAGER_H_
 #define SESSION_MANAGER_H_
 
+#include <common.h>
 #include <object_pool.hpp>
-#include <singleton.h>
 #include "game_session.h"
 
 class SessionPool

@@ -167,7 +167,7 @@
             this.trackBar3.Location = new System.Drawing.Point(43, 62);
             this.trackBar3.Maximum = 255;
             this.trackBar3.Name = "trackBar3";
-            this.trackBar3.Size = new System.Drawing.Size(104, 45);
+            this.trackBar3.Size = new System.Drawing.Size(104, 42);
             this.trackBar3.TabIndex = 2;
             this.trackBar3.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBar3.Scroll += new System.EventHandler(this.trackBar3_Scroll);
@@ -177,7 +177,7 @@
             this.trackBar2.Location = new System.Drawing.Point(43, 32);
             this.trackBar2.Maximum = 255;
             this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(104, 45);
+            this.trackBar2.Size = new System.Drawing.Size(104, 42);
             this.trackBar2.TabIndex = 1;
             this.trackBar2.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
@@ -187,7 +187,7 @@
             this.trackBar1.Location = new System.Drawing.Point(43, 4);
             this.trackBar1.Maximum = 255;
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 45);
+            this.trackBar1.Size = new System.Drawing.Size(104, 42);
             this.trackBar1.TabIndex = 0;
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -324,6 +324,7 @@
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmRegister";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "中国好游戏MUD-注册";
             this.Load += new System.EventHandler(this.frmRegister_Load);
             this.groupBox1.ResumeLayout(false);

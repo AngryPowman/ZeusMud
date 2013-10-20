@@ -117,7 +117,7 @@
     <ClInclude Include="db_cached_manager.h">
       <Filter>framework\database</Filter>
     </ClInclude>
-    <ClInclude Include="logger.h">
+    <ClInclude Include="server_logger.h">
       <Filter>framework\logger</Filter>
     </ClInclude>
   </ItemGroup>
@@ -151,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="protocol\10001_S2CLoginRsp.pb.cc">
       <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="server_logger.cpp">
+      <Filter>framework\logger</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

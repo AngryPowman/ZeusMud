@@ -36,7 +36,7 @@
             this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chCount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chLevel = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.imgsSmall = new System.Windows.Forms.ImageList(this.components);
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txt1Email = new System.Windows.Forms.TextBox();
@@ -44,15 +44,17 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtLevel = new System.Windows.Forms.TextBox();
             this.txt1Level = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.picEnemy = new System.Windows.Forms.PictureBox();
             this.txtALevel = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.txtAName = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.txtAEmail = new System.Windows.Forms.TextBox();
+            this.imgsLarge = new System.Windows.Forms.ImageList(this.components);
+            this.imgsCard = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRefresh
@@ -72,6 +74,7 @@
             this.btnFight.TabIndex = 2;
             this.btnFight.Text = "挑战";
             this.btnFight.UseVisualStyleBackColor = true;
+            this.btnFight.Click += new System.EventHandler(this.btnFight_Click);
             // 
             // lvRooms
             // 
@@ -82,7 +85,7 @@
             this.lvRooms.Location = new System.Drawing.Point(2, 142);
             this.lvRooms.Name = "lvRooms";
             this.lvRooms.Size = new System.Drawing.Size(353, 221);
-            this.lvRooms.StateImageList = this.imageList1;
+            this.lvRooms.StateImageList = this.imgsSmall;
             this.lvRooms.TabIndex = 3;
             this.lvRooms.UseCompatibleStateImageBehavior = false;
             this.lvRooms.View = System.Windows.Forms.View.Details;
@@ -102,11 +105,12 @@
             // 
             this.chLevel.Text = "等级";
             // 
-            // imageList1
+            // imgsSmall
             // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "a8457564gw1e91gsqeac6j203c03c745.jpg");
+            this.imgsSmall.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgsSmall.ImageStream")));
+            this.imgsSmall.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgsSmall.Images.SetKeyName(0, "a8457564gw1e91gsqeac6j203c03c745.jpg");
+            this.imgsSmall.Images.SetKeyName(1, "QQ图片20131015223609.jpg");
             // 
             // txtEmail
             // 
@@ -121,6 +125,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(2, 4);
             this.pictureBox1.Name = "pictureBox1";
@@ -181,15 +186,15 @@
             this.txt1Level.TabIndex = 9;
             this.txt1Level.Text = "你的等级:";
             // 
-            // pictureBox2
+            // picEnemy
             // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(291, 72);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(64, 64);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 11;
-            this.pictureBox2.TabStop = false;
+            this.picEnemy.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.picEnemy.Location = new System.Drawing.Point(291, 72);
+            this.picEnemy.Name = "picEnemy";
+            this.picEnemy.Size = new System.Drawing.Size(64, 64);
+            this.picEnemy.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picEnemy.TabIndex = 11;
+            this.picEnemy.TabStop = false;
             // 
             // txtALevel
             // 
@@ -254,6 +259,22 @@
             this.txtAEmail.TabIndex = 12;
             this.txtAEmail.TabStop = false;
             // 
+            // imgsLarge
+            // 
+            this.imgsLarge.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgsLarge.ImageStream")));
+            this.imgsLarge.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgsLarge.Images.SetKeyName(0, "a8457564gw1e91gsqeac6j203c03c745.jpg");
+            this.imgsLarge.Images.SetKeyName(1, "QQ图片20131015223609.jpg");
+            // 
+            // imgsCard
+            // 
+            this.imgsCard.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgsCard.ImageStream")));
+            this.imgsCard.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgsCard.Images.SetKeyName(0, "CardA.png");
+            this.imgsCard.Images.SetKeyName(1, "CardB.png");
+            this.imgsCard.Images.SetKeyName(2, "CardC.png");
+            this.imgsCard.Images.SetKeyName(3, "CardD.png");
+            // 
             // frmGameMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -265,7 +286,7 @@
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.txtAEmail);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.picEnemy);
             this.Controls.Add(this.txtLevel);
             this.Controls.Add(this.txt1Level);
             this.Controls.Add(this.txtName);
@@ -277,10 +298,11 @@
             this.Controls.Add(this.btnFight);
             this.Controls.Add(this.btnRefresh);
             this.Name = "frmGameMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmGameMain";
             this.Load += new System.EventHandler(this.frmGameMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,7 +315,7 @@
         private System.Windows.Forms.ListView lvRooms;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ImageList imgsSmall;
         private System.Windows.Forms.ColumnHeader chName;
         private System.Windows.Forms.ColumnHeader chCount;
         private System.Windows.Forms.ColumnHeader chLevel;
@@ -302,13 +324,15 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtLevel;
         private System.Windows.Forms.TextBox txt1Level;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox picEnemy;
         private System.Windows.Forms.TextBox txtALevel;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox txtAName;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox txtAEmail;
+        public System.Windows.Forms.ImageList imgsLarge;
+        public System.Windows.Forms.ImageList imgsCard;
 
     }
 }

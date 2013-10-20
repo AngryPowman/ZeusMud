@@ -13,6 +13,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
     message.parse(request);
 
     printf("[User Login] -> (Username='%s', Password='%s')\n", request.email().c_str(), request.password().c_str());
+    debug_log("[User Login] -> (Username='%s', Password='%s')\n", request.email().c_str(), request.password().c_str());
 
     //≈–∂œ” œ‰’ ∫≈∑«∑®
     if (GameUtil::getInstance().checkEmailValid(request.email()) == false)
@@ -125,6 +126,7 @@ void GameSession::user_register_handler(const NetworkMessage& message)
         send_message<Protocol::S2CRegisterRsp>(Opcodes::S2CRegisterRsp, register_respone);
 
         printf("register nickname '%s' exists, register failed.\n", request.nickname().c_str());
+        std::wcout << request.nickname().c_str() << std::endl;
         return;
     }
 

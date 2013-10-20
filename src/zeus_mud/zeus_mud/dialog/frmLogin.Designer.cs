@@ -118,7 +118,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "中国好游戏MUD-玩家登录";
+            this.Activated += new System.EventHandler(this.frmLogin_Activated);
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -128,12 +130,12 @@
         #endregion
 
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnRegister;
         public System.Windows.Forms.TextBox txtPassword;
         public System.Windows.Forms.TextBox txtUsername;
+        public System.Windows.Forms.Button btnLogin;
 
     }
 }

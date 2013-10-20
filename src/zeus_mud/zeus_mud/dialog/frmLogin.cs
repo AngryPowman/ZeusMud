@@ -23,8 +23,6 @@ namespace zeus_mud
 
             //登录消息注册
             OpcodesHandler.registerHandler(Opcodes.S2CLoginRsp, this.userLoginCallback);
-            txtUsername.Text = "wjk";
-            txtPassword.Text = "WJK123";
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -97,6 +95,11 @@ namespace zeus_mud
         private void frmLogin_Load(object sender, EventArgs e)
         {
             NetworkEvent.init();
+        }
+
+        private void frmLogin_Activated(object sender, EventArgs e)
+        {
+
         }
     }
 }

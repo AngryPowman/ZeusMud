@@ -110,7 +110,7 @@ private:
         _Ty* obj = _free_objects.top();
         _free_objects.pop();
 
-        std::cout << "free objects count = " << _free_objects.size() << std::endl;
+        debug_log("free objects count = %d", _free_objects.size());
 
         return obj;
     }

@@ -1,4 +1,5 @@
 #include <tcp_server.h>
+#include <server_logger.h>
 #include "game_service_deamon.h"
 #include "io_dispatcher.h"
 #include "game_service.h"
@@ -16,6 +17,9 @@ GameServiceDeamon::~GameServiceDeamon()
 
 void GameServiceDeamon::start(const uint16& port, const uint32& threadNum/* = Venus::smart_thread_nums()*/)
 {
+    //initialize logger
+    FileChannelLogger::getInstance().initLogger("game_server.log");
+
     //initialize game service data
     GameService::getInstance().initialize();
 

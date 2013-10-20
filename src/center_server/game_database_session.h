@@ -1,7 +1,7 @@
 #ifndef __GAME_DATABASE_SESSION_H__
 #define __GAME_DATABASE_SESSION_H__
 
-#include <singleton.h>
+#include <common.h>
 #include <Poco/Data/Common.h>
 #include <Poco/Data/SQLite/Connector.h>
 #include <Poco/Data/RecordSet.h>

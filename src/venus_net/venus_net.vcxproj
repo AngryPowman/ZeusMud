@@ -98,7 +98,7 @@
     <ClInclude Include="io_service.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="local_free_on_destruction.hpp" />
-    <ClInclude Include="logger.h" />
+    <ClInclude Include="server_logger.h" />
     <ClInclude Include="network_common.h" />
     <ClInclude Include="network_service_deamon.h" />
     <ClInclude Include="object_pool.hpp" />
@@ -120,6 +120,7 @@
   <ItemGroup>
     <ClCompile Include="acceptor.cpp" />
     <ClCompile Include="error_code.cpp" />
+    <ClCompile Include="server_logger.cpp" />
     <ClCompile Include="protocol\10000_C2SLoginReq.pb.cc" />
     <ClCompile Include="protocol\10001_S2CLoginRsp.pb.cc" />
     <ClCompile Include="protocol\10002_C2SRegisterReq.pb.cc" />

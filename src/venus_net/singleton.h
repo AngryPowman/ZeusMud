@@ -2,7 +2,6 @@
 #define __SINGLETON_H__
 
 #include <assert.h>
-#include "common.h"
 
 namespace Venus
 {
@@ -30,7 +29,11 @@ public:
     {
         if (instance_m && mustDelete)
         {
-            SAFE_DELETE(instance_m);
+            if (instance_m != nullptr)
+            {
+                delete instance_m;
+                instance_m = nullptr; 
+            }
         }
     }
 

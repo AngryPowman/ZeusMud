@@ -5,29 +5,7 @@
 	#define SERVER_DECL __declspec(dllexport)
 #endif
 
-#include <boost/asio.hpp>
-#include <boost/function.hpp>
-#include <boost/bind.hpp>
-#include <boost/noncopyable.hpp>
-
-#include <string>
-#include <functional>
-#include <thread>
-#include <iostream>
-#include <stdint.h>
-#include <list>
-#include <queue>
-#include <deque>
-#include <stack>
-#include <vector>
-#include <map>
-#include <hash_map>
-#include <mutex>
-
-#include <google/protobuf/message.h>
-
 //types
-//Datatypes
 #if defined(_WIN32)	//for windows
 #ifndef byte
 typedef unsigned __int8    byte;
@@ -70,5 +48,26 @@ typedef unsigned long long uint64;
 #ifndef SAFE_DELETE_ARR
 #define SAFE_DELETE_ARR(x)	if (nullptr != (x)) { delete [] (x); (x) = nullptr; }
 #endif
+
+#include <boost/asio.hpp>
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
+#include <boost/noncopyable.hpp>
+#include <string>
+#include <functional>
+#include <thread>
+#include <iostream>
+#include <stdint.h>
+#include <list>
+#include <queue>
+#include <deque>
+#include <stack>
+#include <vector>
+#include <map>
+#include <hash_map>
+#include <mutex>
+#include <google/protobuf/message.h>
+#include "singleton.h"
+#include "server_logger.h"
 
 #endif

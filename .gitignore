@@ -36,3 +36,5 @@ Debug/
 Release/
 /output/mud_client/*.exe
 /output/mud_server/*.exe
+
+/output/mud_server/*.log

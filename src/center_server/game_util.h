@@ -1,8 +1,8 @@
 #ifndef __GAME_UTIL_H__
 #define __GAME_UTIL_H__
 
+#include <common.h>
 #include <regex>
-#include <singleton.h>
 
 class GameUtil
     : public Venus::Singleton<GameUtil>

@@ -1,8 +1,8 @@
 #ifndef __GAME_SERVICE_H__
 #define __GAME_SERVICE_H__
 
+#include <common.h>
 #include <service.h>
-#include <singleton.h>
 
 class GameService
     : public Venus::Service, public Venus::Singleton<GameService>
@@ -16,7 +16,6 @@ public:
     void destroy();
     
 private:
-    bool initPocoLogger();
     bool registerDatabase();
     void unregisterDatabase();
 };
