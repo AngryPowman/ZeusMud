@@ -13,6 +13,36 @@ namespace zeus_mud.dialog
 {
     public partial class frmBattle : Form
     {
+        private void initGame()
+        {
+            tipsIndex = 0;
+            btnIndex = 0;
+            mPoint = 0;
+            APoint = 0;
+            txtmPoint.Text = "0";
+            txtAPoint.Text = "0";
+
+            button1.Text = "确认";
+            txtTips1.Visible = true;
+            txtTips2.Visible = true;
+            txtDockbot.Text = "点击“确认”之后，互相确认对方的第四张牌。";
+
+            picCard1.Visible = true;
+            picCard2.Visible = true;
+            picCard3.Visible = true;
+            picCard4.Visible = true;
+
+            picEnemy.Image = GlobalObject.GameMainForm.imgsLarge.Images[1];
+            picCard1.Image = GlobalObject.GameMainForm.imgsCard.Images[0];
+            picCard2.Image = GlobalObject.GameMainForm.imgsCard.Images[1];
+            picCard3.Image = GlobalObject.GameMainForm.imgsCard.Images[2];
+            picCard4.Image = GlobalObject.GameMainForm.imgsCard.Images[3];
+
+            picECard1.Image = GlobalObject.GameMainForm.imgsCard.Images[0];
+            picECard2.Image = GlobalObject.GameMainForm.imgsCard.Images[1];
+            picECard3.Image = GlobalObject.GameMainForm.imgsCard.Images[2];
+            picECard4.Image = GlobalObject.GameMainForm.imgsCard.Images[3];
+        }
         int theFourth = -1;
         int[] ACard = { -1, -1, -1, -1 };
         int[] ACardset = { 0, 1, 2, 3 };
@@ -28,16 +58,7 @@ namespace zeus_mud.dialog
 
         private void frmBattle_Load(object sender, EventArgs e)
         {
-            picEnemy.Image = GlobalObject.GameMainForm.imgsLarge.Images[1];
-            picCard1.Image = GlobalObject.GameMainForm.imgsCard.Images[0];
-            picCard2.Image = GlobalObject.GameMainForm.imgsCard.Images[1];
-            picCard3.Image = GlobalObject.GameMainForm.imgsCard.Images[2];
-            picCard4.Image = GlobalObject.GameMainForm.imgsCard.Images[3];
-
-            picECard1.Image = GlobalObject.GameMainForm.imgsCard.Images[0];
-            picECard2.Image = GlobalObject.GameMainForm.imgsCard.Images[1];
-            picECard3.Image = GlobalObject.GameMainForm.imgsCard.Images[2];
-            picECard4.Image = GlobalObject.GameMainForm.imgsCard.Images[3];
+            initGame();
         }
         private void tipsChange()
         {
@@ -171,6 +192,9 @@ namespace zeus_mud.dialog
                     btnIndex++;
                     button1.Enabled = true;;
                     break;
+                case 6:
+                    initGame();
+                    break;
             }
         }
         private void fight()
@@ -233,7 +257,7 @@ namespace zeus_mud.dialog
                             mPoint++;
                             txtmPoint.Text = mPoint.ToString();
                         }
-                        else if (ac == 2)
+                        else if (ac == 1)
                         {
                             txtDockbot.Text = "败手";
                             APoint++;

@@ -27,7 +27,10 @@ namespace zeus_mud
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
+            GlobalObject.GameMainForm = new frmGameMain();
+            GlobalObject.GameMainForm.Show();
+            this.Hide();
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
