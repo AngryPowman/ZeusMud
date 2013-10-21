@@ -22,7 +22,6 @@
 *.lib
 *.aps
 *.opensdf
-*.suo
 
 !/3rdparty/protobuf_lib/*.lib
 !/lib/poco_libs/*.lib
@@ -38,5 +37,3 @@ Release/
 /output/mud_server/*.exe
 
 /output/mud_server/*.log
-/src/center_server/*.user
-/src/venus_net/*.user
