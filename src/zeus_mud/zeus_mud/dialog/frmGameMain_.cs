@@ -51,7 +51,8 @@ namespace zeus_mud.dialog
 
         private void frmGameMain_Load(object sender, EventArgs e)
         {
-
+            
+            
         }
 
         private void btnFight_Click(object sender, EventArgs e)
@@ -59,6 +60,11 @@ namespace zeus_mud.dialog
             GlobalObject.BattleForm = new frmBattle();
             GlobalObject.BattleForm.Show();
             this.Hide();
+        }
+
+        private void frmGameMain__Activated(object sender, EventArgs e)
+        {
+            btnFight_Click(frmGameMain_.ActiveForm, null);
         }
     }
 }

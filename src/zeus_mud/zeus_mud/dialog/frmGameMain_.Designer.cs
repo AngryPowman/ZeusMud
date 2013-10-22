@@ -275,7 +275,7 @@
             this.imgsCard.Images.SetKeyName(2, "CardC.png");
             this.imgsCard.Images.SetKeyName(3, "CardD.png");
             // 
-            // frmGameMain
+            // frmGameMain_
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -297,9 +297,10 @@
             this.Controls.Add(this.lvRooms);
             this.Controls.Add(this.btnFight);
             this.Controls.Add(this.btnRefresh);
-            this.Name = "frmGameMain";
+            this.Name = "frmGameMain_";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmGameMain";
+            this.Activated += new System.EventHandler(this.frmGameMain__Activated);
             this.Load += new System.EventHandler(this.frmGameMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).EndInit();

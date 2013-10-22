@@ -32,16 +32,16 @@ namespace zeus_mud.dialog
             picCard3.Visible = true;
             picCard4.Visible = true;
 
-            picEnemy.Image = GlobalObject.GameMainForm.imgsLarge.Images[1];
-            picCard1.Image = GlobalObject.GameMainForm.imgsCard.Images[0];
-            picCard2.Image = GlobalObject.GameMainForm.imgsCard.Images[1];
-            picCard3.Image = GlobalObject.GameMainForm.imgsCard.Images[2];
-            picCard4.Image = GlobalObject.GameMainForm.imgsCard.Images[3];
+            picEnemy.Image = GlobalObject.GameMainForm_.imgsLarge.Images[1];
+            picCard1.Image = GlobalObject.GameMainForm_.imgsCard.Images[0];
+            picCard2.Image = GlobalObject.GameMainForm_.imgsCard.Images[1];
+            picCard3.Image = GlobalObject.GameMainForm_.imgsCard.Images[2];
+            picCard4.Image = GlobalObject.GameMainForm_.imgsCard.Images[3];
 
-            picECard1.Image = GlobalObject.GameMainForm.imgsCard.Images[0];
-            picECard2.Image = GlobalObject.GameMainForm.imgsCard.Images[1];
-            picECard3.Image = GlobalObject.GameMainForm.imgsCard.Images[2];
-            picECard4.Image = GlobalObject.GameMainForm.imgsCard.Images[3];
+            picECard1.Image = GlobalObject.GameMainForm_.imgsCard.Images[0];
+            picECard2.Image = GlobalObject.GameMainForm_.imgsCard.Images[1];
+            picECard3.Image = GlobalObject.GameMainForm_.imgsCard.Images[2];
+            picECard4.Image = GlobalObject.GameMainForm_.imgsCard.Images[3];
         }
         int theFourth = -1;
         int[] ACard = { -1, -1, -1, -1 };
@@ -91,7 +91,7 @@ namespace zeus_mud.dialog
                     theFourth++;
                     if (theFourth > 2)
                         theFourth = 0;
-                    picCard4.Image = GlobalObject.GameMainForm.imgsCard.Images[theFourth];
+                    picCard4.Image = GlobalObject.GameMainForm_.imgsCard.Images[theFourth];
                     break;
                 case 2:
                 case 3:
@@ -144,17 +144,17 @@ namespace zeus_mud.dialog
                 case 0:
                     Random ran = new Random();
                     ACardset[3] = ran.Next(0, 2);
-                    picECard4.Image = GlobalObject.GameMainForm.imgsCard.Images[ACardset[3]];
+                    picECard4.Image = GlobalObject.GameMainForm_.imgsCard.Images[ACardset[3]];
                     picCard4.Cursor = Cursors.Default;
                     button1.Text = "开始";                    
                     btnIndex++;
                     break;
                 case 1:
                     setCards();
-                    picECard1.Image = GlobalObject.GameMainForm.imgsCard.Images[3];
-                    picECard2.Image = GlobalObject.GameMainForm.imgsCard.Images[3];
-                    picECard3.Image = GlobalObject.GameMainForm.imgsCard.Images[3];
-                    picECard4.Image = GlobalObject.GameMainForm.imgsCard.Images[3];
+                    picECard1.Image = GlobalObject.GameMainForm_.imgsCard.Images[3];
+                    picECard2.Image = GlobalObject.GameMainForm_.imgsCard.Images[3];
+                    picECard3.Image = GlobalObject.GameMainForm_.imgsCard.Images[3];
+                    picECard4.Image = GlobalObject.GameMainForm_.imgsCard.Images[3];
 
                     picCard1.Cursor = Cursors.Hand;
                     picCard2.Cursor = Cursors.Hand;
@@ -167,22 +167,22 @@ namespace zeus_mud.dialog
                     break;
                 case 2:
                     fight();
-                    picECard1.Image = GlobalObject.GameMainForm.imgsCard.Images[ACard[0]];
+                    picECard1.Image = GlobalObject.GameMainForm_.imgsCard.Images[ACard[0]];
                     btnIndex++;
                     break;
                 case 3:
                     fight();
-                    picECard2.Image = GlobalObject.GameMainForm.imgsCard.Images[ACard[1]];
+                    picECard2.Image = GlobalObject.GameMainForm_.imgsCard.Images[ACard[1]];
                     btnIndex++;
                     break;
                 case 4:
                     fight();
-                    picECard3.Image = GlobalObject.GameMainForm.imgsCard.Images[ACard[2]];
+                    picECard3.Image = GlobalObject.GameMainForm_.imgsCard.Images[ACard[2]];
                     btnIndex++;
                     break;
                 case 5:
                     fight();
-                    picECard4.Image = GlobalObject.GameMainForm.imgsCard.Images[ACard[3]];
+                    picECard4.Image = GlobalObject.GameMainForm_.imgsCard.Images[ACard[3]];
                     if (mPoint > APoint)
                         button1.Text = "胜利了！";
                     else if (mPoint == APoint)
@@ -322,6 +322,14 @@ namespace zeus_mud.dialog
                     button1.Enabled = true;
                     break;
             }
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            // 这里写关闭窗体要执行的代码
+            GlobalObject.LoginForm.Show();
+
+            base.OnClosing(e);
         }
     }
 }

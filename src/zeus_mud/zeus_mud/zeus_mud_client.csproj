@@ -50,11 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dialog\frmBattle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialog\frmBattle.Designer.cs">
+      <DependentUpon>frmBattle.cs</DependentUpon>
+    </Compile>
     <Compile Include="dialog\frmGameMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="dialog\frmGameMain.Designer.cs">
       <DependentUpon>frmGameMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialog\frmGameMain_.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialog\frmGameMain_.Designer.cs">
+      <DependentUpon>frmGameMain_.cs</DependentUpon>
     </Compile>
     <Compile Include="dialog\frmLogin.cs">
       <SubType>Form</SubType>
@@ -87,8 +99,14 @@
     <Compile Include="protocol\10001_S2CLoginRsp.cs" />
     <Compile Include="protocol\10002_C2SRegisterReq.cs" />
     <Compile Include="protocol\10003_S2CRegisterRsp.cs" />
+    <EmbeddedResource Include="dialog\frmBattle.resx">
+      <DependentUpon>frmBattle.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dialog\frmGameMain.resx">
       <DependentUpon>frmGameMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialog\frmGameMain_.resx">
+      <DependentUpon>frmGameMain_.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialog\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
