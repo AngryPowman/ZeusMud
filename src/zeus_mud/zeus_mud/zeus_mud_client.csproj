@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="dockpanelsuite">
+      <HintPath>..\..\..\lib\dockpanelsuite.dll</HintPath>
+    </Reference>
     <Reference Include="protobuf-net">
       <HintPath>..\..\..\lib\protobuf-net.dll</HintPath>
     </Reference>
@@ -47,12 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dialog\frmBattle.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="dialog\frmBattle.Designer.cs">
-      <DependentUpon>frmBattle.cs</DependentUpon>
-    </Compile>
     <Compile Include="dialog\frmGameMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +62,12 @@
     <Compile Include="dialog\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="dialog\frmProfile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialog\frmProfile.Designer.cs">
+      <DependentUpon>frmProfile.cs</DependentUpon>
+    </Compile>
     <Compile Include="dialog\frmRegister.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,7 +75,9 @@
       <DependentUpon>frmRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="GameUtil.cs" />
+    <Compile Include="game\data\LoginData.cs" />
     <Compile Include="GlobalObject.cs" />
+    <Compile Include="network\HttpPictureDownloader.cs" />
     <Compile Include="network\Opcodes.cs" />
     <Compile Include="network\NetworkEvent.cs" />
     <Compile Include="Packet.cs" />
@@ -82,14 +87,14 @@
     <Compile Include="protocol\10001_S2CLoginRsp.cs" />
     <Compile Include="protocol\10002_C2SRegisterReq.cs" />
     <Compile Include="protocol\10003_S2CRegisterRsp.cs" />
-    <EmbeddedResource Include="dialog\frmBattle.resx">
-      <DependentUpon>frmBattle.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="dialog\frmGameMain.resx">
       <DependentUpon>frmGameMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialog\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialog\frmProfile.resx">
+      <DependentUpon>frmProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialog\frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>

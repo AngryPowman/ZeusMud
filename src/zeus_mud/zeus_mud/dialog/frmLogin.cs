@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using zeus_mud.dialog;
 using System.Security.Cryptography;
+using zeus_mud.game.data;
 
 namespace zeus_mud
 {
@@ -83,6 +84,7 @@ namespace zeus_mud
             Protocol.S2CLoginRsp response = NetworkEvent.parseMessage<Protocol.S2CLoginRsp>(stream);
             if (response.login_result == true)
             {
+                LoginData.email = txtUsername.Text;
                 GlobalObject.GameMainForm = new frmGameMain();
                 GlobalObject.GameMainForm.Show();
                 this.Hide();
