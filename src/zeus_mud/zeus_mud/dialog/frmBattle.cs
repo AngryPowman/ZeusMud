@@ -113,8 +113,7 @@ namespace zeus_mud.dialog
         private void setCards()
         {
             Random ran = new Random();
-            int[] ACardhave = {0,1,2,3};
-            ACardhave[3] = ran.Next(0, 2);
+            int[] ACardhave = (int[])ACardset.Clone();
 
             for (int i = 0; i <= 3; i++)
             {
@@ -194,6 +193,7 @@ namespace zeus_mud.dialog
                     break;
                 case 6:
                     initGame();
+                    button1.Enabled = false;
                     break;
             }
         }
