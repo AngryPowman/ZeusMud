@@ -88,6 +88,7 @@
     </Compile>
     <Compile Include="GameUtil.cs" />
     <Compile Include="game\data\LoginData.cs" />
+    <Compile Include="game\data\PlayerProfile.cs" />
     <Compile Include="GlobalObject.cs" />
     <Compile Include="network\HttpPictureDownloader.cs" />
     <Compile Include="network\Opcodes.cs" />

@@ -23,14 +23,7 @@ namespace zeus_mud.dialog
 
         private void frmProfile_Load(object sender, EventArgs e)
         {
-            lblLoadingTip.Visible = true;
-            lblLoadingTip.Text = "0%";
-            string avartarIdent = GameUtil.toMD5(LoginData.email);
-            string url = "http://www.gravatar.com/avatar/" + avartarIdent;
-
-            picAvatar.LoadCompleted += picAvatar_LoadCompleted;
-            picAvatar.LoadProgressChanged += picAvatar_LoadProgressChanged;
-            picAvatar.LoadAsync(url.ToLower());
+            loadProfile();
         }
 
         void picAvatar_LoadProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -43,5 +36,20 @@ namespace zeus_mud.dialog
             lblLoadingTip.Visible = false;
         }
 
+        void loadProfile()
+        {
+            //加载avatar
+            lblLoadingTip.Visible = true;
+            lblLoadingTip.Text = "0%";
+            string avartarIdent = GameUtil.toMD5(LoginData.email);
+            string url = "http://www.gravatar.com/avatar/" + avartarIdent;
+
+            picAvatar.LoadCompleted += picAvatar_LoadCompleted;
+            picAvatar.LoadProgressChanged += picAvatar_LoadProgressChanged;
+            picAvatar.LoadAsync(url.ToLower());
+
+            //加载个人资料
+            lblEmailNickname.Text = PlayerProfile.nickname + "<" + LoginData.email + ">";
+        }
     }
 }
