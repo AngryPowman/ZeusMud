@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBattle));
             this.picEnemy = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -47,6 +48,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtmPoint = new System.Windows.Forms.TextBox();
             this.txtAPoint = new System.Windows.Forms.TextBox();
+            this.imgsCard = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCard1)).BeginInit();
@@ -245,6 +247,15 @@
             this.txtAPoint.Text = "0";
             this.txtAPoint.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // imgsCard
+            // 
+            this.imgsCard.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgsCard.ImageStream")));
+            this.imgsCard.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgsCard.Images.SetKeyName(0, "CardA.png");
+            this.imgsCard.Images.SetKeyName(1, "CardB.png");
+            this.imgsCard.Images.SetKeyName(2, "CardC.png");
+            this.imgsCard.Images.SetKeyName(3, "CardD.png");
+            // 
             // frmBattle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -307,5 +318,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtmPoint;
         private System.Windows.Forms.TextBox txtAPoint;
+        public System.Windows.Forms.ImageList imgsCard;
     }
 }

@@ -23,5 +23,10 @@ namespace zeus_mud.dialog
         {
             _frmProfile.Show(dockPanel1, DockState.DockLeft);
         }
+
+        private void 个人资料PToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("你有个毛资料");
+        }
     }
 }

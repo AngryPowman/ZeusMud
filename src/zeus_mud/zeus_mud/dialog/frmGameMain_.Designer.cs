@@ -52,7 +52,6 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.txtAEmail = new System.Windows.Forms.TextBox();
             this.imgsLarge = new System.Windows.Forms.ImageList(this.components);
-            this.imgsCard = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEnemy)).BeginInit();
             this.SuspendLayout();
@@ -266,15 +265,6 @@
             this.imgsLarge.Images.SetKeyName(0, "a8457564gw1e91gsqeac6j203c03c745.jpg");
             this.imgsLarge.Images.SetKeyName(1, "QQ图片20131015223609.jpg");
             // 
-            // imgsCard
-            // 
-            this.imgsCard.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgsCard.ImageStream")));
-            this.imgsCard.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgsCard.Images.SetKeyName(0, "CardA.png");
-            this.imgsCard.Images.SetKeyName(1, "CardB.png");
-            this.imgsCard.Images.SetKeyName(2, "CardC.png");
-            this.imgsCard.Images.SetKeyName(3, "CardD.png");
-            // 
             // frmGameMain_
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -333,7 +323,6 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox txtAEmail;
         public System.Windows.Forms.ImageList imgsLarge;
-        public System.Windows.Forms.ImageList imgsCard;
 
     }
 }

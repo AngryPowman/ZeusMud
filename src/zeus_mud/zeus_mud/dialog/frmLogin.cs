@@ -26,14 +26,6 @@ namespace zeus_mud
             OpcodesHandler.registerHandler(Opcodes.S2CLoginRsp, this.userLoginCallback);
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            //this.Close();
-            GlobalObject.GameMainForm_ = new frmGameMain_();
-            GlobalObject.GameMainForm_.Show();
-            this.Hide();
-        }
-
         private void btnRegister_Click(object sender, EventArgs e)
         {
             if (GlobalObject.RegisterForm == null) GlobalObject.RegisterForm = new frmRegister();
@@ -100,11 +92,28 @@ namespace zeus_mud
         private void frmLogin_Load(object sender, EventArgs e)
         {
             NetworkEvent.init();
+            picLoading.Enabled = false;
+            fd = new System.Drawing.Imaging.FrameDimension(picLoading.Image.FrameDimensionsList[0]);
+            gif1Count = picLoading.Image.GetFrameCount(fd);
+            timer1.Interval = 60;
+            timer1.Enabled = true;
         }
 
         private void frmLogin_Activated(object sender, EventArgs e)
         {
 
+        }
+        int gif1 = -1;
+        int gif1Count = 0;
+        System.Drawing.Imaging.FrameDimension fd;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            picLoading.Enabled = true;
+            gif1++;
+            if (gif1 >= gif1Count)
+                gif1 = 0;
+            picLoading.Image.SelectActiveFrame(fd,gif1);
+            picLoading.Enabled = false;
         }
     }
 }

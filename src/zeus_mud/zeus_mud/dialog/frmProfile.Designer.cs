@@ -102,9 +102,9 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox picAvatar;
         private System.Windows.Forms.TextBox txt1Level;
         private System.Windows.Forms.TextBox lblEmailNickname;
         private System.Windows.Forms.Label lblLoadingTip;
+        public System.Windows.Forms.PictureBox picAvatar;
     }
 }
