@@ -92,9 +92,9 @@ namespace zeus_mud
         private void frmLogin_Load(object sender, EventArgs e)
         {
             NetworkEvent.init();
-            picLoading.Enabled = false;
             fd = new System.Drawing.Imaging.FrameDimension(picLoading.Image.FrameDimensionsList[0]);
             gif1Count = picLoading.Image.GetFrameCount(fd);
+            picLoading.Enabled = false;
             timer1.Interval = 60;
             timer1.Enabled = true;
         }
@@ -114,6 +114,11 @@ namespace zeus_mud
                 gif1 = 0;
             picLoading.Image.SelectActiveFrame(fd,gif1);
             picLoading.Enabled = false;
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            timer1.Interval = (11 - trackBar1.Value) * 10;
         }
     }
 }
