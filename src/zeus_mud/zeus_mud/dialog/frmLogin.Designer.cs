@@ -33,17 +33,17 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.btnRegister = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.chkSavePwd = new System.Windows.Forms.CheckBox();
+            this.chkAutoLogin = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.picAvatar = new System.Windows.Forms.PictureBox();
             this.picLoading = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -83,27 +83,28 @@
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
-            // checkBox1
+            // chkSavePwd
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.checkBox1.Location = new System.Drawing.Point(112, 171);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(72, 16);
-            this.checkBox1.TabIndex = 14;
-            this.checkBox1.Text = "记住密码";
-            this.checkBox1.UseVisualStyleBackColor = false;
+            this.chkSavePwd.AutoSize = true;
+            this.chkSavePwd.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.chkSavePwd.Location = new System.Drawing.Point(112, 171);
+            this.chkSavePwd.Name = "chkSavePwd";
+            this.chkSavePwd.Size = new System.Drawing.Size(72, 16);
+            this.chkSavePwd.TabIndex = 14;
+            this.chkSavePwd.Text = "记住密码";
+            this.chkSavePwd.UseVisualStyleBackColor = false;
             // 
-            // checkBox2
+            // chkAutoLogin
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.checkBox2.Location = new System.Drawing.Point(190, 171);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(72, 16);
-            this.checkBox2.TabIndex = 15;
-            this.checkBox2.Text = "自动登录";
-            this.checkBox2.UseVisualStyleBackColor = false;
+            this.chkAutoLogin.AutoSize = true;
+            this.chkAutoLogin.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.chkAutoLogin.Location = new System.Drawing.Point(190, 171);
+            this.chkAutoLogin.Name = "chkAutoLogin";
+            this.chkAutoLogin.Size = new System.Drawing.Size(72, 16);
+            this.chkAutoLogin.TabIndex = 15;
+            this.chkAutoLogin.Text = "自动登录";
+            this.chkAutoLogin.UseVisualStyleBackColor = false;
+            this.chkAutoLogin.CheckedChanged += new System.EventHandler(this.chkAutoLogin_CheckedChanged);
             // 
             // button1
             // 
@@ -162,17 +163,16 @@
             this.panel1.Size = new System.Drawing.Size(387, 60);
             this.panel1.TabIndex = 21;
             // 
-            // rectangleShape1
+            // btnLogin
             // 
-            this.rectangleShape1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.rectangleShape1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.rectangleShape1.FillColor = System.Drawing.Color.Silver;
-            this.rectangleShape1.FillGradientColor = System.Drawing.Color.WhiteSmoke;
-            this.rectangleShape1.FillGradientStyle = Microsoft.VisualBasic.PowerPacks.FillGradientStyle.Vertical;
-            this.rectangleShape1.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.rectangleShape1.Location = new System.Drawing.Point(-4, 1);
-            this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(389, 60);
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnLogin.Location = new System.Drawing.Point(116, 9);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(155, 39);
+            this.btnLogin.TabIndex = 6;
+            this.btnLogin.Text = "登     录";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // shapeContainer1
             // 
@@ -185,15 +185,17 @@
             this.shapeContainer1.TabIndex = 0;
             this.shapeContainer1.TabStop = false;
             // 
-            // btnLogin
+            // rectangleShape1
             // 
-            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnLogin.Location = new System.Drawing.Point(116, 9);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(155, 39);
-            this.btnLogin.TabIndex = 6;
-            this.btnLogin.Text = "登     录";
-            this.btnLogin.UseVisualStyleBackColor = false;
+            this.rectangleShape1.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.rectangleShape1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.rectangleShape1.FillColor = System.Drawing.Color.Silver;
+            this.rectangleShape1.FillGradientColor = System.Drawing.Color.WhiteSmoke;
+            this.rectangleShape1.FillGradientStyle = Microsoft.VisualBasic.PowerPacks.FillGradientStyle.Vertical;
+            this.rectangleShape1.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
+            this.rectangleShape1.Location = new System.Drawing.Point(-4, 1);
+            this.rectangleShape1.Name = "rectangleShape1";
+            this.rectangleShape1.Size = new System.Drawing.Size(389, 60);
             // 
             // frmLogin
             // 
@@ -204,8 +206,8 @@
             this.Controls.Add(this.trackBar1);
             this.Controls.Add(this.picAvatar);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkAutoLogin);
+            this.Controls.Add(this.chkSavePwd);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
@@ -216,7 +218,6 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "中国好游戏MUD-玩家登录";
-            this.Activated += new System.EventHandler(this.frmLogin_Activated);
             this.Load += new System.EventHandler(this.frmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLoading)).EndInit();
@@ -232,8 +233,8 @@
         private System.Windows.Forms.Button btnRegister;
         public System.Windows.Forms.TextBox txtPassword;
         public System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox chkSavePwd;
+        private System.Windows.Forms.CheckBox chkAutoLogin;
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.PictureBox picAvatar;
         private System.Windows.Forms.PictureBox picLoading;

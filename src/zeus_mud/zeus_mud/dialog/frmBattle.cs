@@ -32,7 +32,7 @@ namespace zeus_mud.dialog
             picCard3.Visible = true;
             picCard4.Visible = true;
 
-            picEnemy.Image = GlobalObject.ProfileForm.picAvatar.Image;
+            //picEnemy.Image = GlobalObject.ProfileForm.picAvatar.Image;
             picCard1.Image = imgsCard.Images[0];
             picCard2.Image = imgsCard.Images[1];
             picCard3.Image = imgsCard.Images[2];

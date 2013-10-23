@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RobotWatchman;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,7 @@ namespace zeus_mud.dialog
 {
     public partial class frmGameMain : Form
     {
-        private frmProfile _frmProfile = new frmProfile();
+        
         public frmGameMain()
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace zeus_mud.dialog
 
         private void frmGameMain_Load(object sender, EventArgs e)
         {
-            _frmProfile.Show(dockPanel1, DockState.DockLeft);
+            GlobalObject.ProfileForm.Show(dockPanel1, DockState.DockLeft);
         }
 
         private void 个人资料PToolStripMenuItem_Click(object sender, EventArgs e)

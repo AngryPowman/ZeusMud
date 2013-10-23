@@ -19,5 +19,11 @@ namespace RobotWatchman
 
         public static string DefaultServer { get {return "127.0.0.1";}}
         public static UInt16 DefaultPort { get {return 36911;}}
+        public static string Email2PhotoUrl( string email )
+        {
+            string avartarIdent = GameUtil.toMD5(email);
+            string url = "http://www.gravatar.com/avatar/" + avartarIdent;
+            return url;
+        }
     }
 }

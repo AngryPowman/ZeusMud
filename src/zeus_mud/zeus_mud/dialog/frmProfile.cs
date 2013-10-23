@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RobotWatchman;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -41,12 +42,10 @@ namespace zeus_mud.dialog
             //加载avatar
             lblLoadingTip.Visible = true;
             lblLoadingTip.Text = "0%";
-            string avartarIdent = GameUtil.toMD5(LoginData.email);
-            string url = "http://www.gravatar.com/avatar/" + avartarIdent;
 
             picAvatar.LoadCompleted += picAvatar_LoadCompleted;
             picAvatar.LoadProgressChanged += picAvatar_LoadProgressChanged;
-            picAvatar.LoadAsync(url.ToLower());
+            picAvatar.LoadAsync(GlobalObject.Email2PhotoUrl(LoginData.email).ToLower());
 
             //加载个人资料
             lblEmailNickname.Text = PlayerProfile.nickname + "<" + LoginData.email + ">";

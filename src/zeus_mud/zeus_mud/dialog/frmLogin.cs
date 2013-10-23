@@ -92,6 +92,7 @@ namespace zeus_mud
         private void frmLogin_Load(object sender, EventArgs e)
         {
             NetworkEvent.init();
+            picAvatar.LoadAsync(GlobalObject.Email2PhotoUrl(txtUsername.Text).ToLower());
             fd = new System.Drawing.Imaging.FrameDimension(picLoading.Image.FrameDimensionsList[0]);
             gif1Count = picLoading.Image.GetFrameCount(fd);
             picLoading.Enabled = false;
@@ -99,10 +100,6 @@ namespace zeus_mud
             timer1.Enabled = true;
         }
 
-        private void frmLogin_Activated(object sender, EventArgs e)
-        {
-
-        }
         int gif1 = -1;
         int gif1Count = 0;
         System.Drawing.Imaging.FrameDimension fd;
@@ -119,6 +116,11 @@ namespace zeus_mud
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             timer1.Interval = (11 - trackBar1.Value) * 10;
+        }
+
+        private void chkAutoLogin_CheckedChanged(object sender, EventArgs e)
+        {
+            chkSavePwd.Checked = true;
         }
     }
 }
