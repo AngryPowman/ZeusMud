@@ -93,7 +93,6 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="db_player.h" />
-    <ClInclude Include="db_user.h" />
     <ClInclude Include="game_database_session.h" />
     <ClInclude Include="game_service_deamon.h" />
     <ClInclude Include="game_service.h" />

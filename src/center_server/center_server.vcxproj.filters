@@ -18,9 +18,6 @@
     <ClInclude Include="game_sql.h">
       <Filter>data</Filter>
     </ClInclude>
-    <ClInclude Include="db_user.h">
-      <Filter>data\dbc</Filter>
-    </ClInclude>
     <ClInclude Include="db_player.h">
       <Filter>data\dbc</Filter>
     </ClInclude>

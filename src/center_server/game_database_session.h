@@ -6,7 +6,6 @@
 #include <Poco/Data/SQLite/Connector.h>
 #include <Poco/Data/RecordSet.h>
 #include <Poco/Data/SessionFactory.h>
-#include "db_user.h"
 
 class GameDatabaseSession
     : public Venus::Singleton<GameDatabaseSession>
