@@ -94,7 +94,7 @@
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="dialog\frmProfile.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="dialog\frmProfile.Designer.cs">
       <DependentUpon>frmProfile.cs</DependentUpon>

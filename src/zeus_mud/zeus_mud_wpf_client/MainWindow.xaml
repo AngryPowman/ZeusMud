@@ -1,14 +1,16 @@
-﻿<Window x:Class="zeus_mud_wpf_client.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="768" Width="1024" ResizeMode="CanResizeWithGrip" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:dxco="http://schemas.devexpress.com/winfx/2008/xaml/controls" 
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
-        xmlns:avalondock="http://schemas.xceed.com/wpf/xaml/avalondock" Title="中国好游戏"
+        xmlns:avalondock="http://schemas.xceed.com/wpf/xaml/avalondock" xmlns:UIComponent="clr-namespace:zeus_mud_wpf_client.UIComponent" x:Class="zeus_mud_wpf_client.MainWindow"
+        Height="768" Width="1024" ResizeMode="CanResizeWithGrip" 
+        Title="中国好游戏"
         >
     <Grid>
-        <Grid HorizontalAlignment="Left" Margin="0,24,0,0" Name="grid1" Width="745" Height="27" VerticalAlignment="Top" Grid.ColumnSpan="2">
-            <ToolBar Height="26" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"  HorizontalAlignment="Left" Name="toolBar1" VerticalAlignment="Top" Width="200" />
+        <Grid HorizontalAlignment="Left" Margin="0,24,0,0" x:Name="grid1" Width="745" Height="27" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <ToolBar Height="26" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"  HorizontalAlignment="Left" x:Name="toolBar1" VerticalAlignment="Top" Width="200" />
         </Grid>
         <Menu HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="21" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <MenuItem Header="帐号(_U)" />
@@ -46,8 +48,10 @@
                     <!--■左侧边栏定义-->
                     <avalondock:LayoutAnchorablePane DockWidth="168">
 
-                        <!--玩家资料-->
                         <avalondock:LayoutAnchorable x:Name="PlayerProfile" ContentId="PlayerProfile" Title="我的信息" ToolTip="" CanHide="true" CanClose="true" CanAutoHide="True">
+                            <WindowsFormsHost>
+                                <UIComponent:WinformUIPlayerProfile Dock="Fill" />
+                            </WindowsFormsHost>
                         </avalondock:LayoutAnchorable>
 
                     </avalondock:LayoutAnchorablePane>
@@ -58,10 +62,10 @@
                         <avalondock:LayoutDocumentPaneGroup>
                             <avalondock:LayoutDocumentPane>
                                 <avalondock:LayoutDocument Title="战斗">
-                                    <StackPanel></StackPanel>
+                                    <StackPanel/>
                                 </avalondock:LayoutDocument>
                                 <avalondock:LayoutDocument Title="真实商店">
-                                    <StackPanel></StackPanel>
+                                    <StackPanel/>
                                 </avalondock:LayoutDocument>
                             </avalondock:LayoutDocumentPane>
                         </avalondock:LayoutDocumentPaneGroup>
@@ -70,9 +74,7 @@
                         <avalondock:LayoutAnchorablePane DockHeight="142">
 
                             <!--在线聊天-->
-                            <avalondock:LayoutAnchorable x:Name="Chat" ContentId="Chat" Title="在线聊天" ToolTip="在线聊天" CanHide="true" CanClose="true" CanAutoHide="True">
-
-                            </avalondock:LayoutAnchorable>
+                            <avalondock:LayoutAnchorable x:Name="Chat" ContentId="Chat" Title="在线聊天" ToolTip="在线聊天" CanHide="true" CanClose="true" CanAutoHide="True"/>
 
                         </avalondock:LayoutAnchorablePane>
 
@@ -83,9 +85,7 @@
                     <avalondock:LayoutAnchorablePane DockWidth="168">
 
                         <!--属性管理器-->
-                        <avalondock:LayoutAnchorable x:Name="PropertiesManager" ContentId="PropertiesManager" Title="属性" ToolTip="管理对象属性" CanHide="true" CanClose="true" CanAutoHide="True">
-
-                        </avalondock:LayoutAnchorable>
+                        <avalondock:LayoutAnchorable x:Name="PropertiesManager" ContentId="PropertiesManager" Title="属性" ToolTip="管理对象属性" CanHide="true" CanClose="true" CanAutoHide="True"/>
 
                     </avalondock:LayoutAnchorablePane>
 

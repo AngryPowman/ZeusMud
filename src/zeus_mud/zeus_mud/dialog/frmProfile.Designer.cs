@@ -89,9 +89,7 @@
             this.Controls.Add(this.lblEmailNickname);
             this.Controls.Add(this.picAvatar);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.HideOnClose = true;
             this.Name = "frmProfile";
-            this.ShowHint = WeifenLuo.WinFormsUI.Docking.DockState.DockLeft;
             this.Text = "个人资料";
             this.Load += new System.EventHandler(this.frmProfile_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();

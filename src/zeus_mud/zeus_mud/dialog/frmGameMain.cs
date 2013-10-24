@@ -22,7 +22,7 @@ namespace zeus_mud.dialog
 
         private void frmGameMain_Load(object sender, EventArgs e)
         {
-            GlobalObject.ProfileForm.Show(dockPanel1, DockState.DockLeft);
+            //GlobalObject.ProfileForm.Show(dockPanel1, DockState.DockLeft);
         }
 
         private void 个人资料PToolStripMenuItem_Click(object sender, EventArgs e)

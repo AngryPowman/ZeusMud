@@ -15,7 +15,7 @@ using zeus_mud.network;
 
 namespace zeus_mud.dialog
 {
-    public partial class frmProfile : DockContent
+    public partial class frmProfile : UserControl
     {
         public frmProfile()
         {
