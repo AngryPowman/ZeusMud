@@ -4,9 +4,6 @@
     <ClInclude Include="io_dispatcher.h">
       <Filter>network</Filter>
     </ClInclude>
-    <ClInclude Include="session_manager.h">
-      <Filter>network</Filter>
-    </ClInclude>
     <ClInclude Include="game_service.h" />
     <ClInclude Include="opcodes_handler.h">
       <Filter>handler</Filter>
@@ -31,6 +28,12 @@
       <Filter>handler</Filter>
     </ClInclude>
     <ClInclude Include="global_instance.h" />
+    <ClInclude Include="session_manager.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>obj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="center_server.cpp" />
@@ -70,6 +73,12 @@
     </Filter>
     <Filter Include="handler\login">
       <UniqueIdentifier>{87ffc5bc-8f6b-46cd-b3cd-c9828f0c31a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="obj">
+      <UniqueIdentifier>{132ee0b1-f56f-4b30-9bef-b935e5a036e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="manager">
+      <UniqueIdentifier>{1b3921b6-a8fb-4043-901a-4593976b57ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

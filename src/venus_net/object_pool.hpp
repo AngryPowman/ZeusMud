@@ -4,6 +4,9 @@
 #include "common.h"
 #include <boost/noncopyable.hpp>
 
+namespace Venus
+{
+
 template <typename _Ty>
 class ObjectPool 
     : public boost::noncopyable
@@ -138,6 +141,6 @@ private:
     std::stack<_Ty*> _free_objects;
     std::vector<_Ty*> _all_objects;
 };
-
+}
 
 #endif //OBJECT_POOL_H_

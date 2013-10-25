@@ -120,6 +120,9 @@
     <ClInclude Include="server_logger.h">
       <Filter>framework\logger</Filter>
     </ClInclude>
+    <ClInclude Include="manager.h">
+      <Filter>framework</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="error_code.cpp">

@@ -17,7 +17,7 @@ public:
     {
         GameSession* session = SessionPool::getInstance().acquire(connection->handle());
         session->set_connection_ptr(connection);
-        GameSessionManager::getInstance().add_session(session);
+        GameSessionManager::getInstance().add(session->session_id(), session);
         std::cout << "New Session [NativeHandle = " << connection->handle() << ", Peer = " << peerAddress.toIpHost() << "]" << std::endl;
     }
 
@@ -59,7 +59,7 @@ public:
         std::cout << "Connection closed handler." << std::endl;
         GameSession* session = GameSessionManager::getInstance().get(connection->handle());
         session->set_connection_ptr(nullptr);
-        GameSessionManager::getInstance().remove_session(session);
+        GameSessionManager::getInstance().remove(session->session_id());
         SessionPool::getInstance().release(session);
     }
 
