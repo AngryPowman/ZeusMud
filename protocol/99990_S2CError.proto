@@ -1,0 +1,5 @@
+package Protocol;
+
+message S2CError {
+	required uint32 error_code = 1;
+}

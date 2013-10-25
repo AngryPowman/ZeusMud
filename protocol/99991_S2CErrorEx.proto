@@ -1,0 +1,6 @@
+package Protocol;
+
+message S2CErrorEx {
+	required uint32 error_code = 1;
+	optional bytes error_reason = 2;
+}
