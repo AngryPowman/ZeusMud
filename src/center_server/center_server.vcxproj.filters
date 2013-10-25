@@ -28,11 +28,11 @@
       <Filter>handler</Filter>
     </ClInclude>
     <ClInclude Include="global_instance.h" />
-    <ClInclude Include="session_manager.h">
-      <Filter>manager</Filter>
-    </ClInclude>
     <ClInclude Include="player.h">
-      <Filter>obj</Filter>
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="game_session_manager.h">
+      <Filter>manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +54,9 @@
     <ClCompile Include="login_handler.cpp">
       <Filter>handler\login</Filter>
     </ClCompile>
+    <ClCompile Include="game_session_manager.cpp">
+      <Filter>manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="network">
@@ -74,11 +77,14 @@
     <Filter Include="handler\login">
       <UniqueIdentifier>{87ffc5bc-8f6b-46cd-b3cd-c9828f0c31a4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="obj">
-      <UniqueIdentifier>{132ee0b1-f56f-4b30-9bef-b935e5a036e7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="manager">
       <UniqueIdentifier>{1b3921b6-a8fb-4043-901a-4593976b57ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="object">
+      <UniqueIdentifier>{132ee0b1-f56f-4b30-9bef-b935e5a036e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="manager\obj_poll">
+      <UniqueIdentifier>{fdefb41c-6204-42a3-b506-76ab3e18d3df}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

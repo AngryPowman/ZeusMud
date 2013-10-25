@@ -104,7 +104,7 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     <ClInclude Include="io_dispatcher.h" />
     <ClInclude Include="opcodes_handler.h" />
     <ClInclude Include="player.h" />
-    <ClInclude Include="session_manager.h" />
+    <ClInclude Include="game_session_manager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game_database_session.cpp" />
@@ -112,6 +112,7 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     <ClCompile Include="game_service_deamon.cpp" />
     <ClCompile Include="center_server.cpp" />
     <ClCompile Include="game_session.cpp" />
+    <ClCompile Include="game_session_manager.cpp" />
     <ClCompile Include="login_handler.cpp" />
     <ClCompile Include="opcodes_handler.cpp" />
     <ClCompile Include="network_session.cpp" />

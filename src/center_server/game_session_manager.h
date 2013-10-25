@@ -32,14 +32,13 @@ class GameSessionManager
     : public Venus::ObjectManager<uint64, GameSession>
 {
 public:
-    bool init()
-    {
-    }
+    bool init();
+    void destroy();
 
-    void destroy()
-    {
-    
-    }
+    void broadcast(const NetworkMessage& message);
+
+private:
+
 };
 
 #endif
