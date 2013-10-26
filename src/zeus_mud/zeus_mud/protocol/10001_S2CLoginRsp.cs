@@ -22,8 +22,10 @@ namespace Protocol
       get { return _login_result; }
       set { _login_result = value; }
     }
-    private byte[] _failed_reason;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"failed_reason", DataFormat = global::ProtoBuf.DataFormat.Default)]
+
+    private byte[] _failed_reason = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"failed_reason", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
     public byte[] failed_reason
     {
       get { return _failed_reason; }

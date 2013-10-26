@@ -98,7 +98,7 @@ class S2CLoginRsp : public ::google::protobuf::Message {
   inline bool login_result() const;
   inline void set_login_result(bool value);
 
-  // required bytes failed_reason = 2;
+  // optional bytes failed_reason = 2;
   inline bool has_failed_reason() const;
   inline void clear_failed_reason();
   static const int kFailedReasonFieldNumber = 2;
@@ -171,7 +171,7 @@ inline void S2CLoginRsp::set_login_result(bool value) {
   login_result_ = value;
 }
 
-// required bytes failed_reason = 2;
+// optional bytes failed_reason = 2;
 inline bool S2CLoginRsp::has_failed_reason() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
