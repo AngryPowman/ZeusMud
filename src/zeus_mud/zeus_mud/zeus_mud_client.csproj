@@ -67,6 +67,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TimerPictureBox">
+      <HintPath>..\..\..\output\mud_client\TimerPictureBox.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dialog\frmBattle.cs">

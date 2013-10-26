@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -37,17 +36,16 @@
             this.chkAutoLogin = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.picAvatar = new System.Windows.Forms.PictureBox();
-            this.picLoading = new System.Windows.Forms.PictureBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.gifBox = new TimerPictureLib.TimerPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLoading)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gifBox)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPassword
@@ -59,6 +57,9 @@
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(179, 24);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
             // 
             // txtUsername
             // 
@@ -78,7 +79,7 @@
             this.btnRegister.Location = new System.Drawing.Point(304, 110);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(63, 23);
-            this.btnRegister.TabIndex = 3;
+            this.btnRegister.TabIndex = 6;
             this.btnRegister.Text = "注册";
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
@@ -90,7 +91,7 @@
             this.chkSavePwd.Location = new System.Drawing.Point(112, 171);
             this.chkSavePwd.Name = "chkSavePwd";
             this.chkSavePwd.Size = new System.Drawing.Size(72, 16);
-            this.chkSavePwd.TabIndex = 14;
+            this.chkSavePwd.TabIndex = 3;
             this.chkSavePwd.Text = "记住密码";
             this.chkSavePwd.UseVisualStyleBackColor = false;
             // 
@@ -101,7 +102,7 @@
             this.chkAutoLogin.Location = new System.Drawing.Point(190, 171);
             this.chkAutoLogin.Name = "chkAutoLogin";
             this.chkAutoLogin.Size = new System.Drawing.Size(72, 16);
-            this.chkAutoLogin.TabIndex = 15;
+            this.chkAutoLogin.TabIndex = 4;
             this.chkAutoLogin.Text = "自动登录";
             this.chkAutoLogin.UseVisualStyleBackColor = false;
             this.chkAutoLogin.CheckedChanged += new System.EventHandler(this.chkAutoLogin_CheckedChanged);
@@ -113,7 +114,7 @@
             this.button1.Location = new System.Drawing.Point(304, 140);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(63, 23);
-            this.button1.TabIndex = 16;
+            this.button1.TabIndex = 7;
             this.button1.Text = "找回密码";
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -129,20 +130,6 @@
             this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picAvatar.TabIndex = 17;
             this.picAvatar.TabStop = false;
-            // 
-            // picLoading
-            // 
-            this.picLoading.Dock = System.Windows.Forms.DockStyle.Top;
-            this.picLoading.Image = ((System.Drawing.Image)(resources.GetObject("picLoading.Image")));
-            this.picLoading.Location = new System.Drawing.Point(0, 0);
-            this.picLoading.Name = "picLoading";
-            this.picLoading.Size = new System.Drawing.Size(387, 209);
-            this.picLoading.TabIndex = 19;
-            this.picLoading.TabStop = false;
-            // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // trackBar1
             // 
@@ -169,7 +156,7 @@
             this.btnLogin.Location = new System.Drawing.Point(116, 9);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(155, 39);
-            this.btnLogin.TabIndex = 6;
+            this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "登     录";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -197,6 +184,17 @@
             this.rectangleShape1.Name = "rectangleShape1";
             this.rectangleShape1.Size = new System.Drawing.Size(389, 60);
             // 
+            // gifBox
+            // 
+            this.gifBox.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gifBox.fpsGif = 100;
+            this.gifBox.Image = ((System.Drawing.Image)(resources.GetObject("gifBox.Image")));
+            this.gifBox.Location = new System.Drawing.Point(0, 0);
+            this.gifBox.Name = "gifBox";
+            this.gifBox.Size = new System.Drawing.Size(387, 209);
+            this.gifBox.TabIndex = 22;
+            this.gifBox.TabStop = false;
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -211,7 +209,7 @@
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.picLoading);
+            this.Controls.Add(this.gifBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -220,9 +218,9 @@
             this.Text = "中国好游戏MUD-玩家登录";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picLoading)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gifBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,13 +235,12 @@
         private System.Windows.Forms.CheckBox chkAutoLogin;
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.PictureBox picAvatar;
-        private System.Windows.Forms.PictureBox picLoading;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.Button btnLogin;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
+        private TimerPictureLib.TimerPictureBox gifBox;
 
     }
 }
