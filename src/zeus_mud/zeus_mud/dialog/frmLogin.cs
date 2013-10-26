@@ -93,29 +93,12 @@ namespace zeus_mud
         {
             NetworkEvent.init();
             picAvatar.LoadAsync(GlobalObject.Email2PhotoUrl(txtUsername.Text).ToLower());
-            fd = new System.Drawing.Imaging.FrameDimension(picLoading.Image.FrameDimensionsList[0]);
-            gif1Count = picLoading.Image.GetFrameCount(fd);
-            picLoading.Enabled = false;
-            timer1.Interval = 60;
-            timer1.Enabled = true;
-        }
-
-        int gif1 = -1;
-        int gif1Count = 0;
-        System.Drawing.Imaging.FrameDimension fd;
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            picLoading.Enabled = true;
-            gif1++;
-            if (gif1 >= gif1Count)
-                gif1 = 0;
-            picLoading.Image.SelectActiveFrame(fd,gif1);
-            picLoading.Enabled = false;
+            gifBox.initGif(60);
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            timer1.Interval = (11 - trackBar1.Value) * 10;
+            gifBox.fpsGif = (11 - trackBar1.Value) * 10;
         }
 
         private void chkAutoLogin_CheckedChanged(object sender, EventArgs e)
