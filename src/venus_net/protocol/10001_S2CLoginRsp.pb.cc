@@ -34,9 +34,10 @@ void protobuf_AssignDesc_10001_5fS2CLoginRsp_2eproto() {
       "10001_S2CLoginRsp.proto");
   GOOGLE_CHECK(file != NULL);
   S2CLoginRsp_descriptor_ = file->message_type(0);
-  static const int S2CLoginRsp_offsets_[2] = {
+  static const int S2CLoginRsp_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CLoginRsp, login_result_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CLoginRsp, failed_reason_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CLoginRsp, player_id_),
   };
   S2CLoginRsp_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -79,9 +80,9 @@ void protobuf_AddDesc_10001_5fS2CLoginRsp_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\02710001_S2CLoginRsp.proto\022\010Protocol\":\n\013S"
+    "\n\02710001_S2CLoginRsp.proto\022\010Protocol\"M\n\013S"
     "2CLoginRsp\022\024\n\014login_result\030\001 \002(\010\022\025\n\rfail"
-    "ed_reason\030\002 \001(\014", 95);
+    "ed_reason\030\002 \002(\014\022\021\n\tplayer_id\030\003 \002(\004", 114);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "10001_S2CLoginRsp.proto", &protobuf_RegisterTypes);
   S2CLoginRsp::default_instance_ = new S2CLoginRsp();
@@ -101,6 +102,7 @@ struct StaticDescriptorInitializer_10001_5fS2CLoginRsp_2eproto {
 #ifndef _MSC_VER
 const int S2CLoginRsp::kLoginResultFieldNumber;
 const int S2CLoginRsp::kFailedReasonFieldNumber;
+const int S2CLoginRsp::kPlayerIdFieldNumber;
 #endif  // !_MSC_VER
 
 S2CLoginRsp::S2CLoginRsp()
@@ -121,6 +123,7 @@ void S2CLoginRsp::SharedCtor() {
   _cached_size_ = 0;
   login_result_ = false;
   failed_reason_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  player_id_ = GOOGLE_ULONGLONG(0);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -165,6 +168,7 @@ void S2CLoginRsp::Clear() {
         failed_reason_->clear();
       }
     }
+    player_id_ = GOOGLE_ULONGLONG(0);
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -191,13 +195,29 @@ bool S2CLoginRsp::MergePartialFromCodedStream(
         break;
       }
 
-      // optional bytes failed_reason = 2;
+      // required bytes failed_reason = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_failed_reason:
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_failed_reason()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_player_id;
+        break;
+      }
+
+      // required uint64 player_id = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_player_id:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &player_id_)));
+          set_has_player_id();
         } else {
           goto handle_uninterpreted;
         }
@@ -228,10 +248,15 @@ void S2CLoginRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->login_result(), output);
   }
 
-  // optional bytes failed_reason = 2;
+  // required bytes failed_reason = 2;
   if (has_failed_reason()) {
     ::google::protobuf::internal::WireFormatLite::WriteBytes(
       2, this->failed_reason(), output);
+  }
+
+  // required uint64 player_id = 3;
+  if (has_player_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->player_id(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -247,11 +272,16 @@ void S2CLoginRsp::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->login_result(), target);
   }
 
-  // optional bytes failed_reason = 2;
+  // required bytes failed_reason = 2;
   if (has_failed_reason()) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
         2, this->failed_reason(), target);
+  }
+
+  // required uint64 player_id = 3;
+  if (has_player_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->player_id(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -270,11 +300,18 @@ int S2CLoginRsp::ByteSize() const {
       total_size += 1 + 1;
     }
 
-    // optional bytes failed_reason = 2;
+    // required bytes failed_reason = 2;
     if (has_failed_reason()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::BytesSize(
           this->failed_reason());
+    }
+
+    // required uint64 player_id = 3;
+    if (has_player_id()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->player_id());
     }
 
   }
@@ -310,6 +347,9 @@ void S2CLoginRsp::MergeFrom(const S2CLoginRsp& from) {
     if (from.has_failed_reason()) {
       set_failed_reason(from.failed_reason());
     }
+    if (from.has_player_id()) {
+      set_player_id(from.player_id());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -327,7 +367,7 @@ void S2CLoginRsp::CopyFrom(const S2CLoginRsp& from) {
 }
 
 bool S2CLoginRsp::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
 
   return true;
 }
@@ -336,6 +376,7 @@ void S2CLoginRsp::Swap(S2CLoginRsp* other) {
   if (other != this) {
     std::swap(login_result_, other->login_result_);
     std::swap(failed_reason_, other->failed_reason_);
+    std::swap(player_id_, other->player_id_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

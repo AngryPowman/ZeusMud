@@ -2,6 +2,7 @@
 
 bool GameSessionManager::init()
 {
+    return true;
 }
 
 void GameSessionManager::destroy()

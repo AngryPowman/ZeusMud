@@ -22,14 +22,19 @@ namespace Protocol
       get { return _login_result; }
       set { _login_result = value; }
     }
-
-    private byte[] _failed_reason = null;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"failed_reason", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
+    private byte[] _failed_reason;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"failed_reason", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public byte[] failed_reason
     {
       get { return _failed_reason; }
       set { _failed_reason = value; }
+    }
+    private ulong _player_id;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong player_id
+    {
+      get { return _player_id; }
+      set { _player_id = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

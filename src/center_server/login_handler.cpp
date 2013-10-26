@@ -15,7 +15,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
     debug_log("[User Login] -> (Username='%s', Password='%s')", request.email().c_str(), request.password().c_str());
 
     //≈–∂œ” œ‰’ ∫≈∑«∑®
-    if (GameUtil::getInstance().checkEmailValid(request.email()) == false)
+    if (GameUtil::checkEmailValid(request.email()) == false)
     {
         Protocol::S2CLoginRsp login_response;
         login_response.set_login_result(false);
@@ -27,7 +27,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
     }
 
     //≈–∂œ√‹¬Îhash∑«∑®
-    if (GameUtil::getInstance().checkPasswordHashValid(request.password()) == false)
+    if (GameUtil::checkPasswordHashValid(request.password()) == false)
     {
         Protocol::S2CLoginRsp login_response;
         login_response.set_login_result(false);
@@ -57,6 +57,9 @@ void GameSession::user_login_handler(const NetworkMessage& message)
         }
         else
         {
+            uint64 playerId = GameUtil::toUniqueId(request.email());
+            login_response.set_player_id(playerId);
+
             //—È÷§≥…π¶
             debug_log("email('%s') and password('%s') matched, authentication success.", request.email().c_str(), request.password().c_str());
         }
@@ -79,7 +82,7 @@ void GameSession::user_register_handler(const NetworkMessage& message)
     debug_log("[User Register] -> (Username='%s', Nickname='%s')", request.email().c_str(), request.nickname().c_str());
 
     //≈–∂œ” œ‰’ ∫≈∑«∑®
-    if (GameUtil::getInstance().checkEmailValid(request.email()) == false)
+    if (GameUtil::checkEmailValid(request.email()) == false)
     {
         Protocol::S2CRegisterRsp register_respone;
         register_respone.set_register_result(false);
@@ -91,7 +94,7 @@ void GameSession::user_register_handler(const NetworkMessage& message)
     }
 
     //≈–∂œ√‹¬Îhash∑«∑®
-    if (GameUtil::getInstance().checkPasswordHashValid(request.password()) == false)
+    if (GameUtil::checkPasswordHashValid(request.password()) == false)
     {
         Protocol::S2CRegisterRsp register_respone;
         register_respone.set_register_result(false);
@@ -130,7 +133,7 @@ void GameSession::user_register_handler(const NetworkMessage& message)
     }
 
     GameDatabaseSession::getInstance().insertNewUserRecord(
-        GameUtil::getInstance().toUniqueId(request.email()),
+        GameUtil::toUniqueId(request.email()),
         request.email(),
         request.password(),
         (uint8)request.gender(),

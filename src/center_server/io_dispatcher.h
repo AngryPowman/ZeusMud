@@ -4,7 +4,7 @@
 #include <network_common.h>
 #include <tcp_connection.h>
 #include "opcodes_handler.h"
-#include "session_manager.h"
+#include "game_session_manager.h"
 
 class IODispatcher
 {
