@@ -39,6 +39,21 @@ protected:
         }
     }
 
+    void send_error(uint32 error_code)
+    {
+        Protocol::S2CError error;
+        error.set_error_code(error_code);
+        send_message<Protocol::S2CError>(Opcodes::S2CError, error);
+    }
+
+    void send_error_ex(uint32 error_code, const std::string& error_reason)
+    {
+        Protocol::S2CErrorEx error_ex;
+        error_ex.set_error_code(error_code);
+        error_ex.set_error_reason(error_reason);
+        send_message<Protocol::S2CErrorEx>(Opcodes::S2CErrorEx, error_ex);
+    }
+
 private:
     uint64 _sessionId;
     TcpConnectionPtr _connection;

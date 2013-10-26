@@ -10,6 +10,9 @@ namespace Opcodes
     const uint32 S2CLoginRsp     = 10001;
     const uint32 C2SRegisterReq  = 10002;            //注册请求
     const uint32 S2CRegisterRsp  = 10003;            //注册回应
+    const uint32 C2SGetPlayerProfileReq = 15000;
+    const uint32 S2CError        = 99990;            //注册回应
+    const uint32 S2CErrorEx      = 99991;            //注册回应
 }
 
 #endif
