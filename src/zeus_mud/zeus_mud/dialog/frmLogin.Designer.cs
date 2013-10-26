@@ -57,6 +57,9 @@
             this.txtPassword.PasswordChar = '●';
             this.txtPassword.Size = new System.Drawing.Size(179, 24);
             this.txtPassword.TabIndex = 2;
+            this.txtPassword.Click += new System.EventHandler(this.txtPassword_Click);
+            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
+            this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
             // 
             // txtUsername
             // 
@@ -76,7 +79,7 @@
             this.btnRegister.Location = new System.Drawing.Point(304, 110);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(63, 23);
-            this.btnRegister.TabIndex = 3;
+            this.btnRegister.TabIndex = 6;
             this.btnRegister.Text = "注册";
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
@@ -88,7 +91,7 @@
             this.chkSavePwd.Location = new System.Drawing.Point(112, 171);
             this.chkSavePwd.Name = "chkSavePwd";
             this.chkSavePwd.Size = new System.Drawing.Size(72, 16);
-            this.chkSavePwd.TabIndex = 14;
+            this.chkSavePwd.TabIndex = 3;
             this.chkSavePwd.Text = "记住密码";
             this.chkSavePwd.UseVisualStyleBackColor = false;
             // 
@@ -99,7 +102,7 @@
             this.chkAutoLogin.Location = new System.Drawing.Point(190, 171);
             this.chkAutoLogin.Name = "chkAutoLogin";
             this.chkAutoLogin.Size = new System.Drawing.Size(72, 16);
-            this.chkAutoLogin.TabIndex = 15;
+            this.chkAutoLogin.TabIndex = 4;
             this.chkAutoLogin.Text = "自动登录";
             this.chkAutoLogin.UseVisualStyleBackColor = false;
             this.chkAutoLogin.CheckedChanged += new System.EventHandler(this.chkAutoLogin_CheckedChanged);
@@ -111,7 +114,7 @@
             this.button1.Location = new System.Drawing.Point(304, 140);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(63, 23);
-            this.button1.TabIndex = 16;
+            this.button1.TabIndex = 7;
             this.button1.Text = "找回密码";
             this.button1.UseVisualStyleBackColor = false;
             // 
@@ -153,7 +156,7 @@
             this.btnLogin.Location = new System.Drawing.Point(116, 9);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(155, 39);
-            this.btnLogin.TabIndex = 6;
+            this.btnLogin.TabIndex = 5;
             this.btnLogin.Text = "登     录";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
