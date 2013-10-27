@@ -18,6 +18,8 @@ void GameSessionManager::destroy()
 
 GameSession* GameSessionManager::createSession(const uint64& session_id)
 {
+    if (_sessions.size() >= MAX_SESSIONS) warning_log("Session count already at the limit.");
+
     GameSession* session = _sessionPool.acquire(session_id);
     if (session != nullptr && add(session))
     {

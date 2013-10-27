@@ -6,17 +6,11 @@
 #include <object_pool.hpp>
 #include "game_session.h"
 
-#define MAX_SESSIONS 3000
-
-#if defined(WIN32)
-typedef std::unordered_map<uint64, GameSession*> GameSessionMap;
-#else
-typedef std::map<uint64, GameSession*> GameSessionMap;
-#endif
-
 class GameSessionManager
     : public Venus::Singleton<GameSessionManager>
 {
+    static const int MAX_SESSIONS = 3000;
+
 public:
     bool init();
     void destroy();
@@ -34,7 +28,7 @@ private:
 
 private:
     std::mutex _mutex;
-    GameSessionMap _sessions;
+    adap_map<uint64, GameSession*> _sessions;
     Venus::ObjectPool<GameSession> _sessionPool;
 };
 

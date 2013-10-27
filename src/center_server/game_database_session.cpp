@@ -47,7 +47,7 @@ bool GameDatabaseSession::userAuth(const std::string& email, const std::string& 
 }
 
 void GameDatabaseSession::insertNewUserRecord(
-    uint64 user_id, 
+    uint64 guid, 
     const std::string& email,
     const std::string& password,
     uint8 gender,
@@ -57,9 +57,9 @@ void GameDatabaseSession::insertNewUserRecord(
     )
 {
     _db_stmt = (_db_session << 
-        "INSERT INTO users(user_id, email, password, gender, nickname, register_ip, register_timestamp) "
-        "VALUES(:user_id, :email, :password, :gender, :nickname, :register_ip, :register_timestamp);",
-        Poco::Data::use(user_id),
+        "INSERT INTO users(guid, email, password, gender, nickname, register_ip, register_timestamp) "
+        "VALUES(:guid, :email, :password, :gender, :nickname, :register_ip, :register_timestamp);",
+        Poco::Data::use(guid),
         Poco::Data::use(email),
         Poco::Data::use(password),
         Poco::Data::use(gender),

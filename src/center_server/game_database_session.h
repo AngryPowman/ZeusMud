@@ -30,7 +30,7 @@ public:
 
     //插入新的用户记录
     void insertNewUserRecord(
-        uint64 user_id, 
+        uint64 guid, 
         const std::string& email,
         const std::string& password,
         uint8 gender,

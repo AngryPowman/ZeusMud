@@ -57,8 +57,8 @@ void GameSession::user_login_handler(const NetworkMessage& message)
         }
         else
         {
-            uint64 playerId = GameUtil::toUniqueId(request.email());
-            login_response.set_player_id(playerId);
+            uint64 guid = GameUtil::toUniqueId(request.email());
+            login_response.set_player_id(guid);
 
             //验证成功
             debug_log("email('%s') and password('%s') matched, authentication success.", request.email().c_str(), request.password().c_str());
