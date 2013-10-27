@@ -2,43 +2,40 @@
 #define SESSION_MANAGER_H_
 
 #include <common.h>
+#include <network_common.h>
 #include <object_pool.hpp>
-#include <manager.h>
 #include "game_session.h"
 
-class SessionPool
-    : public Venus::Singleton<SessionPool>
-{
-public:
-    ~SessionPool()
-    {
-    }
+#define MAX_SESSIONS 3000
 
-    GameSession* acquire(const uint64& session_id)
-    {
-        return _sessionPool.acquire(session_id);
-    }
-
-    void release(GameSession* session)
-    {
-        _sessionPool.release(session);
-    }
-
-private:
-    Venus::ObjectPool<GameSession> _sessionPool;
-};
+#if defined(WIN32)
+typedef std::unordered_map<uint64, GameSession*> GameSessionMap;
+#else
+typedef std::map<uint64, GameSession*> GameSessionMap;
+#endif
 
 class GameSessionManager
-    : public Venus::ObjectManager<uint64, GameSession>
+    : public Venus::Singleton<GameSessionManager>
 {
 public:
     bool init();
     void destroy();
 
-    void broadcast(const NetworkMessage& message);
+public:
+    GameSession* createSession(const uint64& session_id);
+    void destroySession(GameSession* session);
+    GameSession* getSession(const uint64& id);
+
+    template <typename T> void broadcast(uint32 opcode, const T& message);
 
 private:
+    bool add(GameSession* session);
+    void remove(const uint64& id);
 
+private:
+    std::mutex _mutex;
+    GameSessionMap _sessions;
+    Venus::ObjectPool<GameSession> _sessionPool;
 };
 
 #endif

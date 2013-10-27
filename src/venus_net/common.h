@@ -63,6 +63,9 @@ typedef unsigned long long uint64;
 #include <deque>
 #include <stack>
 #include <vector>
+#ifdef WIN32
+#include <unordered_map>
+#endif
 #include <map>
 #include <hash_map>
 #include <mutex>

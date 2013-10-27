@@ -70,7 +70,7 @@ private:
 #define warning_log(fmt, ...) \
     poco_warning(__G_LOGGER__, __FORMAT__(fmt, __VA_ARGS__))
 
-#define information_log(fmt, ...) \
+#define info_log(fmt, ...) \
     poco_information(__G_LOGGER__, __FORMAT__(fmt, __VA_ARGS__))
 
 #define debug_log(fmt, ...) \

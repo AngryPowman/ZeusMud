@@ -37,3 +37,4 @@ Release/
 /output/mud_server/*.exe
 
 /output/mud_server/*.log
+/output/mud_client/Config.xml
