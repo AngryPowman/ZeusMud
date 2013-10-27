@@ -31,11 +31,14 @@
     <ClInclude Include="game_session_manager.h">
       <Filter>manager</Filter>
     </ClInclude>
-    <ClInclude Include="game_objects_factory.h">
-      <Filter>manager\obj_pool</Filter>
-    </ClInclude>
     <ClInclude Include="player_db.h">
       <Filter>data\dbc</Filter>
+    </ClInclude>
+    <ClInclude Include="game_object.h">
+      <Filter>object</Filter>
+    </ClInclude>
+    <ClInclude Include="player_pool.h">
+      <Filter>object\obj_pool</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -87,7 +90,7 @@
     <Filter Include="object">
       <UniqueIdentifier>{132ee0b1-f56f-4b30-9bef-b935e5a036e7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="manager\obj_pool">
+    <Filter Include="object\obj_pool">
       <UniqueIdentifier>{fdefb41c-6204-42a3-b506-76ab3e18d3df}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

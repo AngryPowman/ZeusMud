@@ -2,15 +2,14 @@
 #define __PLAYER_H__
 
 #include <common.h>
+#include "game_object.h"
 
 class GameSession;
 struct PlayerDB;
-class Player
+class Player : public GameObject
 {
 public:
     Player();
-    Player(uint64 guid);
-    Player(uint64 guid, GameSession* session);
     virtual ~Player();
 
 public:

@@ -92,9 +92,9 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="game_object.h" />
     <ClInclude Include="player_db.h" />
     <ClInclude Include="game_database_session.h" />
-    <ClInclude Include="game_objects_factory.h" />
     <ClInclude Include="game_service_deamon.h" />
     <ClInclude Include="game_service.h" />
     <ClInclude Include="game_session.h" />
@@ -106,6 +106,7 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     <ClInclude Include="opcodes_handler.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="game_session_manager.h" />
+    <ClInclude Include="player_pool.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game_database_session.cpp" />

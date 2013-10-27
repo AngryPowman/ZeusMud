@@ -5,16 +5,6 @@ Player::Player()
 {
 }
 
-Player::Player(uint64 guid)
-{
-
-}
-
-Player::Player(uint64 guid, GameSession* session)
-{
-
-}
-
 Player::~Player()
 {
 
