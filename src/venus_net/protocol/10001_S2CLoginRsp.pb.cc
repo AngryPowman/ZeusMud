@@ -82,7 +82,7 @@ void protobuf_AddDesc_10001_5fS2CLoginRsp_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\02710001_S2CLoginRsp.proto\022\010Protocol\"M\n\013S"
     "2CLoginRsp\022\024\n\014login_result\030\001 \002(\010\022\025\n\rfail"
-    "ed_reason\030\002 \001(\014\022\021\n\tplayer_id\030\003 \002(\004", 114);
+    "ed_reason\030\002 \001(\014\022\021\n\tplayer_id\030\003 \001(\004", 114);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "10001_S2CLoginRsp.proto", &protobuf_RegisterTypes);
   S2CLoginRsp::default_instance_ = new S2CLoginRsp();
@@ -209,7 +209,7 @@ bool S2CLoginRsp::MergePartialFromCodedStream(
         break;
       }
 
-      // required uint64 player_id = 3;
+      // optional uint64 player_id = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -254,7 +254,7 @@ void S2CLoginRsp::SerializeWithCachedSizes(
       2, this->failed_reason(), output);
   }
 
-  // required uint64 player_id = 3;
+  // optional uint64 player_id = 3;
   if (has_player_id()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->player_id(), output);
   }
@@ -279,7 +279,7 @@ void S2CLoginRsp::SerializeWithCachedSizes(
         2, this->failed_reason(), target);
   }
 
-  // required uint64 player_id = 3;
+  // optional uint64 player_id = 3;
   if (has_player_id()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->player_id(), target);
   }
@@ -307,7 +307,7 @@ int S2CLoginRsp::ByteSize() const {
           this->failed_reason());
     }
 
-    // required uint64 player_id = 3;
+    // optional uint64 player_id = 3;
     if (has_player_id()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt64Size(
@@ -367,7 +367,7 @@ void S2CLoginRsp::CopyFrom(const S2CLoginRsp& from) {
 }
 
 bool S2CLoginRsp::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000005) != 0x00000005) return false;
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
   return true;
 }

@@ -43,6 +43,10 @@ void GameSession::user_login_handler(const NetworkMessage& message)
     //检查登录帐号是否存在
     Protocol::S2CLoginRsp login_response;
     bool user_exists = GameDatabaseSession::getInstance().checkUserExists(request.email());
+
+    uint64 guid = GameUtil::toUniqueId(request.email());
+    login_response.set_player_id(guid);
+
     if (user_exists == true)
     {
         debug_log("User ('%s') not exists.", request.email().c_str());
@@ -66,7 +70,6 @@ void GameSession::user_login_handler(const NetworkMessage& message)
             // ...
 
             //从数据库加载玩家数据
-            uint64 guid = GameUtil::toUniqueId(request.email());
             Player* player = PlayerPool::getInstance().acquire(guid);
 
             if (player != nullptr)
@@ -83,7 +86,6 @@ void GameSession::user_login_handler(const NetworkMessage& message)
                     error_log("Load player from db failed! guid = %ull", guid);
                 }
 
-                login_response.set_player_id(guid);
                 login_response.set_login_result(result);
             }
             else

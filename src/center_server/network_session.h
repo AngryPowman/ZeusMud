@@ -17,7 +17,6 @@ public:
     TcpConnectionPtr& connection();
     uint64 session_id() const;
 
-protected:
     template <typename T> void send_message(uint32 opcode, const T& message)
     {
         if (_connection != nullptr)

@@ -110,7 +110,7 @@ class S2CLoginRsp : public ::google::protobuf::Message {
   inline ::std::string* release_failed_reason();
   inline void set_allocated_failed_reason(::std::string* failed_reason);
 
-  // required uint64 player_id = 3;
+  // optional uint64 player_id = 3;
   inline bool has_player_id() const;
   inline void clear_player_id();
   static const int kPlayerIdFieldNumber = 3;
@@ -241,7 +241,7 @@ inline void S2CLoginRsp::set_allocated_failed_reason(::std::string* failed_reaso
   }
 }
 
-// required uint64 player_id = 3;
+// optional uint64 player_id = 3;
 inline bool S2CLoginRsp::has_player_id() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }

@@ -31,8 +31,10 @@ namespace Protocol
       get { return _failed_reason; }
       set { _failed_reason = value; }
     }
-    private ulong _player_id;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+
+    private ulong _player_id = default(ulong);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"player_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(ulong))]
     public ulong player_id
     {
       get { return _player_id; }
