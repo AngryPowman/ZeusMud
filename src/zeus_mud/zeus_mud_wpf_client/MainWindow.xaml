@@ -74,7 +74,9 @@
                         <avalondock:LayoutAnchorablePane DockHeight="142">
 
                             <!--在线聊天-->
-                            <avalondock:LayoutAnchorable x:Name="Chat" ContentId="Chat" Title="在线聊天" ToolTip="在线聊天" CanHide="true" CanClose="true" CanAutoHide="True"/>
+                            <avalondock:LayoutAnchorable x:Name="Chat" ContentId="Chat" Title="在线聊天" ToolTip="在线聊天" CanHide="true" CanClose="true" CanAutoHide="True">
+                            
+                            </avalondock:LayoutAnchorable>
 
                         </avalondock:LayoutAnchorablePane>
 
