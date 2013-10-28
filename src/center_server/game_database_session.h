@@ -7,6 +7,8 @@
 #include <Poco/Data/RecordSet.h>
 #include <Poco/Data/SessionFactory.h>
 
+class PlayerDB;
+
 class GameDatabaseSession
     : public Venus::Singleton<GameDatabaseSession>
 {
@@ -38,6 +40,11 @@ public:
         const std::string& register_ip,
         uint64 register_timestamp
     );
+
+    //====================================================================
+    // ½ÇÉ«Ïà¹Ø
+    //====================================================================
+    bool loadPlayerInfo(uint64 guid, PlayerDB* playerDB);
 
 private:
     Poco::Data::Session _db_session;

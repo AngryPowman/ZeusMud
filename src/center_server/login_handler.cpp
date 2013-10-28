@@ -7,6 +7,7 @@
 #include "opcodes.h"
 #include "game_util.h"
 #include "player_pool.h"
+#include "game_session_manager.h"
 
 void GameSession::user_login_handler(const NetworkMessage& message)
 {
@@ -58,15 +59,38 @@ void GameSession::user_login_handler(const NetworkMessage& message)
         }
         else
         {
-            //uint64 guid = GameUtil::toUniqueId(request.email());
-            //login_response.set_player_id(guid);
-
-            // Todo : load the player data if specify player cache exists
-
-            Player* player = PlayerPool::getInstance().acquire();
-
             //验证成功
             debug_log("email('%s') and password('%s') matched, authentication success.", request.email().c_str(), request.password().c_str());
+
+            // Todo : load the player data if specify player cache exists
+            // ...
+
+            //从数据库加载玩家数据
+            uint64 guid = GameUtil::toUniqueId(request.email());
+            Player* player = PlayerPool::getInstance().acquire(guid);
+
+            if (player != nullptr)
+            {
+                bool result = player->loadFromDB();
+                if (result == true)
+                {
+                    debug_log("Load player from db success. guid = %ull", guid);
+                    debug_log("Total online player count = %d", GameSessionManager::getInstance().sessionCount());
+                }
+                else
+                {
+                    PlayerPool::getInstance().release(player);
+                    error_log("Load player from db failed! guid = %ull", guid);
+                }
+
+                login_response.set_player_id(guid);
+                login_response.set_login_result(result);
+            }
+            else
+            {
+                login_response.set_login_result(false);
+                error_log("Acquire free player object failed in player pool. player == nullptr.");
+            }
         }
     }
     else

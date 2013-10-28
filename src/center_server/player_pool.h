@@ -5,23 +5,14 @@
 #include <object_pool.hpp>
 #include "player.h"
 
-template <typename T>
-class GameObjectPool
-    : public Venus::Singleton<GameObjectPool<T>>
+class PlayerPool
+    : public Venus::ObjectPool<Player>, public Venus::Singleton<PlayerPool>
 {
 public:
-    T* acquire()
+    Player* acquire(uint64 guid)
     {
-        return _pool.acquire();
+        return ObjectPool::acquire(guid);
     }
-
-private:
-    Venus::ObjectPool<T> _pool;
-};
-
-class PlayerPool
-    : public GameObjectPool<Player>
-{
 };
 
 #endif

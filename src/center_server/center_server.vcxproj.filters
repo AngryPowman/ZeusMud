@@ -63,7 +63,9 @@
     <ClCompile Include="game_session_manager.cpp">
       <Filter>manager</Filter>
     </ClCompile>
-    <ClCompile Include="player.cpp" />
+    <ClCompile Include="player.cpp">
+      <Filter>object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="network">

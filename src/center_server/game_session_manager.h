@@ -19,6 +19,7 @@ public:
     GameSession* createSession(const uint64& session_id);
     void destroySession(GameSession* session);
     GameSession* getSession(const uint64& id);
+    int32 sessionCount() const;
 
     template <typename T> void broadcast(uint32 opcode, const T& message);
 

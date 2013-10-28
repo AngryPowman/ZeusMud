@@ -5,11 +5,11 @@
 #include "game_object.h"
 
 class GameSession;
-struct PlayerDB;
+class PlayerDB;
 class Player : public GameObject
 {
 public:
-    Player();
+    Player(uint64 guid);
     virtual ~Player();
 
 public:
@@ -21,6 +21,7 @@ public:
     GameSession* session();
 
 private:
+    uint64 _guid;
     PlayerDB* _playerDB;
 };
 

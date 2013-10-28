@@ -80,3 +80,8 @@ GameSession* GameSessionManager::getSession(const uint64& id)
     auto iter = _sessions.find(id);
     return iter != _sessions.end() ? iter->second : nullptr;
 }
+
+int32 GameSessionManager::sessionCount() const
+{
+    return _sessions.size();
+}

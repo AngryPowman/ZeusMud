@@ -1,4 +1,5 @@
 #include "game_database_session.h"
+#include "player_db.h"
 
 GameDatabaseSession::GameDatabaseSession()
     : _db_session("SQLite", "./data/zeus_mud.db"), _db_stmt(_db_session)
@@ -68,4 +69,22 @@ void GameDatabaseSession::insertNewUserRecord(
         Poco::Data::use(register_timestamp));
 
     _db_stmt.execute();
+}
+
+bool GameDatabaseSession::loadPlayerInfo(uint64 guid, PlayerDB* playerDB)
+{
+    _db_stmt = (_db_session 
+        << "SELECT email, gender, nickname, register_ip, register_time, last_login_time "
+           "FROM users WHERE guid = :guid;",
+        Poco::Data::limit(1), 
+        Poco::Data::use(guid),
+        Poco::Data::into(playerDB->UserInfo.email),
+        Poco::Data::into(playerDB->UserInfo.gender),
+        Poco::Data::into(playerDB->UserInfo.nickname),
+        Poco::Data::into(playerDB->UserInfo.register_ip),
+        Poco::Data::into(playerDB->UserInfo.register_time),
+        Poco::Data::into(playerDB->UserInfo.last_login_time)
+        );
+
+    return (_db_stmt.execute() > 0);
 }
