@@ -1,0 +1,19 @@
+@import "variables.less";
+@import "mixins.less";
+
+#carousel-main {
+	background: #a6a6a6;
+	.buttons {
+		position: absolute;
+		right: 120px;
+		top: 80px;
+		.download {
+			padding: 17px 50px;
+			font-size: 30px;
+			.box-shadow(black 0 0 2px 0px);
+			&:hover{
+				.box-shadow(@btn-danger-border 0 0 2px 1px);
+			}
+		}
+	}
+}
