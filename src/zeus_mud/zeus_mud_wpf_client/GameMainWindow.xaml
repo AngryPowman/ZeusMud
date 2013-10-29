@@ -4,7 +4,7 @@
         xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
         xmlns:dxco="http://schemas.devexpress.com/winfx/2008/xaml/controls" 
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
-        xmlns:avalondock="http://schemas.xceed.com/wpf/xaml/avalondock" xmlns:UIComponent="clr-namespace:zeus_mud_wpf_client.UIComponent" x:Class="zeus_mud_wpf_client.MainWindow"
+        xmlns:avalondock="http://schemas.xceed.com/wpf/xaml/avalondock" x:Class="zeus_mud_wpf_client.GameMainWindow"
         Height="768" Width="1024" ResizeMode="CanResizeWithGrip" 
         Title="中国好游戏"
         >
@@ -50,7 +50,7 @@
 
                         <avalondock:LayoutAnchorable x:Name="PlayerProfile" ContentId="PlayerProfile" Title="我的信息" ToolTip="" CanHide="true" CanClose="true" CanAutoHide="True">
                             <WindowsFormsHost>
-                                <UIComponent:WinformUIPlayerProfile Dock="Fill" />
+                               
                             </WindowsFormsHost>
                         </avalondock:LayoutAnchorable>
 

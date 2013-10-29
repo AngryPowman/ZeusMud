@@ -14,6 +14,8 @@ using zeus_mud.dialog;
 using System.Security.Cryptography;
 using zeus_mud.game.data;
 using System.Xml;
+using Wpf.ZuesMud;
+using zeus_mud_wpf_client;
 
 namespace zeus_mud
 {
@@ -88,8 +90,8 @@ namespace zeus_mud
             {
                 saveXml();                
                 LoginData.email = txtUsername.Text;
-                GlobalObject.GameMainForm = new frmGameMain();
-                GlobalObject.GameMainForm.Show();
+                GlobalObject.MainWindow = new GameMainWindow();
+                GlobalObject.MainWindow.Show();
                 this.Hide();
             }
             else

@@ -28,23 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.kryptonRichTextBox1 = new ComponentFactory.Krypton.Toolkit.KryptonRichTextBox();
             this.SuspendLayout();
-            // 
-            // kryptonRichTextBox1
-            // 
-            this.kryptonRichTextBox1.Location = new System.Drawing.Point(3, 3);
-            this.kryptonRichTextBox1.Name = "kryptonRichTextBox1";
-            this.kryptonRichTextBox1.Size = new System.Drawing.Size(399, 107);
-            this.kryptonRichTextBox1.TabIndex = 0;
-            this.kryptonRichTextBox1.Text = "kryptonRichTextBox1";
             // 
             // GameChatPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 275);
-            this.Controls.Add(this.kryptonRichTextBox1);
+            this.ClientSize = new System.Drawing.Size(422, 253);
             this.Name = "GameChatPanel";
             this.Load += new System.EventHandler(this.GameChatPanel_Load);
             this.ResumeLayout(false);
@@ -52,7 +42,5 @@
         }
 
         #endregion
-
-        private ComponentFactory.Krypton.Toolkit.KryptonRichTextBox kryptonRichTextBox1;
     }
 }

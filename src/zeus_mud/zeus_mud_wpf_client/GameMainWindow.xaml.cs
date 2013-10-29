@@ -18,9 +18,9 @@ namespace zeus_mud_wpf_client
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GameMainWindow : Window
     {
-        public MainWindow()
+        public GameMainWindow()
         {
             InitializeComponent();
         }

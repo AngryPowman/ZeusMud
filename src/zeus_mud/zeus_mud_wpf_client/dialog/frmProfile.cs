@@ -9,9 +9,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WeifenLuo.WinFormsUI.Docking;
 using zeus_mud.game.data;
 using zeus_mud.network;
+using Wpf.ZuesMud;
 
 namespace zeus_mud.dialog
 {

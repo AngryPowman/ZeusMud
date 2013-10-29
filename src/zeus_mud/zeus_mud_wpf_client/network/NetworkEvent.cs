@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using ProtoBuf;
 using System.Windows.Forms;
 using System.Diagnostics;
+using Wpf.ZuesMud;
 
 namespace Wpf.network
 {

@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wpf;
 using Wpf.network;
+using Wpf.ZuesMud;
 
 namespace zeus_mud.dialog
 {

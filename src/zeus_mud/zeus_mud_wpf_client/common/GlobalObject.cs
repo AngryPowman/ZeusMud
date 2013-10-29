@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using zeus_mud;
 using zeus_mud.dialog;
+using zeus_mud_wpf_client;
 
-namespace Wpf
+namespace Wpf.ZuesMud
 {
     class GlobalObject
     {
         public static frmLogin LoginForm { get; set; }
         public static frmRegister RegisterForm { get; set; }
-        public static frmGameMain GameMainForm { get; set; }
-        public static frmGameMain_ GameMainForm_ { get; set; }
-        public static frmBattle BattleForm { get; set; }
+        //public static frmGameMain GameMainForm { get; set; }
+        //public static frmGameMain_ GameMainForm_ { get; set; }
+        public static GameMainWindow MainWindow { get; set; }
         public static frmProfile ProfileForm { get; set; }
 
         public static string ConfigPath = Environment.CurrentDirectory + @"\Config.xml";
