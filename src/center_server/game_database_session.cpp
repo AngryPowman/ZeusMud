@@ -54,19 +54,19 @@ void GameDatabaseSession::insertNewUserRecord(
     uint8 gender,
     const std::string& nickname,
     const std::string& register_ip,
-    uint64 register_timestamp
+    uint64 register_time
     )
 {
     _db_stmt = (_db_session << 
-        "INSERT INTO users(guid, email, password, gender, nickname, register_ip, register_timestamp) "
-        "VALUES(:guid, :email, :password, :gender, :nickname, :register_ip, :register_timestamp);",
+        "INSERT INTO users(guid, email, password, gender, nickname, register_ip, register_time) "
+        "VALUES(:guid, :email, :password, :gender, :nickname, :register_ip, :register_time);",
         Poco::Data::use(guid),
         Poco::Data::use(email),
         Poco::Data::use(password),
         Poco::Data::use(gender),
         Poco::Data::use(nickname),
         Poco::Data::use(register_ip),
-        Poco::Data::use(register_timestamp));
+        Poco::Data::use(register_time));
 
     _db_stmt.execute();
 }
