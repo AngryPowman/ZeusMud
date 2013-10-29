@@ -75,6 +75,12 @@
     <Compile Include="dialog\frmBattle.Designer.cs">
       <DependentUpon>frmBattle.cs</DependentUpon>
     </Compile>
+    <Compile Include="dialog\frmGameCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialog\frmGameCreate.Designer.cs">
+      <DependentUpon>frmGameCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="dialog\frmGameMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,8 +125,13 @@
     <Compile Include="protocol\10001_S2CLoginRsp.cs" />
     <Compile Include="protocol\10002_C2SRegisterReq.cs" />
     <Compile Include="protocol\10003_S2CRegisterRsp.cs" />
+    <Compile Include="protocol\21001_C2SGameCreateReq.cs" />
+    <Compile Include="protocol\21002_S2CGameCreateRsp.cs" />
     <EmbeddedResource Include="dialog\frmBattle.resx">
       <DependentUpon>frmBattle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialog\frmGameCreate.resx">
+      <DependentUpon>frmGameCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialog\frmGameMain.resx">
       <DependentUpon>frmGameMain.cs</DependentUpon>

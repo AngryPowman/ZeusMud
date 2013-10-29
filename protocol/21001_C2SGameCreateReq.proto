@@ -1,0 +1,6 @@
+package Protocol;
+
+message C2SGameCreateReq {
+	required string game_name = 1;
+	required string password = 2;
+}

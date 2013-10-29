@@ -1,0 +1,6 @@
+package Protocol;
+
+message S2CGameCreateRsp {
+	required bool game_create_result = 1;
+	optional bytes failed_reason = 2;
+}

@@ -14,6 +14,9 @@ namespace RobotWatchman.network
         S2CLoginRsp     = 10001,            //登录回应
         C2SRegisterReq  = 10002,            //注册请求
         S2CRegisterRsp  = 10003,            //注册回应
+        C2SGameCreateReq = 21001,           //创建房间请求
+        S2CGameCreateRsp = 21002,           //创建房间回应
+
     }
 
     public delegate void NetworkMessageCallback(MemoryStream stream);
