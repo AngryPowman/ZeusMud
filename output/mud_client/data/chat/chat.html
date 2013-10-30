@@ -1,19 +1,63 @@
-<html>
+<html lang="zh-CN">
 <head>
+<link href="js/dist/css/bootstrap.min.css" rel="stylesheet">
 <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-<script src="jquery-1.10.2.min.js"></script>
+<script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/dist/js/bootstrap.min.js"></script>
 <script>
-function addChatMessage(type)
+function addChatMessage(type, name, content)
 {
-	$("body").fadeIn().append("<font color=red>Hehe.</font>");        // 追加新元素
-	$("body").fadeIn().append("<a href=aaaaaa style=resize: none; width:320px; height:70px;>fuck</a>"); 
+	if (type == "" || content == "")
+	{
+		return;
+	}
+	
+	/*
+		0.System - Danger
+		1.World - Primary
+		2.Private - Success
+		3.Guild - Warning
+	*/
+	
+	var label_type, channel_lable_name;
+	switch (type)
+	{
+	case 0:
+		label_type = "label label-Danger";
+		channel_lable_name = "系统";
+		break;
+	case 1:
+		label_type = "label label-Primary";
+		channel_lable_name = "世界";
+		break;
+	case 2:
+		label_type = "label label-Success";
+		channel_lable_name = "私聊";
+		break;
+	case 3:
+		label_type = "label label-Warning";
+		channel_lable_name = "公会";
+		break;
+	default: return;
+	}
+	
+	var chatModePrefix = "<span class=\"" + label_type + "\">" + channel_lable_name + "</span>";
+	var chatNamePrefix = "<button type=\"button\" class=\"btn btn-default-xs\">" + name + "</button>"
+	
+	
+	var message = chatModePrefix + chatNamePrefix + " " + content;
+	
+	$("body").append("<div><p>" + message + "</p></div>");
+
+	// 追加新元素
+	//$("body").fadeIn().append("<a href=aaaaaa style=resize: none; width:320px; height:70px;>fuck</a>"); 
 
 }
 </script>
 </head>
 <body>
 
-<button onclick="addChatMessage()">test</button>
+<button onclick="addChatMessage(1, 'asdfadsf', '11111')">test</button>
 
 </body>
 </html>
