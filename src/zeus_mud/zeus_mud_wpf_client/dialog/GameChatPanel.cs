@@ -27,15 +27,21 @@ namespace zeus_mud.dialog
                 MessageBox.Show(this, "聊天模块加载错误，请检查客户端是否完整", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
-            
+
             wbWorldChat.Navigate(urlPath);
+           // wbWorldChat.Document.InvokeScript("eval", new Object[] { "window.user=GongT" });
             wbWorldChat.AllowNavigation = false;
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            wbWorldChat.Document.InvokeScript("addChatMessage", new Object [] { 1, "不射脸还是好朋友", txtSendContent.Text});
+            wbWorldChat.Document.InvokeScript("addChatMessage", new Object [] { 1, "射脸也是好朋友", 0, txtSendContent.Text});
             wbWorldChat.Document.Window.ScrollTo(0, 999999);
+        }
+
+        private void btnDebugRefresh_Click(object sender, EventArgs e)
+        {
+            wbWorldChat.Refresh(WebBrowserRefreshOption.Completely);
         }
     }
 }
