@@ -37,17 +37,17 @@
             // 
             this.txtSendContent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSendContent.Location = new System.Drawing.Point(3, 62);
+            this.txtSendContent.Location = new System.Drawing.Point(3, 74);
             this.txtSendContent.Name = "txtSendContent";
-            this.txtSendContent.Size = new System.Drawing.Size(187, 21);
+            this.txtSendContent.Size = new System.Drawing.Size(216, 21);
             this.txtSendContent.TabIndex = 1;
             // 
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(196, 62);
+            this.btnSend.Location = new System.Drawing.Point(225, 73);
             this.btnSend.Name = "btnSend";
-            this.btnSend.Size = new System.Drawing.Size(46, 21);
+            this.btnSend.Size = new System.Drawing.Size(46, 23);
             this.btnSend.TabIndex = 2;
             this.btnSend.Text = "发送";
             this.btnSend.UseVisualStyleBackColor = true;
@@ -63,7 +63,7 @@
             this.wbWorldChat.Location = new System.Drawing.Point(3, 4);
             this.wbWorldChat.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbWorldChat.Name = "wbWorldChat";
-            this.wbWorldChat.Size = new System.Drawing.Size(239, 52);
+            this.wbWorldChat.Size = new System.Drawing.Size(268, 64);
             this.wbWorldChat.TabIndex = 3;
             this.wbWorldChat.WebBrowserShortcutsEnabled = false;
             // 
@@ -71,12 +71,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.Controls.Add(this.wbWorldChat);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtSendContent);
             this.Name = "GameChatPanel";
-            this.Size = new System.Drawing.Size(298, 117);
+            this.Size = new System.Drawing.Size(327, 129);
             this.Load += new System.EventHandler(this.GameChatPanel_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

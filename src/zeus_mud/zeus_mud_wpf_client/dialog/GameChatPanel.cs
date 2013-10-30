@@ -29,11 +29,12 @@ namespace zeus_mud.dialog
             }
             
             wbWorldChat.Navigate(urlPath);
+            wbWorldChat.AllowNavigation = false;
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            wbWorldChat.Document.InvokeScript("addChatMessage", new Object [] { "xxx"});
+            wbWorldChat.Document.InvokeScript("addChatMessage", new Object [] { 1, "不射脸还是好朋友", txtSendContent.Text});
             wbWorldChat.Document.Window.ScrollTo(0, 999999);
         }
     }

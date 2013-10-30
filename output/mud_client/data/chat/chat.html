@@ -1,7 +1,7 @@
 <html lang="zh-CN">
 <head>
 <link href="js/dist/css/bootstrap.min.css" rel="stylesheet">
-<meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+<meta name="viewport" http-equiv="content-type" content="text/html;charset=utf-8;width=device-width, initial-scale=1.0"/>
 <script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/dist/js/bootstrap.min.js"></script>
 <script>
@@ -42,12 +42,11 @@ function addChatMessage(type, name, content)
 	}
 	
 	var chatModePrefix = "<span class=\"" + label_type + "\">" + channel_lable_name + "</span>";
-	var chatNamePrefix = "<button type=\"button\" class=\"btn btn-default-xs\">" + name + "</button>"
+	var chatNamePrefix = "<code>" + name + "</code>";
 	
+	var message = chatModePrefix + chatNamePrefix + " <h5>" + content + "</h5>";
 	
-	var message = chatModePrefix + chatNamePrefix + " " + content;
-	
-	$("body").append("<div><p>" + message + "</p></div>");
+	$("body").append("<p>" + message + "</p>");
 
 	// 追加新元素
 	//$("body").fadeIn().append("<a href=aaaaaa style=resize: none; width:320px; height:70px;>fuck</a>"); 
@@ -56,8 +55,5 @@ function addChatMessage(type, name, content)
 </script>
 </head>
 <body>
-
-<button onclick="addChatMessage(1, 'asdfadsf', '11111')">test</button>
-
 </body>
 </html>
