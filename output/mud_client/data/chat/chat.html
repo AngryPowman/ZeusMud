@@ -1,52 +1,108 @@
 <html lang="zh-CN">
 <head>
-<link href="js/dist/css/bootstrap.min.css" rel="stylesheet">
-<meta name="viewport" http-equiv="content-type" content="text/html;charset=utf-8;width=device-width, initial-scale=1.0"/>
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/dist/js/bootstrap.min.js"></script>
+	<meta charset="utf-8">
+	<link href="js/dist/css/bootstrap.min.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/dist/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		#lstMain{
+			list-style: none;
+			padding-left: 0;
+		}
+	</style>
 <script>
-function addChatMessage(type, name, content)
-{
-	if (type == "" || content == "")
-	{
+var line_template='<li class="chat_line">'+
+	'\t<span class="label label-{%channel.type%}">{%channel.name%}</span>'+
+	'\t<code class="uname label-{%user.type%}">{%user.name%}</code>'+
+	'\t<span class="content">{%content%}</span>'+
+	'</li>'+
+	'';
+
+function $p(content){
+	this.render=function(data){
+		data = parse_to_path(data);
+		for(var id in data){
+			content=content.replace(new RegExp('{%'+id+'%}','ig'),data[id]);
+		}
+		return content.replace(/{%.*?%}/ig, '');
+	}
+	return this;
+}
+
+var temp_path='';
+function parse_to_path(json){
+        var ret = {};
+        for(var i in json){
+                if(!json.hasOwnProperty(i)){
+                        continue;
+                }
+                var val = json[i];
+                var type = typeof val;
+                var path = temp_path? temp_path + '.' + i : i;	
+
+                if(val===undefined || val===null){
+                        ret[path] = '';
+                } else if(/string|number|boolean/.test(type)){
+                        ret[path] = val;
+                } else if(val.constructor === Object || val.constructor === Array){
+                        var save = temp_path;
+                        temp_path = path;
+                        $.extend(ret, parse_to_path(val));
+                        temp_path = save;
+                } else{
+                        console.error('未知类型', val);
+                }
+        }
+        return ret;
+}
+
+var labelTypeDefine = {
+	0:{
+		type: "danger",
+		name: "系统"
+	},
+	1:{
+		type: "primary",
+		name: "世界"
+	},
+	2:{
+		type: "success",
+		name: "私聊"
+	},
+	3:{
+		type: "warning",
+		name: "公会"
+	}
+};
+var userTypeDefine = {
+	0:"",
+	1:"success",
+	2:"warning"
+};
+
+function addChatMessage(type, name, user_type, content){
+	if(name == "" || content == ""){
+		// console.log('empty');
 		return;
 	}
-	
-	/*
-		0.System - Danger
-		1.World - Primary
-		2.Private - Success
-		3.Guild - Warning
-	*/
-	
-	var label_type, channel_lable_name;
-	switch (type)
-	{
-	case 0:
-		label_type = "label label-Danger";
-		channel_lable_name = "系统";
-		break;
-	case 1:
-		label_type = "label label-Primary";
-		channel_lable_name = "世界";
-		break;
-	case 2:
-		label_type = "label label-Success";
-		channel_lable_name = "私聊";
-		break;
-	case 3:
-		label_type = "label label-Warning";
-		channel_lable_name = "公会";
-		break;
-	default: return;
+
+	if(!labelTypeDefine[type]){
+		// console.log(type+' not exist');
+		return;
 	}
-	
-	var chatModePrefix = "<span class=\"" + label_type + "\">" + channel_lable_name + "</span>";
-	var chatNamePrefix = "<code>" + name + "</code>";
-	
-	var message = chatModePrefix + chatNamePrefix + " <h5>" + content + "</h5>";
-	
-	$("body").append("<p>" + message + "</p>");
+
+	var data = {
+		channel: labelTypeDefine[type],
+		user: {name: name, type: userTypeDefine[user_type]},
+		content: content
+	};
+
+	if(name==window.current_user){
+		data.user.type = 'primary';
+	}
+
+	$("#lstMain").append($p(line_template).render(data));
 
 	// 追加新元素
 	//$("body").fadeIn().append("<a href=aaaaaa style=resize: none; width:320px; height:70px;>fuck</a>"); 
@@ -55,5 +111,8 @@ function addChatMessage(type, name, content)
 </script>
 </head>
 <body>
+<ul id="lstMain">
+
+</ul>
 </body>
 </html>
