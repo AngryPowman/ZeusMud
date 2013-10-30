@@ -39,8 +39,6 @@
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
-            //this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            //this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.gifBox = new TimerPictureLib.TimerPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
@@ -136,14 +134,13 @@
             this.trackBar1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.trackBar1.Location = new System.Drawing.Point(275, 170);
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(104, 42);
+            this.trackBar1.Size = new System.Drawing.Size(104, 45);
             this.trackBar1.TabIndex = 20;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.btnLogin);
-            //this.panel1.Controls.Add(this.shapeContainer1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 206);
             this.panel1.Name = "panel1";
@@ -160,29 +157,6 @@
             this.btnLogin.Text = "登     录";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
-            // 
-            // shapeContainer1
-            // 
-            /*this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.rectangleShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(387, 60);
-            this.shapeContainer1.TabIndex = 0;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // rectangleShape1
-            // 
-            this.rectangleShape1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.rectangleShape1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.rectangleShape1.FillColor = System.Drawing.Color.Silver;
-            this.rectangleShape1.FillGradientColor = System.Drawing.Color.WhiteSmoke;
-            this.rectangleShape1.FillGradientStyle = Microsoft.VisualBasic.PowerPacks.FillGradientStyle.Vertical;
-            this.rectangleShape1.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid;
-            this.rectangleShape1.Location = new System.Drawing.Point(-4, 1);
-            this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(389, 60);*/
             // 
             // gifBox
             // 

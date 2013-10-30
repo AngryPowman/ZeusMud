@@ -97,7 +97,7 @@
       <DependentUpon>frmRegister.cs</DependentUpon>
     </Compile>
     <Compile Include="dialog\GameChatPanel.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="dialog\GameChatPanel.Designer.cs">
       <DependentUpon>GameChatPanel.cs</DependentUpon>
@@ -169,7 +169,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if not exist "../../../../../output/mud_client" mkdir "../../../../../output/mud_client"
