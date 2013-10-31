@@ -11,6 +11,7 @@ using System.IO;
 
 namespace zeus_mud.dialog
 {
+    [System.Runtime.InteropServices.ComVisible(true)]
     public partial class GameChatPanel : UserControl
     {
         public GameChatPanel()
@@ -28,20 +29,29 @@ namespace zeus_mud.dialog
                 return;
             }
 
-            wbWorldChat.Navigate(urlPath);
-           // wbWorldChat.Document.InvokeScript("eval", new Object[] { "window.user=GongT" });
+            wbWorldChat.ObjectForScripting = this;
+            wbWorldChat.Navigate(urlPath + "?current_user=射脸也是好朋友");
             wbWorldChat.AllowNavigation = false;
         }
 
         private void btnSend_Click(object sender, EventArgs e)
         {
-            wbWorldChat.Document.InvokeScript("addChatMessage", new Object [] { 1, "射脸也是好朋友", 0, txtSendContent.Text});
+            wbWorldChat.Document.InvokeScript("addChatMessage", new Object [] { 1, 10000, "飞翔的企鹅", 0, txtSendContent.Text});
             wbWorldChat.Document.Window.ScrollTo(0, 999999);
         }
 
         private void btnDebugRefresh_Click(object sender, EventArgs e)
         {
             wbWorldChat.Refresh(WebBrowserRefreshOption.Completely);
+        }
+
+        public void sendMessage(String content){
+            MessageBox.Show(content);
+        }
+
+        public void userNameClicked(int id)
+        {
+            MessageBox.Show("点击了用户："+id);
         }
     }
 }
