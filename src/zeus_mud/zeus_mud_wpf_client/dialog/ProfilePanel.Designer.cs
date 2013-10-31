@@ -1,6 +1,6 @@
 ﻿namespace zeus_mud.dialog
 {
-    partial class frmProfile
+    partial class ProfilePanel
     {
         /// <summary>
         /// Required designer variable.
@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             this.picAvatar = new System.Windows.Forms.PictureBox();
-            this.txt1Level = new System.Windows.Forms.TextBox();
-            this.lblEmailNickname = new System.Windows.Forms.TextBox();
             this.lblLoadingTip = new System.Windows.Forms.Label();
+            this.lblEmailNickname = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,32 +40,12 @@
             this.picAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picAvatar.ErrorImage = null;
             this.picAvatar.InitialImage = null;
-            this.picAvatar.Location = new System.Drawing.Point(12, 12);
+            this.picAvatar.Location = new System.Drawing.Point(29, 12);
             this.picAvatar.Name = "picAvatar";
             this.picAvatar.Size = new System.Drawing.Size(72, 72);
             this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picAvatar.TabIndex = 6;
             this.picAvatar.TabStop = false;
-            // 
-            // txt1Level
-            // 
-            this.txt1Level.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txt1Level.Location = new System.Drawing.Point(12, 122);
-            this.txt1Level.Name = "txt1Level";
-            this.txt1Level.ReadOnly = true;
-            this.txt1Level.Size = new System.Drawing.Size(57, 14);
-            this.txt1Level.TabIndex = 12;
-            this.txt1Level.Text = "等级:";
-            // 
-            // lblEmailNickname
-            // 
-            this.lblEmailNickname.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lblEmailNickname.Location = new System.Drawing.Point(12, 90);
-            this.lblEmailNickname.Name = "lblEmailNickname";
-            this.lblEmailNickname.ReadOnly = true;
-            this.lblEmailNickname.Size = new System.Drawing.Size(224, 14);
-            this.lblEmailNickname.TabIndex = 10;
-            this.lblEmailNickname.Text = "<None>";
             // 
             // lblLoadingTip
             // 
@@ -79,18 +58,25 @@
             this.lblLoadingTip.TabIndex = 13;
             this.lblLoadingTip.Text = "0%";
             // 
-            // frmProfile
+            // lblEmailNickname
+            // 
+            this.lblEmailNickname.LabelStyle = ComponentFactory.Krypton.Toolkit.LabelStyle.SuperTip;
+            this.lblEmailNickname.Location = new System.Drawing.Point(3, 90);
+            this.lblEmailNickname.Name = "lblEmailNickname";
+            this.lblEmailNickname.Size = new System.Drawing.Size(61, 26);
+            this.lblEmailNickname.TabIndex = 14;
+            this.lblEmailNickname.Values.Text = "<None>";
+            // 
+            // ProfilePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 262);
-            this.Controls.Add(this.lblLoadingTip);
-            this.Controls.Add(this.txt1Level);
             this.Controls.Add(this.lblEmailNickname);
+            this.Controls.Add(this.lblLoadingTip);
             this.Controls.Add(this.picAvatar);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Name = "frmProfile";
-            this.Text = "个人资料";
+            this.Name = "ProfilePanel";
+            this.Size = new System.Drawing.Size(343, 262);
             this.Load += new System.EventHandler(this.frmProfile_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             this.ResumeLayout(false);
@@ -100,9 +86,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txt1Level;
-        private System.Windows.Forms.TextBox lblEmailNickname;
         private System.Windows.Forms.Label lblLoadingTip;
         public System.Windows.Forms.PictureBox picAvatar;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel lblEmailNickname;
     }
 }

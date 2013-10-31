@@ -15,9 +15,9 @@ using Wpf.ZuesMud;
 
 namespace zeus_mud.dialog
 {
-    public partial class frmProfile : UserControl
+    public partial class ProfilePanel : UserControl
     {
-        public frmProfile()
+        public ProfilePanel()
         {
             InitializeComponent();
         }
@@ -25,6 +25,8 @@ namespace zeus_mud.dialog
         private void frmProfile_Load(object sender, EventArgs e)
         {
             loadProfile();
+
+            lblEmailNickname.BackColor = this.BackColor;
         }
 
         void picAvatar_LoadProgressChanged(object sender, ProgressChangedEventArgs e)

@@ -16,7 +16,7 @@ namespace Wpf.ZuesMud
         //public static frmGameMain GameMainForm { get; set; }
         //public static frmGameMain_ GameMainForm_ { get; set; }
         public static GameMainWindow MainWindow { get; set; }
-        public static frmProfile ProfileForm { get; set; }
+        public static ProfilePanel ProfileForm { get; set; }
 
         public static string ConfigPath = Environment.CurrentDirectory + @"\Config.xml";
         public static string DefaultServer { get {return "127.0.0.1";}}

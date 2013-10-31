@@ -74,6 +74,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.4.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e" />
     <Reference Include="protobuf-net">
       <HintPath>..\..\..\lib\protobuf-net.dll</HintPath>
     </Reference>
@@ -118,11 +119,11 @@
     <Compile Include="dialog\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="dialog\frmProfile.cs">
+    <Compile Include="dialog\ProfilePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="dialog\frmProfile.Designer.cs">
-      <DependentUpon>frmProfile.cs</DependentUpon>
+    <Compile Include="dialog\ProfilePanel.Designer.cs">
+      <DependentUpon>ProfilePanel.cs</DependentUpon>
     </Compile>
     <Compile Include="dialog\frmRegister.cs">
       <SubType>Form</SubType>
@@ -137,9 +138,6 @@
       <DependentUpon>GameChatPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="common\GameUtil.cs" />
-    <Compile Include="dialog\WPFGameChatPanel.xaml.cs">
-      <DependentUpon>WPFGameChatPanel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="game\data\LoginData.cs" />
     <Compile Include="game\data\PlayerProfile.cs" />
     <Compile Include="common\GlobalObject.cs" />
@@ -154,10 +152,6 @@
     <Compile Include="protocol\15000_C2SGetPlayerProfileReq.cs" />
     <Compile Include="protocol\99990_S2CError.cs" />
     <Compile Include="protocol\99991_S2CErrorEx.cs" />
-    <Page Include="dialog\WPFGameChatPanel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="GameMainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -188,8 +182,8 @@
     <EmbeddedResource Include="dialog\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="dialog\frmProfile.resx">
-      <DependentUpon>frmProfile.cs</DependentUpon>
+    <EmbeddedResource Include="dialog\ProfilePanel.resx">
+      <DependentUpon>ProfilePanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialog\frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>
