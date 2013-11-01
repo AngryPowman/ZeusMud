@@ -140,6 +140,7 @@
       <DependentUpon>GameChatPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="common\GameUtil.cs" />
+    <Compile Include="game\data\Chat.cs" />
     <Compile Include="game\data\LoginData.cs" />
     <Compile Include="game\data\PlayerProfile.cs" />
     <Compile Include="common\GlobalObject.cs" />
