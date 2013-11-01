@@ -114,7 +114,7 @@ namespace zeus_mud.dialog
                 }
             }
 
-            userRegisterRequest(txtEmail.Text, txtPassword.Text, txtNickname.Text);
+            userRegisterRequest(txtEmail.Text, txtPassword.Text, txtNickname.Text, rdFemale.Checked == true ? 1 : 2);
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -130,7 +130,7 @@ namespace zeus_mud.dialog
         }
 
         //========================================用户注册========================================
-        void userRegisterRequest(string email, string password_plainText, string nickname)
+        void userRegisterRequest(string email, string password_plainText, string nickname, Int32 gender)
         {
             MD5 md5 = new MD5CryptoServiceProvider();
             byte[] passwordHash = md5.ComputeHash(Encoding.Default.GetBytes(password_plainText));
@@ -139,6 +139,7 @@ namespace zeus_mud.dialog
             request.email = email;
             request.password = GameUtil.toMD5(password_plainText);
             request.nickname = Encoding.UTF8.GetBytes(nickname);
+            request.gender = gender;
 
             NetworkEvent.sendPacket<Protocol.C2SRegisterReq>(request);
         }

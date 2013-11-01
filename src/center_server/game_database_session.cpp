@@ -51,7 +51,7 @@ void GameDatabaseSession::insertNewUserRecord(
     uint64 guid, 
     const std::string& email,
     const std::string& password,
-    uint8 gender,
+    int32 gender,
     const std::string& nickname,
     const std::string& register_ip,
     uint64 register_time
