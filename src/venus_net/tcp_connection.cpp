@@ -25,14 +25,9 @@ TcpConnection::~TcpConnection()
     debug_log("connection destroyed.");
 }
 
-void TcpConnection::setInetAddress(const InetAddress& inetAddress)
+/*void TcpConnection::setInetAddress(const InetAddress& inetAddress)
 {
     _inetAddress = inetAddress;
-}
-
-const InetAddress& TcpConnection::getPeerAddress()
-{
-    return _socket->getPeerAddress();
 }
 
 void TcpConnection::connectAsync()
@@ -44,6 +39,11 @@ void TcpConnection::connectAsync(const InetAddress& inetAddress)
 {
     setInetAddress(inetAddress);
     connectAsync();
+}*/
+
+InetAddress TcpConnection::getPeerAddress()
+{
+    return _socket->getPeerAddress();
 }
 
 void TcpConnection::shutdown()
@@ -82,7 +82,7 @@ void TcpConnection::readAsync()
     _socket->start_receive();
 }
 
-Socket& TcpConnection::socket()
+Socket& TcpConnection::rawSocket()
 {
     return *_socket;
 }
