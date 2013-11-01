@@ -12,8 +12,15 @@ public:
     virtual ~GameSession();
 
 public:
+    //登录模块
     void user_login_handler(const NetworkMessage& message);
     void user_register_handler(const NetworkMessage& message);
+
+    //玩家资料模块
+    void get_player_profile_handler(const NetworkMessage& message);
+
+private:
+    void attackPlayerPtr(Player* player);
 
 private:
     Player* _player;

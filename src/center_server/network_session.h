@@ -6,6 +6,9 @@
 #include <packet.h>
 #include <tcp_connection.h>
 
+#define PARSE_NETWORK_MESSAGE(message, request) \
+    if (message.data != nullptr) message.parse(request)
+
 class NetworkSession
 {
 public:

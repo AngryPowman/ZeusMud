@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using zeus_mud.game.data;
 using zeus_mud.network;
 using Wpf.ZuesMud;
+using Wpf.network;
+using System.IO;
 
 namespace zeus_mud.dialog
 {
@@ -20,6 +22,9 @@ namespace zeus_mud.dialog
         public ProfilePanel()
         {
             InitializeComponent();
+
+            //登录消息注册
+            OpcodesHandler.registerHandler(Opcodes.S2CGetPlayerProfileRsp, this.getPlayerProfileCallback);
         }
 
         private void frmProfile_Load(object sender, EventArgs e)
@@ -46,10 +51,9 @@ namespace zeus_mud.dialog
             picAvatar.LoadCompleted += picAvatar_LoadCompleted;
             picAvatar.LoadProgressChanged += picAvatar_LoadProgressChanged;
             picAvatar.LoadAsync(GlobalObject.Email2PhotoUrl(LoginData.email).ToLower());
-
-            //加载个人资料
-            lblNickname.Text = PlayerProfile.nickname == "" ? "-" : PlayerProfile.nickname;
-            tlblEmail.Text = PlayerProfile.email == null ? "<None>" : "<" + PlayerProfile.email + ">";
+            
+            //向服务器请求个人资料
+            getPlayerProfileRequest();
         }
 
         private void ProfilePanel_Paint(object sender, PaintEventArgs e)
@@ -57,6 +61,30 @@ namespace zeus_mud.dialog
             lblNickname.BackColor = this.BackColor;
             tlblEmail.BackColor = this.BackColor;
             ltxtLastLogin.BackColor = this.BackColor;
+        }
+
+        /// <summary>
+        /// 向服务器获取个人资料
+        /// </summary>
+        void getPlayerProfileRequest()
+        {
+            Protocol.C2SGetPlayerProfileReq request = new Protocol.C2SGetPlayerProfileReq();
+            NetworkEvent.sendPacket<Protocol.C2SGetPlayerProfileReq>(request);
+        }
+
+        /// <summary>
+        /// 服务器返回个人资料
+        /// </summary>
+        /// <param name="stream"></param>
+        public void getPlayerProfileCallback(MemoryStream stream)
+        {
+            Protocol.S2CGetPlayerProfileRsp response = NetworkEvent.parseMessage<Protocol.S2CGetPlayerProfileRsp>(stream);
+            PlayerProfile.guid = response.guid;
+            PlayerProfile.nickname = Encoding.Default.GetString(response.nickname);
+            PlayerProfile.gender = response.gender;
+
+            lblNickname.Text = PlayerProfile.nickname == null ? "-" : PlayerProfile.nickname;
+            tlblEmail.Text = PlayerProfile.email == null ? "<无>" : "<" + PlayerProfile.email + ">";
         }
     }
 }

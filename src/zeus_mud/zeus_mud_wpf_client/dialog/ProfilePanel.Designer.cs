@@ -73,7 +73,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(86, 65);
+            this.label1.Location = new System.Drawing.Point(86, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 12);
             this.label1.TabIndex = 15;
@@ -83,7 +83,7 @@
             // 
             this.ltxtLastLogin.BackColor = System.Drawing.SystemColors.Control;
             this.ltxtLastLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ltxtLastLogin.Location = new System.Drawing.Point(149, 66);
+            this.ltxtLastLogin.Location = new System.Drawing.Point(149, 64);
             this.ltxtLastLogin.Name = "ltxtLastLogin";
             this.ltxtLastLogin.Size = new System.Drawing.Size(100, 14);
             this.ltxtLastLogin.TabIndex = 16;

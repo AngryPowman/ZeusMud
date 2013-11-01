@@ -34,9 +34,12 @@ void protobuf_AssignDesc_15001_5fS2CGetPlayerProfileRsp_2eproto() {
       "15001_S2CGetPlayerProfileRsp.proto");
   GOOGLE_CHECK(file != NULL);
   S2CGetPlayerProfileRsp_descriptor_ = file->message_type(0);
-  static const int S2CGetPlayerProfileRsp_offsets_[2] = {
+  static const int S2CGetPlayerProfileRsp_offsets_[5] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CGetPlayerProfileRsp, guid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CGetPlayerProfileRsp, gender_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CGetPlayerProfileRsp, nickname_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CGetPlayerProfileRsp, last_login_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CGetPlayerProfileRsp, guild_),
   };
   S2CGetPlayerProfileRsp_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -80,8 +83,9 @@ void protobuf_AddDesc_15001_5fS2CGetPlayerProfileRsp_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\"15001_S2CGetPlayerProfileRsp.proto\022\010Pr"
-    "otocol\">\n\026S2CGetPlayerProfileRsp\022\020\n\010nick"
-    "name\030\001 \002(\014\022\022\n\nlast_login\030\002 \002(\005", 110);
+    "otocol\"k\n\026S2CGetPlayerProfileRsp\022\014\n\004guid"
+    "\030\001 \002(\004\022\016\n\006gender\030\002 \002(\005\022\020\n\010nickname\030\003 \002(\014"
+    "\022\022\n\nlast_login\030\004 \002(\005\022\r\n\005guild\030\005 \002(\014", 155);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "15001_S2CGetPlayerProfileRsp.proto", &protobuf_RegisterTypes);
   S2CGetPlayerProfileRsp::default_instance_ = new S2CGetPlayerProfileRsp();
@@ -99,8 +103,11 @@ struct StaticDescriptorInitializer_15001_5fS2CGetPlayerProfileRsp_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int S2CGetPlayerProfileRsp::kGuidFieldNumber;
+const int S2CGetPlayerProfileRsp::kGenderFieldNumber;
 const int S2CGetPlayerProfileRsp::kNicknameFieldNumber;
 const int S2CGetPlayerProfileRsp::kLastLoginFieldNumber;
+const int S2CGetPlayerProfileRsp::kGuildFieldNumber;
 #endif  // !_MSC_VER
 
 S2CGetPlayerProfileRsp::S2CGetPlayerProfileRsp()
@@ -119,8 +126,11 @@ S2CGetPlayerProfileRsp::S2CGetPlayerProfileRsp(const S2CGetPlayerProfileRsp& fro
 
 void S2CGetPlayerProfileRsp::SharedCtor() {
   _cached_size_ = 0;
+  guid_ = GOOGLE_ULONGLONG(0);
+  gender_ = 0;
   nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   last_login_ = 0;
+  guild_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -131,6 +141,9 @@ S2CGetPlayerProfileRsp::~S2CGetPlayerProfileRsp() {
 void S2CGetPlayerProfileRsp::SharedDtor() {
   if (nickname_ != &::google::protobuf::internal::kEmptyString) {
     delete nickname_;
+  }
+  if (guild_ != &::google::protobuf::internal::kEmptyString) {
+    delete guild_;
   }
   if (this != default_instance_) {
   }
@@ -159,12 +172,19 @@ S2CGetPlayerProfileRsp* S2CGetPlayerProfileRsp::New() const {
 
 void S2CGetPlayerProfileRsp::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    guid_ = GOOGLE_ULONGLONG(0);
+    gender_ = 0;
     if (has_nickname()) {
       if (nickname_ != &::google::protobuf::internal::kEmptyString) {
         nickname_->clear();
       }
     }
     last_login_ = 0;
+    if (has_guild()) {
+      if (guild_ != &::google::protobuf::internal::kEmptyString) {
+        guild_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -176,21 +196,53 @@ bool S2CGetPlayerProfileRsp::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required bytes nickname = 1;
+      // required uint64 guid = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &guid_)));
+          set_has_guid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_gender;
+        break;
+      }
+
+      // required int32 gender = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_gender:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &gender_)));
+          set_has_gender();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_nickname;
+        break;
+      }
+
+      // required bytes nickname = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_nickname:
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_nickname()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_last_login;
+        if (input->ExpectTag(32)) goto parse_last_login;
         break;
       }
 
-      // required int32 last_login = 2;
-      case 2: {
+      // required int32 last_login = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_last_login:
@@ -198,6 +250,20 @@ bool S2CGetPlayerProfileRsp::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &last_login_)));
           set_has_last_login();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(42)) goto parse_guild;
+        break;
+      }
+
+      // required bytes guild = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_guild:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_guild()));
         } else {
           goto handle_uninterpreted;
         }
@@ -223,15 +289,31 @@ bool S2CGetPlayerProfileRsp::MergePartialFromCodedStream(
 
 void S2CGetPlayerProfileRsp::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required bytes nickname = 1;
-  if (has_nickname()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBytes(
-      1, this->nickname(), output);
+  // required uint64 guid = 1;
+  if (has_guid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->guid(), output);
   }
 
-  // required int32 last_login = 2;
+  // required int32 gender = 2;
+  if (has_gender()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->gender(), output);
+  }
+
+  // required bytes nickname = 3;
+  if (has_nickname()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      3, this->nickname(), output);
+  }
+
+  // required int32 last_login = 4;
   if (has_last_login()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->last_login(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->last_login(), output);
+  }
+
+  // required bytes guild = 5;
+  if (has_guild()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      5, this->guild(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -242,16 +324,33 @@ void S2CGetPlayerProfileRsp::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* S2CGetPlayerProfileRsp::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required bytes nickname = 1;
+  // required uint64 guid = 1;
+  if (has_guid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->guid(), target);
+  }
+
+  // required int32 gender = 2;
+  if (has_gender()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->gender(), target);
+  }
+
+  // required bytes nickname = 3;
   if (has_nickname()) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->nickname(), target);
+        3, this->nickname(), target);
   }
 
-  // required int32 last_login = 2;
+  // required int32 last_login = 4;
   if (has_last_login()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->last_login(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->last_login(), target);
+  }
+
+  // required bytes guild = 5;
+  if (has_guild()) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        5, this->guild(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -265,18 +364,39 @@ int S2CGetPlayerProfileRsp::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required bytes nickname = 1;
+    // required uint64 guid = 1;
+    if (has_guid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->guid());
+    }
+
+    // required int32 gender = 2;
+    if (has_gender()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->gender());
+    }
+
+    // required bytes nickname = 3;
     if (has_nickname()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::BytesSize(
           this->nickname());
     }
 
-    // required int32 last_login = 2;
+    // required int32 last_login = 4;
     if (has_last_login()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->last_login());
+    }
+
+    // required bytes guild = 5;
+    if (has_guild()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
+          this->guild());
     }
 
   }
@@ -306,11 +426,20 @@ void S2CGetPlayerProfileRsp::MergeFrom(const ::google::protobuf::Message& from) 
 void S2CGetPlayerProfileRsp::MergeFrom(const S2CGetPlayerProfileRsp& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_guid()) {
+      set_guid(from.guid());
+    }
+    if (from.has_gender()) {
+      set_gender(from.gender());
+    }
     if (from.has_nickname()) {
       set_nickname(from.nickname());
     }
     if (from.has_last_login()) {
       set_last_login(from.last_login());
+    }
+    if (from.has_guild()) {
+      set_guild(from.guild());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -329,15 +458,18 @@ void S2CGetPlayerProfileRsp::CopyFrom(const S2CGetPlayerProfileRsp& from) {
 }
 
 bool S2CGetPlayerProfileRsp::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
 
   return true;
 }
 
 void S2CGetPlayerProfileRsp::Swap(S2CGetPlayerProfileRsp* other) {
   if (other != this) {
+    std::swap(guid_, other->guid_);
+    std::swap(gender_, other->gender_);
     std::swap(nickname_, other->nickname_);
     std::swap(last_login_, other->last_login_);
+    std::swap(guild_, other->guild_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

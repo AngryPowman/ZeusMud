@@ -10,3 +10,8 @@ GameSession::~GameSession()
 {
 
 }
+
+void GameSession::attackPlayerPtr(Player* player)
+{
+    _player = player;
+}

@@ -12,7 +12,7 @@
 void GameSession::user_login_handler(const NetworkMessage& message)
 {
     Protocol::C2SLoginReq request;
-    message.parse(request);
+    PARSE_NETWORK_MESSAGE(message, request);
 
     debug_log("[User Login] -> (Username='%s', Password='%s')", request.email().c_str(), request.password().c_str());
 
@@ -79,6 +79,9 @@ void GameSession::user_login_handler(const NetworkMessage& message)
                 {
                     debug_log("Load player from db success. guid = %ull", guid);
                     debug_log("Total online player count = %d", GameSessionManager::getInstance().sessionCount());
+
+                    //attack player to session
+                    attackPlayerPtr(player);
                 }
                 else
                 {
@@ -108,7 +111,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
 void GameSession::user_register_handler(const NetworkMessage& message)
 {
     Protocol::C2SRegisterReq request;
-    message.parse(request);
+    PARSE_NETWORK_MESSAGE(message, request);
 
     debug_log("[User Register] -> (Username='%s', Nickname='%s')", request.email().c_str(), request.nickname().c_str());
 

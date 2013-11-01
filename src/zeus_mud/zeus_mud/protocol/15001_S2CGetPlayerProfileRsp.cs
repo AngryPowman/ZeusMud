@@ -15,19 +15,40 @@ namespace Protocol
   {
     public S2CGetPlayerProfileRsp() {}
     
+    private ulong _guid;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"guid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong guid
+    {
+      get { return _guid; }
+      set { _guid = value; }
+    }
+    private int _gender;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"gender", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int gender
+    {
+      get { return _gender; }
+      set { _gender = value; }
+    }
     private byte[] _nickname;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public byte[] nickname
     {
       get { return _nickname; }
       set { _nickname = value; }
     }
     private int _last_login;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"last_login", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"last_login", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int last_login
     {
       get { return _last_login; }
       set { _last_login = value; }
+    }
+    private byte[] _guild;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"guild", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public byte[] guild
+    {
+      get { return _guild; }
+      set { _guild = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

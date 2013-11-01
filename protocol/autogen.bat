@@ -4,7 +4,7 @@
 
 :: paths
 set cpp_output=..\src\venus_net\protocol
-set cs_output=..\src\zeus_mud\zeus_mud\protocol\%%~ni.cs
+set cs_output=..\src\zeus_mud\zeus_mud_wpf_client\protocol\%%~ni.cs
 
 :: generate process
 echo generating c++ source files :

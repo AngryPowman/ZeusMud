@@ -66,6 +66,9 @@
     <ClCompile Include="player.cpp">
       <Filter>object</Filter>
     </ClCompile>
+    <ClCompile Include="player_handler.cpp">
+      <Filter>handler\login</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="network">

@@ -148,7 +148,9 @@ void TcpConnection::on_read(const byte* data, size_t bytes_transferred)
     std::vector<ServerPacketPtr> packetList;
 
     _buffer.set_rpos(0);
-    while (_buffer.size() >= sizeof(ServerPacket))
+
+    //至少大于等于header长度（允许body为空）
+    while (_buffer.size() >= sizeof(ServerPacket::HEADER_LENGTH))
     {
         size_t packet_len = 0;
         uint32 opcode = 0;
@@ -170,15 +172,17 @@ void TcpConnection::on_read(const byte* data, size_t bytes_transferred)
         }
         else if (_buffer.size() >= packet_len)
         {
-            //取得body长度
-            bodyLen = packet_len - ServerPacket::HEADER_LENGTH;
-
             ServerPacketPtr packet(new ServerPacket());
             packet->len = packet_len;
             packet->opcode = opcode;
 
-            packet->message = new byte[bodyLen];
-            _buffer.read(packet->message, bodyLen);
+            //取得body长度
+            bodyLen = packet_len - ServerPacket::HEADER_LENGTH;
+
+            packet->message = bodyLen == 0 ? nullptr : new byte[bodyLen];
+
+            if (bodyLen != 0)
+                _buffer.read(packet->message, bodyLen);
 
             packetList.push_back(packet);
             _buffer.erase(0, packet_len);

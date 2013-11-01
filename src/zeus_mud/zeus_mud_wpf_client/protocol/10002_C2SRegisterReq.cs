@@ -36,10 +36,8 @@ namespace Protocol
       get { return _nickname; }
       set { _nickname = value; }
     }
-
-    private int _gender = default(int);
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"gender", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue(default(int))]
+    private int _gender;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"gender", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int gender
     {
       get { return _gender; }

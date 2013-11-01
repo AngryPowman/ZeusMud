@@ -88,8 +88,8 @@ namespace zeus_mud
             Protocol.S2CLoginRsp response = NetworkEvent.parseMessage<Protocol.S2CLoginRsp>(stream);
             if (response.login_result == true)
             {
-                saveXml();                
-                LoginData.email = txtUsername.Text;
+                saveXml();
+                LoginData.email = PlayerProfile.email = txtUsername.Text;
                 GlobalObject.MainWindow = new GameMainWindow();
                 GlobalObject.MainWindow.Show();
                 this.Hide();
