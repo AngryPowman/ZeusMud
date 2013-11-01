@@ -104,6 +104,7 @@
     <ClInclude Include="protocol\10002_C2SRegisterReq.pb.h" />
     <ClInclude Include="protocol\10003_S2CRegisterRsp.pb.h" />
     <ClInclude Include="protocol\15000_C2SGetPlayerProfileReq.pb.h" />
+    <ClInclude Include="protocol\15001_S2CGetPlayerProfileRsp.pb.h" />
     <ClInclude Include="protocol\99990_S2CError.pb.h" />
     <ClInclude Include="protocol\99991_S2CErrorEx.pb.h" />
     <ClInclude Include="server_logger.h" />
@@ -129,6 +130,7 @@
     <ClCompile Include="protocol\10002_C2SRegisterReq.pb.cc" />
     <ClCompile Include="protocol\10003_S2CRegisterRsp.pb.cc" />
     <ClCompile Include="protocol\15000_C2SGetPlayerProfileReq.pb.cc" />
+    <ClCompile Include="protocol\15001_S2CGetPlayerProfileRsp.pb.cc" />
     <ClCompile Include="protocol\99990_S2CError.pb.cc" />
     <ClCompile Include="protocol\99991_S2CErrorEx.pb.cc" />
     <ClCompile Include="server_logger.cpp" />
