@@ -1,5 +1,4 @@
 package Protocol;
 
 message S2CGetPlayerProfileRsp {
-
 }

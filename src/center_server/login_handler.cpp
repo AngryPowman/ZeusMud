@@ -167,7 +167,7 @@ void GameSession::user_register_handler(const NetworkMessage& message)
         GameUtil::toUniqueId(request.email()),
         request.email(),
         request.password(),
-        (uint8)request.gender(),
+        (int32)request.gender(),
         request.nickname(),
         connection()->getPeerAddress().host(),
         Poco::Timestamp().epochTime());
