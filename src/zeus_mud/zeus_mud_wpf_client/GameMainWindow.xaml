@@ -90,7 +90,7 @@
                     <avalondock:LayoutAnchorablePane DockWidth="168">
 
                         <!--属性管理器-->
-                        <avalondock:LayoutAnchorable x:Name="PropertiesManager" ContentId="PropertiesManager" Title="属性" ToolTip="管理对象属性" CanHide="true" CanClose="true" CanAutoHide="True"/>
+                        <!--<avalondock:LayoutAnchorable x:Name="PropertiesManager" ContentId="PropertiesManager" Title="属性" ToolTip="管理对象属性" CanHide="true" CanClose="true" CanAutoHide="True"/>-->
 
                     </avalondock:LayoutAnchorablePane>
 

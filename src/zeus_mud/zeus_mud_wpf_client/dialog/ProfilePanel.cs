@@ -25,8 +25,6 @@ namespace zeus_mud.dialog
         private void frmProfile_Load(object sender, EventArgs e)
         {
             loadProfile();
-
-            lblEmailNickname.BackColor = this.BackColor;
         }
 
         void picAvatar_LoadProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -50,7 +48,15 @@ namespace zeus_mud.dialog
             picAvatar.LoadAsync(GlobalObject.Email2PhotoUrl(LoginData.email).ToLower());
 
             //加载个人资料
-            lblEmailNickname.Text = PlayerProfile.nickname + "<" + LoginData.email + ">";
+            lblNickname.Text = PlayerProfile.nickname == "" ? "-" : PlayerProfile.nickname;
+            tlblEmail.Text = PlayerProfile.email == null ? "<None>" : "<" + PlayerProfile.email + ">";
+        }
+
+        private void ProfilePanel_Paint(object sender, PaintEventArgs e)
+        {
+            lblNickname.BackColor = this.BackColor;
+            tlblEmail.BackColor = this.BackColor;
+            ltxtLastLogin.BackColor = this.BackColor;
         }
     }
 }

@@ -32,6 +32,7 @@ namespace zeus_mud.dialog
             wbWorldChat.ObjectForScripting = this;
             wbWorldChat.Navigate(urlPath + "?current_user=射脸也是好朋友");
             wbWorldChat.AllowNavigation = false;
+            wbWorldChat.IsWebBrowserContextMenuEnabled = true;
         }
 
         private void btnSend_Click(object sender, EventArgs e)

@@ -1,4 +1,7 @@
 package Protocol;
 
 message S2CGetPlayerProfileRsp {
+	required bytes nickname = 1;
+	required int32 last_login = 2;
+	reqrired bytes guild = 3;
 }

@@ -4,58 +4,49 @@
 	<link href="js/dist/css/bootstrap.min.css" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/purl.js"></script>
+	<script src="js/template.js"></script>
 	<script src="js/dist/js/bootstrap.min.js"></script>
+
 	<style type="text/css">
 		#lstMain{
 			list-style: none;
 			padding-left: 0;
 		}
+		#lstMain .chat_line{
+			margin-bottom: 10px;
+		}
+
+		.uname{
+			cursor: pointer;
+		}
+
+		#frmSender{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
+
 	</style>
 <script>
+$(function(){
+	var globals = $.url(location.href).param();
+	$.extend(window, globals);
+
+	// 初始化代码
+	$(document).on('click','.uname', function(){
+		window.external.userNameClicked($(this).attr('id'));
+	});
+
+});
+
 var line_template='<li class="chat_line">'+
 	'\t<span class="label label-{%channel.type%}">{%channel.name%}</span>'+
-	'\t<code class="uname label-{%user.type%}">{%user.name%}</code>'+
+	'\t<code id="{%user.id%}" class="uname label-{%user.type%}">{%user.name%}</code>'+
 	'\t<span class="content">{%content%}</span>'+
 	'</li>'+
 	'';
-
-function $p(content){
-	this.render=function(data){
-		data = parse_to_path(data);
-		for(var id in data){
-			content=content.replace(new RegExp('{%'+id+'%}','ig'),data[id]);
-		}
-		return content.replace(/{%.*?%}/ig, '');
-	}
-	return this;
-}
-
-var temp_path='';
-function parse_to_path(json){
-        var ret = {};
-        for(var i in json){
-                if(!json.hasOwnProperty(i)){
-                        continue;
-                }
-                var val = json[i];
-                var type = typeof val;
-                var path = temp_path? temp_path + '.' + i : i;	
-
-                if(val===undefined || val===null){
-                        ret[path] = '';
-                } else if(/string|number|boolean/.test(type)){
-                        ret[path] = val;
-                } else if(val.constructor === Object || val.constructor === Array){
-                        var save = temp_path;
-                        temp_path = path;
-                        $.extend(ret, parse_to_path(val));
-                        temp_path = save;
-                } else{
-                        console.error('未知类型', val);
-                }
-        }
-        return ret;
-}
 
 var labelTypeDefine = {
 	0:{
@@ -81,20 +72,20 @@ var userTypeDefine = {
 	2:"warning"
 };
 
-function addChatMessage(type, name, user_type, content){
-	if(name == "" || content == ""){
-		// console.log('empty');
+function addChatMessage(type, uid, uname, user_type, content){
+	if(uname == "" || content == ""){
+		console.log('empty');
 		return;
 	}
 
 	if(!labelTypeDefine[type]){
-		// console.log(type+' not exist');
+		console.log(type+' not exist');
 		return;
 	}
 
 	var data = {
 		channel: labelTypeDefine[type],
-		user: {name: name, type: userTypeDefine[user_type]},
+		user: {id: uid, name: uname, type: userTypeDefine[user_type]},
 		content: content
 	};
 
@@ -108,11 +99,27 @@ function addChatMessage(type, name, user_type, content){
 	//$("body").fadeIn().append("<a href=aaaaaa style=resize: none; width:320px; height:70px;>fuck</a>"); 
 
 }
+
 </script>
 </head>
 <body>
 <ul id="lstMain">
 
 </ul>
+<form id="frmSender" class="form-inline" onsubmit="window.external.sendMessage($('#txtMessage').val());return false;">
+	<tabel >
+		<tr>
+			<td width="100">
+				<label class="input-group-addon" for="txtMessage">发送消息：</label>
+			</td>
+			<td width="200">
+				<input id="txtMessage" type="text" placeholder="发送内容……" name="content" class="form-control" style="display:inline-block;width: 100%"/>
+			</td>
+			<td width="100">
+				<input type="submit" class="btn btn-primary btn-sm" value="发送" style="display: inline-block;"/>
+			</td>
+		</tr>
+	</tabel>
+</form>
 </body>
 </html>

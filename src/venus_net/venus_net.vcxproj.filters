@@ -132,6 +132,9 @@
     <ClInclude Include="protocol\10003_S2CRegisterRsp.pb.h">
       <Filter>protocol\protobuf</Filter>
     </ClInclude>
+    <ClInclude Include="protocol\15001_S2CGetPlayerProfileRsp.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="error_code.cpp">
@@ -174,6 +177,9 @@
       <Filter>protocol\protobuf</Filter>
     </ClCompile>
     <ClCompile Include="protocol\15000_C2SGetPlayerProfileReq.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\15001_S2CGetPlayerProfileRsp.pb.cc">
       <Filter>protocol\protobuf</Filter>
     </ClCompile>
   </ItemGroup>
