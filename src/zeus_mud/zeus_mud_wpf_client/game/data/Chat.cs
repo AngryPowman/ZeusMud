@@ -18,10 +18,23 @@ namespace zeus_mud.game.data
     public class ChatControl
     {
         public const UInt64 SystemUid = 0;
-        
+
         private System.Windows.Forms.WebBrowser wb;
-        private UInt64 current_uid = 10000;
+        private UInt64 mCurrentUid;
         private string current_uname = "飞翔的泡面";
+
+        private UInt64 current_uid
+        {
+            get
+            {
+                return mCurrentUid;
+            }
+            set
+            {
+                mCurrentUid = value;
+                setOption("current_uid", mCurrentUid.ToString());
+            }
+        }
         
         public ChatControl(ref System.Windows.Forms.WebBrowser browser, string pageurl)
         {
@@ -86,14 +99,18 @@ namespace zeus_mud.game.data
         public void initRequired()
         {
             this.unserilizeOption("{current_uid:9999, bgcolor: '#c8c8c8'}");
-            this.setOption("current_uid", "10000");
+
+            current_uid = 10000; // <--
+
             writeLine(MessageChannel.ChannelSystem, "信息", SystemUid, "连接成功！");
         }
 
         public void postChat(MessageChannel channel, string content)
         {
-            // 向服务器请求的代码
             bool success=true;
+
+            // 向服务器请求的代码
+
             if (success)
             {
                 writeLine(channel, current_uname, current_uid, content);
@@ -109,9 +126,21 @@ namespace zeus_mud.game.data
             wb.Document.InvokeScript("addChatMessage", new Object[] { (int)channel, uid, uname, content });
         }
 
-        public void userNameClicked(int id)
+        /**
+         * id - 用户ID
+         * btn - 鼠标按钮
+         *     1： 左键
+         *     2： 中键
+         *     3： 右键
+         */
+        public void userNameClicked(UInt64 id,int btn)
         {
-            Console.WriteLine("点击了用户：" + id);
+            Console.WriteLine("点击了用户：" + id + "，按钮：" + btn);
+        }
+
+        public void console_log(string data)
+        {
+            Console.WriteLine(data);
         }
     }
 }

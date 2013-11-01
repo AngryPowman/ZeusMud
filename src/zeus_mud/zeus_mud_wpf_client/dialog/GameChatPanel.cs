@@ -32,15 +32,5 @@ namespace zeus_mud.dialog
             chat = new ChatControl(ref wbWorldChat, "file://" + page_path);
             // wbWorldChat.IsWebBrowserContextMenuEnabled = true;
         }
-
-        private void btnSend_Click(object sender, EventArgs e)
-        {
-            chat.postChat(MessageChannel.ChannelWorld, txtSendContent.Text);
-        }
-
-        private void btnDebugRefresh_Click(object sender, EventArgs e)
-        {
-            wbWorldChat.Refresh(WebBrowserRefreshOption.Completely);
-        }
     }
 }

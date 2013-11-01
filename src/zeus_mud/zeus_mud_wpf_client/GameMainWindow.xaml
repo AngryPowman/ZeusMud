@@ -72,7 +72,7 @@
                         </avalondock:LayoutDocumentPaneGroup>
 
                         <!--■下侧窗口定义-->
-                        <avalondock:LayoutAnchorablePane DockWidth="Auto" DockMinHeight="100">
+                        <avalondock:LayoutAnchorablePane DockWidth="Auto" DockMinHeight="300">
 
                             <!--在线聊天-->
                             <avalondock:LayoutAnchorable x:Name="Chat" 	ContentId="Chat" Title="在线聊天" ToolTip="在线聊天" CanHide="true" CanClose="true" CanAutoHide="True">

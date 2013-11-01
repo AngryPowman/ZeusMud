@@ -14,5 +14,9 @@ var labelTypeDefine = {
 	3: {
 		type: "warning",
 		name: "公会"
+	},
+	4: {
+		type: "success",
+		name: "组队"
 	}
 };
