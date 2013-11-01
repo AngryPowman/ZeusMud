@@ -46,7 +46,7 @@
             // btnSend
             // 
             this.btnSend.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSend.Location = new System.Drawing.Point(225, 73);
+            this.btnSend.Location = new System.Drawing.Point(170, 74);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(46, 23);
             this.btnSend.TabIndex = 2;
@@ -71,7 +71,7 @@
             // btnDebugRefresh
             // 
             this.btnDebugRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDebugRefresh.Location = new System.Drawing.Point(171, 73);
+            this.btnDebugRefresh.Location = new System.Drawing.Point(223, 74);
             this.btnDebugRefresh.Name = "btnDebugRefresh";
             this.btnDebugRefresh.Size = new System.Drawing.Size(48, 23);
             this.btnDebugRefresh.TabIndex = 4;

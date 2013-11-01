@@ -1,27 +1,37 @@
 <html lang="zh-CN">
 <head>
 	<meta charset="utf-8">
-	<link href="js/dist/css/bootstrap.min.css" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	
+	<script src="js/json3.min.js"></script>
 	<script src="js/jquery-1.10.2.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	
 	<script src="js/purl.js"></script>
 	<script src="js/template.js"></script>
-	<script src="js/dist/js/bootstrap.min.js"></script>
+	
+	<script src="js/options.js"></script>
+	<script src="js/chat.js"></script>
 
+	<script src="cfg/labelTypeDefine.js"></script>
+	
+	
 	<style type="text/css">
-		#lstMain{
+		#lstMain {
 			list-style: none;
 			padding-left: 0;
 		}
-		#lstMain .chat_line{
+
+		#lstMain .chat_line {
 			margin-bottom: 10px;
 		}
 
-		.uname{
+		.uname {
 			cursor: pointer;
 		}
 
-		#frmSender{
+		#frmSender {
 			position: absolute;
 			bottom: 0;
 			left: 0;
@@ -29,85 +39,13 @@
 		}
 
 	</style>
-<script>
-$(function(){
-	var globals = $.url(location.href).param();
-	$.extend(window, globals);
-
-	// 初始化代码
-	$(document).on('click','.uname', function(){
-		window.external.userNameClicked($(this).attr('id'));
-	});
-
-});
-
-var line_template='<li class="chat_line">'+
-	'\t<span class="label label-{%channel.type%}">{%channel.name%}</span>'+
-	'\t<code id="{%user.id%}" class="uname label-{%user.type%}">{%user.name%}</code>'+
-	'\t<span class="content">{%content%}</span>'+
-	'</li>'+
-	'';
-
-var labelTypeDefine = {
-	0:{
-		type: "danger",
-		name: "系统"
-	},
-	1:{
-		type: "primary",
-		name: "世界"
-	},
-	2:{
-		type: "success",
-		name: "私聊"
-	},
-	3:{
-		type: "warning",
-		name: "公会"
-	}
-};
-var userTypeDefine = {
-	0:"",
-	1:"success",
-	2:"warning"
-};
-
-function addChatMessage(type, uid, uname, user_type, content){
-	if(uname == "" || content == ""){
-		console.log('empty');
-		return;
-	}
-
-	if(!labelTypeDefine[type]){
-		console.log(type+' not exist');
-		return;
-	}
-
-	var data = {
-		channel: labelTypeDefine[type],
-		user: {id: uid, name: uname, type: userTypeDefine[user_type]},
-		content: content
-	};
-
-	if(name==window.current_user){
-		data.user.type = 'primary';
-	}
-
-	$("#lstMain").append($p(line_template).render(data));
-
-	// 追加新元素
-	//$("body").fadeIn().append("<a href=aaaaaa style=resize: none; width:320px; height:70px;>fuck</a>"); 
-
-}
-
-</script>
 </head>
 <body>
 <ul id="lstMain">
 
 </ul>
 <form id="frmSender" class="form-inline" onsubmit="window.external.sendMessage($('#txtMessage').val());return false;">
-	<tabel >
+	<tabel>
 		<tr>
 			<td width="100">
 				<label class="input-group-addon" for="txtMessage">发送消息：</label>
@@ -121,5 +59,24 @@ function addChatMessage(type, uid, uname, user_type, content){
 		</tr>
 	</tabel>
 </form>
+<div class="hide">
+	<script type="text/template" id="chat_line">
+		<li class="chat_line">
+			<span class="label label-{%channel.type%}">{%channel.name%}</span>
+			<code id="{%user.id%}" class="uname label-{%user.type%}">{%user.name%}</code>
+			<span class="content">{%content%}</span>
+		</li>
+	</script>
+</div>
+<script type="text/javascript">
+	/* 初始化代码 */
+	$(document).on('click', '.uname', function (){
+		window.external.userNameClicked($(this).attr('id'));
+	});
+
+	var line_template = $('#chat_line').html();
+
+
+</script>
 </body>
 </html>
