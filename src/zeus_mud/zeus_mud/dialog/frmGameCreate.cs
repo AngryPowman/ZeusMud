@@ -30,14 +30,6 @@ namespace zeus_mud.dialog
                 return;
             }
 
-            if (NetworkEvent.isConnected() == false)
-            {
-                if (NetworkEvent.connectToServer(GlobalObject.DefaultServer, GlobalObject.DefaultPort) == false)
-                {
-                    MessageBox.Show(this, "连接服务器失败！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
             gameCreateRequest(textBoxGameName.Text, textBoxGamePassword.Text);
         }
         /// <summary>

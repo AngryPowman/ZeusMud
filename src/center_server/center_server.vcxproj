@@ -104,6 +104,8 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     <ClInclude Include="io_dispatcher.h" />
     <ClInclude Include="opcodes_handler.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="room.h" />
+    <ClInclude Include="room_manager.h" />
     <ClInclude Include="session_manager.h" />
   </ItemGroup>
   <ItemGroup>

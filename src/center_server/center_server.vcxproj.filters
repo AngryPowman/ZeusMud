@@ -34,6 +34,12 @@
     <ClInclude Include="player.h">
       <Filter>obj</Filter>
     </ClInclude>
+    <ClInclude Include="room_manager.h">
+      <Filter>manager</Filter>
+    </ClInclude>
+    <ClInclude Include="room.h">
+      <Filter>obj</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="center_server.cpp" />
