@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RobotWatchman.network
+namespace Wpf.network
 {
-    enum Opcodes
+    public enum Opcodes
     {
         C2SLoginReq     = 10000,            //登录请求
         S2CLoginRsp     = 10001,            //登录回应
@@ -19,7 +19,13 @@ namespace RobotWatchman.network
 
     }
 
+    public enum ErrorCode
+    {
+    
+    }
+
     public delegate void NetworkMessageCallback(MemoryStream stream);
+    public delegate void GameErrorCallback(ErrorCode error, string error_reason = "");
     class Handler
     {
         public Delegate callback { get; set; }
@@ -27,7 +33,8 @@ namespace RobotWatchman.network
 
     class OpcodesHandler
     {
-        private static  Dictionary<Opcodes, Handler> _handlers = new Dictionary<Opcodes, Handler>();
+        private static Dictionary<Opcodes, Handler> _handlers = new Dictionary<Opcodes, Handler>();
+        private static Dictionary<ErrorCode, Handler> _error_handlers = new Dictionary<ErrorCode, Handler>();
         public OpcodesHandler()
         {
         }
@@ -44,5 +51,14 @@ namespace RobotWatchman.network
 
             _handlers[opcode] = handler;
         }
+
+        public static void registerErrorHandler(ErrorCode error, GameErrorCallback cb)
+        {
+            Handler handler = new Handler();
+            handler.callback = cb;
+
+            _error_handlers[error] = handler;
+        }
+
     }
 }

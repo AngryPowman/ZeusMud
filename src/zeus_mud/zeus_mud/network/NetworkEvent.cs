@@ -11,7 +11,7 @@ using ProtoBuf;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace RobotWatchman.network
+namespace Wpf.network
 {
     class NetworkEvent
     {

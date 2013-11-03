@@ -6,16 +6,18 @@
 #include "game_database_session.h"
 #include "opcodes.h"
 #include "game_util.h"
+#include "player_pool.h"
+#include "game_session_manager.h"
 
 void GameSession::user_login_handler(const NetworkMessage& message)
 {
     Protocol::C2SLoginReq request;
-    message.parse(request);
+    PARSE_NETWORK_MESSAGE(message, request);
 
     debug_log("[User Login] -> (Username='%s', Password='%s')", request.email().c_str(), request.password().c_str());
 
     //判断邮箱帐号非法
-    if (GameUtil::getInstance().checkEmailValid(request.email()) == false)
+    if (GameUtil::checkEmailValid(request.email()) == false)
     {
         Protocol::S2CLoginRsp login_response;
         login_response.set_login_result(false);
@@ -27,7 +29,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
     }
 
     //判断密码hash非法
-    if (GameUtil::getInstance().checkPasswordHashValid(request.password()) == false)
+    if (GameUtil::checkPasswordHashValid(request.password()) == false)
     {
         Protocol::S2CLoginRsp login_response;
         login_response.set_login_result(false);
@@ -41,6 +43,10 @@ void GameSession::user_login_handler(const NetworkMessage& message)
     //检查登录帐号是否存在
     Protocol::S2CLoginRsp login_response;
     bool user_exists = GameDatabaseSession::getInstance().checkUserExists(request.email());
+
+    uint64 guid = GameUtil::toUniqueId(request.email());
+    login_response.set_player_id(guid);
+
     if (user_exists == true)
     {
         debug_log("User ('%s') not exists.", request.email().c_str());
@@ -59,6 +65,37 @@ void GameSession::user_login_handler(const NetworkMessage& message)
         {
             //验证成功
             debug_log("email('%s') and password('%s') matched, authentication success.", request.email().c_str(), request.password().c_str());
+
+            // Todo : load the player data if specify player cache exists
+            // ...
+
+            //从数据库加载玩家数据
+            Player* player = PlayerPool::getInstance().acquire(guid);
+
+            if (player != nullptr)
+            {
+                bool result = player->loadFromDB();
+                if (result == true)
+                {
+                    debug_log("Load player from db success. guid = %ull", guid);
+                    debug_log("Total online player count = %d", GameSessionManager::getInstance().sessionCount());
+
+                    //attack player to session
+                    attackPlayerPtr(player);
+                }
+                else
+                {
+                    PlayerPool::getInstance().release(player);
+                    error_log("Load player from db failed! guid = %ull", guid);
+                }
+
+                login_response.set_login_result(result);
+            }
+            else
+            {
+                login_response.set_login_result(false);
+                error_log("Acquire free player object failed in player pool. player == nullptr.");
+            }
         }
     }
     else
@@ -74,12 +111,12 @@ void GameSession::user_login_handler(const NetworkMessage& message)
 void GameSession::user_register_handler(const NetworkMessage& message)
 {
     Protocol::C2SRegisterReq request;
-    message.parse(request);
+    PARSE_NETWORK_MESSAGE(message, request);
 
     debug_log("[User Register] -> (Username='%s', Nickname='%s')", request.email().c_str(), request.nickname().c_str());
 
     //判断邮箱帐号非法
-    if (GameUtil::getInstance().checkEmailValid(request.email()) == false)
+    if (GameUtil::checkEmailValid(request.email()) == false)
     {
         Protocol::S2CRegisterRsp register_respone;
         register_respone.set_register_result(false);
@@ -91,7 +128,7 @@ void GameSession::user_register_handler(const NetworkMessage& message)
     }
 
     //判断密码hash非法
-    if (GameUtil::getInstance().checkPasswordHashValid(request.password()) == false)
+    if (GameUtil::checkPasswordHashValid(request.password()) == false)
     {
         Protocol::S2CRegisterRsp register_respone;
         register_respone.set_register_result(false);
@@ -130,10 +167,10 @@ void GameSession::user_register_handler(const NetworkMessage& message)
     }
 
     GameDatabaseSession::getInstance().insertNewUserRecord(
-        GameUtil::getInstance().toUniqueId(request.email()),
+        GameUtil::toUniqueId(request.email()),
         request.email(),
         request.password(),
-        (uint8)request.gender(),
+        (int32)request.gender(),
         request.nickname(),
         connection()->getPeerAddress().host(),
         Poco::Timestamp().epochTime());

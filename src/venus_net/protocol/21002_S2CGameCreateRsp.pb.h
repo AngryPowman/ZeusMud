@@ -98,10 +98,17 @@ class S2CGameCreateRsp : public ::google::protobuf::Message {
   inline bool game_create_result() const;
   inline void set_game_create_result(bool value);
 
-  // optional bytes failed_reason = 2;
+  // optional uint32 room_id = 2;
+  inline bool has_room_id() const;
+  inline void clear_room_id();
+  static const int kRoomIdFieldNumber = 2;
+  inline ::google::protobuf::uint32 room_id() const;
+  inline void set_room_id(::google::protobuf::uint32 value);
+
+  // optional bytes failed_reason = 3;
   inline bool has_failed_reason() const;
   inline void clear_failed_reason();
-  static const int kFailedReasonFieldNumber = 2;
+  static const int kFailedReasonFieldNumber = 3;
   inline const ::std::string& failed_reason() const;
   inline void set_failed_reason(const ::std::string& value);
   inline void set_failed_reason(const char* value);
@@ -114,16 +121,19 @@ class S2CGameCreateRsp : public ::google::protobuf::Message {
  private:
   inline void set_has_game_create_result();
   inline void clear_has_game_create_result();
+  inline void set_has_room_id();
+  inline void clear_has_room_id();
   inline void set_has_failed_reason();
   inline void clear_has_failed_reason();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::std::string* failed_reason_;
   bool game_create_result_;
+  ::google::protobuf::uint32 room_id_;
+  ::std::string* failed_reason_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_21002_5fS2CGameCreateRsp_2eproto();
   friend void protobuf_AssignDesc_21002_5fS2CGameCreateRsp_2eproto();
@@ -161,15 +171,37 @@ inline void S2CGameCreateRsp::set_game_create_result(bool value) {
   game_create_result_ = value;
 }
 
-// optional bytes failed_reason = 2;
-inline bool S2CGameCreateRsp::has_failed_reason() const {
+// optional uint32 room_id = 2;
+inline bool S2CGameCreateRsp::has_room_id() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void S2CGameCreateRsp::set_has_failed_reason() {
+inline void S2CGameCreateRsp::set_has_room_id() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void S2CGameCreateRsp::clear_has_failed_reason() {
+inline void S2CGameCreateRsp::clear_has_room_id() {
   _has_bits_[0] &= ~0x00000002u;
+}
+inline void S2CGameCreateRsp::clear_room_id() {
+  room_id_ = 0u;
+  clear_has_room_id();
+}
+inline ::google::protobuf::uint32 S2CGameCreateRsp::room_id() const {
+  return room_id_;
+}
+inline void S2CGameCreateRsp::set_room_id(::google::protobuf::uint32 value) {
+  set_has_room_id();
+  room_id_ = value;
+}
+
+// optional bytes failed_reason = 3;
+inline bool S2CGameCreateRsp::has_failed_reason() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void S2CGameCreateRsp::set_has_failed_reason() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void S2CGameCreateRsp::clear_has_failed_reason() {
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void S2CGameCreateRsp::clear_failed_reason() {
   if (failed_reason_ != &::google::protobuf::internal::kEmptyString) {

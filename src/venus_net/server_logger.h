@@ -61,23 +61,25 @@ private:
 #define __FORMAT__(fmt, ...) \
     FileChannelLogger::getInstance().format_log(fmt, __VA_ARGS__)
 
+#define __FILE_NAME__ Poco::Path(__FILE__).getFileName().c_str()
+
 #define fatal_log(fmt, ...) \
-    __G_LOGGER__.debug(__FORMAT__(fmt, __VA_ARGS__), __FILE__, __LINE__)
+    __G_LOGGER__.fatal(__FORMAT__(fmt, __VA_ARGS__), __FILE_NAME__, __LINE__)
 
 #define error_log(fmt, ...) \
-    poco_error(__G_LOGGER__, __FORMAT__(fmt, __VA_ARGS__))
+    __G_LOGGER__.error(__FORMAT__(fmt, __VA_ARGS__), __FILE_NAME__, __LINE__)
 
 #define warning_log(fmt, ...) \
-    poco_warning(__G_LOGGER__, __FORMAT__(fmt, __VA_ARGS__))
+    __G_LOGGER__.warning(__FORMAT__(fmt, __VA_ARGS__), __FILE_NAME__, __LINE__)
 
-#define information_log(fmt, ...) \
-    poco_information(__G_LOGGER__, __FORMAT__(fmt, __VA_ARGS__))
+#define info_log(fmt, ...) \
+    __G_LOGGER__.information(__FORMAT__(fmt, __VA_ARGS__), __FILE_NAME__, __LINE__)
 
 #define debug_log(fmt, ...) \
-    __G_LOGGER__.debug(__FORMAT__(fmt, __VA_ARGS__), Poco::Path(__FILE__).getFileName().c_str(), __LINE__)
+    __G_LOGGER__.debug(__FORMAT__(fmt, __VA_ARGS__), __FILE_NAME__, __LINE__)
 
 #define trace_log(fmt, ...) \
-    poco_trace(__G_LOGGER__, __FORMAT__(fmt, __VA_ARGS__))
+    __G_LOGGER__.trace(__FORMAT__(fmt, __VA_ARGS__), __FILE_NAME__, __LINE__)
 
 
 #endif // !__LOGGER_H__

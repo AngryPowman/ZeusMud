@@ -49,16 +49,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.4.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e" />
     <Reference Include="dockpanelsuite">
       <HintPath>..\..\..\lib\dockpanelsuite.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="protobuf-net">
       <HintPath>..\..\..\lib\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,6 +71,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="TimerPictureBox">
+      <HintPath>..\..\..\output\mud_client\TimerPictureBox.dll</HintPath>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dialog\frmBattle.cs">
@@ -111,6 +121,12 @@
     <Compile Include="dialog\frmRegister.Designer.cs">
       <DependentUpon>frmRegister.cs</DependentUpon>
     </Compile>
+    <Compile Include="dialog\GameChatPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialog\GameChatPanel.Designer.cs">
+      <DependentUpon>GameChatPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="GameUtil.cs" />
     <Compile Include="game\data\LoginData.cs" />
     <Compile Include="game\data\PlayerProfile.cs" />
@@ -126,7 +142,9 @@
     <Compile Include="protocol\10002_C2SRegisterReq.cs" />
     <Compile Include="protocol\10003_S2CRegisterRsp.cs" />
     <Compile Include="protocol\21001_C2SGameCreateReq.cs" />
-    <Compile Include="protocol\21002_S2CGameCreateRsp.cs" />
+    <Compile Include="protocol\15000_C2SGetPlayerProfileReq.cs" />
+    <Compile Include="protocol\99990_S2CError.cs" />
+    <Compile Include="protocol\99991_S2CErrorEx.cs" />
     <EmbeddedResource Include="dialog\frmBattle.resx">
       <DependentUpon>frmBattle.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dialog\frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialog\GameChatPanel.resx">
+      <DependentUpon>GameChatPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

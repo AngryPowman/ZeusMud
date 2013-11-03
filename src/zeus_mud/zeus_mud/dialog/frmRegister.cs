@@ -10,8 +10,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using RobotWatchman;
-using RobotWatchman.network;
+using Wpf;
+using Wpf.network;
 
 namespace zeus_mud.dialog
 {

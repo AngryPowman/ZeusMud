@@ -34,8 +34,9 @@ void protobuf_AssignDesc_21002_5fS2CGameCreateRsp_2eproto() {
       "21002_S2CGameCreateRsp.proto");
   GOOGLE_CHECK(file != NULL);
   S2CGameCreateRsp_descriptor_ = file->message_type(0);
-  static const int S2CGameCreateRsp_offsets_[2] = {
+  static const int S2CGameCreateRsp_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CGameCreateRsp, game_create_result_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CGameCreateRsp, room_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CGameCreateRsp, failed_reason_),
   };
   S2CGameCreateRsp_reflection_ =
@@ -80,8 +81,9 @@ void protobuf_AddDesc_21002_5fS2CGameCreateRsp_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\03421002_S2CGameCreateRsp.proto\022\010Protocol"
-    "\"E\n\020S2CGameCreateRsp\022\032\n\022game_create_resu"
-    "lt\030\001 \002(\010\022\025\n\rfailed_reason\030\002 \001(\014", 111);
+    "\"V\n\020S2CGameCreateRsp\022\032\n\022game_create_resu"
+    "lt\030\001 \002(\010\022\017\n\007room_id\030\002 \001(\r\022\025\n\rfailed_reas"
+    "on\030\003 \001(\014", 128);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "21002_S2CGameCreateRsp.proto", &protobuf_RegisterTypes);
   S2CGameCreateRsp::default_instance_ = new S2CGameCreateRsp();
@@ -100,6 +102,7 @@ struct StaticDescriptorInitializer_21002_5fS2CGameCreateRsp_2eproto {
 
 #ifndef _MSC_VER
 const int S2CGameCreateRsp::kGameCreateResultFieldNumber;
+const int S2CGameCreateRsp::kRoomIdFieldNumber;
 const int S2CGameCreateRsp::kFailedReasonFieldNumber;
 #endif  // !_MSC_VER
 
@@ -120,6 +123,7 @@ S2CGameCreateRsp::S2CGameCreateRsp(const S2CGameCreateRsp& from)
 void S2CGameCreateRsp::SharedCtor() {
   _cached_size_ = 0;
   game_create_result_ = false;
+  room_id_ = 0u;
   failed_reason_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -160,6 +164,7 @@ S2CGameCreateRsp* S2CGameCreateRsp::New() const {
 void S2CGameCreateRsp::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     game_create_result_ = false;
+    room_id_ = 0u;
     if (has_failed_reason()) {
       if (failed_reason_ != &::google::protobuf::internal::kEmptyString) {
         failed_reason_->clear();
@@ -187,12 +192,28 @@ bool S2CGameCreateRsp::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_failed_reason;
+        if (input->ExpectTag(16)) goto parse_room_id;
         break;
       }
 
-      // optional bytes failed_reason = 2;
+      // optional uint32 room_id = 2;
       case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_room_id:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
+                 input, &room_id_)));
+          set_has_room_id();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_failed_reason;
+        break;
+      }
+
+      // optional bytes failed_reason = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_failed_reason:
@@ -228,10 +249,15 @@ void S2CGameCreateRsp::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->game_create_result(), output);
   }
 
-  // optional bytes failed_reason = 2;
+  // optional uint32 room_id = 2;
+  if (has_room_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->room_id(), output);
+  }
+
+  // optional bytes failed_reason = 3;
   if (has_failed_reason()) {
     ::google::protobuf::internal::WireFormatLite::WriteBytes(
-      2, this->failed_reason(), output);
+      3, this->failed_reason(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -247,11 +273,16 @@ void S2CGameCreateRsp::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->game_create_result(), target);
   }
 
-  // optional bytes failed_reason = 2;
+  // optional uint32 room_id = 2;
+  if (has_room_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->room_id(), target);
+  }
+
+  // optional bytes failed_reason = 3;
   if (has_failed_reason()) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        2, this->failed_reason(), target);
+        3, this->failed_reason(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -270,7 +301,14 @@ int S2CGameCreateRsp::ByteSize() const {
       total_size += 1 + 1;
     }
 
-    // optional bytes failed_reason = 2;
+    // optional uint32 room_id = 2;
+    if (has_room_id()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt32Size(
+          this->room_id());
+    }
+
+    // optional bytes failed_reason = 3;
     if (has_failed_reason()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::BytesSize(
@@ -307,6 +345,9 @@ void S2CGameCreateRsp::MergeFrom(const S2CGameCreateRsp& from) {
     if (from.has_game_create_result()) {
       set_game_create_result(from.game_create_result());
     }
+    if (from.has_room_id()) {
+      set_room_id(from.room_id());
+    }
     if (from.has_failed_reason()) {
       set_failed_reason(from.failed_reason());
     }
@@ -335,6 +376,7 @@ bool S2CGameCreateRsp::IsInitialized() const {
 void S2CGameCreateRsp::Swap(S2CGameCreateRsp* other) {
   if (other != this) {
     std::swap(game_create_result_, other->game_create_result_);
+    std::swap(room_id_, other->room_id_);
     std::swap(failed_reason_, other->failed_reason_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

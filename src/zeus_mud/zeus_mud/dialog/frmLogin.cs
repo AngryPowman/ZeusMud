@@ -1,5 +1,5 @@
-﻿using RobotWatchman;
-using RobotWatchman.network;
+﻿using Wpf;
+using Wpf.network;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using zeus_mud.dialog;
 using System.Security.Cryptography;
 using zeus_mud.game.data;
+using System.Xml;
 
 namespace zeus_mud
 {
@@ -58,11 +59,20 @@ namespace zeus_mud
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
+        private bool isHash = false;
+        private string passwordHash;
         public void userLoginRequest(string email, string password)
         {
             Protocol.C2SLoginReq request = new Protocol.C2SLoginReq();
+            if (isHash)
+            {
+                request.password = passwordHash;
+            }
+            else
+            { 
+                request.password = GameUtil.toMD5(password);
+            }
             request.email = email;
-            request.password = GameUtil.toMD5(password);
 
             NetworkEvent.sendPacket<Protocol.C2SLoginReq>(request);
         }
@@ -76,6 +86,7 @@ namespace zeus_mud
             Protocol.S2CLoginRsp response = NetworkEvent.parseMessage<Protocol.S2CLoginRsp>(stream);
             if (response.login_result == true)
             {
+                saveXml();                
                 LoginData.email = txtUsername.Text;
                 GlobalObject.GameMainForm = new frmGameMain();
                 GlobalObject.GameMainForm.Show();
@@ -87,40 +98,124 @@ namespace zeus_mud
             }
         }
 
+        private void saveXml()
+        {
+            XmlDocument x = new XmlDocument();
+
+            if (File.Exists(GlobalObject.ConfigPath))
+            {
+                x.Load(GlobalObject.ConfigPath);
+            }
+            else
+            {
+                x.LoadXml("<Root></Root>");
+            }
+            XmlNode Root = x.SelectSingleNode("Root");
+            XmlNodeList nl = Root.ChildNodes;
+            XmlElement el = null;
+            foreach (XmlNode n in nl)
+            {
+                if (n.Name == "帐号")
+                {
+                    el = (XmlElement)n;
+                    break;
+                }
+            }
+            if (el == null)
+            {
+                el = x.CreateElement("帐号");
+                Root.AppendChild(el);
+            }
+            el.SetAttribute("邮箱", txtUsername.Text);
+            if (isHash == false)
+            {
+                el.SetAttribute("密码", chkSavePwd.Checked ?
+                    GameUtil.toMD5(txtPassword.Text) : string.Empty);
+            }
+            el.SetAttribute("自动登录", chkAutoLogin.Checked?"true":"false");
+            x.Save(GlobalObject.ConfigPath);
+        }
+
+        private void loadXml()
+        {
+            XmlDocument x = new XmlDocument();
+            if (File.Exists(GlobalObject.ConfigPath))
+            {
+                x.Load(GlobalObject.ConfigPath);
+            }
+            else{ return; }
+
+            foreach (XmlNode n in x.ChildNodes)
+            {
+                if (n.Name == "Root")
+                    foreach (XmlNode n2 in n.ChildNodes)
+                    {
+                        if (n2.Name == "帐号")
+                        {
+                            XmlElement e2 = (XmlElement)n2;
+                            txtUsername.Text = e2.GetAttribute("邮箱");
+                            passwordHash = e2.GetAttribute("密码");
+                            if (passwordHash.Length != 0)
+                            {
+                                txtPassword.Text = "password";
+                                isHash = true;
+                            }
+                            if (e2.GetAttribute("自动登录")=="true")
+                            {
+                                chkAutoLogin.Checked = true;
+                                btnLogin_Click(this, null);
+                            }
+                            return;
+                        }
+                    }
+            }
+        }
+
         //========================================================================================
 
         private void frmLogin_Load(object sender, EventArgs e)
-        {
+        {            
             NetworkEvent.init();
-            picAvatar.LoadAsync(GlobalObject.Email2PhotoUrl(txtUsername.Text).ToLower());
-            fd = new System.Drawing.Imaging.FrameDimension(picLoading.Image.FrameDimensionsList[0]);
-            gif1Count = picLoading.Image.GetFrameCount(fd);
-            picLoading.Enabled = false;
-            timer1.Interval = 60;
-            timer1.Enabled = true;
-        }
+            loadXml();
 
-        int gif1 = -1;
-        int gif1Count = 0;
-        System.Drawing.Imaging.FrameDimension fd;
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            picLoading.Enabled = true;
-            gif1++;
-            if (gif1 >= gif1Count)
-                gif1 = 0;
-            picLoading.Image.SelectActiveFrame(fd,gif1);
-            picLoading.Enabled = false;
+            picAvatar.LoadAsync(GlobalObject.Email2PhotoUrl(txtUsername.Text).ToLower());
+            gifBox.initGif(60);
+            btnLogin.Select();
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            timer1.Interval = (11 - trackBar1.Value) * 10;
+            gifBox.fpsGif = (11 - trackBar1.Value) * 10;
         }
 
         private void chkAutoLogin_CheckedChanged(object sender, EventArgs e)
         {
             chkSavePwd.Checked = true;
         }
+
+        private void txtPassword_Enter(object sender, EventArgs e)
+        {
+            if (isHash)
+            {
+                txtPassword.SelectAll();
+            }
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (isHash)
+            {
+                isHash = false;
+            }
+        }
+
+        private void txtPassword_Click(object sender, EventArgs e)
+        {
+            if (isHash)
+            {
+                txtPassword.SelectAll();
+            }
+        }
+
     }
 }

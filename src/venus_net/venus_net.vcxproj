@@ -99,6 +99,16 @@
     <ClInclude Include="common.h" />
     <ClInclude Include="local_free_on_destruction.hpp" />
     <ClInclude Include="manager.h" />
+    <ClInclude Include="protocol\10000_C2SLoginReq.pb.h" />
+    <ClInclude Include="protocol\10001_S2CLoginRsp.pb.h" />
+    <ClInclude Include="protocol\10002_C2SRegisterReq.pb.h" />
+    <ClInclude Include="protocol\10003_S2CRegisterRsp.pb.h" />
+    <ClInclude Include="protocol\15000_C2SGetPlayerProfileReq.pb.h" />
+    <ClInclude Include="protocol\15001_S2CGetPlayerProfileRsp.pb.h" />
+    <ClInclude Include="protocol\21001_C2SGameCreateReq.pb.h" />
+    <ClInclude Include="protocol\21002_S2CGameCreateRsp.pb.h" />
+    <ClInclude Include="protocol\99990_S2CError.pb.h" />
+    <ClInclude Include="protocol\99991_S2CErrorEx.pb.h" />
     <ClInclude Include="server_logger.h" />
     <ClInclude Include="network_common.h" />
     <ClInclude Include="network_service_deamon.h" />
@@ -106,10 +116,6 @@
     <ClInclude Include="opcodes.h" />
     <ClInclude Include="packet.h" />
     <ClInclude Include="protobuf.h" />
-    <ClInclude Include="protocol\10000_C2SLoginReq.pb.h" />
-    <ClInclude Include="protocol\10001_S2CLoginRsp.pb.h" />
-    <ClInclude Include="protocol\10002_C2SRegisterReq.pb.h" />
-    <ClInclude Include="protocol\10003_S2CRegisterRsp.pb.h" />
     <ClInclude Include="service.h" />
     <ClInclude Include="service_deamon.h" />
     <ClInclude Include="singleton.h" />
@@ -121,11 +127,17 @@
   <ItemGroup>
     <ClCompile Include="acceptor.cpp" />
     <ClCompile Include="error_code.cpp" />
-    <ClCompile Include="server_logger.cpp" />
     <ClCompile Include="protocol\10000_C2SLoginReq.pb.cc" />
     <ClCompile Include="protocol\10001_S2CLoginRsp.pb.cc" />
     <ClCompile Include="protocol\10002_C2SRegisterReq.pb.cc" />
     <ClCompile Include="protocol\10003_S2CRegisterRsp.pb.cc" />
+    <ClCompile Include="protocol\15000_C2SGetPlayerProfileReq.pb.cc" />
+    <ClCompile Include="protocol\15001_S2CGetPlayerProfileRsp.pb.cc" />
+    <ClCompile Include="protocol\21001_C2SGameCreateReq.pb.cc" />
+    <ClCompile Include="protocol\21002_S2CGameCreateRsp.pb.cc" />
+    <ClCompile Include="protocol\99990_S2CError.pb.cc" />
+    <ClCompile Include="protocol\99991_S2CErrorEx.pb.cc" />
+    <ClCompile Include="server_logger.cpp" />
     <ClCompile Include="socket.cpp" />
     <ClCompile Include="tcp_client.cpp" />
     <ClCompile Include="tcp_connection.cpp" />

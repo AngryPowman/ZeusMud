@@ -4,6 +4,6 @@ message C2SRegisterReq {
 	required string email = 1;
 	required string password = 2;
 	required bytes nickname = 3;
-	optional int32 gender = 4;
+	required int32 gender = 4;
 	optional uint32 BWH = 5;
 }

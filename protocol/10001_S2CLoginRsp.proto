@@ -3,4 +3,5 @@ package Protocol;
 message S2CLoginRsp {
 	required bool login_result = 1;
 	optional bytes failed_reason = 2;
+	optional uint64 player_id = 3;
 }
