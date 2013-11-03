@@ -50,6 +50,18 @@ typedef unsigned long long uint64;
 #define SAFE_DELETE_ARR(x)	if (nullptr != (x)) { delete [] (x); (x) = nullptr; }
 #endif
 
+#ifndef CHECK_NULLPTR
+#define CHECK_NULLPTR(ptr, log) if (nullptr == ptr) error_log(log)
+#endif
+
+#ifndef GETTER_SETTER_MEMBER
+#define GETTER_SETTER_MEMBER(type, name) \
+    private: type _##name; \
+    public: type name() const {return this->m_##name;} \
+    public: void name(type _arg){this->m_##name=_arg;} \
+    private:
+#endif
+
 // boost
 #include <boost/asio.hpp>
 #include <boost/function.hpp>

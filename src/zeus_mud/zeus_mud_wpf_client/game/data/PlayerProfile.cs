@@ -13,5 +13,6 @@ namespace zeus_mud.game.data
         public static Int32 gender { get; set; }
         public static string nickname { get; set; }
         public static string register_ip { get; set; }
+        public static Int64 last_login { get; set; }
     }
 }

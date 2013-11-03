@@ -196,13 +196,13 @@ void TcpConnection::on_read(const byte* data, size_t bytes_transferred)
         const ServerPacketPtr& packet = packetList[i];
         const uint32_t& opcode = packet->opcode;
 
-        if (packet->message != NULL && _readComplectedCallback)
+        if (_readComplectedCallback)
         {
             _readComplectedCallback(shared_from_this(), opcode, packet->message, bytes_transferred);
         }
         else
         {
-            warning_log("Warnning : empty proto message or not set read callback instance.");
+            warning_log("Warnning : not set read callback instance.");
         }
     }
 

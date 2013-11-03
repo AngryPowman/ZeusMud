@@ -85,7 +85,7 @@
             this.ltxtLastLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ltxtLastLogin.Location = new System.Drawing.Point(149, 64);
             this.ltxtLastLogin.Name = "ltxtLastLogin";
-            this.ltxtLastLogin.Size = new System.Drawing.Size(100, 14);
+            this.ltxtLastLogin.Size = new System.Drawing.Size(143, 14);
             this.ltxtLastLogin.TabIndex = 16;
             this.ltxtLastLogin.Text = "-";
             // 
@@ -96,7 +96,7 @@
             this.tlblEmail.Location = new System.Drawing.Point(88, 26);
             this.tlblEmail.Name = "tlblEmail";
             this.tlblEmail.ReadOnly = true;
-            this.tlblEmail.Size = new System.Drawing.Size(100, 14);
+            this.tlblEmail.Size = new System.Drawing.Size(206, 14);
             this.tlblEmail.TabIndex = 16;
             this.tlblEmail.Text = "<None>";
             // 
