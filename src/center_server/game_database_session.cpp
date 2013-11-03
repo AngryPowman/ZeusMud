@@ -78,12 +78,12 @@ bool GameDatabaseSession::loadPlayerInfo(uint64 guid, PlayerDB* playerDB)
            "FROM users WHERE guid = :guid;",
         Poco::Data::limit(1), 
         Poco::Data::use(guid),
-        Poco::Data::into(playerDB->UserInfo.email),
-        Poco::Data::into(playerDB->UserInfo.gender),
-        Poco::Data::into(playerDB->UserInfo.nickname),
-        Poco::Data::into(playerDB->UserInfo.register_ip),
-        Poco::Data::into(playerDB->UserInfo.register_time),
-        Poco::Data::into(playerDB->UserInfo.last_login_time)
+        Poco::Data::into(playerDB->email),
+        Poco::Data::into(playerDB->gender),
+        Poco::Data::into(playerDB->nickname),
+        Poco::Data::into(playerDB->register_ip),
+        Poco::Data::into(playerDB->register_time),
+        Poco::Data::into(playerDB->last_login)
         );
 
     return (_db_stmt.execute() > 0);

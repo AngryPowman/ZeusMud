@@ -4,6 +4,7 @@ message S2CGetPlayerProfileRsp {
 	required uint64 guid = 1;
 	required int32 gender = 2;
 	required bytes nickname = 3;
-	required int32 last_login = 4;
-	required bytes guild = 5;
+	required int64 last_login = 4;
+	required uint64 guild_id = 5;
+	required bytes guild_name = 6;
 }

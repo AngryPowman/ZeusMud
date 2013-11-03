@@ -81,22 +81,26 @@
             // 
             // ltxtLastLogin
             // 
+            this.ltxtLastLogin.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ltxtLastLogin.BackColor = System.Drawing.SystemColors.Control;
             this.ltxtLastLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ltxtLastLogin.Location = new System.Drawing.Point(149, 64);
             this.ltxtLastLogin.Name = "ltxtLastLogin";
-            this.ltxtLastLogin.Size = new System.Drawing.Size(100, 14);
+            this.ltxtLastLogin.Size = new System.Drawing.Size(193, 14);
             this.ltxtLastLogin.TabIndex = 16;
             this.ltxtLastLogin.Text = "-";
             // 
             // tlblEmail
             // 
+            this.tlblEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tlblEmail.BackColor = System.Drawing.SystemColors.Window;
             this.tlblEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tlblEmail.Location = new System.Drawing.Point(88, 26);
             this.tlblEmail.Name = "tlblEmail";
             this.tlblEmail.ReadOnly = true;
-            this.tlblEmail.Size = new System.Drawing.Size(100, 14);
+            this.tlblEmail.Size = new System.Drawing.Size(253, 14);
             this.tlblEmail.TabIndex = 16;
             this.tlblEmail.Text = "<None>";
             // 
@@ -112,7 +116,7 @@
             this.Controls.Add(this.picAvatar);
             this.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.Name = "ProfilePanel";
-            this.Size = new System.Drawing.Size(343, 262);
+            this.Size = new System.Drawing.Size(347, 498);
             this.Load += new System.EventHandler(this.frmProfile_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ProfilePanel_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();

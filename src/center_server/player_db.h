@@ -13,22 +13,23 @@ public:
     }
 
     void loadFromMemCached();
+    void cleanup()
+    {
+        gender = 0;
+        register_time = 0;
+        last_login = 0;
+        guild_id = 0;
+    }
 
 public:
-    struct _UserInfo
-    {
-        std::string email;
-        uint8 gender;
-        std::string nickname;
-        std::string register_ip;
-        int64 register_time;
-        int64 last_login_time;
-    } UserInfo;
-
-    struct _GameInfo
-    {
-
-    } GameInfo;
+    std::string email;          //电子邮箱帐号
+    int32 gender;               //性别
+    std::string nickname;       //昵称
+    std::string register_ip;    //注册IP
+    int64 register_time;        //注册时间
+    int64 last_login;           //上次登录时间
+    uint64 guild_id;            //所在联盟ID
+    std::string guild_name;     //所在联盟名称
 };
 
 #endif

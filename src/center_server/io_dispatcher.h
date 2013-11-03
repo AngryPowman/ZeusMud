@@ -50,7 +50,7 @@ public:
         }
         else
         {
-            std::cout << "No registered event handler for Opcode " << opcode << std::endl;
+            warning_log("No registered event handler for Opcode %d", opcode);
         }
     }
 

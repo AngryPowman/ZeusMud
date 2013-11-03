@@ -9,9 +9,9 @@ class PlayerPool
     : public Venus::ObjectPool<Player>, public Venus::Singleton<PlayerPool>
 {
 public:
-    Player* acquire(uint64 guid)
+    Player* acquire(uint64 guid, GameSession* session)
     {
-        return ObjectPool::acquire(guid);
+        return ObjectPool::acquire(guid, session);
     }
 };
 

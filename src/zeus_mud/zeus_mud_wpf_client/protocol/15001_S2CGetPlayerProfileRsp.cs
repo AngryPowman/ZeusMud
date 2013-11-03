@@ -36,19 +36,26 @@ namespace Protocol
       get { return _nickname; }
       set { _nickname = value; }
     }
-    private int _last_login;
+    private long _last_login;
     [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"last_login", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int last_login
+    public long last_login
     {
       get { return _last_login; }
       set { _last_login = value; }
     }
-    private byte[] _guild;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"guild", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public byte[] guild
+    private ulong _guild_id;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"guild_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong guild_id
     {
-      get { return _guild; }
-      set { _guild = value; }
+      get { return _guild_id; }
+      set { _guild_id = value; }
+    }
+    private byte[] _guild_name;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"guild_name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public byte[] guild_name
+    {
+      get { return _guild_name; }
+      set { _guild_name = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

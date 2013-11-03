@@ -80,11 +80,16 @@ namespace zeus_mud.dialog
         {
             Protocol.S2CGetPlayerProfileRsp response = NetworkEvent.parseMessage<Protocol.S2CGetPlayerProfileRsp>(stream);
             PlayerProfile.guid = response.guid;
-            PlayerProfile.nickname = Encoding.Default.GetString(response.nickname);
+            PlayerProfile.nickname = Encoding.UTF8.GetString(response.nickname);
             PlayerProfile.gender = response.gender;
+            PlayerProfile.last_login = response.last_login;
 
             lblNickname.Text = PlayerProfile.nickname == null ? "-" : PlayerProfile.nickname;
             tlblEmail.Text = PlayerProfile.email == null ? "<无>" : "<" + PlayerProfile.email + ">";
+
+            DateTime dt = new DateTime(1970, 1, 1);
+            dt = dt.AddSeconds(PlayerProfile.last_login);
+            ltxtLastLogin.Text = dt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
         }
     }
 }

@@ -117,24 +117,31 @@ class S2CGetPlayerProfileRsp : public ::google::protobuf::Message {
   inline ::std::string* release_nickname();
   inline void set_allocated_nickname(::std::string* nickname);
 
-  // required int32 last_login = 4;
+  // required int64 last_login = 4;
   inline bool has_last_login() const;
   inline void clear_last_login();
   static const int kLastLoginFieldNumber = 4;
-  inline ::google::protobuf::int32 last_login() const;
-  inline void set_last_login(::google::protobuf::int32 value);
+  inline ::google::protobuf::int64 last_login() const;
+  inline void set_last_login(::google::protobuf::int64 value);
 
-  // required bytes guild = 5;
-  inline bool has_guild() const;
-  inline void clear_guild();
-  static const int kGuildFieldNumber = 5;
-  inline const ::std::string& guild() const;
-  inline void set_guild(const ::std::string& value);
-  inline void set_guild(const char* value);
-  inline void set_guild(const void* value, size_t size);
-  inline ::std::string* mutable_guild();
-  inline ::std::string* release_guild();
-  inline void set_allocated_guild(::std::string* guild);
+  // required uint64 guild_id = 5;
+  inline bool has_guild_id() const;
+  inline void clear_guild_id();
+  static const int kGuildIdFieldNumber = 5;
+  inline ::google::protobuf::uint64 guild_id() const;
+  inline void set_guild_id(::google::protobuf::uint64 value);
+
+  // required bytes guild_name = 6;
+  inline bool has_guild_name() const;
+  inline void clear_guild_name();
+  static const int kGuildNameFieldNumber = 6;
+  inline const ::std::string& guild_name() const;
+  inline void set_guild_name(const ::std::string& value);
+  inline void set_guild_name(const char* value);
+  inline void set_guild_name(const void* value, size_t size);
+  inline ::std::string* mutable_guild_name();
+  inline ::std::string* release_guild_name();
+  inline void set_allocated_guild_name(::std::string* guild_name);
 
   // @@protoc_insertion_point(class_scope:Protocol.S2CGetPlayerProfileRsp)
  private:
@@ -146,19 +153,22 @@ class S2CGetPlayerProfileRsp : public ::google::protobuf::Message {
   inline void clear_has_nickname();
   inline void set_has_last_login();
   inline void clear_has_last_login();
-  inline void set_has_guild();
-  inline void clear_has_guild();
+  inline void set_has_guild_id();
+  inline void clear_has_guild_id();
+  inline void set_has_guild_name();
+  inline void clear_has_guild_name();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint64 guid_;
   ::std::string* nickname_;
+  ::google::protobuf::int64 last_login_;
+  ::google::protobuf::uint64 guild_id_;
+  ::std::string* guild_name_;
   ::google::protobuf::int32 gender_;
-  ::google::protobuf::int32 last_login_;
-  ::std::string* guild_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
 
   friend void  protobuf_AddDesc_15001_5fS2CGetPlayerProfileRsp_2eproto();
   friend void protobuf_AssignDesc_15001_5fS2CGetPlayerProfileRsp_2eproto();
@@ -288,7 +298,7 @@ inline void S2CGetPlayerProfileRsp::set_allocated_nickname(::std::string* nickna
   }
 }
 
-// required int32 last_login = 4;
+// required int64 last_login = 4;
 inline bool S2CGetPlayerProfileRsp::has_last_login() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -299,84 +309,106 @@ inline void S2CGetPlayerProfileRsp::clear_has_last_login() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void S2CGetPlayerProfileRsp::clear_last_login() {
-  last_login_ = 0;
+  last_login_ = GOOGLE_LONGLONG(0);
   clear_has_last_login();
 }
-inline ::google::protobuf::int32 S2CGetPlayerProfileRsp::last_login() const {
+inline ::google::protobuf::int64 S2CGetPlayerProfileRsp::last_login() const {
   return last_login_;
 }
-inline void S2CGetPlayerProfileRsp::set_last_login(::google::protobuf::int32 value) {
+inline void S2CGetPlayerProfileRsp::set_last_login(::google::protobuf::int64 value) {
   set_has_last_login();
   last_login_ = value;
 }
 
-// required bytes guild = 5;
-inline bool S2CGetPlayerProfileRsp::has_guild() const {
+// required uint64 guild_id = 5;
+inline bool S2CGetPlayerProfileRsp::has_guild_id() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void S2CGetPlayerProfileRsp::set_has_guild() {
+inline void S2CGetPlayerProfileRsp::set_has_guild_id() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void S2CGetPlayerProfileRsp::clear_has_guild() {
+inline void S2CGetPlayerProfileRsp::clear_has_guild_id() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void S2CGetPlayerProfileRsp::clear_guild() {
-  if (guild_ != &::google::protobuf::internal::kEmptyString) {
-    guild_->clear();
+inline void S2CGetPlayerProfileRsp::clear_guild_id() {
+  guild_id_ = GOOGLE_ULONGLONG(0);
+  clear_has_guild_id();
+}
+inline ::google::protobuf::uint64 S2CGetPlayerProfileRsp::guild_id() const {
+  return guild_id_;
+}
+inline void S2CGetPlayerProfileRsp::set_guild_id(::google::protobuf::uint64 value) {
+  set_has_guild_id();
+  guild_id_ = value;
+}
+
+// required bytes guild_name = 6;
+inline bool S2CGetPlayerProfileRsp::has_guild_name() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void S2CGetPlayerProfileRsp::set_has_guild_name() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void S2CGetPlayerProfileRsp::clear_has_guild_name() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void S2CGetPlayerProfileRsp::clear_guild_name() {
+  if (guild_name_ != &::google::protobuf::internal::kEmptyString) {
+    guild_name_->clear();
   }
-  clear_has_guild();
+  clear_has_guild_name();
 }
-inline const ::std::string& S2CGetPlayerProfileRsp::guild() const {
-  return *guild_;
+inline const ::std::string& S2CGetPlayerProfileRsp::guild_name() const {
+  return *guild_name_;
 }
-inline void S2CGetPlayerProfileRsp::set_guild(const ::std::string& value) {
-  set_has_guild();
-  if (guild_ == &::google::protobuf::internal::kEmptyString) {
-    guild_ = new ::std::string;
+inline void S2CGetPlayerProfileRsp::set_guild_name(const ::std::string& value) {
+  set_has_guild_name();
+  if (guild_name_ == &::google::protobuf::internal::kEmptyString) {
+    guild_name_ = new ::std::string;
   }
-  guild_->assign(value);
+  guild_name_->assign(value);
 }
-inline void S2CGetPlayerProfileRsp::set_guild(const char* value) {
-  set_has_guild();
-  if (guild_ == &::google::protobuf::internal::kEmptyString) {
-    guild_ = new ::std::string;
+inline void S2CGetPlayerProfileRsp::set_guild_name(const char* value) {
+  set_has_guild_name();
+  if (guild_name_ == &::google::protobuf::internal::kEmptyString) {
+    guild_name_ = new ::std::string;
   }
-  guild_->assign(value);
+  guild_name_->assign(value);
 }
-inline void S2CGetPlayerProfileRsp::set_guild(const void* value, size_t size) {
-  set_has_guild();
-  if (guild_ == &::google::protobuf::internal::kEmptyString) {
-    guild_ = new ::std::string;
+inline void S2CGetPlayerProfileRsp::set_guild_name(const void* value, size_t size) {
+  set_has_guild_name();
+  if (guild_name_ == &::google::protobuf::internal::kEmptyString) {
+    guild_name_ = new ::std::string;
   }
-  guild_->assign(reinterpret_cast<const char*>(value), size);
+  guild_name_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* S2CGetPlayerProfileRsp::mutable_guild() {
-  set_has_guild();
-  if (guild_ == &::google::protobuf::internal::kEmptyString) {
-    guild_ = new ::std::string;
+inline ::std::string* S2CGetPlayerProfileRsp::mutable_guild_name() {
+  set_has_guild_name();
+  if (guild_name_ == &::google::protobuf::internal::kEmptyString) {
+    guild_name_ = new ::std::string;
   }
-  return guild_;
+  return guild_name_;
 }
-inline ::std::string* S2CGetPlayerProfileRsp::release_guild() {
-  clear_has_guild();
-  if (guild_ == &::google::protobuf::internal::kEmptyString) {
+inline ::std::string* S2CGetPlayerProfileRsp::release_guild_name() {
+  clear_has_guild_name();
+  if (guild_name_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
   } else {
-    ::std::string* temp = guild_;
-    guild_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    ::std::string* temp = guild_name_;
+    guild_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
     return temp;
   }
 }
-inline void S2CGetPlayerProfileRsp::set_allocated_guild(::std::string* guild) {
-  if (guild_ != &::google::protobuf::internal::kEmptyString) {
-    delete guild_;
+inline void S2CGetPlayerProfileRsp::set_allocated_guild_name(::std::string* guild_name) {
+  if (guild_name_ != &::google::protobuf::internal::kEmptyString) {
+    delete guild_name_;
   }
-  if (guild) {
-    set_has_guild();
-    guild_ = guild;
+  if (guild_name) {
+    set_has_guild_name();
+    guild_name_ = guild_name;
   } else {
-    clear_has_guild();
-    guild_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    clear_has_guild_name();
+    guild_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
 }
 

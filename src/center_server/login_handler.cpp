@@ -49,7 +49,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
 
     if (user_exists == true)
     {
-        debug_log("User ('%s') not exists.", request.email().c_str());
+        debug_log("User ('%s') exists.", request.email().c_str());
 
         //验证帐号和密码是否匹配
         bool auth_result = GameDatabaseSession::getInstance().userAuth(request.email(), request.password());
@@ -70,7 +70,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
             // ...
 
             //从数据库加载玩家数据
-            Player* player = PlayerPool::getInstance().acquire(guid);
+            Player* player = PlayerPool::getInstance().acquire(guid, this);
 
             if (player != nullptr)
             {
@@ -79,6 +79,9 @@ void GameSession::user_login_handler(const NetworkMessage& message)
                 {
                     debug_log("Load player from db success. guid = %ull", guid);
                     debug_log("Total online player count = %d", GameSessionManager::getInstance().sessionCount());
+
+                    //set last-login time to now
+                    player->lastLogin(Poco::Timestamp().epochTime());
 
                     //attack player to session
                     attackPlayerPtr(player);
@@ -100,6 +103,8 @@ void GameSession::user_login_handler(const NetworkMessage& message)
     }
     else
     {
+        debug_log("User ('%s') not exists. login failed!", request.email().c_str());
+
         //用户不存在
         login_response.set_login_result(false);
         login_response.set_failed_reason("用户不存在。");
