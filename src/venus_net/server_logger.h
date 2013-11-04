@@ -9,6 +9,7 @@
 #include <Poco/LogStream.h>
 #include <Poco/Path.h>
 #include "singleton.h"
+#include <mutex>
 
 class ServerLogger
 {
@@ -56,7 +57,7 @@ private:
 
 //logger
 #define __G_LOGGER__ \
-    FileChannelLogger::getInstance().getLogger()
+    FileChannelLogger::getInstance().getLogger() \
 
 #define __FORMAT__(fmt, ...) \
     FileChannelLogger::getInstance().format_log(fmt, __VA_ARGS__)
