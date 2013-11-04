@@ -105,7 +105,7 @@ namespace zeus_mud.game.data
             writeLine(MessageChannel.ChannelSystem, "信息", SystemUid, "连接成功！");
         }
 
-        public void postChat(MessageChannel channel, string content)
+        public void postChat(MessageChannel channel,string sendto, string content)
         {
             bool success=true;
 
@@ -113,17 +113,17 @@ namespace zeus_mud.game.data
 
             if (success)
             {
-                writeLine(channel, PlayerProfile.nickname, PlayerProfile.guid, content);
+                writeLine(channel, "你"/*PlayerProfile.nickname*/, PlayerProfile.guid, content);
             }
             else
             {
-                writeLine(MessageChannel.ChannelSystem, "错误", SystemUid, "信息“" + content + "”发送失败！");
+                writeLine(MessageChannel.ChannelSystem, "错误", SystemUid, "信息“" + content + "”发送失败！" );
             }
         }
 
-        public void writeLine(MessageChannel channel, string uname, UInt64 uid, string content)
+        public void writeLine(MessageChannel channel, string uname, UInt64 from_uid, string content)
         {
-            wb.Document.InvokeScript("addChatMessage", new Object[] { (int)channel, uid, uname, content });
+            wb.Document.InvokeScript("addChatMessage", new Object[] { (int)channel, from_uid, uname, content });
         }
 
         /**
