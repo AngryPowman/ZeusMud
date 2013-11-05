@@ -2,6 +2,7 @@ package Protocol;
 
 message S2CChatMessageNotify {
 	required int32 chat_type = 1;
-	optional bytes source_player = 2;
-	required bytes chat_content = 3;
+	optional bytes chat_sender_nickname = 2;  //有发送者的情况下需要该字段
+	optional uint64 chat_sender_guid = 3;	  //有发送者的情况下需要该字段
+	required bytes chat_content = 4;
 }

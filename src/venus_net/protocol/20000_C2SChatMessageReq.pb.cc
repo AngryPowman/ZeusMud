@@ -37,7 +37,7 @@ void protobuf_AssignDesc_20000_5fC2SChatMessageReq_2eproto() {
   static const int C2SChatMessageReq_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SChatMessageReq, chat_type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SChatMessageReq, chat_content_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SChatMessageReq, private_chat_target_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SChatMessageReq, chat_target_guid_),
   };
   C2SChatMessageReq_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -81,9 +81,9 @@ void protobuf_AddDesc_20000_5fC2SChatMessageReq_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\03520000_C2SChatMessageReq.proto\022\010Protoco"
-    "l\"Y\n\021C2SChatMessageReq\022\021\n\tchat_type\030\001 \002("
-    "\005\022\024\n\014chat_content\030\002 \002(\014\022\033\n\023private_chat_"
-    "target\030\003 \001(\004", 132);
+    "l\"V\n\021C2SChatMessageReq\022\021\n\tchat_type\030\001 \002("
+    "\005\022\024\n\014chat_content\030\002 \002(\014\022\030\n\020chat_target_g"
+    "uid\030\003 \001(\004", 129);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "20000_C2SChatMessageReq.proto", &protobuf_RegisterTypes);
   C2SChatMessageReq::default_instance_ = new C2SChatMessageReq();
@@ -103,7 +103,7 @@ struct StaticDescriptorInitializer_20000_5fC2SChatMessageReq_2eproto {
 #ifndef _MSC_VER
 const int C2SChatMessageReq::kChatTypeFieldNumber;
 const int C2SChatMessageReq::kChatContentFieldNumber;
-const int C2SChatMessageReq::kPrivateChatTargetFieldNumber;
+const int C2SChatMessageReq::kChatTargetGuidFieldNumber;
 #endif  // !_MSC_VER
 
 C2SChatMessageReq::C2SChatMessageReq()
@@ -124,7 +124,7 @@ void C2SChatMessageReq::SharedCtor() {
   _cached_size_ = 0;
   chat_type_ = 0;
   chat_content_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  private_chat_target_ = GOOGLE_ULONGLONG(0);
+  chat_target_guid_ = GOOGLE_ULONGLONG(0);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -169,7 +169,7 @@ void C2SChatMessageReq::Clear() {
         chat_content_->clear();
       }
     }
-    private_chat_target_ = GOOGLE_ULONGLONG(0);
+    chat_target_guid_ = GOOGLE_ULONGLONG(0);
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -206,19 +206,19 @@ bool C2SChatMessageReq::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_private_chat_target;
+        if (input->ExpectTag(24)) goto parse_chat_target_guid;
         break;
       }
 
-      // optional uint64 private_chat_target = 3;
+      // optional uint64 chat_target_guid = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_private_chat_target:
+         parse_chat_target_guid:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &private_chat_target_)));
-          set_has_private_chat_target();
+                 input, &chat_target_guid_)));
+          set_has_chat_target_guid();
         } else {
           goto handle_uninterpreted;
         }
@@ -255,9 +255,9 @@ void C2SChatMessageReq::SerializeWithCachedSizes(
       2, this->chat_content(), output);
   }
 
-  // optional uint64 private_chat_target = 3;
-  if (has_private_chat_target()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->private_chat_target(), output);
+  // optional uint64 chat_target_guid = 3;
+  if (has_chat_target_guid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->chat_target_guid(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -280,9 +280,9 @@ void C2SChatMessageReq::SerializeWithCachedSizes(
         2, this->chat_content(), target);
   }
 
-  // optional uint64 private_chat_target = 3;
-  if (has_private_chat_target()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->private_chat_target(), target);
+  // optional uint64 chat_target_guid = 3;
+  if (has_chat_target_guid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->chat_target_guid(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -310,11 +310,11 @@ int C2SChatMessageReq::ByteSize() const {
           this->chat_content());
     }
 
-    // optional uint64 private_chat_target = 3;
-    if (has_private_chat_target()) {
+    // optional uint64 chat_target_guid = 3;
+    if (has_chat_target_guid()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt64Size(
-          this->private_chat_target());
+          this->chat_target_guid());
     }
 
   }
@@ -350,8 +350,8 @@ void C2SChatMessageReq::MergeFrom(const C2SChatMessageReq& from) {
     if (from.has_chat_content()) {
       set_chat_content(from.chat_content());
     }
-    if (from.has_private_chat_target()) {
-      set_private_chat_target(from.private_chat_target());
+    if (from.has_chat_target_guid()) {
+      set_chat_target_guid(from.chat_target_guid());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -379,7 +379,7 @@ void C2SChatMessageReq::Swap(C2SChatMessageReq* other) {
   if (other != this) {
     std::swap(chat_type_, other->chat_type_);
     std::swap(chat_content_, other->chat_content_);
-    std::swap(private_chat_target_, other->private_chat_target_);
+    std::swap(chat_target_guid_, other->chat_target_guid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

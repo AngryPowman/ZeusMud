@@ -26,7 +26,8 @@ void GameSession::chat_message_handler(const NetworkMessage& message)
     Protocol::S2CChatMessageNotify chatMessageNotify;
     chatMessageNotify.set_chat_type(request.chat_type());
     chatMessageNotify.set_chat_content(request.chat_content());
-    chatMessageNotify.set_source_player(_player->nickname());
+	chatMessageNotify.set_chat_sender_nickname(_player->nickname());
+	chatMessageNotify.set_chat_sender_guid(_player->guid());
 
     switch (request.chat_type())
     {
@@ -39,7 +40,7 @@ void GameSession::chat_message_handler(const NetworkMessage& message)
         }
         case ChannelPrivate:
         {
-            GameSession* session = GameSessionManager::getInstance().getSession(request.private_chat_target());
+			GameSession* session = GameSessionManager::getInstance().getSession(request.chat_target_guid());
             if (session != nullptr)
             {
                 session->send_message(Opcodes::S2CChatMessageNotify, chatMessageNotify);

@@ -30,13 +30,13 @@ namespace Protocol
       set { _chat_content = value; }
     }
 
-    private ulong _private_chat_target = default(ulong);
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"private_chat_target", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    private ulong _chat_target_guid = default(ulong);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"chat_target_guid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(ulong))]
-    public ulong private_chat_target
+    public ulong chat_target_guid
     {
-      get { return _private_chat_target; }
-      set { _private_chat_target = value; }
+      get { return _chat_target_guid; }
+      set { _chat_target_guid = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

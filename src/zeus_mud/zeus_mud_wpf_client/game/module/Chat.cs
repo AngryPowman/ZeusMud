@@ -120,7 +120,7 @@ namespace zeus_mud.game.data
                 chatRequest.chat_type = (int)channel;
                 if (channel == MessageChannel.ChannelPrivate)
                 {
-                    chatRequest.private_chat_target = 439715978;
+                    chatRequest.chat_target_guid = 439715978;   // > Debug
                 }
 
                 writeLine(channel, PlayerProfile.nickname, PlayerProfile.guid, content);
@@ -160,20 +160,21 @@ namespace zeus_mud.game.data
         {
             Protocol.S2CChatMessageNotify notify = NetworkEvent.parseMessage<Protocol.S2CChatMessageNotify>(stream);
 
+            //如果是私聊
             if (notify.chat_type == (int)MessageChannel.ChannelPrivate)
             {
                 writeLine(
                     (MessageChannel)notify.chat_type,
-                    Encoding.Default.GetString(notify.source_player),
-                    0,
+                    Encoding.Default.GetString(notify.chat_sender_nickname),
+                    notify.chat_sender_guid,
                     Encoding.Default.GetString(notify.chat_content));
             }
             else
             {
                 writeLine(
                     (MessageChannel)notify.chat_type,
-                    Encoding.UTF8.GetString(notify.source_player),
-                    10000,
+                    Encoding.UTF8.GetString(notify.chat_sender_nickname),
+                    notify.chat_sender_guid,
                     Encoding.Default.GetString(notify.chat_content));
             }
         }

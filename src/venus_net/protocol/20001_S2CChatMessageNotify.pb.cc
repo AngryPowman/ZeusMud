@@ -34,9 +34,10 @@ void protobuf_AssignDesc_20001_5fS2CChatMessageNotify_2eproto() {
       "20001_S2CChatMessageNotify.proto");
   GOOGLE_CHECK(file != NULL);
   S2CChatMessageNotify_descriptor_ = file->message_type(0);
-  static const int S2CChatMessageNotify_offsets_[3] = {
+  static const int S2CChatMessageNotify_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CChatMessageNotify, chat_type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CChatMessageNotify, source_player_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CChatMessageNotify, chat_sender_nickname_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CChatMessageNotify, chat_sender_guid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CChatMessageNotify, chat_content_),
   };
   S2CChatMessageNotify_reflection_ =
@@ -81,9 +82,10 @@ void protobuf_AddDesc_20001_5fS2CChatMessageNotify_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n 20001_S2CChatMessageNotify.proto\022\010Prot"
-    "ocol\"V\n\024S2CChatMessageNotify\022\021\n\tchat_typ"
-    "e\030\001 \002(\005\022\025\n\rsource_player\030\002 \001(\014\022\024\n\014chat_c"
-    "ontent\030\003 \002(\014", 132);
+    "ocol\"w\n\024S2CChatMessageNotify\022\021\n\tchat_typ"
+    "e\030\001 \002(\005\022\034\n\024chat_sender_nickname\030\002 \001(\014\022\030\n"
+    "\020chat_sender_guid\030\003 \001(\004\022\024\n\014chat_content\030"
+    "\004 \002(\014", 165);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "20001_S2CChatMessageNotify.proto", &protobuf_RegisterTypes);
   S2CChatMessageNotify::default_instance_ = new S2CChatMessageNotify();
@@ -102,7 +104,8 @@ struct StaticDescriptorInitializer_20001_5fS2CChatMessageNotify_2eproto {
 
 #ifndef _MSC_VER
 const int S2CChatMessageNotify::kChatTypeFieldNumber;
-const int S2CChatMessageNotify::kSourcePlayerFieldNumber;
+const int S2CChatMessageNotify::kChatSenderNicknameFieldNumber;
+const int S2CChatMessageNotify::kChatSenderGuidFieldNumber;
 const int S2CChatMessageNotify::kChatContentFieldNumber;
 #endif  // !_MSC_VER
 
@@ -123,7 +126,8 @@ S2CChatMessageNotify::S2CChatMessageNotify(const S2CChatMessageNotify& from)
 void S2CChatMessageNotify::SharedCtor() {
   _cached_size_ = 0;
   chat_type_ = 0;
-  source_player_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  chat_sender_nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  chat_sender_guid_ = GOOGLE_ULONGLONG(0);
   chat_content_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -133,8 +137,8 @@ S2CChatMessageNotify::~S2CChatMessageNotify() {
 }
 
 void S2CChatMessageNotify::SharedDtor() {
-  if (source_player_ != &::google::protobuf::internal::kEmptyString) {
-    delete source_player_;
+  if (chat_sender_nickname_ != &::google::protobuf::internal::kEmptyString) {
+    delete chat_sender_nickname_;
   }
   if (chat_content_ != &::google::protobuf::internal::kEmptyString) {
     delete chat_content_;
@@ -167,11 +171,12 @@ S2CChatMessageNotify* S2CChatMessageNotify::New() const {
 void S2CChatMessageNotify::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     chat_type_ = 0;
-    if (has_source_player()) {
-      if (source_player_ != &::google::protobuf::internal::kEmptyString) {
-        source_player_->clear();
+    if (has_chat_sender_nickname()) {
+      if (chat_sender_nickname_ != &::google::protobuf::internal::kEmptyString) {
+        chat_sender_nickname_->clear();
       }
     }
+    chat_sender_guid_ = GOOGLE_ULONGLONG(0);
     if (has_chat_content()) {
       if (chat_content_ != &::google::protobuf::internal::kEmptyString) {
         chat_content_->clear();
@@ -199,26 +204,42 @@ bool S2CChatMessageNotify::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_source_player;
+        if (input->ExpectTag(18)) goto parse_chat_sender_nickname;
         break;
       }
 
-      // optional bytes source_player = 2;
+      // optional bytes chat_sender_nickname = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_source_player:
+         parse_chat_sender_nickname:
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
-                input, this->mutable_source_player()));
+                input, this->mutable_chat_sender_nickname()));
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_chat_content;
+        if (input->ExpectTag(24)) goto parse_chat_sender_guid;
         break;
       }
 
-      // required bytes chat_content = 3;
+      // optional uint64 chat_sender_guid = 3;
       case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_chat_sender_guid:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &chat_sender_guid_)));
+          set_has_chat_sender_guid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_chat_content;
+        break;
+      }
+
+      // required bytes chat_content = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_chat_content:
@@ -254,16 +275,21 @@ void S2CChatMessageNotify::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->chat_type(), output);
   }
 
-  // optional bytes source_player = 2;
-  if (has_source_player()) {
+  // optional bytes chat_sender_nickname = 2;
+  if (has_chat_sender_nickname()) {
     ::google::protobuf::internal::WireFormatLite::WriteBytes(
-      2, this->source_player(), output);
+      2, this->chat_sender_nickname(), output);
   }
 
-  // required bytes chat_content = 3;
+  // optional uint64 chat_sender_guid = 3;
+  if (has_chat_sender_guid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->chat_sender_guid(), output);
+  }
+
+  // required bytes chat_content = 4;
   if (has_chat_content()) {
     ::google::protobuf::internal::WireFormatLite::WriteBytes(
-      3, this->chat_content(), output);
+      4, this->chat_content(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -279,18 +305,23 @@ void S2CChatMessageNotify::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->chat_type(), target);
   }
 
-  // optional bytes source_player = 2;
-  if (has_source_player()) {
+  // optional bytes chat_sender_nickname = 2;
+  if (has_chat_sender_nickname()) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        2, this->source_player(), target);
+        2, this->chat_sender_nickname(), target);
   }
 
-  // required bytes chat_content = 3;
+  // optional uint64 chat_sender_guid = 3;
+  if (has_chat_sender_guid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->chat_sender_guid(), target);
+  }
+
+  // required bytes chat_content = 4;
   if (has_chat_content()) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        3, this->chat_content(), target);
+        4, this->chat_content(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -311,14 +342,21 @@ int S2CChatMessageNotify::ByteSize() const {
           this->chat_type());
     }
 
-    // optional bytes source_player = 2;
-    if (has_source_player()) {
+    // optional bytes chat_sender_nickname = 2;
+    if (has_chat_sender_nickname()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::BytesSize(
-          this->source_player());
+          this->chat_sender_nickname());
     }
 
-    // required bytes chat_content = 3;
+    // optional uint64 chat_sender_guid = 3;
+    if (has_chat_sender_guid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->chat_sender_guid());
+    }
+
+    // required bytes chat_content = 4;
     if (has_chat_content()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::BytesSize(
@@ -355,8 +393,11 @@ void S2CChatMessageNotify::MergeFrom(const S2CChatMessageNotify& from) {
     if (from.has_chat_type()) {
       set_chat_type(from.chat_type());
     }
-    if (from.has_source_player()) {
-      set_source_player(from.source_player());
+    if (from.has_chat_sender_nickname()) {
+      set_chat_sender_nickname(from.chat_sender_nickname());
+    }
+    if (from.has_chat_sender_guid()) {
+      set_chat_sender_guid(from.chat_sender_guid());
     }
     if (from.has_chat_content()) {
       set_chat_content(from.chat_content());
@@ -378,7 +419,7 @@ void S2CChatMessageNotify::CopyFrom(const S2CChatMessageNotify& from) {
 }
 
 bool S2CChatMessageNotify::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000005) != 0x00000005) return false;
+  if ((_has_bits_[0] & 0x00000009) != 0x00000009) return false;
 
   return true;
 }
@@ -386,7 +427,8 @@ bool S2CChatMessageNotify::IsInitialized() const {
 void S2CChatMessageNotify::Swap(S2CChatMessageNotify* other) {
   if (other != this) {
     std::swap(chat_type_, other->chat_type_);
-    std::swap(source_player_, other->source_player_);
+    std::swap(chat_sender_nickname_, other->chat_sender_nickname_);
+    std::swap(chat_sender_guid_, other->chat_sender_guid_);
     std::swap(chat_content_, other->chat_content_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
