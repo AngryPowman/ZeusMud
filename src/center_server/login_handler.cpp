@@ -6,7 +6,7 @@
 #include "game_database_session.h"
 #include "opcodes.h"
 #include "game_util.h"
-#include "player_pool.h"
+#include "player_manager.h"
 #include "game_session_manager.h"
 
 void GameSession::user_login_handler(const NetworkMessage& message)
@@ -70,7 +70,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
             // ...
 
             //从数据库加载玩家数据
-            Player* player = PlayerPool::getInstance().acquire(guid, this);
+            Player* player = PlayerManager::getInstance().createPlayer(guid, this);
 
             if (player != nullptr)
             {
@@ -78,7 +78,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
                 if (result == true)
                 {
                     debug_log("Load player from db success. guid = %ull", guid);
-                    debug_log("Total online player count = %d", GameSessionManager::getInstance().sessionCount());
+                    debug_log("Total online player count = %d", PlayerManager::getInstance().playerCount());
 
                     //set last-login time to now
                     player->lastLogin(Poco::Timestamp().epochTime());
@@ -88,7 +88,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
                 }
                 else
                 {
-                    PlayerPool::getInstance().release(player);
+                    PlayerManager::getInstance().destroyPlayer(player);
                     error_log("Load player from db failed! guid = %ull", guid);
                 }
 

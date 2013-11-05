@@ -1,4 +1,5 @@
 #include "game_session.h"
+#include "player_manager.h"
 #include "game_session_manager.h"
 #include "player.h"
 
@@ -40,10 +41,10 @@ void GameSession::chat_message_handler(const NetworkMessage& message)
         }
         case ChannelPrivate:
         {
-			GameSession* session = GameSessionManager::getInstance().getSession(request.chat_target_guid());
-            if (session != nullptr)
+			Player* player = PlayerManager::getInstance().getPlayer(request.chat_target_guid());
+            if (player != nullptr)
             {
-                session->send_message(Opcodes::S2CChatMessageNotify, chatMessageNotify);
+                player->session()->send_message<Protocol::S2CChatMessageNotify>(Opcodes::S2CChatMessageNotify, chatMessageNotify);
             }
             break;
         }

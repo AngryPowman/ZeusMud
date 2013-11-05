@@ -25,6 +25,9 @@ public:
     bool loadFromMemCached();
 
 public:
+	template <T> void send_message(Opcodes opcode, )
+
+public:
     //properties
     const uint64& guid() const;
 
