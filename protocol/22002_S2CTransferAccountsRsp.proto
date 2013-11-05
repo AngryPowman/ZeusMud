@@ -1,0 +1,6 @@
+package Protocol;
+
+message S2CTransferAccountsRsp {
+	required int32 result = 1;
+	required bytes content = 2;
+}
