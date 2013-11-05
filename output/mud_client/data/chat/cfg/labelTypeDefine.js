@@ -20,3 +20,5 @@ var labelTypeDefine = {
 		name: "组队"
 	}
 };
+
+var CHANNEL_ID_PRIMARY = 2;

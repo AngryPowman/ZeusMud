@@ -34,7 +34,7 @@ function addChatMessage(channel_id, uid, uname, content){
 
 }
 
-function newPost(channel_id, content){
+function newPost(channel_id, to_uid, content){
 	if(!content){
 		console.log('信息内容为空。');
 		return;
@@ -43,5 +43,5 @@ function newPost(channel_id, content){
 		console.log('频道ID ' + channel_id + ' 没有定义');
 		return;
 	}
-	window.external.postChat(channel_id, content);
+	window.external.postChat(channel_id, to_uid, content);
 }

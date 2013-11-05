@@ -109,10 +109,8 @@ namespace zeus_mud.game.data
             writeLine(MessageChannel.ChannelSystem, "信息", SystemUid, "连接成功！");
         }
 
-        public void postChat(MessageChannel channel, string content)
+        public void postChat(MessageChannel channel,string sendto, string content)
         {
-            //bool success=true;
-
             // 向服务器请求的代码
             if (channel == MessageChannel.ChannelPrivate ||
                 channel == MessageChannel.ChannelWorld ||
@@ -125,19 +123,20 @@ namespace zeus_mud.game.data
                     chatRequest.private_chat_target = 439715978;
                 }
 
+                writeLine(channel, PlayerProfile.nickname, PlayerProfile.guid, content);
                 chatRequest.chat_content = Encoding.Default.GetBytes(content);
                 NetworkEvent.sendPacket<Protocol.C2SChatMessageReq>(chatRequest);
             }
             else
             {
-                writeLine(MessageChannel.ChannelSystem, "错误", SystemUid, "信息“" + content + "”发送失败！");
+                writeLine(MessageChannel.ChannelSystem, "错误", SystemUid, "信息“" + content + "”发送失败！" );
             }
 
         }
 
-        public void writeLine(MessageChannel channel, string uname, UInt64 uid, string content)
+        public void writeLine(MessageChannel channel, string uname, UInt64 from_uid, string content)
         {
-            wb.Document.InvokeScript("addChatMessage", new Object[] { (int)channel, uid, uname, content });
+            wb.Document.InvokeScript("addChatMessage", new Object[] { (int)channel, from_uid, uname, content });
         }
 
         /**
