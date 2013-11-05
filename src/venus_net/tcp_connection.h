@@ -27,10 +27,7 @@ public:
     {
         return _socket->handle();
     }
-    //void setInetAddress(const InetAddress& inetAddress);
     InetAddress getPeerAddress();
-    //void connectAsync();
-    //void connectAsync(const InetAddress& inetAddress);
     void shutdown();
     void close();
     void writeAsync(const byte* data, size_t size);
