@@ -123,7 +123,6 @@ namespace zeus_mud.game.data
                     chatRequest.chat_target_guid = 439715978;   // > Debug
                 }
 
-                writeLine(channel, PlayerProfile.nickname, PlayerProfile.guid, content);
                 chatRequest.chat_content = Encoding.Default.GetBytes(content);
                 NetworkEvent.sendPacket<Protocol.C2SChatMessageReq>(chatRequest);
             }
