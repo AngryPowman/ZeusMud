@@ -10,6 +10,8 @@ namespace Opcodes
     const int S2CRegisterRsp            = 10003;            //注册回应
     const int C2SGetPlayerProfileReq    = 15000;
     const int S2CGetPlayerProfileRsp    = 15001;
+    const int C2SChatMessageReq         = 20000;
+    const int S2CChatMessageNotify      = 20001;
     const int S2CError                  = 99990;            //注册回应
     const int S2CErrorEx                = 99991;            //注册回应
 }
