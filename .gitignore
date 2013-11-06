@@ -21,6 +21,7 @@
 *.pdb
 *.lib
 *.aps
+*.suo
 *.opensdf
 
 !/3rdparty/protobuf_lib/*.lib
