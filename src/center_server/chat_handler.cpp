@@ -44,7 +44,7 @@ void GameSession::chat_message_handler(const NetworkMessage& message)
 			Player* player = PlayerManager::getInstance().getPlayer(request.chat_target_guid());
             if (player != nullptr)
             {
-                player->session()->send_message<Protocol::S2CChatMessageNotify>(Opcodes::S2CChatMessageNotify, chatMessageNotify);
+                player->send_message<Protocol::S2CChatMessageNotify>(Opcodes::S2CChatMessageNotify, chatMessageNotify);
             }
             break;
         }
