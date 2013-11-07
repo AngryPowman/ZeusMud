@@ -109,7 +109,7 @@ namespace zeus_mud.game.data
             writeLine(MessageChannel.ChannelSystem, "信息", SystemUid, "连接成功！");
         }
 
-        public void postChat(MessageChannel channel,string sendto, string content)
+        public void postChat(MessageChannel channel,string content)
         {
             // 向服务器请求的代码
             if (channel == MessageChannel.ChannelPrivate ||
