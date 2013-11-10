@@ -56,3 +56,20 @@ void GameSession::room_create_handler(const NetworkMessage& message)
     }
     send_message<Protocol::S2CRoomCreateRsp>(Opcodes::S2CRoomCreateRsp, response);
 }
+
+void GameSession::get_room_list_handler(const NetworkMessage& message)
+{
+    Protocol::S2CGetRoomListRsp response;
+    adap_map<uint32, Room*> rooms;
+    RoomManager::getInstance().getRooms(rooms);
+
+    for (auto it = rooms.begin(); it != rooms.end(); ++it)
+    {
+        Protocol::S2CGetRoomListRsp::RoomInfo* roomInfo = response.add_room_list();
+        roomInfo->id = it->second->getId();
+        roomInfo->room_name = it->second->getRoomName();
+        roomInfo->player_count = it->second->getPlayerCount();
+    }
+    debug_log("Send room list to client.");
+    send_message<Protocol::S2CGetRoomListRsp>(Opcodes::S2CGetRoomListRsp ,response);
+}

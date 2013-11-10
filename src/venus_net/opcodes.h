@@ -16,6 +16,8 @@ namespace Opcodes
     const int S2CErrorEx                = 99991;            //×¢²á»ØÓ¦
     const int C2SRoomCreateReq          = 21001;            
     const int S2CRoomCreateRsp          = 21002;
+    const int C2SGetRoomListReq         = 21003;
+    const int S2CGetRoomListRsp         = 21004;
 }
 
 #endif

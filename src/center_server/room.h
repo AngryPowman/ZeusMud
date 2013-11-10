@@ -11,11 +11,12 @@ public:
         _roomName = roomName;
         _password = password;
     }
-    int getId() { return _id; }
+    uint32 getId() { return _id; }
     std::string getRoomName() { return _roomName; }
     std::string getPassword() { return _password; }
     std::string getOwner() { return _owner; }
     void getMembers(std::vector<std::string>& members) { members = _members; }
+    uint32 getPlayerCount() { return _members.size(); }
 protected:
 private:
     std::string _roomName;
