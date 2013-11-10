@@ -19,7 +19,9 @@ namespace Wpf.network
         C2SChatMessageReq = 20000,
         S2CChatMessageNotify = 20001,
         C2SRoomCreateReq = 21001,
-        S2CRoomCreateRsp = 21002
+        S2CRoomCreateRsp = 21002,
+        C2SGetRoomListReq = 21003,
+        S2CGetRoomListRsp = 21004
     }
 
     public enum ErrorCode

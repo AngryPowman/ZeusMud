@@ -111,20 +111,30 @@ class S2CGetRoomListRsp_RoomInfo : public ::google::protobuf::Message {
   inline ::std::string* release_room_name();
   inline void set_allocated_room_name(::std::string* room_name);
 
+  // required uint32 player_count = 3;
+  inline bool has_player_count() const;
+  inline void clear_player_count();
+  static const int kPlayerCountFieldNumber = 3;
+  inline ::google::protobuf::uint32 player_count() const;
+  inline void set_player_count(::google::protobuf::uint32 value);
+
   // @@protoc_insertion_point(class_scope:Protocol.S2CGetRoomListRsp.RoomInfo)
  private:
   inline void set_has_id();
   inline void clear_has_id();
   inline void set_has_room_name();
   inline void clear_has_room_name();
+  inline void set_has_player_count();
+  inline void clear_has_player_count();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* room_name_;
   ::google::protobuf::uint32 id_;
+  ::google::protobuf::uint32 player_count_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_21004_5fS2CGetRoomListRsp_2eproto();
   friend void protobuf_AssignDesc_21004_5fS2CGetRoomListRsp_2eproto();
@@ -317,6 +327,28 @@ inline void S2CGetRoomListRsp_RoomInfo::set_allocated_room_name(::std::string* r
     clear_has_room_name();
     room_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
+}
+
+// required uint32 player_count = 3;
+inline bool S2CGetRoomListRsp_RoomInfo::has_player_count() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void S2CGetRoomListRsp_RoomInfo::set_has_player_count() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void S2CGetRoomListRsp_RoomInfo::clear_has_player_count() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void S2CGetRoomListRsp_RoomInfo::clear_player_count() {
+  player_count_ = 0u;
+  clear_has_player_count();
+}
+inline ::google::protobuf::uint32 S2CGetRoomListRsp_RoomInfo::player_count() const {
+  return player_count_;
+}
+inline void S2CGetRoomListRsp_RoomInfo::set_player_count(::google::protobuf::uint32 value) {
+  set_has_player_count();
+  player_count_ = value;
 }
 
 // -------------------------------------------------------------------

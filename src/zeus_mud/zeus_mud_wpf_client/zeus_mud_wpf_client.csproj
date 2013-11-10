@@ -115,11 +115,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="dialog\frmGameCreate.cs">
+    <Compile Include="dialog\frmRoomCreate.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dialog\frmGameCreate.designer.cs">
-      <DependentUpon>frmGameCreate.cs</DependentUpon>
+    <Compile Include="dialog\frmRoomCreate.designer.cs">
+      <DependentUpon>frmRoomCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="dialog\frmLogin.cs">
       <SubType>Form</SubType>
@@ -146,7 +146,7 @@
       <DependentUpon>GameChatPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="common\GameUtil.cs" />
-	<Compile Include="dialog\RoomListPanel.cs">
+    <Compile Include="dialog\RoomListPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="dialog\RoomListPanel.Designer.cs">
@@ -201,8 +201,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="dialog\frmGameCreate.resx">
-      <DependentUpon>frmGameCreate.cs</DependentUpon>
+    <EmbeddedResource Include="dialog\frmRoomCreate.resx">
+      <DependentUpon>frmRoomCreate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialog\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
