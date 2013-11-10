@@ -92,7 +92,7 @@ namespace zeus_mud
                 LoginData.email = PlayerProfile.email = txtUsername.Text;
                 GlobalObject.MainWindow = new GameMainWindow();
                 GlobalObject.MainWindow.Show();
-                this.Hide();
+                this.Hide();//XXX: 若要关闭当前窗口，需要注意下头closed逻辑
             }
             else
             {
@@ -217,6 +217,12 @@ namespace zeus_mud
             {
                 txtPassword.SelectAll();
             }
+        }
+
+        private void frmLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown(); //退出本程序。这是个wpf程序，因此Application.Exit()无效。
+            // XXX: 上头是hide，而不是关闭本窗口，修改该逻辑需要修改本处代码
         }
 
     }
