@@ -1,6 +1,6 @@
 ﻿namespace zeus_mud_wpf_client.dialog
 {
-    partial class frmGameCreate
+    partial class frmRoomCreate
     {
         /// <summary>
         /// Required designer variable.

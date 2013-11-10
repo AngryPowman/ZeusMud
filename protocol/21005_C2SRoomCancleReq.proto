@@ -1,0 +1,5 @@
+package Protocol;
+
+message C2SRoomCancleReq {
+	required uint32 id = 1;
+}

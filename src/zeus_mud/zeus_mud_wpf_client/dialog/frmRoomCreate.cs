@@ -15,14 +15,14 @@ using Wpf.ZuesMud;
 
 namespace zeus_mud_wpf_client.dialog
 {
-    public partial class frmGameCreate : Form
+    public partial class frmRoomCreate : Form
     {
-        public frmGameCreate()
+        public frmRoomCreate()
         {
             InitializeComponent();
 
             //注册请求消息回调
-            OpcodesHandler.registerHandler(Opcodes.S2CRoomCreateRsp, this.gameCreateCallBack);
+            OpcodesHandler.registerHandler(Opcodes.S2CRoomCreateRsp, this.roomCreateCallBack);
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -33,14 +33,14 @@ namespace zeus_mud_wpf_client.dialog
                 return;
             }
 
-            gameCreateRequest(textBoxGameName.Text, textBoxGamePassword.Text);
+            roomCreateRequest(textBoxGameName.Text, textBoxGamePassword.Text);
         }
         /// <summary>
         /// 创建游戏房间请求
         /// </summary>
         /// <param name="gameName"></param>
         /// <param name="password"></param>
-        public void gameCreateRequest(string gameName, string password)
+        public void roomCreateRequest(string gameName, string password)
         {
             Protocol.C2SRoomCreateReq request = new Protocol.C2SRoomCreateReq();
             request.room_name = gameName;
@@ -55,7 +55,7 @@ namespace zeus_mud_wpf_client.dialog
         /// 创建房间请求回调
         /// </summary>
         /// <param name="stream"></param>
-        public void gameCreateCallBack(MemoryStream stream)
+        public void roomCreateCallBack(MemoryStream stream)
         {
             Protocol.S2CRoomCreateRsp response = NetworkEvent.parseMessage<Protocol.S2CRoomCreateRsp>(stream);
             if (response.room_create_result == true)
