@@ -1,0 +1,9 @@
+package Protocol;
+
+message S2CGetRoomListRsp {
+	message RoomInfo {
+		required uint32 id = 1;
+		required string room_name = 2;
+	}
+	repeated RoomInfo room_list = 1;
+}

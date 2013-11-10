@@ -29,5 +29,11 @@ namespace zeus_mud.dialog
         {
             MessageBox.Show("你有个毛资料");
         }
+
+        private void 创建游戏CToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GlobalObject.GameCreateForm = new frmGameCreate();
+            GlobalObject.GameCreateForm.ShowDialog();
+        }
     }
 }
