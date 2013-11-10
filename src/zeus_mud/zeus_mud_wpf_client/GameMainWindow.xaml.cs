@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf.ZuesMud;
+using zeus_mud_wpf_client.dialog;
 
 namespace zeus_mud_wpf_client
 {
@@ -23,6 +25,12 @@ namespace zeus_mud_wpf_client
         public GameMainWindow()
         {
             InitializeComponent();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            GlobalObject.GameCreateForm = new frmGameCreate();
+            GlobalObject.GameCreateForm.ShowDialog();
         }
     }
 }

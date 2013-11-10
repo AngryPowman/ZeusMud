@@ -115,6 +115,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="dialog\frmGameCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialog\frmGameCreate.designer.cs">
+      <DependentUpon>frmGameCreate.cs</DependentUpon>
+    </Compile>
     <Compile Include="dialog\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,12 @@
       <DependentUpon>GameChatPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="common\GameUtil.cs" />
+	<Compile Include="dialog\RoomListPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dialog\RoomListPanel.Designer.cs">
+      <DependentUpon>RoomListPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="game\module\Chat.cs" />
     <Compile Include="game\data\LoginData.cs" />
     <Compile Include="game\data\PlayerProfile.cs" />
@@ -156,6 +168,10 @@
     <Compile Include="protocol\15001_S2CGetPlayerProfileRsp.cs" />
     <Compile Include="protocol\20000_C2SChatMessageReq.cs" />
     <Compile Include="protocol\20001_S2CChatMessageNotify.cs" />
+    <Compile Include="protocol\21001_C2SRoomCreateReq.cs" />
+    <Compile Include="protocol\21002_S2CRoomCreateRsp.cs" />
+    <Compile Include="protocol\21003_C2SGetRoomListReq.cs" />
+    <Compile Include="protocol\21004_S2CGetRoomListRsp.cs" />
     <Compile Include="protocol\99990_S2CError.cs" />
     <Compile Include="protocol\99991_S2CErrorEx.cs" />
     <Page Include="GameMainWindow.xaml">
@@ -185,6 +201,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="dialog\frmGameCreate.resx">
+      <DependentUpon>frmGameCreate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dialog\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -196,6 +215,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dialog\GameChatPanel.resx">
       <DependentUpon>GameChatPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialog\RoomListPanel.resx">
+      <DependentUpon>RoomListPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,0 +1,6 @@
+package Protocol;
+
+message C2SRoomCreateReq {
+	required string room_name = 1;
+	required string password = 2;
+}

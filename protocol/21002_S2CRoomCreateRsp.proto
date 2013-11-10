@@ -1,0 +1,7 @@
+package Protocol;
+
+message S2CRoomCreateRsp {
+	required bool room_create_result = 1;
+	optional uint32 room_id = 2;
+	optional bytes failed_reason = 3;
+}

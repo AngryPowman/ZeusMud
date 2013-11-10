@@ -16,6 +16,7 @@ namespace Wpf
         public static frmGameMain_ GameMainForm_ { get; set; }
         public static frmBattle BattleForm { get; set; }
         public static frmProfile ProfileForm { get; set; }
+        public static frmGameCreate GameCreateForm { get; set; }
 
         public static string ConfigPath = Environment.CurrentDirectory + @"\Config.xml";
         public static string DefaultServer { get {return "127.0.0.1";}}
