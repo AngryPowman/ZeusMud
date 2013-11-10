@@ -13,8 +13,9 @@ using System.Windows.Forms;
 using Wpf;
 using Wpf.network;
 using Wpf.ZuesMud;
+using zeus_mud;
 
-namespace zeus_mud.dialog
+namespace zeus_mud_wpf_client.dialog
 {
     public partial class frmRegister : Form
     {

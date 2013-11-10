@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using zeus_mud;
-using zeus_mud.dialog;
+using zeus_mud_wpf_client.dialog;
 using zeus_mud_wpf_client;
 
 namespace Wpf.ZuesMud
@@ -17,6 +17,7 @@ namespace Wpf.ZuesMud
         //public static frmGameMain_ GameMainForm_ { get; set; }
         public static GameMainWindow MainWindow { get; set; }
         public static ProfilePanel ProfileForm { get; set; }
+        public static frmGameCreate GameCreateForm { get; set; }
 
         public static string ConfigPath = Environment.CurrentDirectory + @"\Config.xml";
         public static string DefaultServer { get {return "127.0.0.1";}}

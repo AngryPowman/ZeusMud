@@ -4,7 +4,7 @@
         xmlns:dxco="http://schemas.devexpress.com/winfx/2008/xaml/controls" 
         xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
         xmlns:avalondock="http://schemas.xceed.com/wpf/xaml/avalondock" 
-        xmlns:dialog="clr-namespace:zeus_mud.dialog"
+        xmlns:dialog="clr-namespace:zeus_mud_wpf_client.dialog"
         x:Class="zeus_mud_wpf_client.GameMainWindow"
         Height="768" Width="1024" ResizeMode="CanResizeWithGrip" 
         Title="中国好游戏"
@@ -23,7 +23,7 @@
                 <MenuItem Header="英雄契约(_Hero)" ToolTip="解锁新的英雄。" />
                 <!--<MenuItem Header="符文系统(_Rune)" ToolTip="通过装备新的符文加强英雄属性。"/>-->
             </MenuItem>
-            <MenuItem Header="战斗(_B)">
+            <MenuItem Header="战斗(_B)" Click="MenuItem_Click_1">
                 <MenuItem Header="创建战场(_New)..." />
                 <MenuItem Header="加入战场(_Join)" />
             </MenuItem>
@@ -63,7 +63,9 @@
                         <avalondock:LayoutDocumentPaneGroup>
                             <avalondock:LayoutDocumentPane>
                                 <avalondock:LayoutDocument Title="战斗">
-                                    <StackPanel/>
+                                    <WindowsFormsHost VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                        <dialog:RoomListPanel></dialog:RoomListPanel>
+                                    </WindowsFormsHost>
                                 </avalondock:LayoutDocument>
                                 <avalondock:LayoutDocument Title="真实商店">
                                     <StackPanel/>

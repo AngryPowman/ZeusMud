@@ -17,7 +17,9 @@ namespace Wpf.network
         C2SGetPlayerProfileReq = 15000,
         S2CGetPlayerProfileRsp = 15001,
         C2SChatMessageReq = 20000,
-        S2CChatMessageNotify = 20001
+        S2CChatMessageNotify = 20001,
+        C2SRoomCreateReq = 21001,
+        S2CRoomCreateRsp = 21002
     }
 
     public enum ErrorCode

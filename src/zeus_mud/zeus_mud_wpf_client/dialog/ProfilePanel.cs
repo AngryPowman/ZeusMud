@@ -15,7 +15,7 @@ using Wpf.ZuesMud;
 using Wpf.network;
 using System.IO;
 
-namespace zeus_mud.dialog
+namespace zeus_mud_wpf_client.dialog
 {
     public partial class ProfilePanel : UserControl
     {

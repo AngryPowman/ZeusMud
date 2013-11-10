@@ -73,20 +73,22 @@
             this.物品系统IToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(682, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(682, 25);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // 帐号UToolStripMenuItem
             // 
             this.帐号UToolStripMenuItem.Name = "帐号UToolStripMenuItem";
-            this.帐号UToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.帐号UToolStripMenuItem.Size = new System.Drawing.Size(61, 21);
             this.帐号UToolStripMenuItem.Text = "帐号(&U)";
             // 
             // 个人资料PToolStripMenuItem
             // 
             this.个人资料PToolStripMenuItem.Name = "个人资料PToolStripMenuItem";
+
             this.个人资料PToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+
             this.个人资料PToolStripMenuItem.Text = "个人资料(&P)";
             this.个人资料PToolStripMenuItem.Click += new System.EventHandler(this.个人资料PToolStripMenuItem_Click);
             // 
@@ -98,25 +100,32 @@
             this.toolStripMenuItem1,
             this.副本未开启ToolStripMenuItem});
             this.游戏GToolStripMenuItem.Name = "游戏GToolStripMenuItem";
-            this.游戏GToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.游戏GToolStripMenuItem.Size = new System.Drawing.Size(61, 21);
             this.游戏GToolStripMenuItem.Text = "游戏(&G)";
             // 
             // 创建游戏CToolStripMenuItem
             // 
             this.创建游戏CToolStripMenuItem.Name = "创建游戏CToolStripMenuItem";
+
             this.创建游戏CToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+
             this.创建游戏CToolStripMenuItem.Text = "创建房间(&C)...";
+            this.创建游戏CToolStripMenuItem.Click += new System.EventHandler(this.创建游戏CToolStripMenuItem_Click);
             // 
             // 加入房间ToolStripMenuItem
             // 
             this.加入房间ToolStripMenuItem.Name = "加入房间ToolStripMenuItem";
+
             this.加入房间ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+
             this.加入房间ToolStripMenuItem.Text = "加入房间(&A)";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+
             this.toolStripMenuItem1.Size = new System.Drawing.Size(155, 6);
+
             // 
             // 副本未开启ToolStripMenuItem
             // 
@@ -124,18 +133,23 @@
             this.试练之塔TToolStripMenuItem,
             this.极北平原EToolStripMenuItem});
             this.副本未开启ToolStripMenuItem.Name = "副本未开启ToolStripMenuItem";
+
             this.副本未开启ToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+
             this.副本未开启ToolStripMenuItem.Text = "副本（未开启）";
             // 
             // 试练之塔TToolStripMenuItem
             // 
             this.试练之塔TToolStripMenuItem.Name = "试练之塔TToolStripMenuItem";
+
             this.试练之塔TToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+
             this.试练之塔TToolStripMenuItem.Text = "试练之塔(&T)";
             // 
             // 极北平原EToolStripMenuItem
             // 
             this.极北平原EToolStripMenuItem.Name = "极北平原EToolStripMenuItem";
+
             this.极北平原EToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
             this.极北平原EToolStripMenuItem.Text = "极北平原(&E)";
             // 
@@ -147,40 +161,52 @@
             this.地精研究所DToolStripMenuItem,
             this.符文ToolStripMenuItem});
             this.物品系统IToolStripMenuItem.Name = "物品系统IToolStripMenuItem";
+
             this.物品系统IToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
+
             this.物品系统IToolStripMenuItem.Text = "物品系统(&I)";
             // 
             // 真实商店TToolStripMenuItem
             // 
             this.真实商店TToolStripMenuItem.Name = "真实商店TToolStripMenuItem";
+
             this.真实商店TToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+
             this.真实商店TToolStripMenuItem.Text = "真实商店(&S)...";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+
             this.toolStripMenuItem2.Size = new System.Drawing.Size(156, 6);
+
             // 
             // 地精研究所DToolStripMenuItem
             // 
             this.地精研究所DToolStripMenuItem.Name = "地精研究所DToolStripMenuItem";
+
             this.地精研究所DToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+
             this.地精研究所DToolStripMenuItem.Text = "地精研究所(&D)...";
             // 
             // 符文ToolStripMenuItem
             // 
             this.符文ToolStripMenuItem.Name = "符文ToolStripMenuItem";
+
             this.符文ToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+
             this.符文ToolStripMenuItem.Text = "符文(&R)";
             // 
             // dockPanel1
             // 
             this.dockPanel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.dockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dockPanel1.Location = new System.Drawing.Point(0, 24);
+            this.dockPanel1.Location = new System.Drawing.Point(0, 25);
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.RightToLeftLayout = true;
+
             this.dockPanel1.Size = new System.Drawing.Size(682, 327);
+
             dockPanelGradient1.EndColor = System.Drawing.SystemColors.ControlLight;
             dockPanelGradient1.StartColor = System.Drawing.SystemColors.ControlLight;
             autoHideStripSkin1.DockStripGradient = dockPanelGradient1;
@@ -231,6 +257,7 @@
             // 
             // toolStrip1
             // 
+
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
