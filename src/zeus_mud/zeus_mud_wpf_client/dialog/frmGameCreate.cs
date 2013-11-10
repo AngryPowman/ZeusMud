@@ -22,7 +22,7 @@ namespace zeus_mud_wpf_client.dialog
             InitializeComponent();
 
             //注册请求消息回调
-            OpcodesHandler.registerHandler(Opcodes.S2CGameCreateRsp, this.gameCreateCallBack);
+            OpcodesHandler.registerHandler(Opcodes.S2CRoomCreateRsp, this.gameCreateCallBack);
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -42,11 +42,11 @@ namespace zeus_mud_wpf_client.dialog
         /// <param name="password"></param>
         public void gameCreateRequest(string gameName, string password)
         {
-            Protocol.C2SGameCreateReq request = new Protocol.C2SGameCreateReq();
-            request.game_name = gameName;
+            Protocol.C2SRoomCreateReq request = new Protocol.C2SRoomCreateReq();
+            request.room_name = gameName;
             request.password = password;
 
-            NetworkEvent.sendPacket<Protocol.C2SGameCreateReq>(request);
+            NetworkEvent.sendPacket<Protocol.C2SRoomCreateReq>(request);
 
             //btnCreate.Enabled = false;
             //btnCancle.Enabled = false;

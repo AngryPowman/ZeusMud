@@ -16,6 +16,8 @@ namespace Wpf.network
         S2CRegisterRsp  = 10003,            //注册回应
         C2SGetPlayerProfileReq = 15000,
         S2CGetPlayerProfileRsp = 15001,
+        C2SChatMessageReq = 20000,
+        S2CChatMessageNotify = 20001,
         C2SRoomCreateReq = 21001,
         S2CRoomCreateRsp = 21002
     }

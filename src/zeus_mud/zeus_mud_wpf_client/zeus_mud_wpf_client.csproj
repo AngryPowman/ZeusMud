@@ -146,14 +146,13 @@
       <DependentUpon>GameChatPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="common\GameUtil.cs" />
-    <Compile Include="dialog\RoomListPanel.cs">
-    <Compile Include="game\module\Chat.cs" />
+	<Compile Include="dialog\RoomListPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="dialog\RoomListPanel.Designer.cs">
       <DependentUpon>RoomListPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="game\data\Chat.cs" />
+    <Compile Include="game\module\Chat.cs" />
     <Compile Include="game\data\LoginData.cs" />
     <Compile Include="game\data\PlayerProfile.cs" />
     <Compile Include="common\GlobalObject.cs" />
@@ -169,7 +168,6 @@
     <Compile Include="protocol\15001_S2CGetPlayerProfileRsp.cs" />
     <Compile Include="protocol\20000_C2SChatMessageReq.cs" />
     <Compile Include="protocol\20001_S2CChatMessageNotify.cs" />
-    <Compile Include="protocol\21001_C2SGameCreateReq.cs" />
     <Compile Include="protocol\21001_C2SRoomCreateReq.cs" />
     <Compile Include="protocol\21002_S2CRoomCreateRsp.cs" />
     <Compile Include="protocol\21003_C2SGetRoomListReq.cs" />
