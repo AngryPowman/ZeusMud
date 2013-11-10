@@ -4,6 +4,7 @@ message S2CGetRoomListRsp {
 	message RoomInfo {
 		required uint32 id = 1;
 		required string room_name = 2;
+		required uint32 player_count = 3;
 	}
 	repeated RoomInfo room_list = 1;
 }

@@ -73,6 +73,7 @@
             this.Controls.Add(this.listView1);
             this.Name = "RoomListPanel";
             this.Size = new System.Drawing.Size(406, 400);
+            this.Load += new System.EventHandler(this.RoomListPanel_Load);
             this.ResumeLayout(false);
 
         }

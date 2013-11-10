@@ -41,6 +41,13 @@ namespace Protocol
       get { return _room_name; }
       set { _room_name = value; }
     }
+    private uint _player_count;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"player_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint player_count
+    {
+      get { return _player_count; }
+      set { _player_count = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

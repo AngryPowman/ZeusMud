@@ -1,0 +1,5 @@
+package Protocol;
+
+message S2CRoomCancleRsp {
+	required uint32 id = 1;	
+}
