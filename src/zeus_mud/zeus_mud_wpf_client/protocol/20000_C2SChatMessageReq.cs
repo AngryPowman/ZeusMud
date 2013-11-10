@@ -30,8 +30,17 @@ namespace Protocol
       set { _chat_content = value; }
     }
 
+    private string _chat_target_nickname = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"chat_target_nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string chat_target_nickname
+    {
+      get { return _chat_target_nickname; }
+      set { _chat_target_nickname = value; }
+    }
+
     private ulong _chat_target_guid = default(ulong);
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"chat_target_guid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"chat_target_guid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(ulong))]
     public ulong chat_target_guid
     {
