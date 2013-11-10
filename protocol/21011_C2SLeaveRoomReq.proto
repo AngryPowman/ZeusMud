@@ -1,0 +1,5 @@
+package Protocol;
+
+message C2SLeaveRoomReq {
+	required uint32 id = 1;
+}
