@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using zeus_mud.dialog;
+using zeus_mud_wpf_client.dialog;
 using System.Security.Cryptography;
 using zeus_mud.game.data;
 using System.Xml;

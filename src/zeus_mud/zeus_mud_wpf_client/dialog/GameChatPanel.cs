@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using zeus_mud.game.data;
 
-namespace zeus_mud.dialog
+namespace zeus_mud_wpf_client.dialog
 {
     public partial class GameChatPanel : UserControl
     {

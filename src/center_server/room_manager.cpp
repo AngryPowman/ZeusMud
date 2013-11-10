@@ -26,16 +26,11 @@ uint32 RoomManager::addRoom(const std::string& roomName, const std::string& pass
         warning_log("Room count has reached the limit.");
         return ADD_ROOM_FAILED;
     }
-    if (roomName.empty())
-    {
-        warning_log("Room name can't be empty.");
-        return ADD_ROOM_FAILED;
-    }
 
     uint32 roomId = 0;
     if (_freeIds.empty())
     {
-        roomId = _rooms.size();
+        roomId = _rooms.size() + 1;
     }
     else
     {

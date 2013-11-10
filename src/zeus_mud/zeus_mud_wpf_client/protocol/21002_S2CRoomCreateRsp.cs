@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: 21002_S2CGameCreateRsp.proto
+// Generated from: 21002_S2CRoomCreateRsp.proto
 namespace Protocol
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2CGameCreateRsp")]
-  public partial class S2CGameCreateRsp : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2CRoomCreateRsp")]
+  public partial class S2CRoomCreateRsp : global::ProtoBuf.IExtensible
   {
-    public S2CGameCreateRsp() {}
+    public S2CRoomCreateRsp() {}
     
-    private bool _game_create_result;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"game_create_result", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public bool game_create_result
+    private bool _room_create_result;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"room_create_result", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool room_create_result
     {
-      get { return _game_create_result; }
-      set { _game_create_result = value; }
+      get { return _room_create_result; }
+      set { _room_create_result = value; }
     }
 
     private uint _room_id = default(uint);

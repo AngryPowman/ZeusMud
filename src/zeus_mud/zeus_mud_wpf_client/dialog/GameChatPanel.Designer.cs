@@ -1,4 +1,4 @@
-﻿namespace zeus_mud.dialog
+﻿namespace zeus_mud_wpf_client.dialog
 {
     partial class GameChatPanel
     {

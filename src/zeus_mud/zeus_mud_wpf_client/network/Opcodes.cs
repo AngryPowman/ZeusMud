@@ -15,7 +15,9 @@ namespace Wpf.network
         C2SRegisterReq  = 10002,            //注册请求
         S2CRegisterRsp  = 10003,            //注册回应
         C2SGetPlayerProfileReq = 15000,
-        S2CGetPlayerProfileRsp = 15001
+        S2CGetPlayerProfileRsp = 15001,
+        C2SGameCreateReq = 21001,
+        S2CGameCreateRsp = 21002
     }
 
     public enum ErrorCode
