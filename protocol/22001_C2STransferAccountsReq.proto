@@ -1,0 +1,6 @@
+package Protocol;
+
+message C2STransferAccountsReq {
+	required int32 money_type = 1;
+	required int32 money_count = 2;
+}

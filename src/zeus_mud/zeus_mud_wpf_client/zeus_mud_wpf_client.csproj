@@ -147,6 +147,7 @@
     </Compile>
     <Compile Include="common\GameUtil.cs" />
     <Compile Include="dialog\RoomListPanel.cs">
+    <Compile Include="game\module\Chat.cs" />
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="dialog\RoomListPanel.Designer.cs">

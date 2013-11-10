@@ -67,7 +67,7 @@
 				<td width="200">
 					<label for="txtMessage" style="white-space: nowrap">发送消息：</label>
 				</td>
-				<td width="200">
+				<td width="100" style="white-space:nowrap">
 					<select id="optChannel"></select>
 				</td>
 				<td width="100%">
@@ -100,14 +100,22 @@
 		var txtMessage = $('#txtMessage');
 		var lstMain = $('#lstMain');
 		var style = '';
-
-		$(window).resize(function (){
-			// 调整列表高度
-			lstMain.css('height', $('#Sender').offset().top)
-			console.log($(window).height())
-		});
+		
 		$(function (){
+			$(window).resize(function (){
+				// 调整列表高度
+				lstMain.css('height', $('#Sender').offset().top);
+			});
 			$(window).resize();
+		});
+		channel_select.on('change',function(){
+			if( $(this).val()==CHANNEL_ID_PRIMARY ){
+				txtTargetUser.show();
+				txtTargetUser.parent().attr('width','400');
+			}else{
+				txtTargetUser.val('').hide();
+				txtTargetUser.parent().attr('width','200');
+			}
 		});
 
 		button_list.all = button_template.clone().data('label', undefined).text('全部');
@@ -125,10 +133,10 @@
 				continue;
 			}
 			// 用户可以发送的频道，添加到select里
-			$('<option/>').attr('value', id).text(labelTypeDefine[id]['name']).appendTo(channel_select);
+			ChannelOption(id);
 
 			/* ！调试！ */
-			addChatMessage(id, 1, '调试', '频道 ' + id + ':' + labelTypeDefine[id]['name'] + ' 测试信息！' + (new Date()))
+			// addChatMessage(id, 1, '调试', '频道 ' + id + ':' + labelTypeDefine[id]['name'] + ' 测试信息！' + (new Date()))
 		}
 		button_template.clone().data('label', 'show-all').text('全部').prependTo(selVis);
 
@@ -146,11 +154,22 @@
 			var b = lstMain[0];
 			b.className = b.className.replace(/show\-.*/g, '');
 			lstMain.addClass(label);
+
+			if($(this).data('user_send')){
+				channel_select.val($(this).data('id'));
+			}
 		});
 
 		function ChannelButton(channel_id){
-			return button_template.clone().data('label', 'show-' +
-														 channel_id).text(labelTypeDefine[channel_id]['name']).appendTo(selVis);
+			return button_template.clone()
+					.data({'id':channel_id,'label': 'show-' + channel_id,'user_send': labelTypeDefine[channel_id]['user_send']})
+					.text(labelTypeDefine[channel_id]['name'])
+					.appendTo(selVis);
+		}
+		function ChannelOption(channel_id){
+			return $('<option/>').attr('value', channel_id)
+				.text(labelTypeDefine[channel_id]['name'])
+				.appendTo(channel_select);
 		}
 	})(window);
 

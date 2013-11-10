@@ -27,6 +27,7 @@ echo // DateTime : %date:~0% %time:~0,-3%  >> %header_path%
 echo.>>%header_path%
 echo #ifndef __PROTOBUF_H__ >> %header_path%
 echo #define __PROTOBUF_H__ >> %header_path%
+:: echo #pragma warning(disable : 4996) >> %header_path%
 echo.>>%header_path%
 
 for /f "delims=" %%i in ('dir /b/a "%cpp_output%\*.pb.h"') do (

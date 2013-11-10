@@ -3,5 +3,5 @@ package Protocol;
 message C2SChatMessageReq {
 	required int32 chat_type = 1;
 	required bytes chat_content = 2;
-	optional uint64 private_chat_target = 3;
+	optional uint64 chat_target_guid = 3;	//私聊模式才需要该字段
 }

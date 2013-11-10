@@ -110,12 +110,12 @@ class C2SChatMessageReq : public ::google::protobuf::Message {
   inline ::std::string* release_chat_content();
   inline void set_allocated_chat_content(::std::string* chat_content);
 
-  // optional uint64 private_chat_target = 3;
-  inline bool has_private_chat_target() const;
-  inline void clear_private_chat_target();
-  static const int kPrivateChatTargetFieldNumber = 3;
-  inline ::google::protobuf::uint64 private_chat_target() const;
-  inline void set_private_chat_target(::google::protobuf::uint64 value);
+  // optional uint64 chat_target_guid = 3;
+  inline bool has_chat_target_guid() const;
+  inline void clear_chat_target_guid();
+  static const int kChatTargetGuidFieldNumber = 3;
+  inline ::google::protobuf::uint64 chat_target_guid() const;
+  inline void set_chat_target_guid(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:Protocol.C2SChatMessageReq)
  private:
@@ -123,13 +123,13 @@ class C2SChatMessageReq : public ::google::protobuf::Message {
   inline void clear_has_chat_type();
   inline void set_has_chat_content();
   inline void clear_has_chat_content();
-  inline void set_has_private_chat_target();
-  inline void clear_has_private_chat_target();
+  inline void set_has_chat_target_guid();
+  inline void clear_has_chat_target_guid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* chat_content_;
-  ::google::protobuf::uint64 private_chat_target_;
+  ::google::protobuf::uint64 chat_target_guid_;
   ::google::protobuf::int32 chat_type_;
 
   mutable int _cached_size_;
@@ -241,26 +241,26 @@ inline void C2SChatMessageReq::set_allocated_chat_content(::std::string* chat_co
   }
 }
 
-// optional uint64 private_chat_target = 3;
-inline bool C2SChatMessageReq::has_private_chat_target() const {
+// optional uint64 chat_target_guid = 3;
+inline bool C2SChatMessageReq::has_chat_target_guid() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void C2SChatMessageReq::set_has_private_chat_target() {
+inline void C2SChatMessageReq::set_has_chat_target_guid() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void C2SChatMessageReq::clear_has_private_chat_target() {
+inline void C2SChatMessageReq::clear_has_chat_target_guid() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void C2SChatMessageReq::clear_private_chat_target() {
-  private_chat_target_ = GOOGLE_ULONGLONG(0);
-  clear_has_private_chat_target();
+inline void C2SChatMessageReq::clear_chat_target_guid() {
+  chat_target_guid_ = GOOGLE_ULONGLONG(0);
+  clear_has_chat_target_guid();
 }
-inline ::google::protobuf::uint64 C2SChatMessageReq::private_chat_target() const {
-  return private_chat_target_;
+inline ::google::protobuf::uint64 C2SChatMessageReq::chat_target_guid() const {
+  return chat_target_guid_;
 }
-inline void C2SChatMessageReq::set_private_chat_target(::google::protobuf::uint64 value) {
-  set_has_private_chat_target();
-  private_chat_target_ = value;
+inline void C2SChatMessageReq::set_chat_target_guid(::google::protobuf::uint64 value) {
+  set_has_chat_target_guid();
+  chat_target_guid_ = value;
 }
 
 

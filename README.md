@@ -17,12 +17,12 @@
 
 服务端网络通信框架目前已完成（截止当前版本时间）。通信底层使用了Boost.ASIO，保证了底层通信的稳定。尚未进行性能测试，框架仍在不断完善。经过了第二次封装的网络框架叫做venus_net，包括：
 
-- TCP通信库
-- 日志库（基于POCO）
-- 数据库
+- TCP通信
+- 日志（基于POCO）
+- 数据库（SQLITE）
 - 对象池
 - 字节数据处理类
-- 大小端
+- 大小端处理
 - 常用数据模型（如Singleton, ObjectManager等）
 
 目前是单进程多线程的架构，游戏逻辑服务的项目名称是**center_server**。用于处理游戏IO和游戏逻辑处理。与客户端的通信流程如下：
@@ -51,3 +51,7 @@
 4. 在 opcodes_handler.cpp 文件内为操作码和回调函数注册。
 5. 为频繁的游戏对象增加对象池，使用模板类**Venus::ObjectPool<T\>**,ObjectPool类提供默认构造，如果作为对象池对象的类类型不含有默认构造函数，则继承ObjectPool类扩展acquire方法，参考文件 [player_pool.h](src/center_server/player_pool.h)。
 6. 如果要使用std::unordered_map，则直接使用common.h下定义的adap_map，该模板类为跨平台做了处理。
+
+###**关于使用不同版本的vs编译**
+----------
+使用visual studio 2013编译时，可能会告知min或max等算法没有定义，在报错文件最顶部包含（include） algorithm标准头文件即可。另外，会提示obj常量版本不匹配，请到google官方下载libprotobuf，并在编译环境中修改各工程配置为/MTd(c/c++->代码生成->运行库)，并在解决方案资源管理器中生成libprotobuf，并将生成后的文件拷贝到3rdparty\protobuf_lib中覆盖libprotobuf.lib和libprotobuf_d.lib。这两个文件分别是以release模式和debug模式编译的。

@@ -217,6 +217,5 @@
     </ClCompile>
     <ClCompile Include="protocol\21004_S2CGetRoomListRsp.pb.cc">
       <Filter>protocol\protobuf</Filter>
-    </ClCompile>
-  </ItemGroup>
+    </ClCompile>  </ItemGroup>
 </Project>

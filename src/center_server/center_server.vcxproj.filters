@@ -37,8 +37,8 @@
     <ClInclude Include="game_object.h">
       <Filter>object</Filter>
     </ClInclude>
-    <ClInclude Include="player_pool.h">
-      <Filter>object\obj_pool</Filter>
+    <ClInclude Include="player_manager.h">
+      <Filter>manager</Filter>
     </ClInclude>
     <ClInclude Include="room_manager.h">
       <Filter>manager</Filter>
@@ -84,6 +84,10 @@
     <ClCompile Include="room_handler.cpp">
       <Filter>handler\room</Filter>
     </ClCompile>
+    <ClCompile Include="chat_handler.cpp">
+      <Filter>handler\logic_handler</Filter>
+    </ClCompile>
+    <ClCompile Include="player_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="network">

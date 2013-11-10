@@ -25,6 +25,13 @@ public:
     bool loadFromMemCached();
 
 public:
+	template <typename T> void send_message(uint32 opcode, const T& message)
+	{
+		if (_session != nullptr)
+			_session->send_message<T>(opcode, message);
+	}
+
+public:
     //properties
     const uint64& guid() const;
 

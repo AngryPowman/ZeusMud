@@ -23,16 +23,25 @@ namespace Protocol
       set { _chat_type = value; }
     }
 
-    private byte[] _source_player = null;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"source_player", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    private byte[] _chat_sender_nickname = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"chat_sender_nickname", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public byte[] source_player
+    public byte[] chat_sender_nickname
     {
-      get { return _source_player; }
-      set { _source_player = value; }
+      get { return _chat_sender_nickname; }
+      set { _chat_sender_nickname = value; }
+    }
+
+    private ulong _chat_sender_guid = default(ulong);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"chat_sender_guid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue(default(ulong))]
+    public ulong chat_sender_guid
+    {
+      get { return _chat_sender_guid; }
+      set { _chat_sender_guid = value; }
     }
     private byte[] _chat_content;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"chat_content", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"chat_content", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public byte[] chat_content
     {
       get { return _chat_content; }

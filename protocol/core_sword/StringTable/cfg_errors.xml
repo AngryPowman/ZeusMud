@@ -1,5 +1,0 @@
-<?xml version="1.0" standalone="yes"?>
-<XMLErrorData>
-  <error ErrorId="99" ErrorName="ERR_UNKNOWN" ErrorDescription="未知错误" />
-  <error ErrorId="100" ErrorName="ERR_NETWORK_ANORMALY" ErrorDescription="网络异常" />
-</XMLErrorData>
