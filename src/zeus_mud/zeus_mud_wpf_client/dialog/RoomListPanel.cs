@@ -40,6 +40,15 @@ namespace zeus_mud_wpf_client.dialog
             ListViewItem lvi = listView1.Items.Insert((int)response.id - 1, response.id.ToString());
             lvi.SubItems.Add(response.room_name);
             lvi.SubItems.Add("1");
+            if (response.@public)
+            {
+                lvi.SubItems.Add("公开");
+            } 
+            else
+            {
+                lvi.SubItems.Add("不公开");
+            }
+            
         }
 
         public void getRoomListCallBack(MemoryStream stream)

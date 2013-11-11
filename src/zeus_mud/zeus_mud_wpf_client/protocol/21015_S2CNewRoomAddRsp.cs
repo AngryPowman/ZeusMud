@@ -29,6 +29,13 @@ namespace Protocol
       get { return _room_name; }
       set { _room_name = value; }
     }
+    private bool _public;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"public", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool @public
+    {
+      get { return _public; }
+      set { _public = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

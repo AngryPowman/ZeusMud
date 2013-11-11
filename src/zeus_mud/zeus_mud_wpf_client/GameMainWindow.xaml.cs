@@ -29,8 +29,11 @@ namespace zeus_mud_wpf_client
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            GlobalObject.GameCreateForm = new frmRoomCreate();
-            GlobalObject.GameCreateForm.ShowDialog();
+            if (GlobalObject.GameCreateForm == null)
+            {
+                GlobalObject.GameCreateForm = new frmRoomCreate();
+            }
+            GlobalObject.GameCreateForm.Show();
         }
     }
 }

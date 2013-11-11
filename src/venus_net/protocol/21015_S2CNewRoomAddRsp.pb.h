@@ -110,20 +110,30 @@ class S2CNewRoomAddRsp : public ::google::protobuf::Message {
   inline ::std::string* release_room_name();
   inline void set_allocated_room_name(::std::string* room_name);
 
+  // required bool public = 3;
+  inline bool has_public_() const;
+  inline void clear_public_();
+  static const int kPublicFieldNumber = 3;
+  inline bool public_() const;
+  inline void set_public_(bool value);
+
   // @@protoc_insertion_point(class_scope:Protocol.S2CNewRoomAddRsp)
  private:
   inline void set_has_id();
   inline void clear_has_id();
   inline void set_has_room_name();
   inline void clear_has_room_name();
+  inline void set_has_public_();
+  inline void clear_has_public_();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* room_name_;
   ::google::protobuf::uint32 id_;
+  bool public__;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_21015_5fS2CNewRoomAddRsp_2eproto();
   friend void protobuf_AssignDesc_21015_5fS2CNewRoomAddRsp_2eproto();
@@ -229,6 +239,28 @@ inline void S2CNewRoomAddRsp::set_allocated_room_name(::std::string* room_name) 
     clear_has_room_name();
     room_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   }
+}
+
+// required bool public = 3;
+inline bool S2CNewRoomAddRsp::has_public_() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void S2CNewRoomAddRsp::set_has_public_() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void S2CNewRoomAddRsp::clear_has_public_() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void S2CNewRoomAddRsp::clear_public_() {
+  public__ = false;
+  clear_has_public_();
+}
+inline bool S2CNewRoomAddRsp::public_() const {
+  return public__;
+}
+inline void S2CNewRoomAddRsp::set_public_(bool value) {
+  set_has_public_();
+  public__ = value;
 }
 
 

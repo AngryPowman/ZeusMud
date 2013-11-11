@@ -34,9 +34,10 @@ void protobuf_AssignDesc_21015_5fS2CNewRoomAddRsp_2eproto() {
       "21015_S2CNewRoomAddRsp.proto");
   GOOGLE_CHECK(file != NULL);
   S2CNewRoomAddRsp_descriptor_ = file->message_type(0);
-  static const int S2CNewRoomAddRsp_offsets_[2] = {
+  static const int S2CNewRoomAddRsp_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CNewRoomAddRsp, id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CNewRoomAddRsp, room_name_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CNewRoomAddRsp, public__),
   };
   S2CNewRoomAddRsp_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -80,8 +81,8 @@ void protobuf_AddDesc_21015_5fS2CNewRoomAddRsp_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\03421015_S2CNewRoomAddRsp.proto\022\010Protocol"
-    "\"1\n\020S2CNewRoomAddRsp\022\n\n\002id\030\001 \002(\r\022\021\n\troom"
-    "_name\030\002 \002(\t", 91);
+    "\"A\n\020S2CNewRoomAddRsp\022\n\n\002id\030\001 \002(\r\022\021\n\troom"
+    "_name\030\002 \002(\t\022\016\n\006public\030\003 \002(\010", 107);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "21015_S2CNewRoomAddRsp.proto", &protobuf_RegisterTypes);
   S2CNewRoomAddRsp::default_instance_ = new S2CNewRoomAddRsp();
@@ -101,6 +102,7 @@ struct StaticDescriptorInitializer_21015_5fS2CNewRoomAddRsp_2eproto {
 #ifndef _MSC_VER
 const int S2CNewRoomAddRsp::kIdFieldNumber;
 const int S2CNewRoomAddRsp::kRoomNameFieldNumber;
+const int S2CNewRoomAddRsp::kPublicFieldNumber;
 #endif  // !_MSC_VER
 
 S2CNewRoomAddRsp::S2CNewRoomAddRsp()
@@ -121,6 +123,7 @@ void S2CNewRoomAddRsp::SharedCtor() {
   _cached_size_ = 0;
   id_ = 0u;
   room_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  public__ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -165,6 +168,7 @@ void S2CNewRoomAddRsp::Clear() {
         room_name_->clear();
       }
     }
+    public__ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -204,6 +208,22 @@ bool S2CNewRoomAddRsp::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(24)) goto parse_public;
+        break;
+      }
+
+      // required bool public = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_public:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &public__)));
+          set_has_public_();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -240,6 +260,11 @@ void S2CNewRoomAddRsp::SerializeWithCachedSizes(
       2, this->room_name(), output);
   }
 
+  // required bool public = 3;
+  if (has_public_()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->public_(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -261,6 +286,11 @@ void S2CNewRoomAddRsp::SerializeWithCachedSizes(
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
         2, this->room_name(), target);
+  }
+
+  // required bool public = 3;
+  if (has_public_()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->public_(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -286,6 +316,11 @@ int S2CNewRoomAddRsp::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->room_name());
+    }
+
+    // required bool public = 3;
+    if (has_public_()) {
+      total_size += 1 + 1;
     }
 
   }
@@ -321,6 +356,9 @@ void S2CNewRoomAddRsp::MergeFrom(const S2CNewRoomAddRsp& from) {
     if (from.has_room_name()) {
       set_room_name(from.room_name());
     }
+    if (from.has_public_()) {
+      set_public_(from.public_());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -338,7 +376,7 @@ void S2CNewRoomAddRsp::CopyFrom(const S2CNewRoomAddRsp& from) {
 }
 
 bool S2CNewRoomAddRsp::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
 
   return true;
 }
@@ -347,6 +385,7 @@ void S2CNewRoomAddRsp::Swap(S2CNewRoomAddRsp* other) {
   if (other != this) {
     std::swap(id_, other->id_);
     std::swap(room_name_, other->room_name_);
+    std::swap(public__, other->public__);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
