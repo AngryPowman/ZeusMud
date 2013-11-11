@@ -67,7 +67,7 @@
       <Filter>handler</Filter>
     </ClCompile>
     <ClCompile Include="login_handler.cpp">
-      <Filter>handler\login</Filter>
+      <Filter>handler\logic</Filter>
     </ClCompile>
     <ClCompile Include="game_session_manager.cpp">
       <Filter>manager</Filter>
@@ -76,18 +76,20 @@
       <Filter>object</Filter>
     </ClCompile>
     <ClCompile Include="player_handler.cpp">
-      <Filter>handler\login</Filter>
+      <Filter>handler\logic</Filter>
     </ClCompile>
     <ClCompile Include="room_manager.cpp">
       <Filter>manager</Filter>
     </ClCompile>
-    <ClCompile Include="room_handler.cpp">
-      <Filter>handler\room</Filter>
-    </ClCompile>
     <ClCompile Include="chat_handler.cpp">
-      <Filter>handler\logic_handler</Filter>
+      <Filter>handler\logic</Filter>
     </ClCompile>
-    <ClCompile Include="player_manager.cpp" />
+    <ClCompile Include="room_handler.cpp">
+      <Filter>handler\logic</Filter>
+    </ClCompile>
+    <ClCompile Include="player_manager.cpp">
+      <Filter>manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="network">
@@ -105,9 +107,6 @@
     <Filter Include="util">
       <UniqueIdentifier>{272cf44c-a21d-48c1-9afe-899b9432cc93}</UniqueIdentifier>
     </Filter>
-    <Filter Include="handler\login">
-      <UniqueIdentifier>{87ffc5bc-8f6b-46cd-b3cd-c9828f0c31a4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="manager">
       <UniqueIdentifier>{1b3921b6-a8fb-4043-901a-4593976b57ad}</UniqueIdentifier>
     </Filter>
@@ -117,8 +116,8 @@
     <Filter Include="object\obj_pool">
       <UniqueIdentifier>{fdefb41c-6204-42a3-b506-76ab3e18d3df}</UniqueIdentifier>
     </Filter>
-    <Filter Include="handler\room">
-      <UniqueIdentifier>{25edc664-2b6d-4619-bc17-7bd0ecd1987f}</UniqueIdentifier>
+    <Filter Include="handler\logic">
+      <UniqueIdentifier>{87ffc5bc-8f6b-46cd-b3cd-c9828f0c31a4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
