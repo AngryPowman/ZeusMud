@@ -48,8 +48,8 @@ namespace zeus_mud_wpf_client.dialog
 
             NetworkEvent.sendPacket<Protocol.C2SRoomCreateReq>(request);
 
-            //btnCreate.Enabled = false;
-            //btnCancle.Enabled = false;
+            btnCreate.Enabled = false;
+            btnCancle.Enabled = false;
         }
         /// <summary>
         /// 创建房间请求回调

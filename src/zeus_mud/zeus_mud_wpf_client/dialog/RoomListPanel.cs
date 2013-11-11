@@ -20,6 +20,8 @@ namespace zeus_mud_wpf_client.dialog
             InitializeComponent();
             //注册请求消息回调
             OpcodesHandler.registerHandler(Opcodes.S2CGetRoomListRsp, this.getRoomListCallBack);
+            OpcodesHandler.registerHandler(Opcodes.S2CNewRoomAddRsp, this.newRoomAddCallBack);
+
         }
 
         private void RoomListPanel_Load(object sender, EventArgs e)
@@ -31,6 +33,15 @@ namespace zeus_mud_wpf_client.dialog
         {
 
         }
+
+        public void newRoomAddCallBack(MemoryStream stream)
+        {
+            Protocol.S2CNewRoomAddRsp response = NetworkEvent.parseMessage<Protocol.S2CNewRoomAddRsp>(stream);
+            ListViewItem lvi = listView1.Items.Insert((int)response.id - 1, response.id.ToString());
+            lvi.SubItems.Add(response.room_name);
+            lvi.SubItems.Add("1");
+        }
+
         public void getRoomListCallBack(MemoryStream stream)
         {
             Protocol.S2CGetRoomListRsp response = NetworkEvent.parseMessage<Protocol.S2CGetRoomListRsp>(stream);
@@ -41,6 +52,19 @@ namespace zeus_mud_wpf_client.dialog
                 lvi.SubItems.Add(room.room_name);
                 lvi.SubItems.Add(room.player_count.ToString());
             }
+        }
+
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0)
+            {
+                return;
+            }
+            
+            // 双击进入房间
+            ListViewItem selItem = listView1.SelectedItems[0];
+            Protocol.C2SEnterRoomReq request = new Protocol.C2SEnterRoomReq();
+            
         }
     }
 }
