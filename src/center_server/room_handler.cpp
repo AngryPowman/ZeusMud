@@ -26,6 +26,7 @@ void GameSession::room_create_handler(const NetworkMessage& message)
                 if (id != 0)
                 {
                     response.set_room_create_result(true);
+                    broadcast_room_add(id, request.room_name());
                 }
                 else
                 {
@@ -55,6 +56,11 @@ void GameSession::room_create_handler(const NetworkMessage& message)
         response.set_failed_reason("房间名过长。");
     }
     send_message<Protocol::S2CRoomCreateRsp>(Opcodes::S2CRoomCreateRsp, response);
+}
+
+void GameSession::broadcast_room_add(uint32 id, const std::string& roomName)
+{
+    
 }
 
 void GameSession::get_room_list_handler(const NetworkMessage& message)

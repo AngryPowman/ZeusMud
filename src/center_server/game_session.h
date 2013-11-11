@@ -28,10 +28,12 @@ public:
     //·¿¼äÄ£¿é
     void room_create_handler(const NetworkMessage& message);
     void get_room_list_handler(const NetworkMessage& message);
+    void broadcast_room_add(uint32 id, const std::string& roomName);
 
 private:
     void attackPlayerPtr(Player* player);
     
+
 private:
     Player* _player;
 };
