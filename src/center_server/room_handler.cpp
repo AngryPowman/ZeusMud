@@ -2,6 +2,7 @@
 #include <network_common.h>
 #include <protobuf.h>
 #include <packet.h>
+#include "game_session_manager.h"
 #include "game_session.h"
 #include "room_manager.h"
 
@@ -60,7 +61,10 @@ void GameSession::room_create_handler(const NetworkMessage& message)
 
 void GameSession::broadcast_room_add(uint32 id, const std::string& roomName)
 {
-    
+    Protocol::S2CNewRoomAddRsp response;
+    response.set_id(id);
+    response.set_room_name(roomName);
+    GameSessionManager::getInstance().broadcast<Protocol::S2CNewRoomAddRsp>(Opcodes::S2CNewRoomAddRsp, response);
 }
 
 void GameSession::get_room_list_handler(const NetworkMessage& message)
