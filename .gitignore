@@ -41,4 +41,3 @@ Release/
 /output/mud_client/Config.xml
 
 /docs/readme/*.vsdx
-/output/mud_server/data/*.db
