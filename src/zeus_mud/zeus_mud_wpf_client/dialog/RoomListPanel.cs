@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wpf.network;
 using System.IO;
+using Wpf.ZuesMud;
 
 
 namespace zeus_mud_wpf_client.dialog
 {
     public partial class RoomListPanel : UserControl
     {
+                
+
         public RoomListPanel()
         {
             InitializeComponent();
@@ -69,9 +72,28 @@ namespace zeus_mud_wpf_client.dialog
             {
                 return;
             }
-            
+
+            bool isCancled = false;
+            String password;
+
             // 双击进入房间
             ListViewItem selItem = listView1.SelectedItems[0];
+            if (selItem.SubItems[3].Text == "不公开")
+            {
+                if (GlobalObject.EnterPasswordForm == null)
+                {
+                    GlobalObject.EnterPasswordForm = new frmEnterPassword();
+                }
+                GlobalObject.EnterPasswordForm.ShowDialog();
+                password = GlobalObject.EnterPasswordForm.Password;
+                isCancled = GlobalObject.EnterPasswordForm.IsCancled;
+            }
+            if (isCancled == false)
+            {
+
+            }
+
+
             Protocol.C2SEnterRoomReq request = new Protocol.C2SEnterRoomReq();
             
         }

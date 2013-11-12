@@ -115,6 +115,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="dialog\frmEnterPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialog\frmEnterPassword.Designer.cs">
+      <DependentUpon>frmEnterPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="dialog\frmRoomCreate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +221,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="dialog\frmEnterPassword.resx">
+      <DependentUpon>frmEnterPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="dialog\frmRoomCreate.resx">
       <DependentUpon>frmRoomCreate.cs</DependentUpon>
     </EmbeddedResource>
