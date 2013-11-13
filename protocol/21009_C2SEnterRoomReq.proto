@@ -2,5 +2,5 @@ package Protocol;
 
 message C2SEnterRoomReq {
 	required uint32 id = 1;
-	optional string password;
+	optional string password = 2;
 }
