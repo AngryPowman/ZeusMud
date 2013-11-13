@@ -156,8 +156,12 @@
     <Compile Include="game\data\LoginData.cs" />
     <Compile Include="game\data\PlayerProfile.cs" />
     <Compile Include="common\GlobalObject.cs" />
+    <Compile Include="network\ErrorCode.cs" />
+    <Compile Include="network\ErrorHandler.cs" />
     <Compile Include="network\HttpPictureDownloader.cs" />
+    <Compile Include="network\MessageHandler.cs" />
     <Compile Include="network\NetworkEvent.cs" />
+    <Compile Include="network\NetworkMessageEventArgs.cs" />
     <Compile Include="network\Opcodes.cs" />
     <Compile Include="common\Packet.cs" />
     <Compile Include="protocol\10000_C2SLoginReq.cs" />

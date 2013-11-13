@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Wpf;
 using Wpf.network;
 using Wpf.ZuesMud;
+using zeus_mud_wpf_client.network;
 
 
 namespace zeus_mud_wpf_client.dialog
@@ -22,7 +23,7 @@ namespace zeus_mud_wpf_client.dialog
             InitializeComponent();
 
             //注册请求消息回调
-            OpcodesHandler.registerHandler(Opcodes.S2CRoomCreateRsp, this.roomCreateCallBack);
+            OpcodesProxy.registerHandler<frmRoomCreate>(Opcodes.S2CRoomCreateRsp, this.roomCreateCallBack, this);
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -55,9 +56,9 @@ namespace zeus_mud_wpf_client.dialog
         /// 创建房间请求回调
         /// </summary>
         /// <param name="stream"></param>
-        public void roomCreateCallBack(MemoryStream stream)
+        public void roomCreateCallBack(object sender, NetworkMessageEventArgs e)
         {
-            Protocol.S2CRoomCreateRsp response = NetworkEvent.parseMessage<Protocol.S2CRoomCreateRsp>(stream);
+            Protocol.S2CRoomCreateRsp response = NetworkEvent.parseMessage<Protocol.S2CRoomCreateRsp>(e.message);
             if (response.room_create_result == true)
             {
                 GlobalObject.MainWindow.Show();

@@ -15,6 +15,7 @@ namespace zeus_mud_wpf_client
     /// </summary>
     public partial class App : Application
     {
+        [STAThread]
         public void Application_Startup(object sender, StartupEventArgs e)
         {
             this.ShutdownMode = ShutdownMode.OnMainWindowClose;

@@ -14,6 +14,7 @@ using Wpf;
 using Wpf.network;
 using Wpf.ZuesMud;
 using zeus_mud;
+using zeus_mud_wpf_client.network;
 
 namespace zeus_mud_wpf_client.dialog
 {
@@ -24,7 +25,7 @@ namespace zeus_mud_wpf_client.dialog
             InitializeComponent();
 
             //注册消息
-            OpcodesHandler.registerHandler(Opcodes.S2CRegisterRsp, this.userRegisterCallback);
+            OpcodesProxy.registerHandler<frmRegister>(Opcodes.S2CRegisterRsp, this.userRegisterCallback, this);
 
             rdMale.Checked = true;
             rdFemale_CheckedChanged(rdMale, null);
@@ -145,9 +146,9 @@ namespace zeus_mud_wpf_client.dialog
             NetworkEvent.sendPacket<Protocol.C2SRegisterReq>(request);
         }
 
-        public void userRegisterCallback(MemoryStream stream)
+        public void userRegisterCallback(object sender, NetworkMessageEventArgs e)
         {
-            Protocol.S2CRegisterRsp response = NetworkEvent.parseMessage<Protocol.S2CRegisterRsp>(stream);
+            Protocol.S2CRegisterRsp response = NetworkEvent.parseMessage<Protocol.S2CRegisterRsp>(e.message);
             if (response.register_result == false)
             {
                 MessageBox.Show(this, Encoding.Default.GetString(response.failed_reason), "注册失败", MessageBoxButtons.OK, MessageBoxIcon.Error);

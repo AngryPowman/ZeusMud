@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Wpf.network;
+using zeus_mud_wpf_client.network;
 
 namespace zeus_mud.game.data
 {
@@ -45,7 +46,7 @@ namespace zeus_mud.game.data
             wb.Navigate(pageurl);
             wb.AllowNavigation = false;
 
-            OpcodesHandler.registerHandler(Opcodes.S2CChatMessageNotify, this.chatMessageCallback);
+            OpcodesProxy.registerHandler<ChatControl>(Opcodes.S2CChatMessageNotify, this.chatMessageCallback, this);
         }
 
 
@@ -155,9 +156,9 @@ namespace zeus_mud.game.data
             Console.WriteLine(data);
         }
 
-        private void chatMessageCallback(MemoryStream stream)
+        private void chatMessageCallback(object sender, NetworkMessageEventArgs e)
         {
-            Protocol.S2CChatMessageNotify notify = NetworkEvent.parseMessage<Protocol.S2CChatMessageNotify>(stream);
+            Protocol.S2CChatMessageNotify notify = NetworkEvent.parseMessage<Protocol.S2CChatMessageNotify>(e.message);
 
             //如果是私聊
             if (notify.chat_type == (int)MessageChannel.ChannelPrivate)

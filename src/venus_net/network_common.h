@@ -35,7 +35,7 @@ namespace Venus
 #endif
     }
 
-    inline uint32_t max_recv_length() { return MAX_RECV_LEN; }
+    inline uint32 max_recv_length() { return MAX_RECV_LEN; }
 }
 
 struct NetworkMessage

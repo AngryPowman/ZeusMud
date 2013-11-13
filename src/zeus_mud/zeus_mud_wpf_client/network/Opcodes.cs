@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Wpf.network
 {
@@ -22,48 +23,5 @@ namespace Wpf.network
         S2CRoomCreateRsp = 21002,
         C2SGetRoomListReq = 21003,
         S2CGetRoomListRsp = 21004
-    }
-
-    public enum ErrorCode
-    {
-    
-    }
-
-    public delegate void NetworkMessageCallback(MemoryStream stream);
-    public delegate void GameErrorCallback(ErrorCode error, string error_reason = "");
-    class Handler
-    {
-        public Delegate callback { get; set; }
-    }
-
-    class OpcodesHandler
-    {
-        private static Dictionary<Opcodes, Handler> _handlers = new Dictionary<Opcodes, Handler>();
-        private static Dictionary<ErrorCode, Handler> _error_handlers = new Dictionary<ErrorCode, Handler>();
-        public OpcodesHandler()
-        {
-        }
-
-        public Handler getHandler(Opcodes opcode)
-        {
-            return _handlers[opcode];
-        }
-
-        public static void registerHandler(Opcodes opcode, NetworkMessageCallback cb)
-        {
-            Handler handler = new Handler();
-            handler.callback = cb;
-
-            _handlers[opcode] = handler;
-        }
-
-        public static void registerErrorHandler(ErrorCode error, GameErrorCallback cb)
-        {
-            Handler handler = new Handler();
-            handler.callback = cb;
-
-            _error_handlers[error] = handler;
-        }
-
     }
 }
