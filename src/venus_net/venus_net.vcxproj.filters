@@ -153,6 +153,45 @@
     <ClInclude Include="protocol\21004_S2CGetRoomListRsp.pb.h">
       <Filter>protocol\protobuf</Filter>
     </ClInclude>
+    <ClInclude Include="protocol\21005_C2SRoomCancleReq.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\21006_S2CRoomCancleRsp.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\21007_C2SRoomInfoChangeReq.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\21008_S2CRoomInfoChangeRsp.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\21009_C2SEnterRoomReq.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\21010_S2CPlayerEnterRoomReq.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\21011_C2SLeaveRoomReq.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\21012_S2CPlayerLeaveRoomRsp.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\21013_C2SKickPlayerReq.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\21014_S2CRoomKickedRsp.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\21015_S2CNewRoomAddRsp.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\22001_C2STransferAccountsReq.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
+    <ClInclude Include="protocol\22002_S2CTransferAccountsRsp.pb.h">
+      <Filter>protocol\protobuf</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="error_code.cpp">
@@ -217,5 +256,45 @@
     </ClCompile>
     <ClCompile Include="protocol\21004_S2CGetRoomListRsp.pb.cc">
       <Filter>protocol\protobuf</Filter>
-    </ClCompile>  </ItemGroup>
+    </ClCompile>
+    <ClCompile Include="protocol\21005_C2SRoomCancleReq.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\21006_S2CRoomCancleRsp.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\21007_C2SRoomInfoChangeReq.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\21008_S2CRoomInfoChangeRsp.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\21009_C2SEnterRoomReq.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\21010_S2CPlayerEnterRoomReq.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\21011_C2SLeaveRoomReq.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\21012_S2CPlayerLeaveRoomRsp.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\21013_C2SKickPlayerReq.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\21014_S2CRoomKickedRsp.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\21015_S2CNewRoomAddRsp.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\22001_C2STransferAccountsReq.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+    <ClCompile Include="protocol\22002_S2CTransferAccountsRsp.pb.cc">
+      <Filter>protocol\protobuf</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>

@@ -1,0 +1,5 @@
+package Protocol;
+
+message S2CPlayerLeaveRoomRsp {
+	required string player_name = 1;
+}

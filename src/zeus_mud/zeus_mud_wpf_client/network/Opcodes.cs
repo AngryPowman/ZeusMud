@@ -21,7 +21,18 @@ namespace Wpf.network
         C2SRoomCreateReq = 21001,
         S2CRoomCreateRsp = 21002,
         C2SGetRoomListReq = 21003,
-        S2CGetRoomListRsp = 21004
+        S2CGetRoomListRsp = 21004,
+        C2SRoomCancleReq = 21005,
+        S2CRoomCancleRsp = 21006,
+        C2SSRoomInfoChangeReq = 21007,
+        S2CSRoomInfoChangeRsp = 21008,
+        C2SEnterRoomReq = 21009,
+        S2CPlayerEnterRoomRsp = 21010,
+        C2SLeaveRoomReq = 21011,
+        S2CPlayerLeaveRoomRsp = 21012,
+        C2SKickPlayerReq = 21013,
+        S2CRoomKickedRsp = 21014,
+        S2CNewRoomAddRsp = 21015
     }
 
     public enum ErrorCode
