@@ -61,7 +61,7 @@ namespace zeus_mud_wpf_client.dialog
             if (response.room_create_result == true)
             {
                 GlobalObject.MainWindow.Show();
-                this.Hide();
+                this.Close();
             }
             else
             {

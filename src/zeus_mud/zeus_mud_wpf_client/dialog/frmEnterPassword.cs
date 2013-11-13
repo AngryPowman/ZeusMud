@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wpf.ZuesMud;
 
 namespace zeus_mud_wpf_client.dialog
 {
@@ -17,17 +18,7 @@ namespace zeus_mud_wpf_client.dialog
             InitializeComponent();
         }
 
-        private String m_password;
-        private bool m_isCancled = false;
-
-        public bool IsCancled
-        {
-            get { return IsCancled; }
-        }
-        public String Password
-        {
-            get { return m_password; }
-        }
+        
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -53,13 +44,13 @@ namespace zeus_mud_wpf_client.dialog
 
         private void button2_Click(object sender, EventArgs e)
         {
-            m_password = textBox1.Text;
-            m_isCancled = false;
+            GlobalObject.RoomListPanelForm.Password = textBox1.Text;
+            this.Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            m_isCancled = true;
+            this.Close();
         }
 
     }

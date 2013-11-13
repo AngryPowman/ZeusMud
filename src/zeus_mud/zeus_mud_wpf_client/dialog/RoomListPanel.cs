@@ -16,7 +16,14 @@ namespace zeus_mud_wpf_client.dialog
 {
     public partial class RoomListPanel : UserControl
     {
-                
+        public const uint MAX_MEMBER = 4;
+        private String m_password;
+
+        public String Password
+        {
+            get { return m_password; }
+            set { m_password = value; }
+        }
 
         public RoomListPanel()
         {
@@ -31,7 +38,9 @@ namespace zeus_mud_wpf_client.dialog
         {
             Protocol.C2SGetRoomListReq request = new Protocol.C2SGetRoomListReq();
             NetworkEvent.sendPacket<Protocol.C2SGetRoomListReq>(request);
+            GlobalObject.RoomListPanelForm = this;
         }
+
         public void getRoomRequest()
         {
 
@@ -73,29 +82,34 @@ namespace zeus_mud_wpf_client.dialog
                 return;
             }
 
-            bool isCancled = false;
-            String password;
-
             // 双击进入房间
+            m_password = "";
             ListViewItem selItem = listView1.SelectedItems[0];
+
+            //房间是否已满
+            if (MAX_MEMBER > uint.Parse(selItem.SubItems[2].Text))
+            {
+                MessageBox.Show("房间已满。");
+                return;
+            }
+
+            //不公开则显示输入
             if (selItem.SubItems[3].Text == "不公开")
             {
-                if (GlobalObject.EnterPasswordForm == null)
+                frmEnterPassword passwordDlg = new frmEnterPassword();
+                passwordDlg.ShowDialog();
+                //密码为空，取消进入房间。
+                if (m_password == "")
                 {
-                    GlobalObject.EnterPasswordForm = new frmEnterPassword();
+                    return;
                 }
-                GlobalObject.EnterPasswordForm.ShowDialog();
-                password = GlobalObject.EnterPasswordForm.Password;
-                isCancled = GlobalObject.EnterPasswordForm.IsCancled;
             }
-            if (isCancled == false)
-            {
-
-            }
-
-
-            Protocol.C2SEnterRoomReq request = new Protocol.C2SEnterRoomReq();
             
+            //发送请求
+            Protocol.C2SEnterRoomReq request = new Protocol.C2SEnterRoomReq();
+            request.id = uint.Parse(selItem.Text);
+            request.password = m_password;
+            NetworkEvent.sendPacket<Protocol.C2SEnterRoomReq>(request);
         }
     }
 }
