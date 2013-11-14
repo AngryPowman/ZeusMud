@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: 21011_C2SLeaveRoomReq.proto
+// Generated from: 21010_S2CEnterRoomRsp.proto
 namespace Protocol
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"C2SLeaveRoomReq")]
-  public partial class C2SLeaveRoomReq : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2CEnterRoomRsp")]
+  public partial class S2CEnterRoomRsp : global::ProtoBuf.IExtensible
   {
-    public C2SLeaveRoomReq() {}
+    public S2CEnterRoomRsp() {}
     
-    private uint _room_id;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"room_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public uint room_id
+    private bool _result;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"result", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool result
     {
-      get { return _room_id; }
-      set { _room_id = value; }
+      get { return _result; }
+      set { _result = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

@@ -91,12 +91,12 @@ class S2CSRoomInfoChangeRsp : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required uint32 id = 1;
-  inline bool has_id() const;
-  inline void clear_id();
-  static const int kIdFieldNumber = 1;
-  inline ::google::protobuf::uint32 id() const;
-  inline void set_id(::google::protobuf::uint32 value);
+  // required uint32 room_id = 1;
+  inline bool has_room_id() const;
+  inline void clear_room_id();
+  static const int kRoomIdFieldNumber = 1;
+  inline ::google::protobuf::uint32 room_id() const;
+  inline void set_room_id(::google::protobuf::uint32 value);
 
   // optional string room_name = 2;
   inline bool has_room_name() const;
@@ -119,8 +119,8 @@ class S2CSRoomInfoChangeRsp : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:Protocol.S2CSRoomInfoChangeRsp)
  private:
-  inline void set_has_id();
-  inline void clear_has_id();
+  inline void set_has_room_id();
+  inline void clear_has_room_id();
   inline void set_has_room_name();
   inline void clear_has_room_name();
   inline void set_has_player_count();
@@ -129,7 +129,7 @@ class S2CSRoomInfoChangeRsp : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* room_name_;
-  ::google::protobuf::uint32 id_;
+  ::google::protobuf::uint32 room_id_;
   ::google::protobuf::uint32 player_count_;
 
   mutable int _cached_size_;
@@ -149,26 +149,26 @@ class S2CSRoomInfoChangeRsp : public ::google::protobuf::Message {
 
 // S2CSRoomInfoChangeRsp
 
-// required uint32 id = 1;
-inline bool S2CSRoomInfoChangeRsp::has_id() const {
+// required uint32 room_id = 1;
+inline bool S2CSRoomInfoChangeRsp::has_room_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void S2CSRoomInfoChangeRsp::set_has_id() {
+inline void S2CSRoomInfoChangeRsp::set_has_room_id() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void S2CSRoomInfoChangeRsp::clear_has_id() {
+inline void S2CSRoomInfoChangeRsp::clear_has_room_id() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void S2CSRoomInfoChangeRsp::clear_id() {
-  id_ = 0u;
-  clear_has_id();
+inline void S2CSRoomInfoChangeRsp::clear_room_id() {
+  room_id_ = 0u;
+  clear_has_room_id();
 }
-inline ::google::protobuf::uint32 S2CSRoomInfoChangeRsp::id() const {
-  return id_;
+inline ::google::protobuf::uint32 S2CSRoomInfoChangeRsp::room_id() const {
+  return room_id_;
 }
-inline void S2CSRoomInfoChangeRsp::set_id(::google::protobuf::uint32 value) {
-  set_has_id();
-  id_ = value;
+inline void S2CSRoomInfoChangeRsp::set_room_id(::google::protobuf::uint32 value) {
+  set_has_room_id();
+  room_id_ = value;
 }
 
 // optional string room_name = 2;

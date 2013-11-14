@@ -1,5 +1,5 @@
 package Protocol;
 
 message C2SLeaveRoomReq {
-	required uint32 id = 1;
+	required uint32 room_id = 1;
 }

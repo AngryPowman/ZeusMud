@@ -27,12 +27,12 @@ namespace Protocol
   {
     public RoomInfo() {}
     
-    private uint _id;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public uint id
+    private uint _room_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"room_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint room_id
     {
-      get { return _id; }
-      set { _id = value; }
+      get { return _room_id; }
+      set { _room_id = value; }
     }
     private string _room_name;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"room_name", DataFormat = global::ProtoBuf.DataFormat.Default)]

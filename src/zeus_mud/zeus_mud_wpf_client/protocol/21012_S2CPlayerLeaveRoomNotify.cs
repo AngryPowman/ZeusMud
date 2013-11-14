@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: 21011_C2SLeaveRoomReq.proto
+// Generated from: 21012_S2CPlayerLeaveRoomNotify.proto
 namespace Protocol
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"C2SLeaveRoomReq")]
-  public partial class C2SLeaveRoomReq : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2CPlayerLeaveRoomNotify")]
+  public partial class S2CPlayerLeaveRoomNotify : global::ProtoBuf.IExtensible
   {
-    public C2SLeaveRoomReq() {}
+    public S2CPlayerLeaveRoomNotify() {}
     
-    private uint _room_id;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"room_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public uint room_id
+    private ulong _player_guid;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"player_guid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong player_guid
     {
-      get { return _room_id; }
-      set { _room_id = value; }
+      get { return _player_guid; }
+      set { _player_guid = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

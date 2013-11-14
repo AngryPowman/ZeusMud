@@ -15,12 +15,12 @@ namespace Protocol
   {
     public S2CPlayerEnterRoomRsp() {}
     
-    private string _player_name;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"player_name", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string player_name
+    private ulong _player_guid;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"player_guid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong player_guid
     {
-      get { return _player_name; }
-      set { _player_name = value; }
+      get { return _player_guid; }
+      set { _player_guid = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

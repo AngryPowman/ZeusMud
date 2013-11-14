@@ -1,5 +1,0 @@
-package Protocol;
-
-message S2CPlayerEnterRoomRsp {
-	required string player_name = 1;
-}

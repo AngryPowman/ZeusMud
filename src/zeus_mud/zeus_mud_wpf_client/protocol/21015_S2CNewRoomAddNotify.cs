@@ -7,13 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: 21009_C2SEnterRoomReq.proto
+// Generated from: 21015_S2CNewRoomAddNotify.proto
 namespace Protocol
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"C2SEnterRoomReq")]
-  public partial class C2SEnterRoomReq : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2CNewRoomAddNotify")]
+  public partial class S2CNewRoomAddNotify : global::ProtoBuf.IExtensible
   {
-    public C2SEnterRoomReq() {}
+    public S2CNewRoomAddNotify() {}
     
     private uint _room_id;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"room_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -22,14 +22,19 @@ namespace Protocol
       get { return _room_id; }
       set { _room_id = value; }
     }
-
-    private string _password = "";
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"password", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string password
+    private string _room_name;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"room_name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string room_name
     {
-      get { return _password; }
-      set { _password = value; }
+      get { return _room_name; }
+      set { _room_name = value; }
+    }
+    private bool _public;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"public", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public bool @public
+    {
+      get { return _public; }
+      set { _public = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

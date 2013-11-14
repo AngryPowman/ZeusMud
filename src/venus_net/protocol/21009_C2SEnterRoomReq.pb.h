@@ -91,12 +91,12 @@ class C2SEnterRoomReq : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required uint32 id = 1;
-  inline bool has_id() const;
-  inline void clear_id();
-  static const int kIdFieldNumber = 1;
-  inline ::google::protobuf::uint32 id() const;
-  inline void set_id(::google::protobuf::uint32 value);
+  // required uint32 room_id = 1;
+  inline bool has_room_id() const;
+  inline void clear_room_id();
+  static const int kRoomIdFieldNumber = 1;
+  inline ::google::protobuf::uint32 room_id() const;
+  inline void set_room_id(::google::protobuf::uint32 value);
 
   // optional string password = 2;
   inline bool has_password() const;
@@ -112,15 +112,15 @@ class C2SEnterRoomReq : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:Protocol.C2SEnterRoomReq)
  private:
-  inline void set_has_id();
-  inline void clear_has_id();
+  inline void set_has_room_id();
+  inline void clear_has_room_id();
   inline void set_has_password();
   inline void clear_has_password();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* password_;
-  ::google::protobuf::uint32 id_;
+  ::google::protobuf::uint32 room_id_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -139,26 +139,26 @@ class C2SEnterRoomReq : public ::google::protobuf::Message {
 
 // C2SEnterRoomReq
 
-// required uint32 id = 1;
-inline bool C2SEnterRoomReq::has_id() const {
+// required uint32 room_id = 1;
+inline bool C2SEnterRoomReq::has_room_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void C2SEnterRoomReq::set_has_id() {
+inline void C2SEnterRoomReq::set_has_room_id() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void C2SEnterRoomReq::clear_has_id() {
+inline void C2SEnterRoomReq::clear_has_room_id() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void C2SEnterRoomReq::clear_id() {
-  id_ = 0u;
-  clear_has_id();
+inline void C2SEnterRoomReq::clear_room_id() {
+  room_id_ = 0u;
+  clear_has_room_id();
 }
-inline ::google::protobuf::uint32 C2SEnterRoomReq::id() const {
-  return id_;
+inline ::google::protobuf::uint32 C2SEnterRoomReq::room_id() const {
+  return room_id_;
 }
-inline void C2SEnterRoomReq::set_id(::google::protobuf::uint32 value) {
-  set_has_id();
-  id_ = value;
+inline void C2SEnterRoomReq::set_room_id(::google::protobuf::uint32 value) {
+  set_has_room_id();
+  room_id_ = value;
 }
 
 // optional string password = 2;

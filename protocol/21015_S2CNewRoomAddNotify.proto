@@ -1,7 +1,7 @@
 package Protocol;
 
-message S2CNewRoomAddRsp {
-	required uint32 id = 1;
+message S2CNewRoomAddNotify {
+	required uint32 room_id = 1;
 	required string room_name = 2;
 	required bool public = 3;
 }
