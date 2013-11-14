@@ -118,9 +118,8 @@
     <ClInclude Include="protocol\21004_S2CGetRoomListRsp.pb.h" />
     <ClInclude Include="protocol\21005_C2SRoomCancleReq.pb.h" />
     <ClInclude Include="protocol\21006_S2CRoomCancleNotify.pb.h" />
-    <ClInclude Include="protocol\21006_S2CRoomCancleRsp.pb.h" />
     <ClInclude Include="protocol\21007_C2SRoomInfoChangeReq.pb.h" />
-    <ClInclude Include="protocol\21008_S2CRoomInfoChangeRsp.pb.h" />
+    <ClInclude Include="protocol\21008_S2CRoomInfoChangeNotify.pb.h" />
     <ClInclude Include="protocol\21009_C2SEnterRoomReq.pb.h" />
     <ClInclude Include="protocol\21010_S2CEnterRoomRsp.pb.h" />
     <ClInclude Include="protocol\21011_C2SLeaveRoomReq.pb.h" />
@@ -164,9 +163,8 @@
     <ClCompile Include="protocol\21004_S2CGetRoomListRsp.pb.cc" />
     <ClCompile Include="protocol\21005_C2SRoomCancleReq.pb.cc" />
     <ClCompile Include="protocol\21006_S2CRoomCancleNotify.pb.cc" />
-    <ClCompile Include="protocol\21006_S2CRoomCancleRsp.pb.cc" />
     <ClCompile Include="protocol\21007_C2SRoomInfoChangeReq.pb.cc" />
-    <ClCompile Include="protocol\21008_S2CRoomInfoChangeRsp.pb.cc" />
+    <ClCompile Include="protocol\21008_S2CRoomInfoChangeNotify.pb.cc" />
     <ClCompile Include="protocol\21009_C2SEnterRoomReq.pb.cc" />
     <ClCompile Include="protocol\21010_S2CEnterRoomRsp.pb.cc" />
     <ClCompile Include="protocol\21011_C2SLeaveRoomReq.pb.cc" />

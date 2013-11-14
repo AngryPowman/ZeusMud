@@ -31,6 +31,7 @@ namespace zeus_mud_wpf_client.dialog
             InitializeComponent();
             //注册请求消息回调
             OpcodesProxy.registerHandler<RoomListPanel>(Opcodes.S2CGetRoomListRsp, this.getRoomListCallBack, this);
+            OpcodesProxy.registerHandler<RoomListPanel>(Opcodes.S2CNewRoomAddNotify, this.newRoomAddCallBack, this);
         }
 
         private void RoomListPanel_Load(object sender, EventArgs e)
@@ -45,10 +46,10 @@ namespace zeus_mud_wpf_client.dialog
 
         }
 
-        public void newRoomAddCallBack(MemoryStream stream)
+        public void newRoomAddCallBack(object sender, NetworkMessageEventArgs e)
         {
-            Protocol.S2CNewRoomAddRsp response = NetworkEvent.parseMessage<Protocol.S2CNewRoomAddRsp>(stream);
-            ListViewItem lvi = listView1.Items.Insert((int)response.id - 1, response.id.ToString());
+            Protocol.S2CNewRoomAddNotify response = NetworkEvent.parseMessage<Protocol.S2CNewRoomAddNotify>(e.message);
+            ListViewItem lvi = listView1.Items.Insert((int)response.room_id - 1, response.room_id.ToString());
             lvi.SubItems.Add(response.room_name);
             lvi.SubItems.Add("1");
             if (response.@public)

@@ -5,6 +5,8 @@
 #include "game_session_manager.h"
 #include "game_session.h"
 #include "room_manager.h"
+#include "player.h"
+
 
 void GameSession::room_create_handler(const NetworkMessage& message)
 {
@@ -79,7 +81,7 @@ void GameSession::get_room_list_handler(const NetworkMessage& message)
         Protocol::S2CGetRoomListRsp::RoomInfo* roomInfo = response.add_room_list();
         roomInfo->set_room_id(it->second->getId());
         roomInfo->set_room_name(it->second->getRoomName());
-        roomInfo->set_player_count(it->second->getPlayerCount());
+        roomInfo->set_player_count(it->second->getPlayersCount());
     }
     debug_log("Send room list to client.");
     send_message<Protocol::S2CGetRoomListRsp>(Opcodes::S2CGetRoomListRsp ,response);
@@ -104,5 +106,5 @@ void GameSession::enter_room_handler(const NetworkMessage& message)
         warning_log("Can't find room");
         response.set_result(false);
     }
-    send_message<Protocol::S2CEnterRoomRsp>(Opcodes::S2CPlayerEnterRoomRsp, message)
+    send_message<Protocol::S2CEnterRoomRsp>(Opcodes::S2CEnterRoomRsp, response);
 }

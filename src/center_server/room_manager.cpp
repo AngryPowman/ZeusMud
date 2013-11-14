@@ -37,7 +37,7 @@ uint32 RoomManager::addRoom(const std::string& roomName, const std::string& pass
         roomId = _freeIds.back();
         _freeIds.pop_back();
     }
-    _rooms[roomId] = _roomPool.acquire(roomId, roomName, password, );
+    _rooms[roomId] = _roomPool.acquire(roomId, roomName, password, ownerGuid);
     return roomId;
 }
 

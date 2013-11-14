@@ -153,13 +153,10 @@
     <ClInclude Include="protocol\21006_S2CRoomCancleNotify.pb.h">
       <Filter>protocol\protobuf</Filter>
     </ClInclude>
-    <ClInclude Include="protocol\21006_S2CRoomCancleRsp.pb.h">
-      <Filter>protocol\protobuf</Filter>
-    </ClInclude>
     <ClInclude Include="protocol\21007_C2SRoomInfoChangeReq.pb.h">
       <Filter>protocol\protobuf</Filter>
     </ClInclude>
-    <ClInclude Include="protocol\21008_S2CRoomInfoChangeRsp.pb.h">
+    <ClInclude Include="protocol\21008_S2CRoomInfoChangeNotify.pb.h">
       <Filter>protocol\protobuf</Filter>
     </ClInclude>
     <ClInclude Include="protocol\21009_C2SEnterRoomReq.pb.h">
@@ -260,13 +257,10 @@
     <ClCompile Include="protocol\21006_S2CRoomCancleNotify.pb.cc">
       <Filter>protocol\protobuf</Filter>
     </ClCompile>
-    <ClCompile Include="protocol\21006_S2CRoomCancleRsp.pb.cc">
-      <Filter>protocol\protobuf</Filter>
-    </ClCompile>
     <ClCompile Include="protocol\21007_C2SRoomInfoChangeReq.pb.cc">
       <Filter>protocol\protobuf</Filter>
     </ClCompile>
-    <ClCompile Include="protocol\21008_S2CRoomInfoChangeRsp.pb.cc">
+    <ClCompile Include="protocol\21008_S2CRoomInfoChangeNotify.pb.cc">
       <Filter>protocol\protobuf</Filter>
     </ClCompile>
     <ClCompile Include="protocol\21009_C2SEnterRoomReq.pb.cc">
