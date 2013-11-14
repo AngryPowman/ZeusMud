@@ -22,7 +22,7 @@ void GameSession::room_create_handler(const NetworkMessage& message)
             //验证密码长度
             if ( request.password().length() <= 6 )
             {
-                uint32 id = RoomManager::getInstance().addRoom(request.room_name(), request.password(), _player->_guid);
+                uint32 id = RoomManager::getInstance().addRoom(request.room_name(), request.password(), _player->guid());
                 response.set_room_id(id);
                 if (id != 0)
                 {
@@ -61,11 +61,11 @@ void GameSession::room_create_handler(const NetworkMessage& message)
 
 void GameSession::broadcast_room_add(uint32 id, const std::string& roomName, bool isPublic)
 {
-    Protocol::S2CNewRoomAddRsp response;
-    response.set_id(id);
+    Protocol::S2CNewRoomAddNotify response;
+    response.set_room_id(id);
     response.set_room_name(roomName);
     response.set_public_(isPublic);
-    GameSessionManager::getInstance().broadcast<Protocol::S2CNewRoomAddRsp>(Opcodes::S2CNewRoomAddRsp, response);
+    GameSessionManager::getInstance().broadcast<Protocol::S2CNewRoomAddNotify>(Opcodes::S2CNewRoomAddRsp, response);
 }
 
 void GameSession::get_room_list_handler(const NetworkMessage& message)
@@ -91,16 +91,18 @@ void GameSession::enter_room_handler(const NetworkMessage& message)
     PARSE_NETWORK_MESSAGE(message, request);
     debug_log("[Enter Room]: room_id = '%d'", request.room_id());
 
-    Protocol::S2CPlayerEnterRoomRsp response;
+    Protocol::S2CEnterRoomRsp response;
 
     Room* room = RoomManager::getInstance().getRoom(request.room_id());
     if(room != NULL)
     {
-        
+        room->addMember(_player->guid());
+        response.set_result(true);
     }
     else
     {
         warning_log("Can't find room");
-        
+        response.set_result(false);
     }
+    send_message<Protocol::S2CEnterRoomRsp>(Opcodes::S2CPlayerEnterRoomRsp, message)
 }

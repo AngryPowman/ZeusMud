@@ -68,7 +68,7 @@ namespace zeus_mud_wpf_client.dialog
             List<Protocol.S2CGetRoomListRsp.RoomInfo> roomList = response.room_list;
             foreach (Protocol.S2CGetRoomListRsp.RoomInfo room in roomList)
             {
-                ListViewItem lvi = listView1.Items.Add(new ListViewItem(room.id.ToString()));
+                ListViewItem lvi = listView1.Items.Add(new ListViewItem(room.room_id.ToString()));
                 lvi.SubItems.Add(room.room_name);
                 lvi.SubItems.Add(room.player_count.ToString());
             }
@@ -106,7 +106,7 @@ namespace zeus_mud_wpf_client.dialog
             
             //发送请求
             Protocol.C2SEnterRoomReq request = new Protocol.C2SEnterRoomReq();
-            request.id = uint.Parse(selItem.Text);
+            request.room_id = uint.Parse(selItem.Text);
             request.password = m_password;
             NetworkEvent.sendPacket<Protocol.C2SEnterRoomReq>(request);
         }

@@ -19,7 +19,7 @@ void RoomManager::destory()
     _rooms.clear();
 }
 
-uint32 RoomManager::addRoom(const std::string& roomName, const std::string& password)
+uint32 RoomManager::addRoom(const std::string& roomName, const std::string& password,  uint64 ownerGuid)
 {
     if (_rooms.size() >= MAX_ROOM)
     {

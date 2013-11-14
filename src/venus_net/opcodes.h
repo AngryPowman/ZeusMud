@@ -23,9 +23,9 @@ namespace Opcodes
     const int C2SSRoomInfoChangeReq     = 21007;
     const int S2CSRoomInfoChangeRsp     = 21008;
     const int C2SEnterRoomReq           = 21009;
-    const int S2CPlayerEnterRoomRsp     = 21010;
+    const int S2CEnterRoomRsp           = 21010;
     const int C2SLeaveRoomReq           = 21011;
-    const int S2CPlayerLeaveRoomRsp     = 21012;
+    const int S2CPlayerLeaveRoomNotify  = 21012;
     const int C2SKickPlayerReq          = 21013;
     const int S2CRoomKickedRsp          = 21014;
     const int S2CNewRoomAddRsp          = 21015;
