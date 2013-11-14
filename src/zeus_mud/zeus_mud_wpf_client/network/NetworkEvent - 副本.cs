@@ -12,14 +12,14 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using Wpf.ZuesMud;
 using System.Reflection;
-using zeus_mud_wpf_client.network;
 
 namespace Wpf.network
 {
     class NetworkEvent
     {
-        private static OpcodesProxy _opcodeHandler = new OpcodesProxy();
+        private static OpcodesHandler _opcodeHandler = new OpcodesHandler();
         private static Dictionary<string, UInt32> _opcodesTable = new Dictionary<string, UInt32>();
+        private static int MAX_RECV_LEN = (1024 * 4);
 
         public static void init()
         {
@@ -33,7 +33,7 @@ namespace Wpf.network
 
         const int HEADER_LENGTH = 8;
         private static Socket _clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        private static byte[] _recvBuffer = new byte[1024];
+        private static byte[] _recvBuffer = new byte[MAX_RECV_LEN];
         public static bool connectToServer(string ip, UInt16 port)
         {
             addLog("正在连接到服务器 " + ip + ":" + port.ToString() + "...");
@@ -98,6 +98,12 @@ namespace Wpf.network
             }
         }
 
+        //储存所有完整的包
+        private static List<Packet> _packets;     
+
+        //储存一个完整（或未接受完）的包
+        private static MemoryStream _packetBuffer = new MemoryStream();
+
         private static void onReceived(IAsyncResult result)
         {
             try
@@ -110,30 +116,58 @@ namespace Wpf.network
                     onDisconnected();
                     return;
                 }
+                Console.WriteLine("received {0} bytes.", bytesReceived);
 
-                MemoryStream streamPacket = new MemoryStream(_recvBuffer);
-                BinaryReader reader = new BinaryReader(streamPacket);
-                UInt32 len = reader.ReadUInt32();
-                UInt32 opcode = reader.ReadUInt32();
+                _packetBuffer.Write(_recvBuffer, (int)_packetBuffer.Length + 1, bytesReceived);
 
-                UInt32 messageLen = len - HEADER_LENGTH;
-                byte[] message = new byte[messageLen];
-                reader.Read(message, 0, message.Length);
+                //MemoryStream streamPacket = new MemoryStream(_recvBuffer);
 
-                MessageHandler handlerInfo = _opcodeHandler.getHandler((Opcodes)opcode);
-                if (handlerInfo != null)
+                while (_packetBuffer.Length >= 8)
                 {
-                    handlerInfo.OnNetworkMessageEvent(
-                        handlerInfo, 
-                        new NetworkMessageEventArgs()
+                    BinaryReader reader = new BinaryReader(_packetBuffer);
+                    UInt32 len = reader.ReadUInt32();
+                    UInt32 opcode = reader.ReadUInt32();
+
+                    if (len >= MAX_RECV_LEN || 
+                        _packetBuffer.Length >= MAX_RECV_LEN || 
+                        bytesReceived >= MAX_RECV_LEN)
+                    {
+                        onDisconnected();
+                        return;
+                    }
+
+                    if (_packetBuffer.Length < len)
+                    {
+                        return;
+                    }
+                    else if (_packetBuffer.Length >= len)
+                    {
+                        UInt32 messageLen = len - HEADER_LENGTH;
+                        byte[] message = new byte[messageLen];
+                        reader.Read(message, 0, message.Length);
+
+                        Handler handlerInfo = _opcodeHandler.getHandler((Opcodes)opcode);
+                        if (handlerInfo != null && handlerInfo.callback != null)
                         {
-                            opcode = (Opcodes)opcode,
-                            message = new MemoryStream(message)
+                            MethodInfo invoke_method = handlerInfo.proxy_object_type.GetMethod("Invoke");
+                            //invoke_method.Invoke(handlerInfo.proxy_object, new object { });
+                            //handlerInfo.proxy_object.Invoke(handlerInfo.callback, new MemoryStream(message));
+                            //GlobalObject.LoginForm.Invoke(handlerInfo.callback, new MemoryStream(message));
+
+                            invoke_method.Invoke(
+                                handlerInfo.proxy_object, 
+                                new object [] {
+                                    handlerInfo.callback, 
+                                    new MemoryStream(message)
+                                }
+                           );
                         }
-                    );
+                        
+                        
+                    }
                 }
 
-                Console.WriteLine("received {0} bytes.", bytesReceived);
+
             }
             catch (System.Exception ex)
             {

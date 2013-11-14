@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wpf.network;
 using System.IO;
+using zeus_mud_wpf_client.network;
 using Wpf.ZuesMud;
 
 
@@ -29,9 +30,7 @@ namespace zeus_mud_wpf_client.dialog
         {
             InitializeComponent();
             //注册请求消息回调
-            OpcodesHandler.registerHandler(Opcodes.S2CGetRoomListRsp, this.getRoomListCallBack);
-            OpcodesHandler.registerHandler(Opcodes.S2CNewRoomAddRsp, this.newRoomAddCallBack);
-
+            OpcodesProxy.registerHandler<RoomListPanel>(Opcodes.S2CGetRoomListRsp, this.getRoomListCallBack, this);
         }
 
         private void RoomListPanel_Load(object sender, EventArgs e)
@@ -63,9 +62,9 @@ namespace zeus_mud_wpf_client.dialog
             
         }
 
-        public void getRoomListCallBack(MemoryStream stream)
+        public void getRoomListCallBack(object sender, NetworkMessageEventArgs e)
         {
-            Protocol.S2CGetRoomListRsp response = NetworkEvent.parseMessage<Protocol.S2CGetRoomListRsp>(stream);
+            Protocol.S2CGetRoomListRsp response = NetworkEvent.parseMessage<Protocol.S2CGetRoomListRsp>(e.message);
             List<Protocol.S2CGetRoomListRsp.RoomInfo> roomList = response.room_list;
             foreach (Protocol.S2CGetRoomListRsp.RoomInfo room in roomList)
             {

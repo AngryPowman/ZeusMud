@@ -14,6 +14,7 @@ using zeus_mud.network;
 using Wpf.ZuesMud;
 using Wpf.network;
 using System.IO;
+using zeus_mud_wpf_client.network;
 
 namespace zeus_mud_wpf_client.dialog
 {
@@ -24,7 +25,7 @@ namespace zeus_mud_wpf_client.dialog
             InitializeComponent();
 
             //登录消息注册
-            OpcodesHandler.registerHandler(Opcodes.S2CGetPlayerProfileRsp, this.getPlayerProfileCallback);
+            OpcodesProxy.registerHandler<ProfilePanel>(Opcodes.S2CGetPlayerProfileRsp, this.getPlayerProfileCallback, this);
         }
 
         private void frmProfile_Load(object sender, EventArgs e)
@@ -76,9 +77,9 @@ namespace zeus_mud_wpf_client.dialog
         /// 服务器返回个人资料
         /// </summary>
         /// <param name="stream"></param>
-        public void getPlayerProfileCallback(MemoryStream stream)
+        public void getPlayerProfileCallback(object sender, NetworkMessageEventArgs e)
         {
-            Protocol.S2CGetPlayerProfileRsp response = NetworkEvent.parseMessage<Protocol.S2CGetPlayerProfileRsp>(stream);
+            Protocol.S2CGetPlayerProfileRsp response = NetworkEvent.parseMessage<Protocol.S2CGetPlayerProfileRsp>(e.message);
             PlayerProfile.guid = response.guid;
             PlayerProfile.nickname = Encoding.UTF8.GetString(response.nickname);
             PlayerProfile.gender = response.gender;

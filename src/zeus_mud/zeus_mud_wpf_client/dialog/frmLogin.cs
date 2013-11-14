@@ -16,6 +16,7 @@ using zeus_mud.game.data;
 using System.Xml;
 using Wpf.ZuesMud;
 using zeus_mud_wpf_client;
+using zeus_mud_wpf_client.network;
 
 namespace zeus_mud
 {
@@ -26,7 +27,7 @@ namespace zeus_mud
             InitializeComponent();
 
             //登录消息注册
-            OpcodesHandler.registerHandler(Opcodes.S2CLoginRsp, this.userLoginCallback);
+            OpcodesProxy.registerHandler<frmLogin>(Opcodes.S2CLoginRsp, this.userLoginCallback, this);
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -83,9 +84,9 @@ namespace zeus_mud
         /// 登录返回
         /// </summary>
         /// <param name="stream"></param>
-        public void userLoginCallback(MemoryStream stream)
+        public void userLoginCallback(object sender, NetworkMessageEventArgs e)
         {
-            Protocol.S2CLoginRsp response = NetworkEvent.parseMessage<Protocol.S2CLoginRsp>(stream);
+            Protocol.S2CLoginRsp response = NetworkEvent.parseMessage<Protocol.S2CLoginRsp>(e.message);
             if (response.login_result == true)
             {
                 saveXml();
