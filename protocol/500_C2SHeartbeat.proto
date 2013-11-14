@@ -1,0 +1,4 @@
+package Protocol;
+
+message C2SHeartbeat {
+}
