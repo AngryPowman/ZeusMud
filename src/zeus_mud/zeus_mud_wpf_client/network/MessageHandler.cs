@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Wpf.network;
@@ -23,7 +24,23 @@ namespace zeus_mud_wpf_client.network
 
         public void OnNetworkMessageEvent(object sender, NetworkMessageEventArgs e)
         {
-            OnNetworkMessage(sender, e);
+            MessageHandler handlerInfo = sender as MessageHandler;
+
+            //get types
+            Type proxy_type = handlerInfo.proxy_object.GetType();
+
+            //get method refl
+            MethodInfo method = proxy_type.GetMethod("Invoke", new Type[] {typeof(Delegate), typeof(object[])});
+            
+            //define parameters
+            object[] parameters = new object[] 
+            { 
+                new NetworkMessageEventHandler(OnNetworkMessage),
+                new object[] {sender, e}
+            };
+
+            BindingFlags flag = BindingFlags.Public | BindingFlags.Instance;
+            object returnValue = method.Invoke(handlerInfo.proxy_object, flag, Type.DefaultBinder, parameters, null);
         }
     }
 

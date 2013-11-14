@@ -123,15 +123,6 @@ namespace Wpf.network
                 MessageHandler handlerInfo = _opcodeHandler.getHandler((Opcodes)opcode);
                 if (handlerInfo != null)
                 {
-                    /*Type type = handlerInfo.proxy_object.GetType();
-
-                    MethodInfo invoke_method = type.GetMethod("Invoke",
-                        new Type[] { typeof(object), typeof(object[]) });*/
-
-                    //NetworkMessageCallback callback = new NetworkMessageCallback(handlerInfo.callback);
-                    //IAsyncResult async_result = callback.BeginInvoke(new MemoryStream(message), null, null);
-                    //callback.EndInvoke(async_result);
-                    //NetworkMessageEventHandler network_event = new NetworkMessageEventHandler(
                     handlerInfo.OnNetworkMessageEvent(
                         handlerInfo, 
                         new NetworkMessageEventArgs()
