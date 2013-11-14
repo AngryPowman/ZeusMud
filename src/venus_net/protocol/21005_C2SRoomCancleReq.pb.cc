@@ -35,7 +35,7 @@ void protobuf_AssignDesc_21005_5fC2SRoomCancleReq_2eproto() {
   GOOGLE_CHECK(file != NULL);
   C2SRoomCancleReq_descriptor_ = file->message_type(0);
   static const int C2SRoomCancleReq_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SRoomCancleReq, id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SRoomCancleReq, room_id_),
   };
   C2SRoomCancleReq_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -79,7 +79,7 @@ void protobuf_AddDesc_21005_5fC2SRoomCancleReq_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\03421005_C2SRoomCancleReq.proto\022\010Protocol"
-    "\"\036\n\020C2SRoomCancleReq\022\n\n\002id\030\001 \002(\r", 72);
+    "\"#\n\020C2SRoomCancleReq\022\017\n\007room_id\030\001 \002(\r", 77);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "21005_C2SRoomCancleReq.proto", &protobuf_RegisterTypes);
   C2SRoomCancleReq::default_instance_ = new C2SRoomCancleReq();
@@ -97,7 +97,7 @@ struct StaticDescriptorInitializer_21005_5fC2SRoomCancleReq_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int C2SRoomCancleReq::kIdFieldNumber;
+const int C2SRoomCancleReq::kRoomIdFieldNumber;
 #endif  // !_MSC_VER
 
 C2SRoomCancleReq::C2SRoomCancleReq()
@@ -116,7 +116,7 @@ C2SRoomCancleReq::C2SRoomCancleReq(const C2SRoomCancleReq& from)
 
 void C2SRoomCancleReq::SharedCtor() {
   _cached_size_ = 0;
-  id_ = 0u;
+  room_id_ = 0u;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -152,7 +152,7 @@ C2SRoomCancleReq* C2SRoomCancleReq::New() const {
 
 void C2SRoomCancleReq::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    id_ = 0u;
+    room_id_ = 0u;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -164,14 +164,14 @@ bool C2SRoomCancleReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required uint32 id = 1;
+      // required uint32 room_id = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
-          set_has_id();
+                 input, &room_id_)));
+          set_has_room_id();
         } else {
           goto handle_uninterpreted;
         }
@@ -197,9 +197,9 @@ bool C2SRoomCancleReq::MergePartialFromCodedStream(
 
 void C2SRoomCancleReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required uint32 id = 1;
-  if (has_id()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // required uint32 room_id = 1;
+  if (has_room_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->room_id(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -210,9 +210,9 @@ void C2SRoomCancleReq::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* C2SRoomCancleReq::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required uint32 id = 1;
-  if (has_id()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // required uint32 room_id = 1;
+  if (has_room_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->room_id(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -226,11 +226,11 @@ int C2SRoomCancleReq::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required uint32 id = 1;
-    if (has_id()) {
+    // required uint32 room_id = 1;
+    if (has_room_id()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->id());
+          this->room_id());
     }
 
   }
@@ -260,8 +260,8 @@ void C2SRoomCancleReq::MergeFrom(const ::google::protobuf::Message& from) {
 void C2SRoomCancleReq::MergeFrom(const C2SRoomCancleReq& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_id()) {
-      set_id(from.id());
+    if (from.has_room_id()) {
+      set_room_id(from.room_id());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -287,7 +287,7 @@ bool C2SRoomCancleReq::IsInitialized() const {
 
 void C2SRoomCancleReq::Swap(C2SRoomCancleReq* other) {
   if (other != this) {
-    std::swap(id_, other->id_);
+    std::swap(room_id_, other->room_id_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

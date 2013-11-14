@@ -35,7 +35,7 @@ void protobuf_AssignDesc_21009_5fC2SEnterRoomReq_2eproto() {
   GOOGLE_CHECK(file != NULL);
   C2SEnterRoomReq_descriptor_ = file->message_type(0);
   static const int C2SEnterRoomReq_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SEnterRoomReq, id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SEnterRoomReq, room_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SEnterRoomReq, password_),
   };
   C2SEnterRoomReq_reflection_ =
@@ -80,8 +80,8 @@ void protobuf_AddDesc_21009_5fC2SEnterRoomReq_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\03321009_C2SEnterRoomReq.proto\022\010Protocol\""
-    "/\n\017C2SEnterRoomReq\022\n\n\002id\030\001 \002(\r\022\020\n\010passwo"
-    "rd\030\002 \001(\t", 88);
+    "4\n\017C2SEnterRoomReq\022\017\n\007room_id\030\001 \002(\r\022\020\n\010p"
+    "assword\030\002 \001(\t", 93);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "21009_C2SEnterRoomReq.proto", &protobuf_RegisterTypes);
   C2SEnterRoomReq::default_instance_ = new C2SEnterRoomReq();
@@ -99,7 +99,7 @@ struct StaticDescriptorInitializer_21009_5fC2SEnterRoomReq_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int C2SEnterRoomReq::kIdFieldNumber;
+const int C2SEnterRoomReq::kRoomIdFieldNumber;
 const int C2SEnterRoomReq::kPasswordFieldNumber;
 #endif  // !_MSC_VER
 
@@ -119,7 +119,7 @@ C2SEnterRoomReq::C2SEnterRoomReq(const C2SEnterRoomReq& from)
 
 void C2SEnterRoomReq::SharedCtor() {
   _cached_size_ = 0;
-  id_ = 0u;
+  room_id_ = 0u;
   password_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -159,7 +159,7 @@ C2SEnterRoomReq* C2SEnterRoomReq::New() const {
 
 void C2SEnterRoomReq::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    id_ = 0u;
+    room_id_ = 0u;
     if (has_password()) {
       if (password_ != &::google::protobuf::internal::kEmptyString) {
         password_->clear();
@@ -176,14 +176,14 @@ bool C2SEnterRoomReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required uint32 id = 1;
+      // required uint32 room_id = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
-          set_has_id();
+                 input, &room_id_)));
+          set_has_room_id();
         } else {
           goto handle_uninterpreted;
         }
@@ -226,9 +226,9 @@ bool C2SEnterRoomReq::MergePartialFromCodedStream(
 
 void C2SEnterRoomReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required uint32 id = 1;
-  if (has_id()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // required uint32 room_id = 1;
+  if (has_room_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->room_id(), output);
   }
 
   // optional string password = 2;
@@ -248,9 +248,9 @@ void C2SEnterRoomReq::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* C2SEnterRoomReq::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required uint32 id = 1;
-  if (has_id()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // required uint32 room_id = 1;
+  if (has_room_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->room_id(), target);
   }
 
   // optional string password = 2;
@@ -274,11 +274,11 @@ int C2SEnterRoomReq::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required uint32 id = 1;
-    if (has_id()) {
+    // required uint32 room_id = 1;
+    if (has_room_id()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->id());
+          this->room_id());
     }
 
     // optional string password = 2;
@@ -315,8 +315,8 @@ void C2SEnterRoomReq::MergeFrom(const ::google::protobuf::Message& from) {
 void C2SEnterRoomReq::MergeFrom(const C2SEnterRoomReq& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_id()) {
-      set_id(from.id());
+    if (from.has_room_id()) {
+      set_room_id(from.room_id());
     }
     if (from.has_password()) {
       set_password(from.password());
@@ -345,7 +345,7 @@ bool C2SEnterRoomReq::IsInitialized() const {
 
 void C2SEnterRoomReq::Swap(C2SEnterRoomReq* other) {
   if (other != this) {
-    std::swap(id_, other->id_);
+    std::swap(room_id_, other->room_id_);
     std::swap(password_, other->password_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

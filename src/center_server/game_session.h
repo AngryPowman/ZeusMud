@@ -34,6 +34,9 @@ public:
 public:
     Player* getPlayer();
 
+private:
+    void attackPlayerPtr(Player* player);
+
 public:
 	//ĞÄÌø
 	void heartbeat_handler(const NetworkMessage& message);
@@ -52,8 +55,7 @@ public:
     void room_create_handler(const NetworkMessage& message);
     void get_room_list_handler(const NetworkMessage& message);
     void broadcast_room_add(uint32 id, const std::string& roomName, bool isPublic);
-private:
-    void attackPlayerPtr(Player* player);
+    void enter_room_handler(const NetworkMessage& message);
 
 private:
     Player* _player;

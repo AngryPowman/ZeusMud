@@ -1,4 +1,0 @@
-package Protocol;
-
-message S2CRoomKickedRsp {
-}

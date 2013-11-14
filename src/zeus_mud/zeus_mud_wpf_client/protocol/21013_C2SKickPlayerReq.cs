@@ -15,19 +15,19 @@ namespace Protocol
   {
     public C2SKickPlayerReq() {}
     
-    private uint _id;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public uint id
+    private uint _room_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"room_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint room_id
     {
-      get { return _id; }
-      set { _id = value; }
+      get { return _room_id; }
+      set { _room_id = value; }
     }
-    private string _kicked_palyer;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"kicked_palyer", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string kicked_palyer
+    private ulong _kicked_palyer_guid;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"kicked_palyer_guid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public ulong kicked_palyer_guid
     {
-      get { return _kicked_palyer; }
-      set { _kicked_palyer = value; }
+      get { return _kicked_palyer_guid; }
+      set { _kicked_palyer_guid = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

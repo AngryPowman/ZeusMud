@@ -1,6 +1,6 @@
 package Protocol;
 
 message C2SKickPlayerReq {
-	required uint32 id = 1;
-	required string kicked_palyer = 2;
+	required uint32 room_id = 1;
+	required uint64 kicked_palyer_guid = 2;
 }

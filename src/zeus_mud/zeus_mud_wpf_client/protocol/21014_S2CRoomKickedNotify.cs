@@ -7,13 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: 21014_S2CRoomKickedRsp.proto
+// Generated from: 21014_S2CRoomKickedNotify.proto
 namespace Protocol
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2CRoomKickedRsp")]
-  public partial class S2CRoomKickedRsp : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2CRoomKickedNotify")]
+  public partial class S2CRoomKickedNotify : global::ProtoBuf.IExtensible
   {
-    public S2CRoomKickedRsp() {}
+    public S2CRoomKickedNotify() {}
     
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

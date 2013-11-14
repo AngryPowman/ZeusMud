@@ -1,0 +1,5 @@
+package Protocol;
+
+message S2CEnterRoomRsp {
+	required bool result = 1;
+}

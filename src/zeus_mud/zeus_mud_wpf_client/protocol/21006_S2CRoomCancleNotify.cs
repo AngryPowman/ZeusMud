@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: 99990_S2CError.proto
+// Generated from: 21006_S2CRoomCancleNotify.proto
 namespace Protocol
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2CError")]
-  public partial class S2CError : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2CRoomCancleNotify")]
+  public partial class S2CRoomCancleNotify : global::ProtoBuf.IExtensible
   {
-    public S2CError() {}
+    public S2CRoomCancleNotify() {}
     
-    private uint _error_code;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"error_code", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public uint error_code
+    private uint _room_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"room_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint room_id
     {
-      get { return _error_code; }
-      set { _error_code = value; }
+      get { return _room_id; }
+      set { _room_id = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
