@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: 21015_S2CNewRoomAddRsp.proto
+// Generated from: 21015_S2CNewRoomAddNotify.proto
 namespace Protocol
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2CNewRoomAddRsp")]
-  public partial class S2CNewRoomAddRsp : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2CNewRoomAddNotify")]
+  public partial class S2CNewRoomAddNotify : global::ProtoBuf.IExtensible
   {
-    public S2CNewRoomAddRsp() {}
+    public S2CNewRoomAddNotify() {}
     
-    private uint _id;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public uint id
+    private uint _room_id;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"room_id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint room_id
     {
-      get { return _id; }
-      set { _id = value; }
+      get { return _room_id; }
+      set { _room_id = value; }
     }
     private string _room_name;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"room_name", DataFormat = global::ProtoBuf.DataFormat.Default)]

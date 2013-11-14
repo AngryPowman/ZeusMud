@@ -1,0 +1,5 @@
+package Protocol;
+
+message S2CPlayerLeaveRoomNotify {
+	required uint64 player_guid = 1;
+}

@@ -67,9 +67,9 @@ namespace zeus_mud_wpf_client.dialog
             else
             {
                 MessageBox.Show(this, Encoding.Default.GetString(response.failed_reason), "创建房间失败。", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btnCreate.Enabled = true;
+                btnCancle.Enabled = true;
             }
-            btnCreate.Enabled = true;
-            btnCancle.Enabled = true;
         }
 
         private void btnCancle_Click(object sender, EventArgs e)

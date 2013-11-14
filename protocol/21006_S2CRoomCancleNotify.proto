@@ -1,0 +1,5 @@
+package Protocol;
+
+message S2CRoomCancleNotify {
+	required uint32 room_id = 1;	
+}

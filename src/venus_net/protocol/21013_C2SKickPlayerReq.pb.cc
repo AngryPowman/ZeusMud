@@ -35,8 +35,8 @@ void protobuf_AssignDesc_21013_5fC2SKickPlayerReq_2eproto() {
   GOOGLE_CHECK(file != NULL);
   C2SKickPlayerReq_descriptor_ = file->message_type(0);
   static const int C2SKickPlayerReq_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SKickPlayerReq, id_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SKickPlayerReq, kicked_palyer_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SKickPlayerReq, room_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(C2SKickPlayerReq, kicked_palyer_guid_),
   };
   C2SKickPlayerReq_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -80,8 +80,8 @@ void protobuf_AddDesc_21013_5fC2SKickPlayerReq_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\03421013_C2SKickPlayerReq.proto\022\010Protocol"
-    "\"5\n\020C2SKickPlayerReq\022\n\n\002id\030\001 \002(\r\022\025\n\rkick"
-    "ed_palyer\030\002 \002(\t", 95);
+    "\"\?\n\020C2SKickPlayerReq\022\017\n\007room_id\030\001 \002(\r\022\032\n"
+    "\022kicked_palyer_guid\030\002 \002(\004", 105);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "21013_C2SKickPlayerReq.proto", &protobuf_RegisterTypes);
   C2SKickPlayerReq::default_instance_ = new C2SKickPlayerReq();
@@ -99,8 +99,8 @@ struct StaticDescriptorInitializer_21013_5fC2SKickPlayerReq_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int C2SKickPlayerReq::kIdFieldNumber;
-const int C2SKickPlayerReq::kKickedPalyerFieldNumber;
+const int C2SKickPlayerReq::kRoomIdFieldNumber;
+const int C2SKickPlayerReq::kKickedPalyerGuidFieldNumber;
 #endif  // !_MSC_VER
 
 C2SKickPlayerReq::C2SKickPlayerReq()
@@ -119,8 +119,8 @@ C2SKickPlayerReq::C2SKickPlayerReq(const C2SKickPlayerReq& from)
 
 void C2SKickPlayerReq::SharedCtor() {
   _cached_size_ = 0;
-  id_ = 0u;
-  kicked_palyer_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  room_id_ = 0u;
+  kicked_palyer_guid_ = GOOGLE_ULONGLONG(0);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -129,9 +129,6 @@ C2SKickPlayerReq::~C2SKickPlayerReq() {
 }
 
 void C2SKickPlayerReq::SharedDtor() {
-  if (kicked_palyer_ != &::google::protobuf::internal::kEmptyString) {
-    delete kicked_palyer_;
-  }
   if (this != default_instance_) {
   }
 }
@@ -159,12 +156,8 @@ C2SKickPlayerReq* C2SKickPlayerReq::New() const {
 
 void C2SKickPlayerReq::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    id_ = 0u;
-    if (has_kicked_palyer()) {
-      if (kicked_palyer_ != &::google::protobuf::internal::kEmptyString) {
-        kicked_palyer_->clear();
-      }
-    }
+    room_id_ = 0u;
+    kicked_palyer_guid_ = GOOGLE_ULONGLONG(0);
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -176,31 +169,30 @@ bool C2SKickPlayerReq::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required uint32 id = 1;
+      // required uint32 room_id = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &id_)));
-          set_has_id();
+                 input, &room_id_)));
+          set_has_room_id();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_kicked_palyer;
+        if (input->ExpectTag(16)) goto parse_kicked_palyer_guid;
         break;
       }
 
-      // required string kicked_palyer = 2;
+      // required uint64 kicked_palyer_guid = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_kicked_palyer:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_kicked_palyer()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->kicked_palyer().data(), this->kicked_palyer().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_kicked_palyer_guid:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &kicked_palyer_guid_)));
+          set_has_kicked_palyer_guid();
         } else {
           goto handle_uninterpreted;
         }
@@ -226,18 +218,14 @@ bool C2SKickPlayerReq::MergePartialFromCodedStream(
 
 void C2SKickPlayerReq::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required uint32 id = 1;
-  if (has_id()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->id(), output);
+  // required uint32 room_id = 1;
+  if (has_room_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(1, this->room_id(), output);
   }
 
-  // required string kicked_palyer = 2;
-  if (has_kicked_palyer()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->kicked_palyer().data(), this->kicked_palyer().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      2, this->kicked_palyer(), output);
+  // required uint64 kicked_palyer_guid = 2;
+  if (has_kicked_palyer_guid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->kicked_palyer_guid(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -248,19 +236,14 @@ void C2SKickPlayerReq::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* C2SKickPlayerReq::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required uint32 id = 1;
-  if (has_id()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->id(), target);
+  // required uint32 room_id = 1;
+  if (has_room_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(1, this->room_id(), target);
   }
 
-  // required string kicked_palyer = 2;
-  if (has_kicked_palyer()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->kicked_palyer().data(), this->kicked_palyer().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->kicked_palyer(), target);
+  // required uint64 kicked_palyer_guid = 2;
+  if (has_kicked_palyer_guid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->kicked_palyer_guid(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -274,18 +257,18 @@ int C2SKickPlayerReq::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required uint32 id = 1;
-    if (has_id()) {
+    // required uint32 room_id = 1;
+    if (has_room_id()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->id());
+          this->room_id());
     }
 
-    // required string kicked_palyer = 2;
-    if (has_kicked_palyer()) {
+    // required uint64 kicked_palyer_guid = 2;
+    if (has_kicked_palyer_guid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->kicked_palyer());
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->kicked_palyer_guid());
     }
 
   }
@@ -315,11 +298,11 @@ void C2SKickPlayerReq::MergeFrom(const ::google::protobuf::Message& from) {
 void C2SKickPlayerReq::MergeFrom(const C2SKickPlayerReq& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_id()) {
-      set_id(from.id());
+    if (from.has_room_id()) {
+      set_room_id(from.room_id());
     }
-    if (from.has_kicked_palyer()) {
-      set_kicked_palyer(from.kicked_palyer());
+    if (from.has_kicked_palyer_guid()) {
+      set_kicked_palyer_guid(from.kicked_palyer_guid());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -345,8 +328,8 @@ bool C2SKickPlayerReq::IsInitialized() const {
 
 void C2SKickPlayerReq::Swap(C2SKickPlayerReq* other) {
   if (other != this) {
-    std::swap(id_, other->id_);
-    std::swap(kicked_palyer_, other->kicked_palyer_);
+    std::swap(room_id_, other->room_id_);
+    std::swap(kicked_palyer_guid_, other->kicked_palyer_guid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
