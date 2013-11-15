@@ -2,7 +2,7 @@
 #define __GAME_SESSION_H__
 
 #include "network_session.h"
-#include <Poco/Timer.h>
+#include <Poco/Util/Timer.h>
 
 class Player;
 class GameSession
@@ -64,12 +64,12 @@ public:
 private:
     void startHeartbeatCheck(long interval = 10000);
     void stopHeartbeatCheck();
-    void onHeartbeatCheck(Poco::Timer& timer);
+    void onHeartbeatCheck(Poco::Util::TimerTask& task);
 
 private:
     Player* _player;
 	SessionHeartbeat _heartbeat;
-    Poco::Timer _heartbeat_checker;
+    Poco::Util::Timer _heartbeat_checker;
 };
 
 #endif

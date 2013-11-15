@@ -13,6 +13,7 @@ using System.Diagnostics;
 using Wpf.ZuesMud;
 using System.Reflection;
 using zeus_mud_wpf_client.network;
+using zeus_mud_wpf_client;
 
 namespace Wpf.network
 {
@@ -104,10 +105,9 @@ namespace Wpf.network
             {
                 Socket socket = (Socket)result.AsyncState;
                 int bytesReceived = socket.EndReceive(result);
-                socket.BeginReceive(_recvBuffer, 0, _recvBuffer.Length, SocketFlags.None, new AsyncCallback(onReceived), _clientSocket);
                 if (bytesReceived == 0)
                 {
-                    onDisconnected();
+                    onDisconnected(result);
                     return;
                 }
 
@@ -134,6 +134,7 @@ namespace Wpf.network
                 }
 
                 Console.WriteLine("received {0} bytes.", bytesReceived);
+                socket.BeginReceive(_recvBuffer, 0, _recvBuffer.Length, SocketFlags.None, new AsyncCallback(onReceived), _clientSocket);
             }
             catch (System.Exception ex)
             {
@@ -142,9 +143,15 @@ namespace Wpf.network
 
         }
 
-        private static void onDisconnected()
-        { 
-        
+        private static void onDisconnected(IAsyncResult result)
+        {
+            ErrorMessageDelegate show_disconnect
+                = new ErrorMessageDelegate(GlobalObject.MainWindow.showDisconnectError);
+
+            GlobalObject.MainWindow.Dispatcher.Invoke(show_disconnect, new object[] 
+            {
+                "网络异常", "网络连接中断，请尝试重新进入中二世界！"
+            });
         }
 
         /*******************************************************************************************

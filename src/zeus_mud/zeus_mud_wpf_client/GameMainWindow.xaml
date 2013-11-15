@@ -7,10 +7,14 @@
         xmlns:dialog="clr-namespace:zeus_mud_wpf_client.dialog"
         x:Class="zeus_mud_wpf_client.GameMainWindow"
         Height="768" Width="1024" ResizeMode="CanResizeWithGrip" 
-        Title="中国好游戏"
+        Title="中国好游戏" Loaded="Window_Loaded"
         >
     <Grid>
-        <Grid HorizontalAlignment="Left" Margin="0,24,0,0" x:Name="grid1" Width="745" Height="27" VerticalAlignment="Top" Grid.ColumnSpan="2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="178"/>
+        </Grid.ColumnDefinitions>
+        <Grid HorizontalAlignment="Left" Margin="0,24,0,0" x:Name="grid1" Width="745" Height="27" VerticalAlignment="Top">
             <ToolBar Height="26" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"  HorizontalAlignment="Left" x:Name="toolBar1" VerticalAlignment="Top" Width="200" />
         </Grid>
         <Menu HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="21" VerticalAlignment="Top" Grid.ColumnSpan="2">
