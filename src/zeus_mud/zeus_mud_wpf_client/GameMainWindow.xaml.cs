@@ -20,6 +20,7 @@ namespace zeus_mud_wpf_client
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
+    public delegate void ErrorMessageDelegate(string caption, string message);
     public partial class GameMainWindow : Window
     {
         public GameMainWindow()
@@ -31,6 +32,20 @@ namespace zeus_mud_wpf_client
         {
             frmRoomCreate createRoomDlg = new frmRoomCreate();
             createRoomDlg.ShowDialog();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void showDisconnectError(string caption, string message)
+        {
+            System.Windows.MessageBox.Show(
+                GlobalObject.MainWindow,
+                message, caption,
+                System.Windows.MessageBoxButton.OK,
+                System.Windows.MessageBoxImage.Error);
         }
     }
 }

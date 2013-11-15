@@ -1,6 +1,7 @@
 #include "game_session.h"
 #include "game_session_manager.h"
 #include "player.h"
+#include <Poco/Util/TimerTaskAdapter.h>
 
 GameSession::GameSession(const uint64& session_id)
     : NetworkSession(session_id)
@@ -39,7 +40,7 @@ void GameSession::attackPlayerPtr(Player* player)
     _player = player;
 }
 
-void GameSession::onHeartbeatCheck(Poco::Timer& timer)
+void GameSession::onHeartbeatCheck(Poco::Util::TimerTask& task)
 {
     info_log("[%ull] - > Check Heartbeat", _player->guid());
 
@@ -54,7 +55,7 @@ void GameSession::onHeartbeatCheck(Poco::Timer& timer)
 
     if (interval > up_deviation_value || interval < down_deviation_value)
     {
-        ++_heartbeat.failed_count;
+        _heartbeat.failed_count += 1;
         warning_log("Player %ull unormal heartbeat happened, failed_count = %d", _player->guid(), _heartbeat.failed_count);
 
         //如果连续三次心跳时间异常，则判定为网络不稳定，踢掉
@@ -76,14 +77,12 @@ void GameSession::startHeartbeatCheck(long interval/* = 10000*/)
     _heartbeat.last_heartbeat_time = Poco::Timestamp().epochTime();
 
     //开始心跳检查
-    _heartbeat_checker.setStartInterval(interval);
-    _heartbeat_checker.setPeriodicInterval(interval);
-
-    Poco::TimerCallback<GameSession> heartbeat_check_callback(*this, &GameSession::onHeartbeatCheck);  
-    _heartbeat_checker.start(heartbeat_check_callback);
+	Poco::Util::TimerTask::Ptr task 
+		= new Poco::Util::TimerTaskAdapter<GameSession>(*this, &GameSession::onHeartbeatCheck);  
+	_heartbeat_checker.schedule(task, interval, interval);
 }
 
 void GameSession::stopHeartbeatCheck()
 {
-    _heartbeat_checker.stop();
+    _heartbeat_checker.cancel();
 }

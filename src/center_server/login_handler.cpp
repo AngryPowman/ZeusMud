@@ -89,7 +89,7 @@ void GameSession::user_login_handler(const NetworkMessage& message)
                     //把玩家添加到管理器
                     PlayerManager::getInstance().addPlayer(player);
 
-                    debug_log("Player %d login successful.", guid);
+                    debug_log("Player %ull login successful.", guid);
                     
                     //启动心跳检查
                     startHeartbeatCheck();
