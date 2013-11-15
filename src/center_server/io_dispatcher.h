@@ -16,7 +16,8 @@ public:
     void NewConnectionHandler(const TcpConnectionPtr& connection, const InetAddress& peerAddress)
     {
         GameSession* session = GameSessionManager::getInstance().createSession(connection->handle());
-        session->set_connection_ptr(connection);
+		session->init();
+		session->set_connection_ptr(connection);
         debug_log("New Session [NativeHandle = %d, Peer = %s", connection->handle(), peerAddress.toIpHost().c_str());
     }
 
@@ -56,9 +57,9 @@ public:
 
     void ConnectionClosed(const TcpConnectionPtr& connection)
     {
-        std::cout << "Connection closed handler." << std::endl;
+        debug_log("Connection closed handler.");
         GameSession* session = GameSessionManager::getInstance().getSession(connection->handle());
-        session->set_connection_ptr(nullptr);
+		session->destroy();
         GameSessionManager::getInstance().destroySession(session);
     }
 

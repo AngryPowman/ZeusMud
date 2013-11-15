@@ -10,6 +10,7 @@
 
 OpcodeTable::OpcodeTable()
 {
+	DEFINE_HANDLER(C2SHeartbeat, heartbeat_handler);
     DEFINE_HANDLER(C2SLoginReq, user_login_handler);
     DEFINE_HANDLER(C2SRegisterReq, user_register_handler);
     DEFINE_HANDLER(C2SGetPlayerProfileReq, get_player_profile_handler);

@@ -24,6 +24,8 @@ void NetworkSession::closeSession()
 {
 	_connection->shutdown();
 	_connection->close();
+
+	_connection = nullptr;
 }
 
 uint64 NetworkSession::session_id() const

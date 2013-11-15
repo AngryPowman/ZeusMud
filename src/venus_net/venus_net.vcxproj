@@ -182,6 +182,9 @@
     <ClCompile Include="tcp_connection.cpp" />
     <ClCompile Include="tcp_server.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\protocol\500_C2SHeartbeat.proto" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

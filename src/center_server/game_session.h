@@ -5,13 +5,20 @@
 #include <Poco/Util/Timer.h>
 
 class Player;
+class Poco::Util::Timer;
 class GameSession
     : public NetworkSession
 {
 	struct SessionHeartbeat
 	{
-		static const int32 HEARTBEAT_TIME = 40;           //心跳报时时间（40秒）
-		static const int32 HEARTBEAT_DEVIATION_VALUE = 2; //允许误差值（2秒）
+		// 心跳检查规则：
+		// 假设正常报心跳时间是40秒一个周期，将允许前后误差2秒，也就是说在38~42秒之间报都是合法的。
+		// 如果不在范围内报心跳，则记为一次异常，超过指定次数后踢掉连接。
+
+		static const int32 HEARTBEAT_TIME = 40; //心跳报时时间
+		static const int32 DEVIATION_VALUE = 2; //允许误差值
+		static const int32 DOWN_DEVIATION_VALUE = HEARTBEAT_TIME - DEVIATION_VALUE;
+		static const int32 UP_DEVIATION_VALUE = HEARTBEAT_TIME + DEVIATION_VALUE;
 
 		SessionHeartbeat() 
 		{
@@ -65,11 +72,12 @@ private:
     void startHeartbeatCheck(long interval = 10000);
     void stopHeartbeatCheck();
     void onHeartbeatCheck(Poco::Util::TimerTask& task);
+	void heartbeatFailed();
 
 private:
     Player* _player;
 	SessionHeartbeat _heartbeat;
-    Poco::Util::Timer _heartbeat_checker;
+    Poco::Util::Timer* _heartbeat_checker;
 };
 
 #endif
