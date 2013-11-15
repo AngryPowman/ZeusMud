@@ -110,12 +110,12 @@ class S2CSRoomInfoChangeNotify : public ::google::protobuf::Message {
   inline ::std::string* release_room_name();
   inline void set_allocated_room_name(::std::string* room_name);
 
-  // optional uint32 player_count = 3;
-  inline bool has_player_count() const;
-  inline void clear_player_count();
-  static const int kPlayerCountFieldNumber = 3;
-  inline ::google::protobuf::uint32 player_count() const;
-  inline void set_player_count(::google::protobuf::uint32 value);
+  // optional uint32 players_count = 3;
+  inline bool has_players_count() const;
+  inline void clear_players_count();
+  static const int kPlayersCountFieldNumber = 3;
+  inline ::google::protobuf::uint32 players_count() const;
+  inline void set_players_count(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:Protocol.S2CSRoomInfoChangeNotify)
  private:
@@ -123,14 +123,14 @@ class S2CSRoomInfoChangeNotify : public ::google::protobuf::Message {
   inline void clear_has_room_id();
   inline void set_has_room_name();
   inline void clear_has_room_name();
-  inline void set_has_player_count();
-  inline void clear_has_player_count();
+  inline void set_has_players_count();
+  inline void clear_has_players_count();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* room_name_;
   ::google::protobuf::uint32 room_id_;
-  ::google::protobuf::uint32 player_count_;
+  ::google::protobuf::uint32 players_count_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
@@ -241,26 +241,26 @@ inline void S2CSRoomInfoChangeNotify::set_allocated_room_name(::std::string* roo
   }
 }
 
-// optional uint32 player_count = 3;
-inline bool S2CSRoomInfoChangeNotify::has_player_count() const {
+// optional uint32 players_count = 3;
+inline bool S2CSRoomInfoChangeNotify::has_players_count() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void S2CSRoomInfoChangeNotify::set_has_player_count() {
+inline void S2CSRoomInfoChangeNotify::set_has_players_count() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void S2CSRoomInfoChangeNotify::clear_has_player_count() {
+inline void S2CSRoomInfoChangeNotify::clear_has_players_count() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void S2CSRoomInfoChangeNotify::clear_player_count() {
-  player_count_ = 0u;
-  clear_has_player_count();
+inline void S2CSRoomInfoChangeNotify::clear_players_count() {
+  players_count_ = 0u;
+  clear_has_players_count();
 }
-inline ::google::protobuf::uint32 S2CSRoomInfoChangeNotify::player_count() const {
-  return player_count_;
+inline ::google::protobuf::uint32 S2CSRoomInfoChangeNotify::players_count() const {
+  return players_count_;
 }
-inline void S2CSRoomInfoChangeNotify::set_player_count(::google::protobuf::uint32 value) {
-  set_has_player_count();
-  player_count_ = value;
+inline void S2CSRoomInfoChangeNotify::set_players_count(::google::protobuf::uint32 value) {
+  set_has_players_count();
+  players_count_ = value;
 }
 
 

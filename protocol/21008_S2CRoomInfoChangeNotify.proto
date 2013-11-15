@@ -3,5 +3,5 @@ package Protocol;
 message S2CSRoomInfoChangeNotify {
 	required uint32 room_id = 1;
 	optional string room_name = 2;
-	optional uint32 player_count = 3;
+	optional uint32 players_count = 3;
 }

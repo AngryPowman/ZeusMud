@@ -32,13 +32,13 @@ namespace Protocol
       set { _room_name = value; }
     }
 
-    private uint _player_count = default(uint);
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"player_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    private uint _players_count = default(uint);
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"players_count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue(default(uint))]
-    public uint player_count
+    public uint players_count
     {
-      get { return _player_count; }
-      set { _player_count = value; }
+      get { return _players_count; }
+      set { _players_count = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

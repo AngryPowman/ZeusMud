@@ -32,6 +32,7 @@ namespace zeus_mud_wpf_client.dialog
             //注册请求消息回调
             OpcodesProxy.registerHandler<RoomListPanel>(Opcodes.S2CGetRoomListRsp, this.getRoomListCallBack, this);
             OpcodesProxy.registerHandler<RoomListPanel>(Opcodes.S2CNewRoomAddNotify, this.newRoomAddCallBack, this);
+            OpcodesProxy.registerHandler<RoomListPanel>(Opcodes.S2CEnterRoomRsp, this.enterRoomRsp, this);
         }
 
         private void RoomListPanel_Load(object sender, EventArgs e)
@@ -43,6 +44,16 @@ namespace zeus_mud_wpf_client.dialog
 
         public void getRoomRequest()
         {
+
+        }
+
+        public void enterRoomRsp(object sender, NetworkMessageEventArgs e)
+        {
+            Protocol.S2CEnterRoomRsp response = NetworkEvent.parseMessage<Protocol.S2CEnterRoomRsp>(e.message);
+            if (response.result == false)
+            {
+                MessageBox.Show("房间已满。");
+            }
 
         }
 
