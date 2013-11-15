@@ -33,11 +33,11 @@ GameSession* GameSessionManager::createSession(const uint64& session_id)
 
 void GameSessionManager::destroySession(GameSession* session)
 {
-    if (session == nullptr)
-    {
-        error_log("destroy session failed, session == nullptr");
-        return;
-    }
+    CHECK_NULLPTR(session, "destroy session failed, session == nullptr");
+
+    session->closeSession();
+    session->destroy();
+
     remove(session->session_id());
     _sessionPool.release(session);
 }

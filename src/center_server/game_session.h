@@ -2,14 +2,38 @@
 #define __GAME_SESSION_H__
 
 #include "network_session.h"
+#include <Poco/Timer.h>
 
 class Player;
 class GameSession
     : public NetworkSession
 {
+	struct SessionHeartbeat
+	{
+		static const int32 HEARTBEAT_TIME = 40;           //心跳报时时间（40秒）
+		static const int32 HEARTBEAT_DEVIATION_VALUE = 2; //允许误差值（2秒）
+
+		SessionHeartbeat() 
+		{
+			cleanup();
+		}
+
+		void cleanup()
+		{
+			last_heartbeat_time = 0;
+			failed_count = 0;
+		}
+
+		int64 last_heartbeat_time;
+		int32 failed_count;
+	};
+
 public:
     GameSession(const uint64& session_id);
     virtual ~GameSession();
+
+    bool init();
+    void destroy();
 
 public:
     Player* getPlayer();
@@ -18,6 +42,9 @@ private:
     void attackPlayerPtr(Player* player);
 
 public:
+	//心跳
+	void heartbeat_handler(const NetworkMessage& message);
+
     //登录模块
     void user_login_handler(const NetworkMessage& message);
     void user_register_handler(const NetworkMessage& message);
@@ -37,7 +64,14 @@ public:
     void room_info_change_handler(const NetworkMessage& message);
 
 private:
+    void startHeartbeatCheck(long interval = 10000);
+    void stopHeartbeatCheck();
+    void onHeartbeatCheck(Poco::Timer& timer);
+
+private:
     Player* _player;
+	SessionHeartbeat _heartbeat;
+    Poco::Timer _heartbeat_checker;
 };
 
 #endif
