@@ -15,7 +15,7 @@ class GameSession
 		// 假设正常报心跳时间是40秒一个周期，将允许前后误差2秒，也就是说在38~42秒之间报都是合法的。
 		// 如果不在范围内报心跳，则记为一次异常，超过指定次数后踢掉连接。
 
-		static const int32 HEARTBEAT_TIME = 40; //心跳报时时间
+		static const int32 HEARTBEAT_TIME = 10; //心跳报时时间
 		static const int32 DEVIATION_VALUE = 2; //允许误差值
 		static const int32 DOWN_DEVIATION_VALUE = HEARTBEAT_TIME - DEVIATION_VALUE;
 		static const int32 UP_DEVIATION_VALUE = HEARTBEAT_TIME + DEVIATION_VALUE;

@@ -15,6 +15,9 @@ public:
     NetworkSession(const uint64& session_id);
     virtual ~NetworkSession();
 
+    bool init();
+    void destroy();
+
 public:
     void set_connection_ptr(const TcpConnectionPtr& connection);
     TcpConnectionPtr& connection();

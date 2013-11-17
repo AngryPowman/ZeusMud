@@ -185,5 +185,5 @@ void Socket::handle_close()
     if (_close_callback)
         _close_callback();
 
-	shutdown();
+	//shutdown();
 }

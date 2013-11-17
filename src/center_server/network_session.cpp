@@ -10,6 +10,16 @@ NetworkSession::~NetworkSession()
 {
 }
 
+bool NetworkSession::init()
+{
+    return true;
+}
+
+void NetworkSession::destroy()
+{
+
+}
+
 void NetworkSession::set_connection_ptr(const TcpConnectionPtr& connection)
 {
     _connection = connection;
@@ -24,8 +34,6 @@ void NetworkSession::closeSession()
 {
 	_connection->shutdown();
 	_connection->close();
-
-	_connection = nullptr;
 }
 
 uint64 NetworkSession::session_id() const

@@ -50,7 +50,7 @@ namespace Wpf.network
             }
             catch (SocketException ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
                 return false;
             }
 

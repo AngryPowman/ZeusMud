@@ -25,7 +25,6 @@ bool GameSession::init()
 
 void GameSession::destroy()
 {
-	closeSession();
     stopHeartbeatCheck();
 	PlayerManager::getInstance().removePlayer(_player);
 }
@@ -67,7 +66,7 @@ void GameSession::onHeartbeatCheck(Poco::Util::TimerTask& task)
     if (interval > SessionHeartbeat::UP_DEVIATION_VALUE)
     {
 		debug_log("Player %ull's connection maybe lost(server could not recieve heartbeat for a long time), close session.", _player->guid());
-		GameSessionManager::getInstance().destroySession(this);
+		closeSession();
     }
     else
     {
@@ -84,14 +83,16 @@ void GameSession::startHeartbeatCheck(long interval/* = 10000*/)
 	Poco::Util::TimerTask::Ptr task 
 		= new Poco::Util::TimerTaskAdapter<GameSession>(*this, &GameSession::onHeartbeatCheck);
 
-	_heartbeat_checker = new Poco::Util::Timer();
+	_heartbeat_checker = new Poco::Util::Timer(Poco::Thread::PRIO_NORMAL);
 	_heartbeat_checker->schedule(task, interval, interval);
 }
 
 void GameSession::stopHeartbeatCheck()
 {
 	if (_heartbeat_checker != nullptr)
-		_heartbeat_checker->cancel(false);
+    {
+		_heartbeat_checker->cancel(true);
+    }
 
 	SAFE_DELETE(_heartbeat_checker);
 }

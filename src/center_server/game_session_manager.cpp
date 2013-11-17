@@ -9,6 +9,12 @@ void GameSessionManager::destroy()
 {
     for (auto iter = _sessions.begin(); iter != _sessions.end(); ++iter)
     {
+        // close the session
+        iter->second->closeSession();
+
+        // remove the session
+        _sessions.erase(iter);
+
         // give back the session object to the session pool
         _sessionPool.release(iter->second);
     }
@@ -21,6 +27,7 @@ GameSession* GameSessionManager::createSession(const uint64& session_id)
     if (_sessions.size() >= MAX_SESSIONS) 
 	{
 		warning_log("Session count already at the limit.");
+        return nullptr;
 	}
 
     GameSession* session = _sessionPool.acquire(session_id);
@@ -35,7 +42,10 @@ void GameSessionManager::destroySession(GameSession* session)
 {
     RETURN_IF_NULLPTR(session, "destroy session failed, session == nullptr");
 
+    //从管理器移除该session
     remove(session->session_id());
+
+    //把session还原到内存池
     _sessionPool.release(session);
 }
 
