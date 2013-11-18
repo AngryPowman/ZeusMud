@@ -27,10 +27,17 @@ public:
     void registerDataReadEvent(const DataReadEvent& event)
     { _dataReadEvent = event; }
 
+	void registerConnectionClosedEvent(const ConnectionClosedEvent& event)
+	{ _connectionClosedEvent = event; }
+
+	inline NewConnectionEvent& getNewConnectionEventDelegate()
+	{ return _newConnectionEvent; }
+
 private:
     NewConnectionEvent _newConnectionEvent;
     DataWriteFinishedEvent _dataWriteFinishedEvent;
     DataReadEvent _dataReadEvent;
+	ConnectionClosedEvent _connectionClosedEvent;
 };
 
 class TcpServer;
@@ -49,13 +56,20 @@ public:
     void registerNewConnectionEvent(const NewConnectionEvent& event);
     void registerDataWriteFinishedEvent(const DataWriteFinishedEvent& event);
     void registerDataReadEvent(const DataReadEvent& event);
+	void registerConnectionClosedEvent(const ConnectionClosedEvent& event);
+
+private:
+
 
 private:
     IODataDispatcher _dispatcher;
     IODataEventHandler* _event_handler;
     IOService* _service;
     TcpServer* _server;
-
+	adap_map<uint32, TcpConnectionPtr*> _connections;
+	// 用于proxy内部处理
+	NewConnectionEvent _internalNewConnectionEvent;
+	ConnectionClosedEvent _internalConnectionClosedEvent;
 };
 
 #endif

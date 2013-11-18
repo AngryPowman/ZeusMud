@@ -22,8 +22,8 @@ bool NetworkProxy::init(IOService& service, IODataEventHandler* event_handler, u
     _server = new TcpServer(InetAddress(listen_port), *_service, io_thread_numbers);
 
     // register io data event handler
-    this->registerNewConnectionEvent(
-        BIND_EVENT_HANDLER(&IODataEventHandler::newConnectionEvent, _event_handler));
+	this->registerNewConnectionEvent(
+		BIND_EVENT_HANDLER(&IODataEventHandler::newConnectionEvent, _event_handler));
 
     this->registerDataWriteFinishedEvent(
         BIND_EVENT_HANDLER(&IODataEventHandler::dataWriteFinishedEvent, _event_handler));
@@ -50,7 +50,7 @@ void NetworkProxy::close_connection(const TcpConnectionPtr& connection)
 void NetworkProxy::registerNewConnectionEvent(const NewConnectionEvent& event)
 {
     _dispatcher.registerNewConnectionEvent(event);
-    _server->registerNewConnectionEvent(event);
+    _server->registerNewConnectionEvent(_internalNewConnectionEvent);
 }
 
 void NetworkProxy::registerDataWriteFinishedEvent(const DataWriteFinishedEvent& event)
@@ -63,4 +63,10 @@ void NetworkProxy::registerDataReadEvent(const DataReadEvent& event)
 {
     _dispatcher.registerDataReadEvent(event);
     _server->registerDataReadEvent(event);
+}
+
+void NetworkProxy::registerConnectionClosedEvent( const ConnectionClosedEvent& event )
+{
+	_dispatcher.registerConnectionClosedEvent(event);
+	_server->registerNewConnectionEvent(_internalConnectionClosedEvent);
 }
