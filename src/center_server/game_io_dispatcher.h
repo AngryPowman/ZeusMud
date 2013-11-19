@@ -57,8 +57,8 @@ public:
     {
         debug_log("Connection closed handler.");
 
-        GameSession* session = GameSessionManager::getInstance().getSession(connection->handle());
-        session->destroy();
+        //GameSession* session = GameSessionManager::getInstance().getSession(connection->handle());
+        //session->destroy();
 
         //GameSessionManager::getInstance().destroySession(session);
     }

@@ -43,7 +43,7 @@ public:
     void registerConnectionClosedEvent(const ConnectionClosedEvent& event);
 
 private:
-    void on_connected();
+    //void on_connected();
     void on_write(size_t bytes_transferred);
     void on_read(const byte* data, size_t bytes_transferred);
     void on_close();

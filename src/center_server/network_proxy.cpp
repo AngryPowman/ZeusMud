@@ -78,6 +78,10 @@ void NetworkProxy::registerConnectionClosedEvent( const ConnectionClosedEvent& e
 void NetworkProxy::__internalNewConnectionEvent(const TcpConnectionPtr& connection, const NewConnectionEventArgs& args)
 {
     debug_log("Enter NetworkProxy::__internalNewConnectionEvent --");
+    _connections.insert(std::make_pair(connection->rawSocket().handle(), &connection));
+
+    auto callback = _dispatcher.getNewConnectionEvent();
+    if (callback) callback(connection, args);
 }
 
 void NetworkProxy::__internalConnectionClosedEvent(const TcpConnectionPtr& connection, const EventArgs& args)

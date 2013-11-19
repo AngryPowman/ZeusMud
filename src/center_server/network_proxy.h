@@ -19,20 +19,17 @@ public:
 class IODataDispatcher
 {
 public:
-    void registerNewConnectionEvent(const NewConnectionEvent& event)
-    { _newConnectionEvent = event; }
+    //register
+    void registerNewConnectionEvent(const NewConnectionEvent& event) { _newConnectionEvent = event; }
+    void registerDataWriteFinishedEvent(const DataWriteFinishedEvent& event) { _dataWriteFinishedEvent = event; }
+    void registerDataReadEvent(const DataReadEvent& event) { _dataReadEvent = event; }
+	void registerConnectionClosedEvent(const ConnectionClosedEvent& event) { _connectionClosedEvent = event; }
 
-    void registerDataWriteFinishedEvent(const DataWriteFinishedEvent& event)
-    { _dataWriteFinishedEvent = event; }
-
-    void registerDataReadEvent(const DataReadEvent& event)
-    { _dataReadEvent = event; }
-
-	void registerConnectionClosedEvent(const ConnectionClosedEvent& event)
-	{ _connectionClosedEvent = event; }
-
-	inline NewConnectionEvent& getNewConnectionEventDelegate()
-	{ return _newConnectionEvent; }
+    //getter
+	inline NewConnectionEvent& getNewConnectionEvent() { return _newConnectionEvent; }
+    inline DataWriteFinishedEvent& getDataWriteFinishedEvent() { return _dataWriteFinishedEvent; }
+    inline DataReadEvent& getDataReadEvent() { return _dataReadEvent; }
+    inline ConnectionClosedEvent& getConnectionClosedEvent() { return _connectionClosedEvent; }
 
 private:
     NewConnectionEvent _newConnectionEvent;
@@ -69,7 +66,7 @@ private:
     GameIODataEventHandler* _event_handler;
     IOService* _service;
     TcpServer* _server;
-	adap_map<uint32, TcpConnectionPtr*> _connections;
+	adap_map<uint32, const TcpConnectionPtr*> _connections;
 };
 
 #endif
