@@ -13,6 +13,7 @@ public:
     virtual void newConnectionEvent(const TcpConnectionPtr& connection, const NewConnectionEventArgs& args) = 0;
     virtual void dataWriteFinishedEvent(const TcpConnectionPtr& connection, const DataWriteFinishedEventArgs& args) = 0;
     virtual void dataReadEvent(const TcpConnectionPtr& connection, const DataReadEventArgs& args) = 0;
+    virtual void connectionClosedEvent(const TcpConnectionPtr& connection, const EventArgs& args) = 0;
 };
 
 class IODataDispatcher
@@ -50,7 +51,7 @@ public:
     virtual ~NetworkProxy();
 
 public:
-    bool init(IOService& service, IODataEventHandler* event_handler, uint16 listen_port, uint32 io_thread_numbers);
+    bool init(IOService& service, GameIODataEventHandler* event_handler, uint16 listen_port, uint32 io_thread_numbers);
     void destroy();
     void close_connection(const TcpConnectionPtr& connection);
     void registerNewConnectionEvent(const NewConnectionEvent& event);
@@ -59,17 +60,16 @@ public:
 	void registerConnectionClosedEvent(const ConnectionClosedEvent& event);
 
 private:
-
+    // 内部事件
+    void __internalNewConnectionEvent(const TcpConnectionPtr& connection, const NewConnectionEventArgs& args);
+    void __internalConnectionClosedEvent(const TcpConnectionPtr& connection, const EventArgs& args);
 
 private:
     IODataDispatcher _dispatcher;
-    IODataEventHandler* _event_handler;
+    GameIODataEventHandler* _event_handler;
     IOService* _service;
     TcpServer* _server;
 	adap_map<uint32, TcpConnectionPtr*> _connections;
-	// 用于proxy内部处理
-	NewConnectionEvent _internalNewConnectionEvent;
-	ConnectionClosedEvent _internalConnectionClosedEvent;
 };
 
 #endif

@@ -53,7 +53,7 @@ public:
         }
     }
 
-    void ConnectionClosed(const TcpConnectionPtr& connection, const EventArgs& args)
+    void connectionClosedEvent(const TcpConnectionPtr& connection, const EventArgs& args)
     {
         debug_log("Connection closed handler.");
 
