@@ -48,7 +48,14 @@ void NetworkProxy::destroy()
 
 void NetworkProxy::close_connection(const TcpConnectionPtr& connection)
 {
+    auto iter = _connections.find(connection->handle());
+    if (iter != _connections.end())
+    {
+        _connections.erase(iter);
+    }
 
+    connection->shutdown();
+    connection->close();
 }
 
 void NetworkProxy::registerNewConnectionEvent(const NewConnectionEvent& event)
@@ -78,7 +85,15 @@ void NetworkProxy::registerConnectionClosedEvent( const ConnectionClosedEvent& e
 void NetworkProxy::__internalNewConnectionEvent(const TcpConnectionPtr& connection, const NewConnectionEventArgs& args)
 {
     debug_log("Enter NetworkProxy::__internalNewConnectionEvent --");
-    _connections.insert(std::make_pair(connection->rawSocket().handle(), &connection));
+
+    auto iter = _connections.find(connection->handle());
+    if (iter != _connections.end())
+    {
+        error_log("connection exists. handle = %d", connection->handle());
+        return;
+    }
+
+    _connections.insert(std::make_pair(connection->handle(), &connection));
 
     auto callback = _dispatcher.getNewConnectionEvent();
     if (callback) callback(connection, args);
@@ -87,4 +102,8 @@ void NetworkProxy::__internalNewConnectionEvent(const TcpConnectionPtr& connecti
 void NetworkProxy::__internalConnectionClosedEvent(const TcpConnectionPtr& connection, const EventArgs& args)
 {
     debug_log("Enter NetworkProxy::__internalConnectionClosedEvent --");
+
+    //call closed event
+    auto callback = _dispatcher.getConnectionClosedEvent();
+    if (callback) callback(connection, NO_EVENT_ARGS());
 }
