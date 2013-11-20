@@ -75,6 +75,10 @@ private:
     GameIODataEventHandler* _event_handler;
     IOService* _service;
     TcpServer* _server;
+
+    // 管理所有连接
+    // - first  : session id
+    // - second : TcpConnection
 	adap_map<uint32, const TcpConnectionPtr*> _connections;
 };
 

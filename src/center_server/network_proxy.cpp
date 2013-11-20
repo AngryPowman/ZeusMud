@@ -103,7 +103,13 @@ void NetworkProxy::__internalConnectionClosedEvent(const TcpConnectionPtr& conne
 {
     debug_log("Enter NetworkProxy::__internalConnectionClosedEvent --");
 
+    auto iter = _connections.find(connection->handle());
+    if (iter != _connections.end())
+    {
+        _connections.erase(iter);
+    }
+
     //call closed event
     auto callback = _dispatcher.getConnectionClosedEvent();
-    if (callback) callback(connection, NO_EVENT_ARGS());
+    if (callback) callback(connection, args);
 }
