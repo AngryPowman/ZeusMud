@@ -23,17 +23,17 @@ bool NetworkProxy::init(IOService& service, GameIODataEventHandler* event_handle
     _server = new TcpServer(InetAddress(listen_port), *_service, io_thread_numbers);
 
     // register io data event handler
-	this->registerNewConnectionEvent(
-		BIND_EVENT_HANDLER(&GameIODataEventHandler::newConnectionEvent, _event_handler));
+	_server->registerNewConnectionEvent(
+		BIND_EVENT_HANDLER(&NetworkProxy::__internalNewConnectionEvent, this));
 
-    this->registerDataWriteFinishedEvent(
-        BIND_EVENT_HANDLER(&GameIODataEventHandler::dataWriteFinishedEvent, _event_handler));
+    _server->registerDataWriteFinishedEvent(
+        BIND_EVENT_HANDLER(&NetworkProxy::__internalDataWriteFinishedEvent, this));
 
-    this->registerDataReadEvent(
-        BIND_EVENT_HANDLER(&GameIODataEventHandler::dataReadEvent, _event_handler));
+    _server->registerDataReadEvent(
+        BIND_EVENT_HANDLER(&NetworkProxy::__internalDataReadEvent, this));
 
-    this->registerConnectionClosedEvent(
-        BIND_EVENT_HANDLER(&GameIODataEventHandler::connectionClosedEvent, _event_handler));
+    _server->registerConnectionClosedEvent(
+        BIND_EVENT_HANDLER(&NetworkProxy::__internalConnectionClosedEvent, this));
 
     // start server
     _server->start();
@@ -56,30 +56,6 @@ void NetworkProxy::close_connection(const TcpConnectionPtr& connection)
 
     connection->shutdown();
     connection->close();
-}
-
-void NetworkProxy::registerNewConnectionEvent(const NewConnectionEvent& event)
-{
-    _dispatcher.registerNewConnectionEvent(event);
-    _server->registerNewConnectionEvent(BIND_EVENT_HANDLER(&NetworkProxy::__internalNewConnectionEvent, this));
-}
-
-void NetworkProxy::registerDataWriteFinishedEvent(const DataWriteFinishedEvent& event)
-{
-    _dispatcher.registerDataWriteFinishedEvent(event);
-    _server->registerDataWriteFinishedEvent(event);
-}
-
-void NetworkProxy::registerDataReadEvent(const DataReadEvent& event)
-{
-    _dispatcher.registerDataReadEvent(event);
-    _server->registerDataReadEvent(event);
-}
-
-void NetworkProxy::registerConnectionClosedEvent( const ConnectionClosedEvent& event )
-{
-	_dispatcher.registerConnectionClosedEvent(event);
-	_server->registerConnectionClosedEvent(BIND_EVENT_HANDLER(&NetworkProxy::__internalConnectionClosedEvent, this));
 }
 
 void NetworkProxy::__internalNewConnectionEvent(const TcpConnectionPtr& connection, const NewConnectionEventArgs& args)
