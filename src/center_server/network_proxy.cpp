@@ -95,6 +95,17 @@ void NetworkProxy::__internalNewConnectionEvent(const TcpConnectionPtr& connecti
 
     _connections.insert(std::make_pair(connection->handle(), &connection));
 
+    //create game session
+    GameSession* session = GameSessionManager::getInstance().createSession();
+    session->init();
+    session->set_connection_ptr(connection);
+
+    debug_log(
+        "New Session [NativeHandle = %d, SessionId = %ull, Peer = %s", 
+        connection->handle(), 
+        session->session_id(), 
+        args.peer_address.toIpHost().c_str());
+
     auto callback = _dispatcher.getNewConnectionEvent();
     if (callback) callback(connection, args);
 }

@@ -17,15 +17,7 @@ public:
 public:
     void newConnectionEvent(const TcpConnectionPtr& connection, const NewConnectionEventArgs& args)
     {
-        GameSession* session = GameSessionManager::getInstance().createSession();
-		session->init();
-		session->set_connection_ptr(connection);
 
-        debug_log(
-            "New Session [NativeHandle = %d, SessionId = %ull, Peer = %s", 
-            connection->handle(), 
-            session->session_id(), 
-            args.peer_address.toIpHost().c_str());
     }
 
     void dataWriteFinishedEvent(const TcpConnectionPtr& connection, const DataWriteFinishedEventArgs& args)

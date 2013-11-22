@@ -4,6 +4,11 @@
 #include <network_common.h>
 #include <singleton.h>
 #include <io_service.h>
+#include "game_session.h"
+
+typedef std::function<void (const GameSession* session)> OnSessionCreated;
+typedef std::function<void (const GameSession* session, NetworkMessage* message)> OnSessionMessage;
+typedef std::function<void (const GameSession* session)> OnSessionClosing;
 
 class IODataEventHandler
 {
