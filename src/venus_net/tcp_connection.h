@@ -37,7 +37,6 @@ public:
     bool is_open();
 
 public:
-    void registerConnectionConnected(const ConnectionConnectedEvent& event);
     void registerDataWriteFinishedEvent(const DataWriteFinishedEvent& event);
     void registerDataReadEvent(const DataReadEvent& event);
     void registerConnectionClosedEvent(const ConnectionClosedEvent& event);
@@ -61,7 +60,6 @@ private:
     InetAddress _inetAddress;
 
 private:
-    ConnectionConnectedEvent _connectionConnectedEvent;
     DataWriteFinishedEvent _dataWriteFinishedEvent;
     DataReadEvent _dataReadEvent;
     ConnectionClosedEvent _connectionClosedEvent;

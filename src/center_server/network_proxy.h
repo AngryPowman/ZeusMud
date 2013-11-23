@@ -4,29 +4,11 @@
 #include <network_common.h>
 #include <singleton.h>
 #include <io_service.h>
-#include "game_session.h"
+#include "session_io.h"
 
-typedef std::function<void (const GameSession* session)> OnSessionCreated;
-typedef std::function<void (const GameSession* session, NetworkMessage* message)> OnSessionMessage;
-typedef std::function<void (const GameSession* session)> OnSessionClosing;
-
-class IODataEventHandler
+struct SessionPair
 {
-public:
-    virtual ~IODataEventHandler() {}
 
-    virtual void newConnectionEvent(const TcpConnectionPtr& connection, const NewConnectionEventArgs& args) = 0;
-    virtual void dataWriteFinishedEvent(const TcpConnectionPtr& connection, const DataWriteFinishedEventArgs& args) = 0;
-    virtual void dataReadEvent(const TcpConnectionPtr& connection, const DataReadEventArgs& args) = 0;
-    virtual void connectionClosedEvent(const TcpConnectionPtr& connection, const EventArgs& args) = 0;
-};
-
-class IODataDispatcher
-{
-public:
-	OnSessionCreated onSessionCreated;
-	OnSessionMessage onSessionMessage;
-	OnSessionClosing onSessionClosing;
 };
 
 class TcpServer;
@@ -49,13 +31,13 @@ public:
     // 注：通过主动调用该接口关闭连接时，会触发到上层的ConnectionClosed事件，释放游戏资源即可
     void close_connection(const TcpConnectionPtr& connection);
 
-private:
-	// IO事件注册
-	void registerSessionCreatedEvent(const NewConnectionEvent& event);
-	void registerDataWriteFinishedEvent(const DataWriteFinishedEvent& event);
-	void registerDataReadEvent(const DataReadEvent& event);
-	void registerConnectionClosedEvent(const ConnectionClosedEvent& event);
+public:
+    // IO事件注册
+    void registerSessionCreatedHandler(const SessionCreated& event);
+    void registerSessionMessageHandler(const SessionMessage& event);
+    void registerConnectionClosingHandler(const SessionClosing& event);
 
+private:
     // 内部事件
     // 收到数据之前先由NetworkProxy接管，处理一些连接的管理以及回收工作再回调到上层
     void __internalNewConnectionEvent(const TcpConnectionPtr& connection, const NewConnectionEventArgs& args);
@@ -70,9 +52,9 @@ private:
     TcpServer* _server;
 
     // 管理所有连接
-    // - first  : session id
-    // - second : TcpConnection
-	adap_map<uint32, const TcpConnectionPtr*> _connections;
+    // - first  : handle
+    // - second : std::pair<TcpConnectionPtr*, GameSession*>
+	adap_map<uint32, std::pair<const TcpConnectionPtr*, GameSession*>> _connections;
 };
 
 #endif
