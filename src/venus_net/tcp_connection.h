@@ -36,6 +36,9 @@ public:
     Socket& rawSocket();
     bool is_open();
 
+    template<typename T> void setUserData(T* object) { _userData = static_cast<void*>(object); }
+    template<typename T> T* getUserData() { return static_cast<T*>(_userData); }
+
 public:
     void registerDataWriteFinishedEvent(const DataWriteFinishedEvent& event);
     void registerDataReadEvent(const DataReadEvent& event);
@@ -58,6 +61,7 @@ private:
     Socket* _socket;
     ByteBuffer _buffer;
     InetAddress _inetAddress;
+    void* _userData;
 
 private:
     DataWriteFinishedEvent _dataWriteFinishedEvent;

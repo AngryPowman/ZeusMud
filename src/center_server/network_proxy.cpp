@@ -50,25 +50,18 @@ void NetworkProxy::destroy()
 void NetworkProxy::close_connection(const TcpConnectionPtr& connection)
 {
     connection->shutdown();
+    connection->close();
 }
 
 void NetworkProxy::__internalNewConnectionEvent(const TcpConnectionPtr& connection, const NewConnectionEventArgs& args)
 {
     debug_log("Enter NetworkProxy::__internalNewConnectionEvent --");
 
-    auto iter = _connections.find(connection->handle());
-    if (iter != _connections.end())
-    {
-        error_log("connection exists. handle = %d", connection->handle());
-        return;
-    }
-
     //create game session
     GameSession* session = GameSessionManager::getInstance().createSession();
     session->init();
     session->set_connection_ptr(connection);
-
-    _connections.insert(std::make_pair(connection->handle(), std::make_pair(&connection, session)));
+    connection->setUserData(session);
 
     debug_log(
         "New Session [NativeHandle = %d, SessionId = %ull, Peer = %s", 
@@ -98,10 +91,9 @@ void NetworkProxy::__internalDataReadEvent(const TcpConnectionPtr& connection, c
     network_message.data = args.data;
     network_message.data_len = args.data_len;
 
-    auto iter = _connections.find(connection->handle());
-    if (iter != _connections.end())
+    GameSession* session = connection->getUserData<GameSession>();
+    if (session != nullptr)
     {
-        GameSession* session = iter->second.second;
         auto callback = _dispatcher.sessionMessageEvent;
         if (callback)
         {
@@ -113,23 +105,16 @@ void NetworkProxy::__internalDataReadEvent(const TcpConnectionPtr& connection, c
 void NetworkProxy::__internalConnectionClosedEvent(const TcpConnectionPtr& connection, const EventArgs& args)
 {
     debug_log("Enter NetworkProxy::__internalConnectionClosedEvent --");
-    debug_log(" handle = %d", connection->handle());
 
-    auto iter = _connections.find(connection->handle());
-    if (iter != _connections.end())
+    GameSession* session = connection->getUserData<GameSession>();
+    if (session != nullptr)
     {
-        GameSession* session = iter->second.second;
-
         //call closed event
         auto callback = _dispatcher.sessionClosingEvent;
         if (callback)
         {
             callback(session);
         }
-
-        //erase connection
-        _connections.erase(iter);
-        connection->close();
     }
 }
 
