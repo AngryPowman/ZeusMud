@@ -1,6 +1,7 @@
 #include "network_proxy.h"
 #include "tcp_server.h"
 #include "game_io_dispatcher.h"
+#include "game_session_manager.h"
 
 NetworkProxy::NetworkProxy()
     : _service(nullptr), 
@@ -23,17 +24,17 @@ bool NetworkProxy::init(IOService& service, GameIODataEventHandler* event_handle
     _server = new TcpServer(InetAddress(listen_port), *_service, io_thread_numbers);
 
     // register io data event handler
-	this->registerNewConnectionEvent(
-		BIND_EVENT_HANDLER(&GameIODataEventHandler::newConnectionEvent, _event_handler));
+	_server->registerNewConnectionEvent(
+		BIND_EVENT_HANDLER(&NetworkProxy::__internalNewConnectionEvent, this));
 
-    this->registerDataWriteFinishedEvent(
-        BIND_EVENT_HANDLER(&GameIODataEventHandler::dataWriteFinishedEvent, _event_handler));
+    _server->registerDataWriteFinishedEvent(
+        BIND_EVENT_HANDLER(&NetworkProxy::__internalDataWriteFinishedEvent, this));
 
-    this->registerDataReadEvent(
-        BIND_EVENT_HANDLER(&GameIODataEventHandler::dataReadEvent, _event_handler));
+    _server->registerDataReadEvent(
+        BIND_EVENT_HANDLER(&NetworkProxy::__internalDataReadEvent, this));
 
-    this->registerConnectionClosedEvent(
-        BIND_EVENT_HANDLER(&GameIODataEventHandler::connectionClosedEvent, _event_handler));
+    _server->registerConnectionClosedEvent(
+        BIND_EVENT_HANDLER(&NetworkProxy::__internalConnectionClosedEvent, this));
 
     // start server
     _server->start();
@@ -48,68 +49,86 @@ void NetworkProxy::destroy()
 
 void NetworkProxy::close_connection(const TcpConnectionPtr& connection)
 {
-    auto iter = _connections.find(connection->handle());
-    if (iter != _connections.end())
-    {
-        _connections.erase(iter);
-    }
-
     connection->shutdown();
     connection->close();
-}
-
-void NetworkProxy::registerNewConnectionEvent(const NewConnectionEvent& event)
-{
-    _dispatcher.registerNewConnectionEvent(event);
-    _server->registerNewConnectionEvent(BIND_EVENT_HANDLER(&NetworkProxy::__internalNewConnectionEvent, this));
-}
-
-void NetworkProxy::registerDataWriteFinishedEvent(const DataWriteFinishedEvent& event)
-{
-    _dispatcher.registerDataWriteFinishedEvent(event);
-    _server->registerDataWriteFinishedEvent(event);
-}
-
-void NetworkProxy::registerDataReadEvent(const DataReadEvent& event)
-{
-    _dispatcher.registerDataReadEvent(event);
-    _server->registerDataReadEvent(event);
-}
-
-void NetworkProxy::registerConnectionClosedEvent( const ConnectionClosedEvent& event )
-{
-	_dispatcher.registerConnectionClosedEvent(event);
-	_server->registerConnectionClosedEvent(BIND_EVENT_HANDLER(&NetworkProxy::__internalConnectionClosedEvent, this));
 }
 
 void NetworkProxy::__internalNewConnectionEvent(const TcpConnectionPtr& connection, const NewConnectionEventArgs& args)
 {
     debug_log("Enter NetworkProxy::__internalNewConnectionEvent --");
 
-    auto iter = _connections.find(connection->handle());
-    if (iter != _connections.end())
+    //create game session
+    GameSession* session = GameSessionManager::getInstance().createSession();
+    session->init();
+    session->set_connection_ptr(connection);
+    connection->setUserData(session);
+
+    debug_log(
+        "New Session [NativeHandle = %d, SessionId = %ull, Peer = %s", 
+        connection->handle(), 
+        session->session_id(), 
+        args.peer_address.toIpHost().c_str());
+
+    auto callback = _dispatcher.sessionCreatedEvent;
+    if (callback) 
     {
-        error_log("connection exists. handle = %d", connection->handle());
-        return;
+        callback(session);
     }
+}
 
-    _connections.insert(std::make_pair(connection->handle(), &connection));
+void NetworkProxy::__internalDataWriteFinishedEvent(const TcpConnectionPtr& connection, const DataWriteFinishedEventArgs& args)
+{
+}
 
-    auto callback = _dispatcher.getNewConnectionEvent();
-    if (callback) callback(connection, args);
+void NetworkProxy::__internalDataReadEvent(const TcpConnectionPtr& connection, const DataReadEventArgs& args)
+{
+    info_log("received data :");
+    info_log("  opcode = %d", args.opcode);
+    info_log("  bytes_transferred = %d", args.data_len);
+
+    NetworkMessage network_message;
+    network_message.opcode = args.opcode;
+    network_message.data = args.data;
+    network_message.data_len = args.data_len;
+
+    GameSession* session = connection->getUserData<GameSession>();
+    if (session != nullptr)
+    {
+        auto callback = _dispatcher.sessionMessageEvent;
+        if (callback)
+        {
+            callback(session, &network_message);
+        }
+    }
 }
 
 void NetworkProxy::__internalConnectionClosedEvent(const TcpConnectionPtr& connection, const EventArgs& args)
 {
     debug_log("Enter NetworkProxy::__internalConnectionClosedEvent --");
 
-    auto iter = _connections.find(connection->handle());
-    if (iter != _connections.end())
+    GameSession* session = connection->getUserData<GameSession>();
+    if (session != nullptr)
     {
-        _connections.erase(iter);
+        //call closed event
+        auto callback = _dispatcher.sessionClosingEvent;
+        if (callback)
+        {
+            callback(session);
+        }
     }
+}
 
-    //call closed event
-    auto callback = _dispatcher.getConnectionClosedEvent();
-    if (callback) callback(connection, args);
+void NetworkProxy::registerSessionCreatedHandler(const SessionCreated& event)
+{
+    _dispatcher.sessionCreatedEvent = event;
+}
+
+void NetworkProxy::registerSessionMessageHandler(const SessionMessage& event)
+{
+    _dispatcher.sessionMessageEvent = event;
+}
+
+void NetworkProxy::registerConnectionClosingHandler(const SessionClosing& event)
+{
+    _dispatcher.sessionClosingEvent = event;
 }
