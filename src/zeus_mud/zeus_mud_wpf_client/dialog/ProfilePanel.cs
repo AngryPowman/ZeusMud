@@ -31,6 +31,15 @@ namespace zeus_mud_wpf_client.dialog
         private void frmProfile_Load(object sender, EventArgs e)
         {
             loadProfile();
+
+            //开始心跳线程
+            NetworkEvent.startHeartbeat(10000);
+        }
+
+        public void sendHeartbeatProxy()
+        {
+            Protocol.C2SHeartbeat heartbeat = new Protocol.C2SHeartbeat();
+            NetworkEvent.sendPacket<Protocol.C2SHeartbeat>(heartbeat);
         }
 
         void picAvatar_LoadProgressChanged(object sender, ProgressChangedEventArgs e)

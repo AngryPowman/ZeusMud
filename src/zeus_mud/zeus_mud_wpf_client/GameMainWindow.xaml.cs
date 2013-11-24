@@ -12,8 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf.network;
 using Wpf.ZuesMud;
 using zeus_mud_wpf_client.dialog;
+using zeus_mud_wpf_client.network;
 
 namespace zeus_mud_wpf_client
 {
@@ -36,7 +38,7 @@ namespace zeus_mud_wpf_client
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            GlobalObject.ProfileForm = this.PlayerProfile;
         }
 
         public void showDisconnectError(string caption, string message)

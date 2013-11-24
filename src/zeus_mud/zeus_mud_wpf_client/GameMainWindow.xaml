@@ -53,9 +53,9 @@
                     <!--■左侧边栏定义-->
                     <avalondock:LayoutAnchorablePane DockWidth="240">
 
-                        <avalondock:LayoutAnchorable x:Name="PlayerProfile" ContentId="PlayerProfile" Title="我的信息" ToolTip="" CanHide="true" CanClose="true" CanAutoHide="True">
+                        <avalondock:LayoutAnchorable x:Name="PlayerProfile_Layout" Title="我的信息" ToolTip="" CanHide="true" CanClose="true" CanAutoHide="True">
                             <WindowsFormsHost VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                                <dialog:ProfilePanel></dialog:ProfilePanel>
+                                <dialog:ProfilePanel x:Name="PlayerProfile"></dialog:ProfilePanel>
                             </WindowsFormsHost>
                         </avalondock:LayoutAnchorable>
 

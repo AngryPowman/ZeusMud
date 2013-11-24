@@ -195,6 +195,7 @@
     <Compile Include="protocol\21015_S2CNewRoomAddNotify.cs" />
     <Compile Include="protocol\22001_C2STransferAccountsReq.cs" />
     <Compile Include="protocol\22002_S2CTransferAccountsRsp.cs" />
+    <Compile Include="protocol\500_C2SHeartbeat.cs" />
     <Compile Include="protocol\99990_S2CError.cs" />
     <Compile Include="protocol\99991_S2CErrorEx.cs" />
     <Page Include="GameMainWindow.xaml">

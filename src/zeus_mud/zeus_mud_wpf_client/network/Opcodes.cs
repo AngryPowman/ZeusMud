@@ -11,6 +11,7 @@ namespace Wpf.network
 {
     public enum Opcodes
     {
+        C2SHeartbeat    = 500,
         C2SLoginReq     = 10000,            //登录请求
         S2CLoginRsp     = 10001,            //登录回应
         C2SRegisterReq  = 10002,            //注册请求
