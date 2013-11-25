@@ -297,4 +297,9 @@
       <Filter>protocol\protobuf</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\protocol\500_C2SHeartbeat.proto">
+      <Filter>protocol\protobuf</Filter>
+    </None>
+  </ItemGroup>
 </Project>

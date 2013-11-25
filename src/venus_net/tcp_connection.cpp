@@ -11,7 +11,6 @@ TcpConnection::TcpConnection(IOService& io_service)
     _socket = new Socket(io_service);
 
     // register socket callbacks
-    _socket->set_connected_callback(std::bind(&TcpConnection::on_connected, this));
     _socket->set_send_callback(std::bind(&TcpConnection::on_write, this, std::placeholders::_1));
     _socket->set_receive_callback(std::bind(&TcpConnection::on_read, this, std::placeholders::_1, std::placeholders::_2));
     _socket->set_close_callback(std::bind(&TcpConnection::on_close, this));
@@ -76,33 +75,19 @@ bool TcpConnection::is_open()
     return _socket->is_open();
 }
 
-void TcpConnection::setWriteCompletedCallback(const WriteCompletedCallback& cb)
+void TcpConnection::registerDataWriteFinishedEvent(const DataWriteFinishedEvent& event)
 {
-    _writeCompletedCallback = cb;
+    _dataWriteFinishedEvent = event;
 }
 
-void TcpConnection::setReadCompletedCallback(const ReadCompletedCallback& cb)
+void TcpConnection::registerDataReadEvent(const DataReadEvent& event)
 {
-    _readComplectedCallback = cb;
+    _dataReadEvent = event;
 }
 
-void TcpConnection::setConnectionClosedCallback(const ConnectionClosedCallback& cb)
+void TcpConnection::registerConnectionClosedEvent(const ConnectionClosedEvent& event)
 {
-    _connectionClosedCallback = cb;
-}
-
-void TcpConnection::setConnectedCallback(const ConnectionConnectedCallback& cb)
-{
-    _connectedCallback = cb;
-}
-
-void TcpConnection::on_connected()
-{
-    debug_log("connection has been connected.");
-
-    readAsync();
-    if (_connectedCallback)
-        _connectedCallback(shared_from_this());
+    _connectionClosedEvent = event;
 }
 
 void TcpConnection::on_write(
@@ -110,9 +95,9 @@ void TcpConnection::on_write(
 )
 {
     debug_log("bytes_transferred = %d", bytes_transferred);
-    if (_writeCompletedCallback)
+    if (_dataWriteFinishedEvent)
     {
-        _writeCompletedCallback(shared_from_this(), bytes_transferred);
+        _dataWriteFinishedEvent(shared_from_this(), DataWriteFinishedEventArgs(bytes_transferred));
     }
     else
     {
@@ -179,9 +164,9 @@ void TcpConnection::on_read(const byte* data, size_t bytes_transferred)
     {
         const ServerPacketPtr& packet = packetList[i];
 
-        if (_readComplectedCallback)
+        if (_dataReadEvent)
         {
-            _readComplectedCallback(shared_from_this(), packet->opcode, packet->message, packet->len);
+            _dataReadEvent(shared_from_this(), DataReadEventArgs(packet->opcode, packet->message, packet->len));
         }
         else
         {
@@ -195,8 +180,8 @@ void TcpConnection::on_read(const byte* data, size_t bytes_transferred)
 
 void TcpConnection::on_close()
 {
-    if (_connectionClosedCallback)
+    if (_connectionClosedEvent)
     {
-        _connectionClosedCallback(shared_from_this());
+        _connectionClosedEvent(shared_from_this(), NO_EVENT_ARGS());
     }
 }

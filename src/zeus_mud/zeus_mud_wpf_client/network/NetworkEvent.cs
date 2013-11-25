@@ -13,6 +13,8 @@ using System.Diagnostics;
 using Wpf.ZuesMud;
 using System.Reflection;
 using zeus_mud_wpf_client.network;
+using zeus_mud_wpf_client;
+using System.Threading;
 
 namespace Wpf.network
 {
@@ -49,13 +51,43 @@ namespace Wpf.network
             }
             catch (SocketException ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
                 return false;
             }
 
             _clientSocket.BeginReceive(_recvBuffer, 0, _recvBuffer.Length, SocketFlags.None, new AsyncCallback(onReceived), _clientSocket);
 
             return true;
+        }
+
+        static System.Timers.Timer _heartbeat_timer = null;
+        public static void startHeartbeat(int heartbeat_period)
+        {
+            //_heartbeat_timer = new System.Windows.Threading.DispatcherTimer();
+            //_heartbeat_timer.Interval = TimeSpan.FromMilliseconds(heartbeat_period);
+            //_heartbeat_timer.Tick += new EventHandler(heartbeatProcess);
+            //_heartbeat_timer.Start();
+
+            _heartbeat_timer = new System.Timers.Timer(heartbeat_period);
+            _heartbeat_timer.Elapsed += new System.Timers.ElapsedEventHandler(heartbeatProcess);
+            _heartbeat_timer.Enabled = true;
+            _heartbeat_timer.Start();
+
+        }
+
+        static object objLock = new object();
+        delegate void SendHeartbeatProxyDelegate();
+        private static void heartbeatProcess(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            GlobalObject.ProfileForm.Invoke(new SendHeartbeatProxyDelegate(GlobalObject.ProfileForm.sendHeartbeatProxy));
+        }
+
+        public static void stopHeartbeat()
+        {
+            if (_heartbeat_timer.Enabled == true)
+            {
+                _heartbeat_timer.Stop();
+            }
         }
 
         public static void disconnectRobotServer()
@@ -104,10 +136,9 @@ namespace Wpf.network
             {
                 Socket socket = (Socket)result.AsyncState;
                 int bytesReceived = socket.EndReceive(result);
-                socket.BeginReceive(_recvBuffer, 0, _recvBuffer.Length, SocketFlags.None, new AsyncCallback(onReceived), _clientSocket);
                 if (bytesReceived == 0)
                 {
-                    onDisconnected();
+                    onDisconnected(result);
                     return;
                 }
 
@@ -134,6 +165,7 @@ namespace Wpf.network
                 }
 
                 Console.WriteLine("received {0} bytes.", bytesReceived);
+                socket.BeginReceive(_recvBuffer, 0, _recvBuffer.Length, SocketFlags.None, new AsyncCallback(onReceived), _clientSocket);
             }
             catch (System.Exception ex)
             {
@@ -142,9 +174,15 @@ namespace Wpf.network
 
         }
 
-        private static void onDisconnected()
-        { 
-        
+        private static void onDisconnected(IAsyncResult result)
+        {
+            ErrorMessageDelegate show_disconnect
+                = new ErrorMessageDelegate(GlobalObject.MainWindow.showDisconnectError);
+
+            GlobalObject.MainWindow.Dispatcher.Invoke(show_disconnect, new object[] 
+            {
+                "网络异常", "网络连接中断，请尝试重新进入中二世界！"
+            });
         }
 
         /*******************************************************************************************
