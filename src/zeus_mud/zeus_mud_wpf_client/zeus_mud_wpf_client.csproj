@@ -158,6 +158,12 @@
     <Compile Include="dialog\RoomListPanel.Designer.cs">
       <DependentUpon>RoomListPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="dialog\RoomPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="dialog\RoomPanel.Designer.cs">
+      <DependentUpon>RoomPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="game\module\Chat.cs" />
     <Compile Include="game\data\LoginData.cs" />
     <Compile Include="game\data\PlayerProfile.cs" />
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dialog\RoomListPanel.resx">
       <DependentUpon>RoomListPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialog\RoomPanel.resx">
+      <DependentUpon>RoomPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
