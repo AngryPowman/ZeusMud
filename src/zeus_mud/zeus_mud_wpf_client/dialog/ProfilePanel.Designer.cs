@@ -34,6 +34,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ltxtLastLogin = new System.Windows.Forms.TextBox();
             this.tlblEmail = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ltxtGold = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,11 +106,34 @@
             this.tlblEmail.TabIndex = 16;
             this.tlblEmail.Text = "<None>";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(5, 101);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "金币：";
+            // 
+            // ltxtGold
+            // 
+            this.ltxtGold.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ltxtGold.BackColor = System.Drawing.SystemColors.Control;
+            this.ltxtGold.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ltxtGold.Location = new System.Drawing.Point(49, 102);
+            this.ltxtGold.Name = "ltxtGold";
+            this.ltxtGold.Size = new System.Drawing.Size(193, 14);
+            this.ltxtGold.TabIndex = 16;
+            this.ltxtGold.Text = "-";
+            // 
             // ProfilePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.tlblEmail);
+            this.Controls.Add(this.ltxtGold);
             this.Controls.Add(this.ltxtLastLogin);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblNickname);
@@ -133,5 +158,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox ltxtLastLogin;
         private System.Windows.Forms.TextBox tlblEmail;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox ltxtGold;
     }
 }

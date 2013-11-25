@@ -16,6 +16,8 @@ using Wpf.network;
 using Wpf.ZuesMud;
 using zeus_mud_wpf_client.dialog;
 using zeus_mud_wpf_client.network;
+using Xceed.Wpf.AvalonDock.Layout;
+using System.Windows.Forms.Integration;
 
 namespace zeus_mud_wpf_client
 {
@@ -48,6 +50,20 @@ namespace zeus_mud_wpf_client
                 message, caption,
                 System.Windows.MessageBoxButton.OK,
                 System.Windows.MessageBoxImage.Error);
+        }
+
+        private void dockManager_Loaded(object sender, RoutedEventArgs e)
+        {
+            LayoutDocument document = new LayoutDocument();
+            document.CanClose = true;
+            document.CanFloat = true;
+            //document.DockAsDocument();
+            document.Title = "test";
+
+            WindowsFormsHost host = new WindowsFormsHost();
+            host.Child = new RoomListPanel();
+            
+            documentsPane.Children.Add(document);
         }
     }
 }

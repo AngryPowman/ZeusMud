@@ -14,5 +14,6 @@ namespace zeus_mud.game.data
         public static string nickname { get; set; }
         public static string register_ip { get; set; }
         public static Int64 last_login { get; set; }
+        public static UInt32 gold { get; set; }
     }
 }

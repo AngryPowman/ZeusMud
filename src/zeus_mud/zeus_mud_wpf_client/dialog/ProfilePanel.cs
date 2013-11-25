@@ -93,13 +93,16 @@ namespace zeus_mud_wpf_client.dialog
             PlayerProfile.nickname = Encoding.UTF8.GetString(response.nickname);
             PlayerProfile.gender = response.gender;
             PlayerProfile.last_login = response.last_login;
+            PlayerProfile.gold = response.gold;
 
             lblNickname.Text = PlayerProfile.nickname == null ? "-" : PlayerProfile.nickname;
             tlblEmail.Text = PlayerProfile.email == null ? "<无>" : "<" + PlayerProfile.email + ">";
-
+            
             DateTime dt = new DateTime(1970, 1, 1);
             dt = dt.AddSeconds(PlayerProfile.last_login);
             ltxtLastLogin.Text = dt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+
+            ltxtGold.Text = PlayerProfile.gold.ToString();
         }
     }
 }

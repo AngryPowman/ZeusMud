@@ -57,6 +57,13 @@ namespace Protocol
       get { return _guild_name; }
       set { _guild_name = value; }
     }
+    private uint _gold;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"gold", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public uint gold
+    {
+      get { return _gold; }
+      set { _gold = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

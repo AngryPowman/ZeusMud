@@ -7,4 +7,5 @@ message S2CGetPlayerProfileRsp {
 	required int64 last_login = 4;
 	required uint64 guild_id = 5;
 	required bytes guild_name = 6;
+	required uint32 gold = 7;	//金钱，临时的
 }
