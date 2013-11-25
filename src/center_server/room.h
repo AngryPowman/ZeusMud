@@ -20,8 +20,8 @@ public:
     void addMember(uint64 playerGuid) { _membersGuid.push_back(playerGuid); }
     void removeMember(uint64 playerGuid) { _membersGuid.remove(playerGuid); }
 
-    void ModifyRoomName(const std::string& roomName) { _roomName = roomName; }
-    void ChangePassword(const std::string& password) { _password = password; }
+    void modifyRoomName(const std::string& roomName) { _roomName = roomName; }
+    void changePassword(const std::string& password) { _password = password; }
     
     uint32 getPlayersCount() { return _membersGuid.size() + 1; }
 protected:

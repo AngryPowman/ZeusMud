@@ -16,5 +16,49 @@ namespace zeus_mud_wpf_client.dialog
         {
             InitializeComponent();
         }
+
+        private void textBoxRoomName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool ret = true;
+            if (e.KeyChar == '\b' || e.KeyChar == '_') //退格键 下划线
+            {
+                ret = false;
+            }
+            else if (e.KeyChar >= 'a' && e.KeyChar <= 'z')
+            {
+                ret = false;
+            }
+            else if (e.KeyChar >= 'A' && e.KeyChar <= 'Z')
+            {
+                ret = false;
+            }
+            else if (e.KeyChar >= '0' && e.KeyChar <= '9')
+            {
+                ret = false;
+            }
+            e.Handled = ret;
+        }
+
+        private void textBoxPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool ret = true;
+            if (e.KeyChar == '\b' || e.KeyChar == '_') //退格键 下划线
+            {
+                ret = false;
+            }
+            else if (e.KeyChar >= 'a' && e.KeyChar <= 'z')
+            {
+                ret = false;
+            }
+            else if (e.KeyChar >= 'A' && e.KeyChar <= 'Z')
+            {
+                ret = false;
+            }
+            else if (e.KeyChar >= '0' && e.KeyChar <= '9')
+            {
+                ret = false;
+            }
+            e.Handled = ret;
+        }
     }
 }

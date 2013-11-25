@@ -117,6 +117,13 @@ class S2CSRoomInfoChangeNotify : public ::google::protobuf::Message {
   inline ::google::protobuf::uint32 players_count() const;
   inline void set_players_count(::google::protobuf::uint32 value);
 
+  // optional bool public = 4;
+  inline bool has_public_() const;
+  inline void clear_public_();
+  static const int kPublicFieldNumber = 4;
+  inline bool public_() const;
+  inline void set_public_(bool value);
+
   // @@protoc_insertion_point(class_scope:Protocol.S2CSRoomInfoChangeNotify)
  private:
   inline void set_has_room_id();
@@ -125,15 +132,18 @@ class S2CSRoomInfoChangeNotify : public ::google::protobuf::Message {
   inline void clear_has_room_name();
   inline void set_has_players_count();
   inline void clear_has_players_count();
+  inline void set_has_public_();
+  inline void clear_has_public_();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::std::string* room_name_;
   ::google::protobuf::uint32 room_id_;
   ::google::protobuf::uint32 players_count_;
+  bool public__;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_21008_5fS2CRoomInfoChangeNotify_2eproto();
   friend void protobuf_AssignDesc_21008_5fS2CRoomInfoChangeNotify_2eproto();
@@ -261,6 +271,28 @@ inline ::google::protobuf::uint32 S2CSRoomInfoChangeNotify::players_count() cons
 inline void S2CSRoomInfoChangeNotify::set_players_count(::google::protobuf::uint32 value) {
   set_has_players_count();
   players_count_ = value;
+}
+
+// optional bool public = 4;
+inline bool S2CSRoomInfoChangeNotify::has_public_() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void S2CSRoomInfoChangeNotify::set_has_public_() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void S2CSRoomInfoChangeNotify::clear_has_public_() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void S2CSRoomInfoChangeNotify::clear_public_() {
+  public__ = false;
+  clear_has_public_();
+}
+inline bool S2CSRoomInfoChangeNotify::public_() const {
+  return public__;
+}
+inline void S2CSRoomInfoChangeNotify::set_public_(bool value) {
+  set_has_public_();
+  public__ = value;
 }
 
 

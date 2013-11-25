@@ -69,7 +69,7 @@ void GameSession::broadcast_room_add(uint32 id, const std::string& roomName, boo
     response.set_room_id(id);
     response.set_room_name(roomName);
     response.set_public_(isPublic);
-    GameSessionManager::getInstance().broadcast<Protocol::S2CNewRoomAddNotify>(Opcodes::S2CNewRoomAddRsp, response);
+    GameSessionManager::getInstance().broadcast<Protocol::S2CNewRoomAddNotify>(Opcodes::S2CNewRoomAddNotify, response);
 }
 
 void GameSession::get_room_list_handler(const NetworkMessage& message)
@@ -102,7 +102,7 @@ void GameSession::enter_room_handler(const NetworkMessage& message)
     {
         room->addMember(_player->guid());
         response.set_result(true);
-        broadcast_room_info_change(room->getId(), room->getRoomName(), room->getPlayersCount());
+        broadcast_room_info_change(room->getId(), room->getRoomName(), room->getPlayersCount(), room->getPassword().empty());
     }
     else
     {
@@ -112,13 +112,14 @@ void GameSession::enter_room_handler(const NetworkMessage& message)
     send_message<Protocol::S2CEnterRoomRsp>(Opcodes::S2CEnterRoomRsp, response);
 }
 
-void GameSession::broadcast_room_info_change(uint32 room_id, const std::string& roomName, uint32 playersCount)
+void GameSession::broadcast_room_info_change(uint32 room_id, const std::string& roomName, uint32 playersCount, bool isPublic)
 {
     Protocol::S2CSRoomInfoChangeNotify response;
     response.set_room_id(room_id);
     response.set_room_name(roomName);
     response.set_players_count(playersCount);
-    GameSessionManager::getInstance().broadcast<Protocol::S2CSRoomInfoChangeNotify>(Opcodes::S2CNewRoomAddRsp, response);
+    response.set_public_(isPublic);
+    GameSessionManager::getInstance().broadcast<Protocol::S2CSRoomInfoChangeNotify>(Opcodes::S2CSRoomInfoChangeNotify, response);
 }
 
 void GameSession::room_info_change_handler(const NetworkMessage& message)
@@ -146,15 +147,15 @@ void GameSession::room_info_change_handler(const NetworkMessage& message)
     Protocol::S2CSRoomInfoChangeNotify response;
     if (!request.password().empty() && request.password().size() < MAX_ROOM_PASSWORD_SIZE)
     {
-        room->ChangePassword(request.password());
+        room->changePassword(request.password());
     }
     
     // 只有修改了房间名称才需要通知
     response.set_room_id(request.room_id());
     if (!request.room_name().empty() && request.room_name().size() < MAX_ROOM_NAME_SIZE)
     {
-        room->ModifyRoomName(request.room_name());
+        room->modifyRoomName(request.room_name());
         response.set_room_name(request.room_name());
-        broadcast_room_info_change(request.room_id(), request.room_name(), room->getPlayersCount());
+        broadcast_room_info_change(request.room_id(), request.room_name(), room->getPlayersCount(), room->getPassword().empty());
     }
 }

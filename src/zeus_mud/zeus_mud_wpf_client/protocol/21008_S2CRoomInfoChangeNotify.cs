@@ -40,6 +40,15 @@ namespace Protocol
       get { return _players_count; }
       set { _players_count = value; }
     }
+
+    private bool _public = default(bool);
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"public", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(default(bool))]
+    public bool @public
+    {
+      get { return _public; }
+      set { _public = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
