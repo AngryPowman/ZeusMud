@@ -97,11 +97,17 @@ namespace zeus_mud_wpf_client.dialog
 
             lblNickname.Text = PlayerProfile.nickname == null ? "-" : PlayerProfile.nickname;
             tlblEmail.Text = PlayerProfile.email == null ? "<无>" : "<" + PlayerProfile.email + ">";
-            
-            DateTime dt = new DateTime(1970, 1, 1);
-            dt = dt.AddSeconds(PlayerProfile.last_login);
-            ltxtLastLogin.Text = dt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
 
+            if (PlayerProfile.last_login > 0)
+            {
+                DateTime dt = new DateTime(1970, 1, 1);
+                dt = dt.AddSeconds(PlayerProfile.last_login);
+                ltxtLastLogin.Text = dt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            else
+            {
+                ltxtLastLogin.Text = "从未";
+            }
             ltxtGold.Text = PlayerProfile.gold.ToString();
         }
     }
