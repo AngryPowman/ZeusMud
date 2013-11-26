@@ -20,7 +20,7 @@ namespace GameUtil
     //验证邮箱帐号合法性
     bool checkEmailValid(const std::string& email)
     {
-        std::regex regex("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$");
+        const std::regex regex("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
         return std::regex_match(email, regex);
     }
 
