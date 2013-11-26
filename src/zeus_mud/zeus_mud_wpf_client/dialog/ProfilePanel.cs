@@ -49,6 +49,10 @@ namespace zeus_mud_wpf_client.dialog
 
         void picAvatar_LoadCompleted(object sender, AsyncCompletedEventArgs e)
         {
+            hideLoadAvatarMessage();
+        }
+        void hideLoadAvatarMessage()
+        {
             lblLoadingTip.Visible = false;
         }
 
@@ -60,8 +64,16 @@ namespace zeus_mud_wpf_client.dialog
 
             picAvatar.LoadCompleted += picAvatar_LoadCompleted;
             picAvatar.LoadProgressChanged += picAvatar_LoadProgressChanged;
-            picAvatar.LoadAsync(GlobalObject.Email2PhotoUrl(LoginData.email).ToLower());
-            
+            if (GlobalObject.EmailToPhoto.Avatar != null)
+            {
+                picAvatar.Image = GlobalObject.EmailToPhoto.Avatar;
+                hideLoadAvatarMessage();
+                //一次非空，永远非空，因此可以不加锁。
+            }
+            else
+            {
+                picAvatar.LoadAsync(GlobalObject.EmailToPhoto.Url(LoginData.email).ToLower());
+            }
             //向服务器请求个人资料
             getPlayerProfileRequest();
         }
