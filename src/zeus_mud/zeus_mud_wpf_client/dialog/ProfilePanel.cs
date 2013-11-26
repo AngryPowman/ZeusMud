@@ -68,9 +68,13 @@ namespace zeus_mud_wpf_client.dialog
 
         private void ProfilePanel_Paint(object sender, PaintEventArgs e)
         {
-            lblNickname.BackColor = this.BackColor;
-            tlblEmail.BackColor = this.BackColor;
-            ltxtLastLogin.BackColor = this.BackColor;
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.BackColor = this.BackColor;
+                }
+            }
         }
 
         /// <summary>
