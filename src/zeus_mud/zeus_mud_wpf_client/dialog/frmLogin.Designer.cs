@@ -128,6 +128,7 @@
             this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picAvatar.TabIndex = 17;
             this.picAvatar.TabStop = false;
+            this.picAvatar.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(this.picAvatar_LoadCompleted);
             // 
             // trackBar1
             // 

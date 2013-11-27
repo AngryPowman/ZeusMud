@@ -180,8 +180,18 @@ namespace zeus_mud
         {            
             NetworkEvent.init();
             loadXml();
-
-            picAvatar.LoadAsync(GlobalObject.Email2PhotoUrl(txtUsername.Text).ToLower());
+            if (File.Exists(GlobalObject.EmailToPhoto.UrlLocalCachePath))
+            {
+                using (var stream = new FileStream(GlobalObject.EmailToPhoto.UrlLocalCachePath, FileMode.Open))
+                {
+                    Image img = Image.FromStream(stream);
+                    picAvatar.InitialImage = img;
+                    GlobalObject.EmailToPhoto.Avatar = img;
+                    //这里不能用fromfile：fromfile在读取之后不会关闭句柄，这将导致下头的save失败
+                    //这里的img不能省略，不应当操作GlobalObject.EmailToPhoto.Avatar 
+                }
+            }
+            picAvatar.LoadAsync(GlobalObject.EmailToPhoto.Url(txtUsername.Text).ToLower());
             gifBox.initGif(60);
             btnLogin.Select();
         }
@@ -224,6 +234,16 @@ namespace zeus_mud
         {
             System.Windows.Application.Current.Shutdown(); //退出本程序。这是个wpf程序，因此Application.Exit()无效。
             // XXX: 上头是hide，而不是关闭本窗口，修改该逻辑需要修改本处代码
+        }
+
+        private void picAvatar_LoadCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            if (picAvatar.ImageLocation.ToLower().StartsWith("http://"))
+            {
+                picAvatar.Image.Save(GlobalObject.EmailToPhoto.UrlLocalCachePath);
+                GlobalObject.EmailToPhoto.Avatar = picAvatar.Image;//这里和上面的缓存是唯一设置Avatar的。
+                //注意在frmlogin中不会读取 GlobalObject.EmailToPhoto.Avatar ，而其他地方不会写 GlobalObject.EmailToPhoto.Avatar，从而不会产生线程问题
+            }
         }
 
     }
