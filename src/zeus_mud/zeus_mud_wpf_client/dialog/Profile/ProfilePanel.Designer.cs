@@ -36,7 +36,7 @@
             this.tlblEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ltxtGold = new System.Windows.Forms.TextBox();
-            this.kryptonLinkLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLinkLabel();
+            this.lnkOpenBag = new ComponentFactory.Krypton.Toolkit.KryptonLinkLabel();
             this.kryptonLinkLabel2 = new ComponentFactory.Krypton.Toolkit.KryptonLinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.SuspendLayout();
@@ -129,13 +129,14 @@
             this.ltxtGold.TabIndex = 16;
             this.ltxtGold.Text = "-";
             // 
-            // kryptonLinkLabel1
+            // lnkOpenBag
             // 
-            this.kryptonLinkLabel1.Location = new System.Drawing.Point(3, 94);
-            this.kryptonLinkLabel1.Name = "kryptonLinkLabel1";
-            this.kryptonLinkLabel1.Size = new System.Drawing.Size(35, 20);
-            this.kryptonLinkLabel1.TabIndex = 18;
-            this.kryptonLinkLabel1.Values.Text = "背包";
+            this.lnkOpenBag.Location = new System.Drawing.Point(3, 94);
+            this.lnkOpenBag.Name = "lnkOpenBag";
+            this.lnkOpenBag.Size = new System.Drawing.Size(35, 20);
+            this.lnkOpenBag.TabIndex = 18;
+            this.lnkOpenBag.Values.Text = "背包";
+            this.lnkOpenBag.LinkClicked += new System.EventHandler(this.lnkOpenBag_LinkClicked);
             // 
             // kryptonLinkLabel2
             // 
@@ -150,7 +151,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.kryptonLinkLabel2);
-            this.Controls.Add(this.kryptonLinkLabel1);
+            this.Controls.Add(this.lnkOpenBag);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.tlblEmail);
             this.Controls.Add(this.ltxtGold);
@@ -180,7 +181,7 @@
         private System.Windows.Forms.TextBox tlblEmail;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox ltxtGold;
-        private ComponentFactory.Krypton.Toolkit.KryptonLinkLabel kryptonLinkLabel1;
+        private ComponentFactory.Krypton.Toolkit.KryptonLinkLabel lnkOpenBag;
         private ComponentFactory.Krypton.Toolkit.KryptonLinkLabel kryptonLinkLabel2;
     }
 }

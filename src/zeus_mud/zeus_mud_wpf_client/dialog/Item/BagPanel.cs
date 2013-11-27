@@ -16,5 +16,30 @@ namespace zeus_mud_wpf_client.dialog.Item
         {
             InitializeComponent();
         }
+
+        private void BagPanel_Load(object sender, EventArgs e)
+        {
+            _addItem("康师傅牌泡面", 99, 0, 0);
+            _addItem("腌制鸡头肉", 99, 0, 0);
+            _addItem("哥布林的破帽子", 1, 0, 0);
+            _addItem("卡拉战神精魄", 1, 0, 0);
+            _addItem("周鸿祎的执念", 1, 0, 0);
+            _addItem("唐僧给悟空的信", 1, 0, 0);
+            _addItem("巨人的挑战书", 1, 0, 0);
+        }
+
+        public void addItem()
+        { 
+        
+        }
+
+        private void _addItem(string name, int count, int itemType, int getWay)
+        {
+            ListViewItem item = new ListViewItem(name);
+            item.SubItems.Add(count.ToString());
+            item.SubItems.Add("");
+            item.SubItems.Add("商店购买");
+            lsvItems.Items.Add(item);
+        }
     }
 }

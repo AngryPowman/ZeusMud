@@ -8,19 +8,29 @@ using zeus_mud_wpf_client.dialog;
 using zeus_mud_wpf_client;
 using System.IO;
 using System.Windows.Forms;
+using zeus_mud_wpf_client.dialog.Item;
 
 namespace Wpf.ZuesMud
 {
     class GlobalObject
     {
+        //登录窗口实例
         public static frmLogin LoginForm { get; set; }
+
+        //注册窗口实例
         public static frmRegister RegisterForm { get; set; }
-        //public static frmGameMain GameMainForm { get; set; }
-        //public static frmGameMain_ GameMainForm_ { get; set; }
+
+        //游戏主窗口实例
         public static GameMainWindow MainWindow { get; set; }
+
+        //玩家信息面板实例
         public static ProfilePanel ProfileForm { get; set; }
 
+        //房间列表面板实例
         public static RoomListPanel RoomListPanelForm { get; set; }
+
+        //背包窗口实例
+        public static frmBag BagWindow { get; set; }
 
 
         public static string ConfigPath = Environment.CurrentDirectory + @"\Config.xml";
