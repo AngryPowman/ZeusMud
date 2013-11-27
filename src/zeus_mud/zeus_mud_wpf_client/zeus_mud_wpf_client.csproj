@@ -116,35 +116,57 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="common\GameUtil.cs" />
-    <Compile Include="dialog\Chat\GameChatPanel.cs" />
+    <Compile Include="dialog\Chat\GameChatPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="dialog\Chat\GameChatPanel.Designer.cs">
       <DependentUpon>GameChatPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="dialog\Item\BagPanel.cs" />
+    <Compile Include="dialog\Item\BagPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="dialog\Item\BagPanel.Designer.cs">
       <DependentUpon>BagPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="dialog\Login\frmLogin.cs" />
+    <Compile Include="dialog\Item\frmBag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialog\Item\frmBag.Designer.cs">
+      <DependentUpon>frmBag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dialog\Login\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dialog\Login\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="dialog\Login\frmRegister.cs" />
+    <Compile Include="dialog\Login\frmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dialog\Login\frmRegister.Designer.cs">
       <DependentUpon>frmRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="dialog\Profile\ProfilePanel.cs" />
+    <Compile Include="dialog\Profile\ProfilePanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="dialog\Profile\ProfilePanel.Designer.cs">
       <DependentUpon>ProfilePanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="dialog\Room\frmEnterPassword.cs" />
+    <Compile Include="dialog\Room\frmEnterPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dialog\Room\frmEnterPassword.Designer.cs">
       <DependentUpon>frmEnterPassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="dialog\Room\frmRoomCreate.cs" />
+    <Compile Include="dialog\Room\frmRoomCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="dialog\Room\frmRoomCreate.designer.cs">
       <DependentUpon>frmRoomCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="dialog\Room\RoomListPanel.cs" />
+    <Compile Include="dialog\Room\RoomListPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="dialog\Room\RoomListPanel.Designer.cs">
       <DependentUpon>RoomListPanel.cs</DependentUpon>
     </Compile>
@@ -220,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dialog\Item\BagPanel.resx">
       <DependentUpon>BagPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialog\Item\frmBag.resx">
+      <DependentUpon>frmBag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialog\Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
