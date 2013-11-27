@@ -22,6 +22,7 @@ public:
 
 public:
     bool loadFromDB();
+    bool saveToDB();
     bool loadFromMemCached();
 	void onLeaveGame();
 
@@ -34,24 +35,24 @@ public:
 
 public:
     //properties
-    const uint64& guid() const;
+    uint64 guid() const;
 
-    void gender(const int32& gender);
-    const int32& gender() const;
+    void gender(int32 gender);
+    int32 gender() const;
 
     void nickname(const std::string& nickname);
     const std::string& nickname() const;
 
-    void lastLogin(const int64& last_login);
-    const int64& lastLogin() const;
+    void lastLogin(int64 last_login);
+    int64 lastLogin() const;
 
-    void guildId(const uint64& guild_id);
-    const uint64& guildId() const;
+    void guildId(uint64 guild_id);
+    uint64 guildId() const;
     void guildName(const std::string& guild_name);
     const std::string& guildName() const;
 
-    void gold(const uint32& gold);
-    const uint32& gold() const;
+    void gold(uint32 gold);
+    uint32 gold() const;
 
 public:
     PlayerDB* DB();

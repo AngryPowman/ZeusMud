@@ -46,14 +46,14 @@
     <ClInclude Include="room_pool.h">
       <Filter>object\obj_pool</Filter>
     </ClInclude>
-    <ClInclude Include="network_proxy.h">
-      <Filter>manager</Filter>
-    </ClInclude>
     <ClInclude Include="game_io_dispatcher.h">
       <Filter>network</Filter>
     </ClInclude>
+    <ClInclude Include="network_proxy.h">
+      <Filter>network</Filter>
+    </ClInclude>
     <ClInclude Include="session_io.h">
-      <Filter>manager</Filter>
+      <Filter>network</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -97,7 +97,10 @@
       <Filter>manager</Filter>
     </ClCompile>
     <ClCompile Include="network_proxy.cpp">
-      <Filter>manager</Filter>
+      <Filter>network</Filter>
+    </ClCompile>
+    <ClCompile Include="player_db.cpp">
+      <Filter>data\dbc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -7,6 +7,7 @@
 #include "network_proxy.h"
 #include "game_session.h"
 #include "game_session_manager.h"
+#include "player.h"
 
 class GameIODataEventHandler
     : public IODataEventHandler
@@ -35,7 +36,14 @@ public:
 
     void onSessionClosing(GameSession* session)
     {
-        debug_log("Connection closed handler.");
+        debug_log("Session closing handler.");
+
+        Player* player = session->getPlayer();
+        if (player != nullptr)
+        {
+            player->onLeaveGame();
+        }
+
         session->destroy();
         GameSessionManager::getInstance().destroySession(session);
     }
