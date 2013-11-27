@@ -4,7 +4,7 @@
 #include "player_db.h"
 
 Player::Player(uint64 guid, GameSession* session)
-    : _guid(guid), _playerDB(nullptr), _session(session)
+    : _guid(guid), _playerDB(nullptr), _session(session), _cachedLastLogin(0)
 {
 
 }
@@ -37,7 +37,8 @@ bool Player::loadFromMemCached()
 
 void Player::onLeaveGame()
 {
-    this->lastLogin(Poco::Timestamp().epochTime());
+    this->lastLogin(_cachedLastLogin);
+    debug_log("Updated last login time to %ld.", _cachedLastLogin);
 
     // ...
     // save data to db
@@ -90,6 +91,16 @@ void Player::lastLogin(int64 last_login)
 int64 Player::lastLogin() const
 {
     return _playerDB->last_login;
+}
+
+void Player::cachedLastLogin(int64 last_login)
+{
+    _cachedLastLogin = last_login;
+}
+
+int64 Player::cachedLastLogin() const
+{
+    return _cachedLastLogin;
 }
 
 void Player::guildName(const std::string& guild_name)

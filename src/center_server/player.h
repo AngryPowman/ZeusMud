@@ -45,6 +45,8 @@ public:
 
     void lastLogin(int64 last_login);
     int64 lastLogin() const;
+    void cachedLastLogin(int64 last_login);
+    int64 cachedLastLogin() const;
 
     void guildId(uint64 guild_id);
     uint64 guildId() const;
@@ -62,6 +64,9 @@ private:
     uint64 _guid;
     PlayerDB* _playerDB;
     GameSession* _session;
+
+private:
+    int64 _cachedLastLogin; //用于临时记录上次登录时间
 };
 
 #endif
