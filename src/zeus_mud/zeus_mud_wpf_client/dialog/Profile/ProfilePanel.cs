@@ -126,5 +126,14 @@ namespace zeus_mud_wpf_client.dialog
             }
             ltxtGold.Text = PlayerProfile.gold.ToString();
         }
+
+        private void lnkOpenBag_LinkClicked(object sender, EventArgs e)
+        {
+            if (GlobalObject.BagWindow == null)
+            {
+                GlobalObject.BagWindow = new Item.frmBag();
+            }
+            GlobalObject.BagWindow.ShowDialog();
+        }
     }
 }

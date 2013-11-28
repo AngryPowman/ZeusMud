@@ -128,6 +128,12 @@
     <Compile Include="dialog\Item\BagPanel.Designer.cs">
       <DependentUpon>BagPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="dialog\Item\frmBag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dialog\Item\frmBag.Designer.cs">
+      <DependentUpon>frmBag.cs</DependentUpon>
+    </Compile>
     <Compile Include="dialog\Login\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dialog\Item\BagPanel.resx">
       <DependentUpon>BagPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dialog\Item\frmBag.resx">
+      <DependentUpon>frmBag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dialog\Login\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
