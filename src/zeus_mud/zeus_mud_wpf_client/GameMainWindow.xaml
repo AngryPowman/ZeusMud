@@ -43,7 +43,7 @@
             </MenuItem>
         </Menu>
 
-        <avalondock:DockingManager x:Name="dockManager" AllowMixedOrientation="True" Margin="6,52,6,4" FontFamily="Microsoft YaHei" FontWeight="Normal" OverridesDefaultStyle="False" SnapsToDevicePixels="False" Grid.ColumnSpan="2">
+        <avalondock:DockingManager x:Name="dockManager" AllowMixedOrientation="True" Margin="6,52,6,4" FontFamily="Microsoft YaHei" FontWeight="Normal" OverridesDefaultStyle="False" SnapsToDevicePixels="False" Grid.ColumnSpan="2" Loaded="dockManager_Loaded">
             <avalondock:DockingManager.Theme>
                 <avalondock:GenericTheme/>
             </avalondock:DockingManager.Theme>
@@ -65,8 +65,8 @@
                     <avalondock:LayoutPanel Orientation="Vertical">
                         <!--■多标签页定义-->
                         <avalondock:LayoutDocumentPaneGroup>
-                            <avalondock:LayoutDocumentPane>
-                                <avalondock:LayoutDocument Title="战斗">
+                            <avalondock:LayoutDocumentPane x:Name="documentsPane">
+                                <avalondock:LayoutDocument Title="战斗" x:Name="BattleTab">
                                     <WindowsFormsHost VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                                         <dialog:RoomListPanel></dialog:RoomListPanel>
                                     </WindowsFormsHost>

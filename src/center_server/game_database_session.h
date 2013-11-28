@@ -45,6 +45,8 @@ public:
     // ½ÇÉ«Ïà¹Ø
     //====================================================================
     bool loadPlayerInfo(uint64 guid, PlayerDB* playerDB);
+    bool savePlayerInfo(uint64 guid, PlayerDB* playerDB);
+
 
 private:
     Poco::Data::Session _db_session;

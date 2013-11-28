@@ -60,9 +60,7 @@ void PlayerManager::removePlayer(const uint64& guid)
     if (iter != _players.end())
     {
 		Player* player = iter->second;
-		player->onLeaveGame();
-
-		destroyPlayer(iter->second);
+		destroyPlayer(player);
         _players.erase(guid);
     }
 }

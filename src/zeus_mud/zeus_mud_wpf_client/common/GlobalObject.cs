@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using zeus_mud;
 using zeus_mud_wpf_client.dialog;
 using zeus_mud_wpf_client;
+using System.IO;
+using System.Windows.Forms;
 
 namespace Wpf.ZuesMud
 {
@@ -24,11 +26,27 @@ namespace Wpf.ZuesMud
         public static string ConfigPath = Environment.CurrentDirectory + @"\Config.xml";
         public static string DefaultServer { get {return "127.0.0.1";}}
         public static UInt16 DefaultPort { get {return 36911;}}
-        public static string Email2PhotoUrl( string email )
+
+        public class EmailToPhoto
         {
-            string avartarIdent = GameUtil.toMD5(email);
-            string url = "http://www.gravatar.com/avatar/" + avartarIdent;
-            return url;
+            public static string Url(string email)
+            {
+                string avartarIdent = GameUtil.toMD5(email);
+                string url = "http://www.gravatar.com/avatar/" + avartarIdent;
+                return url;
+            }
+
+            public static string UrlLocalCachePath
+            {
+                get
+                {
+                    var photopath = Path.Combine(Application.UserAppDataPath, "cache", "photo");
+                    Directory.CreateDirectory(photopath);
+                    return Path.Combine(photopath, "master");
+                }
+            }
+
+            public static System.Drawing.Image Avatar { get; set; }
         }
     }
 }

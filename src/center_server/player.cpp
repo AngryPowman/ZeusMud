@@ -4,7 +4,7 @@
 #include "player_db.h"
 
 Player::Player(uint64 guid, GameSession* session)
-    : _guid(guid), _playerDB(nullptr), _session(session)
+    : _guid(guid), _playerDB(nullptr), _session(session), _cachedLastLogin(0)
 {
 
 }
@@ -25,6 +25,11 @@ bool Player::loadFromDB()
     return _playerDB->loadFromDB(this->guid());
 }
 
+bool Player::saveToDB()
+{
+    return _playerDB->saveToDB(this->guid());
+}
+
 bool Player::loadFromMemCached()
 {
     return true;
@@ -32,7 +37,15 @@ bool Player::loadFromMemCached()
 
 void Player::onLeaveGame()
 {
+    this->lastLogin(_cachedLastLogin);
+    debug_log("Updated last login time to %ld.", _cachedLastLogin);
 
+    // ...
+    // save data to db
+    if (saveToDB() == false)
+    {
+        error_log("Save data error.");
+    }
 }
 
 void Player::nickname(const std::string& nickname)
@@ -55,29 +68,39 @@ GameSession* Player::session()
     return _session;
 }
 
-const uint64& Player::guid() const
+uint64 Player::guid() const
 {
     return _guid;
 }
 
-void Player::gender(const int32& gender)
+void Player::gender(int32 gender)
 {
     _playerDB->gender = gender;
 }
 
-const int32& Player::gender() const
+int32 Player::gender() const
 {
     return _playerDB->gender;
 }
 
-void Player::lastLogin(const int64& last_login)
+void Player::lastLogin(int64 last_login)
 {
     _playerDB->last_login = last_login;
 }
 
-const int64& Player::lastLogin() const
+int64 Player::lastLogin() const
 {
     return _playerDB->last_login;
+}
+
+void Player::cachedLastLogin(int64 last_login)
+{
+    _cachedLastLogin = last_login;
+}
+
+int64 Player::cachedLastLogin() const
+{
+    return _cachedLastLogin;
 }
 
 void Player::guildName(const std::string& guild_name)
@@ -90,12 +113,22 @@ const std::string& Player::guildName() const
     return _playerDB->guild_name;
 }
 
-void Player::guildId( const uint64& guild_id )
+void Player::guildId(uint64 guild_id)
 {
     _playerDB->guild_id = guild_id;
 }
 
-const uint64& Player::guildId() const
+uint64 Player::guildId() const
 {
     return _playerDB->guild_id;
+}
+
+void Player::gold(uint32 gold)
+{
+
+}
+
+uint32 Player::gold() const
+{
+    return 5000;
 }

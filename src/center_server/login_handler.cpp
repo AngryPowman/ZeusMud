@@ -80,8 +80,8 @@ void GameSession::user_login_handler(const NetworkMessage& message)
                     debug_log("Load player from db success. guid = %ull", guid);
                     debug_log("Total online player count = %d", PlayerManager::getInstance().playerCount());
 
-                    //设置上次登录时间
-                    //player->lastLogin(Poco::Timestamp().epochTime());
+                    //缓存上次登录时间为现在
+                    player->cachedLastLogin(Poco::Timestamp().epochTime());
 
                     //把玩家附加到该会话
                     attackPlayerPtr(player);

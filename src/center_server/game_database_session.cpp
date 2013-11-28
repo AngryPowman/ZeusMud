@@ -88,3 +88,21 @@ bool GameDatabaseSession::loadPlayerInfo(uint64 guid, PlayerDB* playerDB)
 
     return (_db_stmt.execute() > 0);
 }
+
+bool GameDatabaseSession::savePlayerInfo(uint64 guid, PlayerDB* playerDB)
+{
+    _db_stmt = (_db_session 
+        << "UPDATE users SET email = :email, gender = :gender, nickname = :nickname, register_ip = :register_ip, register_time = :register_time, last_login_time = :last_login_time "
+        "WHERE guid = :guid;",
+        Poco::Data::limit(1), 
+        Poco::Data::use(playerDB->email),
+        Poco::Data::use(playerDB->gender),
+        Poco::Data::use(playerDB->nickname),
+        Poco::Data::use(playerDB->register_ip),
+        Poco::Data::use(playerDB->register_time),
+        Poco::Data::use(playerDB->last_login),
+        Poco::Data::use(guid)
+        );
+
+    return (_db_stmt.execute() > 0);
+}

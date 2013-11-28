@@ -49,6 +49,10 @@ namespace zeus_mud_wpf_client.dialog
 
         void picAvatar_LoadCompleted(object sender, AsyncCompletedEventArgs e)
         {
+            hideLoadAvatarMessage();
+        }
+        void hideLoadAvatarMessage()
+        {
             lblLoadingTip.Visible = false;
         }
 
@@ -60,17 +64,29 @@ namespace zeus_mud_wpf_client.dialog
 
             picAvatar.LoadCompleted += picAvatar_LoadCompleted;
             picAvatar.LoadProgressChanged += picAvatar_LoadProgressChanged;
-            picAvatar.LoadAsync(GlobalObject.Email2PhotoUrl(LoginData.email).ToLower());
-            
+            if (GlobalObject.EmailToPhoto.Avatar != null)
+            {
+                picAvatar.Image = GlobalObject.EmailToPhoto.Avatar;
+                hideLoadAvatarMessage();
+                //一次非空，永远非空，因此可以不加锁。
+            }
+            else
+            {
+                picAvatar.LoadAsync(GlobalObject.EmailToPhoto.Url(LoginData.email).ToLower());
+            }
             //向服务器请求个人资料
             getPlayerProfileRequest();
         }
 
         private void ProfilePanel_Paint(object sender, PaintEventArgs e)
         {
-            lblNickname.BackColor = this.BackColor;
-            tlblEmail.BackColor = this.BackColor;
-            ltxtLastLogin.BackColor = this.BackColor;
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox)
+                {
+                    control.BackColor = this.BackColor;
+                }
+            }
         }
 
         /// <summary>
@@ -93,13 +109,22 @@ namespace zeus_mud_wpf_client.dialog
             PlayerProfile.nickname = Encoding.UTF8.GetString(response.nickname);
             PlayerProfile.gender = response.gender;
             PlayerProfile.last_login = response.last_login;
+            PlayerProfile.gold = response.gold;
 
             lblNickname.Text = PlayerProfile.nickname == null ? "-" : PlayerProfile.nickname;
             tlblEmail.Text = PlayerProfile.email == null ? "<无>" : "<" + PlayerProfile.email + ">";
 
-            DateTime dt = new DateTime(1970, 1, 1);
-            dt = dt.AddSeconds(PlayerProfile.last_login);
-            ltxtLastLogin.Text = dt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+            if (PlayerProfile.last_login > 0)
+            {
+                DateTime dt = new DateTime(1970, 1, 1);
+                dt = dt.AddSeconds(PlayerProfile.last_login);
+                ltxtLastLogin.Text = dt.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            else
+            {
+                ltxtLastLogin.Text = "从未";
+            }
+            ltxtGold.Text = PlayerProfile.gold.ToString();
         }
     }
 }

@@ -7,19 +7,10 @@
 class PlayerDB
 {
 public:
-    bool loadFromDB(uint64 guid)
-    {
-        return GameDatabaseSession::getInstance().loadPlayerInfo(guid, this);
-    }
-
+    bool loadFromDB(uint64 guid);
+    bool saveToDB(uint64 guid);
     void loadFromMemCached();
-    void cleanup()
-    {
-        gender = 0;
-        register_time = 0;
-        last_login = 0;
-        guild_id = 0;
-    }
+    void cleanup();
 
 public:
     std::string email;          //µÁ◊”” œ‰’ ∫≈
