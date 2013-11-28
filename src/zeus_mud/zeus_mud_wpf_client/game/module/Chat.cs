@@ -4,7 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Wpf.network;
+using zeus_mud_wpf_client.dialog;
 using zeus_mud_wpf_client.network;
 
 namespace zeus_mud.game.data
@@ -46,7 +48,7 @@ namespace zeus_mud.game.data
             wb.Navigate(pageurl);
             wb.AllowNavigation = false;
 
-            OpcodesProxy.registerHandler<ChatControl>(Opcodes.S2CChatMessageNotify, this.chatMessageCallback, this);
+            OpcodesProxy.registerHandler<GameChatPanel>(Opcodes.S2CChatMessageNotify, this.chatMessageCallback, (GameChatPanel)browser.Parent);
         }
 
 
@@ -124,7 +126,7 @@ namespace zeus_mud.game.data
                     chatRequest.chat_target_guid = 439715978;   // > Debug
                 }
 
-                chatRequest.chat_content = Encoding.Default.GetBytes(content);
+                chatRequest.chat_content = Encoding.UTF8.GetBytes(content);
                 NetworkEvent.sendPacket<Protocol.C2SChatMessageReq>(chatRequest);
             }
             else
@@ -165,9 +167,9 @@ namespace zeus_mud.game.data
             {
                 writeLine(
                     (MessageChannel)notify.chat_type,
-                    Encoding.Default.GetString(notify.chat_sender_nickname),
+                    Encoding.UTF8.GetString(notify.chat_sender_nickname),
                     notify.chat_sender_guid,
-                    Encoding.Default.GetString(notify.chat_content));
+                    Encoding.UTF8.GetString(notify.chat_content));
             }
             else
             {
@@ -175,7 +177,7 @@ namespace zeus_mud.game.data
                     (MessageChannel)notify.chat_type,
                     Encoding.UTF8.GetString(notify.chat_sender_nickname),
                     notify.chat_sender_guid,
-                    Encoding.Default.GetString(notify.chat_content));
+                    Encoding.UTF8.GetString(notify.chat_content));
             }
         }
     }

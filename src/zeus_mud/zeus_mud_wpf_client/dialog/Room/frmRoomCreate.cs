@@ -61,7 +61,7 @@ namespace zeus_mud_wpf_client.dialog
             Protocol.S2CRoomCreateRsp response = NetworkEvent.parseMessage<Protocol.S2CRoomCreateRsp>(e.message);
             if (response.room_create_result == true)
             {
-                GlobalObject.MainWindow.Show();
+                GlobalObject.MainWindowInstance.Show();
                 this.Close();
             }
             else

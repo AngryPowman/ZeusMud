@@ -156,8 +156,8 @@ namespace zeus_mud_wpf_client.dialog
             else
             {
                 MessageBox.Show(this, "注册成功，现在你可以体验精彩的游戏了。", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                GlobalObject.LoginForm.txtUsername.Text = txtEmail.Text;
-                GlobalObject.LoginForm.txtPassword.Text = txtPassword.Text;
+                GlobalObject.LoginWindowInstance.txtUsername.Text = txtEmail.Text;
+                GlobalObject.LoginWindowInstance.txtPassword.Text = txtPassword.Text;
                 this.Close();
             }
         }

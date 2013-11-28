@@ -79,7 +79,7 @@ namespace Wpf.network
         delegate void SendHeartbeatProxyDelegate();
         private static void heartbeatProcess(object sender, System.Timers.ElapsedEventArgs e)
         {
-            GlobalObject.ProfileForm.Invoke(new SendHeartbeatProxyDelegate(GlobalObject.ProfileForm.sendHeartbeatProxy));
+            GlobalObject.ProfilePanelInstance.Invoke(new SendHeartbeatProxyDelegate(GlobalObject.ProfilePanelInstance.sendHeartbeatProxy));
         }
 
         public static void stopHeartbeat()
@@ -142,6 +142,8 @@ namespace Wpf.network
                     return;
                 }
 
+                socket.BeginReceive(_recvBuffer, 0, _recvBuffer.Length, SocketFlags.None, new AsyncCallback(onReceived), _clientSocket);
+
                 MemoryStream streamPacket = new MemoryStream(_recvBuffer);
                 BinaryReader reader = new BinaryReader(streamPacket);
                 UInt32 len = reader.ReadUInt32();
@@ -165,7 +167,6 @@ namespace Wpf.network
                 }
 
                 Console.WriteLine("received {0} bytes.", bytesReceived);
-                socket.BeginReceive(_recvBuffer, 0, _recvBuffer.Length, SocketFlags.None, new AsyncCallback(onReceived), _clientSocket);
             }
             catch (System.Exception ex)
             {
@@ -177,9 +178,9 @@ namespace Wpf.network
         private static void onDisconnected(IAsyncResult result)
         {
             ErrorMessageDelegate show_disconnect
-                = new ErrorMessageDelegate(GlobalObject.MainWindow.showDisconnectError);
+                = new ErrorMessageDelegate(GlobalObject.MainWindowInstance.showDisconnectError);
 
-            GlobalObject.MainWindow.Dispatcher.Invoke(show_disconnect, new object[] 
+            GlobalObject.MainWindowInstance.Dispatcher.Invoke(show_disconnect, new object[] 
             {
                 "网络异常", "网络连接中断，请尝试重新进入中二世界！"
             });

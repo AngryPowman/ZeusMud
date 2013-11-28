@@ -44,7 +44,7 @@ namespace zeus_mud_wpf_client.dialog
 
         private void button2_Click(object sender, EventArgs e)
         {
-            GlobalObject.RoomListPanelForm.Password = textBox1.Text;
+            GlobalObject.RoomListPanelInstance.Password = textBox1.Text;
             this.Close();
         }
 

@@ -68,7 +68,7 @@
                             <avalondock:LayoutDocumentPane x:Name="documentsPane">
                                 <avalondock:LayoutDocument Title="战斗" x:Name="BattleTab">
                                     <WindowsFormsHost VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                                        <dialog:RoomListPanel></dialog:RoomListPanel>
+                                        <dialog:RoomListPanel x:Name="BattleRoomList"></dialog:RoomListPanel>
                                     </WindowsFormsHost>
                                 </avalondock:LayoutDocument>
                                 <avalondock:LayoutDocument Title="真实商店">

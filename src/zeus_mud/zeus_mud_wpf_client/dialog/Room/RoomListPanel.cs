@@ -29,6 +29,7 @@ namespace zeus_mud_wpf_client.dialog
         public RoomListPanel()
         {
             InitializeComponent();
+
             //注册请求消息回调
             OpcodesProxy.registerHandler<RoomListPanel>(Opcodes.S2CGetRoomListRsp, this.getRoomListCallBack, this);
             OpcodesProxy.registerHandler<RoomListPanel>(Opcodes.S2CNewRoomAddNotify, this.newRoomAddCallBack, this);
@@ -38,14 +39,15 @@ namespace zeus_mud_wpf_client.dialog
 
         private void RoomListPanel_Load(object sender, EventArgs e)
         {
-            Protocol.C2SGetRoomListReq request = new Protocol.C2SGetRoomListReq();
-            NetworkEvent.sendPacket<Protocol.C2SGetRoomListReq>(request);
-            GlobalObject.RoomListPanelForm = this;
+            GlobalObject.RoomListPanelInstance = this;
+
+            getRoomRequest();
         }
 
         public void getRoomRequest()
         {
-
+            Protocol.C2SGetRoomListReq request = new Protocol.C2SGetRoomListReq();
+            NetworkEvent.sendPacket<Protocol.C2SGetRoomListReq>(request);
         }
         /// <summary>
         /// 房间信息修改提示回调

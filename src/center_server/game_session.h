@@ -18,7 +18,7 @@ class GameSession
 		static const int32 HEARTBEAT_TIME  = 10000;    //心跳报时时间（毫秒）
 		static const int32 DEVIATION_VALUE = 3000;     //允许误差值（毫秒）
         static const int32 CHECK_PERIOD    = 12000;    //检查周期（毫秒），必须大于或等于心跳周期
-        static const int32 FAILED_COUNT    = 3;        //到达该失败次数后踢掉连接
+        static const int32 FAILED_COUNT    = 100;        //到达该失败次数后踢掉连接
 
 		static const int32 DOWN_DEVIATION_VALUE = HEARTBEAT_TIME - DEVIATION_VALUE;
 		static const int32 UP_DEVIATION_VALUE = HEARTBEAT_TIME + DEVIATION_VALUE;

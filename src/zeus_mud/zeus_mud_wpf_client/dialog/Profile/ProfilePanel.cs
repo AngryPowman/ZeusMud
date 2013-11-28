@@ -75,7 +75,7 @@ namespace zeus_mud_wpf_client.dialog
                 picAvatar.LoadAsync(GlobalObject.EmailToPhoto.Url(LoginData.email).ToLower());
             }
             //向服务器请求个人资料
-            getPlayerProfileRequest();
+            //getPlayerProfileRequest();
         }
 
         private void ProfilePanel_Paint(object sender, PaintEventArgs e)
@@ -129,11 +129,11 @@ namespace zeus_mud_wpf_client.dialog
 
         private void lnkOpenBag_LinkClicked(object sender, EventArgs e)
         {
-            if (GlobalObject.BagWindow == null)
+            if (GlobalObject.BagWindowInstance == null)
             {
-                GlobalObject.BagWindow = new Item.frmBag();
+                GlobalObject.BagWindowInstance = new Item.frmBag();
             }
-            GlobalObject.BagWindow.ShowDialog();
+            GlobalObject.BagWindowInstance.ShowDialog();
         }
     }
 }

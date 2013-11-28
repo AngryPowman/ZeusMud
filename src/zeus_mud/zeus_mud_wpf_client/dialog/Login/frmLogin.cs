@@ -32,8 +32,8 @@ namespace zeus_mud
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (GlobalObject.RegisterForm == null) GlobalObject.RegisterForm = new frmRegister();
-            GlobalObject.RegisterForm.ShowDialog();
+            if (GlobalObject.RegisterWindowInstance == null) GlobalObject.RegisterWindowInstance = new frmRegister();
+            GlobalObject.RegisterWindowInstance.ShowDialog();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -91,8 +91,8 @@ namespace zeus_mud
             {
                 saveXml();
                 LoginData.email = PlayerProfile.email = txtUsername.Text;
-                GlobalObject.MainWindow = new GameMainWindow();
-                GlobalObject.MainWindow.Show();
+                GlobalObject.MainWindowInstance = new GameMainWindow();
+                GlobalObject.MainWindowInstance.Show();
                 this.Hide();//XXX: 若要关闭当前窗口，需要注意下头closed逻辑
             }
             else

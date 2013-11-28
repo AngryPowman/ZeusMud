@@ -40,13 +40,14 @@ namespace zeus_mud_wpf_client
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            GlobalObject.ProfileForm = this.PlayerProfile;
+            GlobalObject.ProfilePanelInstance = this.PlayerProfile;
+            GlobalObject.RoomListPanelInstance = this.BattleRoomList;
         }
 
         public void showDisconnectError(string caption, string message)
         {
             System.Windows.MessageBox.Show(
-                GlobalObject.MainWindow,
+                GlobalObject.MainWindowInstance,
                 message, caption,
                 System.Windows.MessageBoxButton.OK,
                 System.Windows.MessageBoxImage.Error);
