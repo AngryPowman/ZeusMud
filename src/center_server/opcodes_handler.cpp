@@ -16,4 +16,7 @@ OpcodeTable::OpcodeTable()
     DEFINE_HANDLER(C2SGetPlayerProfileReq, get_player_profile_handler);
     DEFINE_HANDLER(C2SChatMessageReq, chat_message_handler);
     DEFINE_HANDLER(C2SRoomCreateReq, room_create_handler);
+    DEFINE_HANDLER(C2SSRoomInfoChangeReq, room_info_change_handler);
+    DEFINE_HANDLER(C2SGetRoomListReq, get_room_list_handler);
+    DEFINE_HANDLER(C2SEnterRoomReq, enter_room_handler);
 }

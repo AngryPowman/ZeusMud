@@ -34,10 +34,11 @@ void protobuf_AssignDesc_21008_5fS2CRoomInfoChangeNotify_2eproto() {
       "21008_S2CRoomInfoChangeNotify.proto");
   GOOGLE_CHECK(file != NULL);
   S2CSRoomInfoChangeNotify_descriptor_ = file->message_type(0);
-  static const int S2CSRoomInfoChangeNotify_offsets_[3] = {
+  static const int S2CSRoomInfoChangeNotify_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CSRoomInfoChangeNotify, room_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CSRoomInfoChangeNotify, room_name_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CSRoomInfoChangeNotify, player_count_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CSRoomInfoChangeNotify, players_count_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(S2CSRoomInfoChangeNotify, public__),
   };
   S2CSRoomInfoChangeNotify_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -81,9 +82,9 @@ void protobuf_AddDesc_21008_5fS2CRoomInfoChangeNotify_2eproto() {
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n#21008_S2CRoomInfoChangeNotify.proto\022\010P"
-    "rotocol\"T\n\030S2CSRoomInfoChangeNotify\022\017\n\007r"
-    "oom_id\030\001 \002(\r\022\021\n\troom_name\030\002 \001(\t\022\024\n\014playe"
-    "r_count\030\003 \001(\r", 133);
+    "rotocol\"e\n\030S2CSRoomInfoChangeNotify\022\017\n\007r"
+    "oom_id\030\001 \002(\r\022\021\n\troom_name\030\002 \001(\t\022\025\n\rplaye"
+    "rs_count\030\003 \001(\r\022\016\n\006public\030\004 \001(\010", 150);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "21008_S2CRoomInfoChangeNotify.proto", &protobuf_RegisterTypes);
   S2CSRoomInfoChangeNotify::default_instance_ = new S2CSRoomInfoChangeNotify();
@@ -103,7 +104,8 @@ struct StaticDescriptorInitializer_21008_5fS2CRoomInfoChangeNotify_2eproto {
 #ifndef _MSC_VER
 const int S2CSRoomInfoChangeNotify::kRoomIdFieldNumber;
 const int S2CSRoomInfoChangeNotify::kRoomNameFieldNumber;
-const int S2CSRoomInfoChangeNotify::kPlayerCountFieldNumber;
+const int S2CSRoomInfoChangeNotify::kPlayersCountFieldNumber;
+const int S2CSRoomInfoChangeNotify::kPublicFieldNumber;
 #endif  // !_MSC_VER
 
 S2CSRoomInfoChangeNotify::S2CSRoomInfoChangeNotify()
@@ -124,7 +126,8 @@ void S2CSRoomInfoChangeNotify::SharedCtor() {
   _cached_size_ = 0;
   room_id_ = 0u;
   room_name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  player_count_ = 0u;
+  players_count_ = 0u;
+  public__ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -169,7 +172,8 @@ void S2CSRoomInfoChangeNotify::Clear() {
         room_name_->clear();
       }
     }
-    player_count_ = 0u;
+    players_count_ = 0u;
+    public__ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -209,19 +213,35 @@ bool S2CSRoomInfoChangeNotify::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_player_count;
+        if (input->ExpectTag(24)) goto parse_players_count;
         break;
       }
 
-      // optional uint32 player_count = 3;
+      // optional uint32 players_count = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_player_count:
+         parse_players_count:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &player_count_)));
-          set_has_player_count();
+                 input, &players_count_)));
+          set_has_players_count();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_public;
+        break;
+      }
+
+      // optional bool public = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_public:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &public__)));
+          set_has_public_();
         } else {
           goto handle_uninterpreted;
         }
@@ -261,9 +281,14 @@ void S2CSRoomInfoChangeNotify::SerializeWithCachedSizes(
       2, this->room_name(), output);
   }
 
-  // optional uint32 player_count = 3;
-  if (has_player_count()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->player_count(), output);
+  // optional uint32 players_count = 3;
+  if (has_players_count()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(3, this->players_count(), output);
+  }
+
+  // optional bool public = 4;
+  if (has_public_()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->public_(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -289,9 +314,14 @@ void S2CSRoomInfoChangeNotify::SerializeWithCachedSizes(
         2, this->room_name(), target);
   }
 
-  // optional uint32 player_count = 3;
-  if (has_player_count()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->player_count(), target);
+  // optional uint32 players_count = 3;
+  if (has_players_count()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(3, this->players_count(), target);
+  }
+
+  // optional bool public = 4;
+  if (has_public_()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->public_(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -319,11 +349,16 @@ int S2CSRoomInfoChangeNotify::ByteSize() const {
           this->room_name());
     }
 
-    // optional uint32 player_count = 3;
-    if (has_player_count()) {
+    // optional uint32 players_count = 3;
+    if (has_players_count()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt32Size(
-          this->player_count());
+          this->players_count());
+    }
+
+    // optional bool public = 4;
+    if (has_public_()) {
+      total_size += 1 + 1;
     }
 
   }
@@ -359,8 +394,11 @@ void S2CSRoomInfoChangeNotify::MergeFrom(const S2CSRoomInfoChangeNotify& from) {
     if (from.has_room_name()) {
       set_room_name(from.room_name());
     }
-    if (from.has_player_count()) {
-      set_player_count(from.player_count());
+    if (from.has_players_count()) {
+      set_players_count(from.players_count());
+    }
+    if (from.has_public_()) {
+      set_public_(from.public_());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -388,7 +426,8 @@ void S2CSRoomInfoChangeNotify::Swap(S2CSRoomInfoChangeNotify* other) {
   if (other != this) {
     std::swap(room_id_, other->room_id_);
     std::swap(room_name_, other->room_name_);
-    std::swap(player_count_, other->player_count_);
+    std::swap(players_count_, other->players_count_);
+    std::swap(public__, other->public__);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

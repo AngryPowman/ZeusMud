@@ -32,6 +32,8 @@ namespace zeus_mud_wpf_client.dialog
             //注册请求消息回调
             OpcodesProxy.registerHandler<RoomListPanel>(Opcodes.S2CGetRoomListRsp, this.getRoomListCallBack, this);
             OpcodesProxy.registerHandler<RoomListPanel>(Opcodes.S2CNewRoomAddNotify, this.newRoomAddCallBack, this);
+            OpcodesProxy.registerHandler<RoomListPanel>(Opcodes.S2CEnterRoomRsp, this.enterRoomCallBack, this);
+            OpcodesProxy.registerHandler<RoomListPanel>(Opcodes.S2CSRoomInfoChangeNotify, this.roomInfoChangeNotifyCallBack, this);
         }
 
         private void RoomListPanel_Load(object sender, EventArgs e)
@@ -45,7 +47,58 @@ namespace zeus_mud_wpf_client.dialog
         {
 
         }
-
+        /// <summary>
+        /// 房间信息修改提示回调
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void roomInfoChangeNotifyCallBack(object sender, NetworkMessageEventArgs e)
+        {
+            Protocol.S2CSRoomInfoChangeNotify response = NetworkEvent.parseMessage<Protocol.S2CSRoomInfoChangeNotify>(e.message);
+            if (response.room_id <= listView1.Items.Count)
+            {
+                //room id 的索引是从1开始
+                ListViewItem lvi = listView1.Items[(int)response.room_id - 1];
+                if (response.room_name != null)
+                {
+                    lvi.SubItems[1].Text = response.room_name;
+                }
+                if (response.players_count != 0)
+                {
+                    lvi.SubItems[2].Text = response.players_count.ToString();
+                }
+                if (response.@public)
+                {
+                    lvi.SubItems[3].Text = "公开";
+                }
+                else
+                {
+                    lvi.SubItems[3].Text = "不公开";
+                }
+            }
+        }
+        /// <summary>
+        /// 进入房间请求回调
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void enterRoomCallBack(object sender, NetworkMessageEventArgs e)
+        {
+            Protocol.S2CEnterRoomRsp response = NetworkEvent.parseMessage<Protocol.S2CEnterRoomRsp>(e.message);
+            if (response.result == false)
+            {
+                MessageBox.Show("房间已满。");
+            }
+            else
+            {
+                MessageBox.Show("进入房间成功。");
+            }
+        }
+        /// <summary>
+        /// 添加房间提示回调
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void newRoomAddCallBack(object sender, NetworkMessageEventArgs e)
         {
             Protocol.S2CNewRoomAddNotify response = NetworkEvent.parseMessage<Protocol.S2CNewRoomAddNotify>(e.message);
@@ -62,7 +115,11 @@ namespace zeus_mud_wpf_client.dialog
             }
             
         }
-
+        /// <summary>
+        /// 请求房间列表回调
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void getRoomListCallBack(object sender, NetworkMessageEventArgs e)
         {
             Protocol.S2CGetRoomListRsp response = NetworkEvent.parseMessage<Protocol.S2CGetRoomListRsp>(e.message);
@@ -87,7 +144,7 @@ namespace zeus_mud_wpf_client.dialog
             ListViewItem selItem = listView1.SelectedItems[0];
 
             //房间是否已满
-            if (MAX_MEMBER > uint.Parse(selItem.SubItems[2].Text))
+            if (MAX_MEMBER <= uint.Parse(selItem.SubItems[2].Text))
             {
                 MessageBox.Show("房间已满。");
                 return;
