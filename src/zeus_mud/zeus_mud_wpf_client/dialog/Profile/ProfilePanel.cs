@@ -23,13 +23,13 @@ namespace zeus_mud_wpf_client.dialog
         public ProfilePanel()
         {
             InitializeComponent();
-
-            //登录消息注册
-            OpcodesProxy.registerHandler<ProfilePanel>(Opcodes.S2CGetPlayerProfileRsp, this.getPlayerProfileCallback, this);
         }
 
         private void frmProfile_Load(object sender, EventArgs e)
         {
+            //登录消息注册
+            OpcodesProxy.registerHandler<ProfilePanel>(Opcodes.S2CGetPlayerProfileRsp, this.getPlayerProfileCallback, this);
+
             loadProfile();
 
             //开始心跳线程
@@ -75,7 +75,7 @@ namespace zeus_mud_wpf_client.dialog
                 picAvatar.LoadAsync(GlobalObject.EmailToPhoto.Url(LoginData.email).ToLower());
             }
             //向服务器请求个人资料
-            //getPlayerProfileRequest();
+            getPlayerProfileRequest();
         }
 
         private void ProfilePanel_Paint(object sender, PaintEventArgs e)

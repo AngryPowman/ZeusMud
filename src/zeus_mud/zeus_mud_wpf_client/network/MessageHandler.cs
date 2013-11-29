@@ -48,7 +48,7 @@ namespace zeus_mud_wpf_client.network
             {
                 ;
             } 
-
+        
             if (control.IsHandleCreated)
             {
                 object returnValue = method.Invoke(handlerInfo.proxy_object, flag, Type.DefaultBinder, parameters, null);

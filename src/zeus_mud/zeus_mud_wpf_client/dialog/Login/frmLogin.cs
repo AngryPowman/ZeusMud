@@ -25,9 +25,6 @@ namespace zeus_mud
         public frmLogin()
         {
             InitializeComponent();
-
-            //登录消息注册
-            OpcodesProxy.registerHandler<frmLogin>(Opcodes.S2CLoginRsp, this.userLoginCallback, this);
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -177,7 +174,10 @@ namespace zeus_mud
         //========================================================================================
 
         private void frmLogin_Load(object sender, EventArgs e)
-        {            
+        {
+            //登录消息注册
+            OpcodesProxy.registerHandler<frmLogin>(Opcodes.S2CLoginRsp, this.userLoginCallback, this);
+
             NetworkEvent.init();
             loadXml();
             if (File.Exists(GlobalObject.EmailToPhoto.UrlLocalCachePath))

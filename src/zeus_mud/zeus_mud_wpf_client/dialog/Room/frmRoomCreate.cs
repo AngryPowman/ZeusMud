@@ -21,9 +21,6 @@ namespace zeus_mud_wpf_client.dialog
         public frmRoomCreate()
         {
             InitializeComponent();
-
-            //注册请求消息回调
-            OpcodesProxy.registerHandler<frmRoomCreate>(Opcodes.S2CRoomCreateRsp, this.roomCreateCallBack, this);
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
@@ -101,7 +98,8 @@ namespace zeus_mud_wpf_client.dialog
 
         private void frmGameCreate_Load(object sender, EventArgs e)
         {
-
+            //注册请求消息回调
+            OpcodesProxy.registerHandler<frmRoomCreate>(Opcodes.S2CRoomCreateRsp, this.roomCreateCallBack, this);
         }
     }
 }

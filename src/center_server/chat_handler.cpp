@@ -35,9 +35,8 @@ void GameSession::chat_message_handler(const NetworkMessage& message)
         case ChannelGuild:
         case ChannelWorld:
         {
-            //GameSessionManager::getInstance().broadcast
-            //    <Protocol::S2CChatMessageNotify>(Opcodes::S2CChatMessageNotify, chatMessageNotify);
-            send_message<Protocol::S2CChatMessageNotify>(Opcodes::S2CChatMessageNotify, chatMessageNotify);
+            GameSessionManager::getInstance().broadcast
+                <Protocol::S2CChatMessageNotify>(Opcodes::S2CChatMessageNotify, chatMessageNotify);
             break;
         }
         case ChannelPrivate:
