@@ -1,5 +1,6 @@
 #include "room_manager.h"
-
+#include <protobuf.h>
+#include "game_session_manager.h"
 
 RoomManager::RoomManager()
 {
@@ -102,4 +103,23 @@ bool RoomManager::leaveRoom( uint32 room_id, uint64 player_id )
     }
     it->second->removeMember(player_id);
     return true;
+}
+
+void RoomManager::broadcast_room_add(uint32 id, const std::string& roomName, bool isPublic)
+{
+    Protocol::S2CNewRoomAddNotify response;
+    response.set_room_id(id);
+    response.set_room_name(roomName);
+    response.set_public_(isPublic);
+    GameSessionManager::getInstance().broadcast<Protocol::S2CNewRoomAddNotify>(Opcodes::S2CNewRoomAddNotify, response);
+}
+
+void RoomManager::broadcast_room_info_change(uint32 room_id, const std::string& roomName, uint32 playersCount, bool isPublic)
+{
+    Protocol::S2CSRoomInfoChangeNotify response;
+    response.set_room_id(room_id);
+    response.set_room_name(roomName);
+    response.set_players_count(playersCount);
+    response.set_public_(isPublic);
+    GameSessionManager::getInstance().broadcast<Protocol::S2CSRoomInfoChangeNotify>(Opcodes::S2CSRoomInfoChangeNotify, response);
 }

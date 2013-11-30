@@ -31,6 +31,10 @@ public:
     bool enterRoom(uint32 room_id, uint64 player_id);
     bool leaveRoom(uint32 room_id, uint64 player_id);
 
+    void broadcast_room_add(uint32 id, const std::string& roomName, bool isPublic);
+    void broadcast_room_info_change(uint32 room_id, const std::string& roomName, uint32 playersCount, bool isPublic);
+
+
 private:
     adap_map<uint32, Room*> _rooms;
     std::vector<uint32> _freeIds;
