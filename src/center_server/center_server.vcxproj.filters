@@ -55,6 +55,36 @@
     <ClInclude Include="session_io.h">
       <Filter>network</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\autolink.h">
+      <Filter>configuration\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\config.h">
+      <Filter>configuration\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\features.h">
+      <Filter>configuration\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\forwards.h">
+      <Filter>configuration\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\json.h">
+      <Filter>configuration\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\reader.h">
+      <Filter>configuration\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\value.h">
+      <Filter>configuration\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\writer.h">
+      <Filter>configuration\json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\jsonlib\lib_json\json_batchallocator.h">
+      <Filter>configuration\json</Filter>
+    </ClInclude>
+    <ClInclude Include="item_storage.h">
+      <Filter>manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="center_server.cpp" />
@@ -102,6 +132,18 @@
     <ClCompile Include="player_db.cpp">
       <Filter>data\dbc</Filter>
     </ClCompile>
+    <ClCompile Include="bag_handler.cpp">
+      <Filter>handler\logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\jsonlib\lib_json\json_reader.cpp">
+      <Filter>configuration\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\jsonlib\lib_json\json_value.cpp">
+      <Filter>configuration\json</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\jsonlib\lib_json\json_writer.cpp">
+      <Filter>configuration\json</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="network">
@@ -131,5 +173,25 @@
     <Filter Include="handler\logic">
       <UniqueIdentifier>{87ffc5bc-8f6b-46cd-b3cd-c9828f0c31a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="configuration">
+      <UniqueIdentifier>{89ec82e2-9c22-4a58-94a3-7dfbff301d78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="configuration\json">
+      <UniqueIdentifier>{c8da80bd-ce26-48e4-9224-416f507e92a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="configuration\game_config">
+      <UniqueIdentifier>{d83416b5-d8bc-41f3-bc0b-0b265693eb68}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\3rdparty\jsonlib\lib_json\json_internalarray.inl">
+      <Filter>configuration\json</Filter>
+    </None>
+    <None Include="..\..\3rdparty\jsonlib\lib_json\json_internalmap.inl">
+      <Filter>configuration\json</Filter>
+    </None>
+    <None Include="..\..\3rdparty\jsonlib\lib_json\json_valueiterator.inl">
+      <Filter>configuration\json</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -5,9 +5,17 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -22,7 +30,20 @@
     <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
@@ -35,14 +56,26 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -52,8 +85,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);BOOST_ALL_NO_LIB;_WIN32_WINNT=0x0501</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../venus_net;../../3rdparty;../../3rdparty/poco/Data/SQLite/include;../../3rdparty/poco/Data/include;../../3rdparty/poco/Foundation/include;../../3rdparty/poco/Util/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>../venus_net;../../3rdparty;../../3rdparty/poco/Data/SQLite/include;../../3rdparty/poco/Data/include;../../3rdparty/poco/Foundation/include;../../3rdparty/poco/Util/include;../../3rdparty/jsonlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4099;</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
@@ -62,7 +94,30 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>venus_net.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutputPath);../../lib/poco_libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/poco/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist "../../output/mud_server" mkdir "../../output/mud_server"
+xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);BOOST_ALL_NO_LIB;_WIN32_WINNT=0x0501</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../venus_net;../../3rdparty;../../3rdparty/poco/Data/SQLite/include;../../3rdparty/poco/Data/include;../../3rdparty/poco/Foundation/include;../../3rdparty/poco/Util/include;../../3rdparty/jsonlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4099;</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MinimalRebuild>false</MinimalRebuild>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>venus_net.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/poco/lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "../../output/mud_server" mkdir "../../output/mud_server"
@@ -78,8 +133,7 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);BOOST_ALL_NO_LIB;_WIN32_WINNT=0x0501</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>../venus_net;../../3rdparty;../../3rdparty/poco/Data/SQLite/include;../../3rdparty/poco/Data/include;../../3rdparty/poco/Foundation/include;../../3rdparty/poco/Util/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>../venus_net;../../3rdparty;../../3rdparty/poco/Data/SQLite/include;../../3rdparty/poco/Data/include;../../3rdparty/poco/Foundation/include;../../3rdparty/poco/Util/include;../../3rdparty/jsonlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4099;</DisableSpecificWarnings>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -89,7 +143,33 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>venus_net.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutputPath);../../lib/poco_libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/poco/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <PostBuildEvent>
+      <Command>if not exist "../../output/mud_server" mkdir "../../output/mud_server"
+xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);BOOST_ALL_NO_LIB;_WIN32_WINNT=0x0501</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>../venus_net;../../3rdparty;../../3rdparty/poco/Data/SQLite/include;../../3rdparty/poco/Data/include;../../3rdparty/poco/Foundation/include;../../3rdparty/poco/Util/include;../../3rdparty/jsonlib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4099;</DisableSpecificWarnings>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>venus_net.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/poco/lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>if not exist "../../output/mud_server" mkdir "../../output/mud_server"
@@ -97,7 +177,17 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\autolink.h" />
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\config.h" />
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\features.h" />
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\forwards.h" />
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\json.h" />
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\reader.h" />
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\value.h" />
+    <ClInclude Include="..\..\3rdparty\jsonlib\json\writer.h" />
+    <ClInclude Include="..\..\3rdparty\jsonlib\lib_json\json_batchallocator.h" />
     <ClInclude Include="game_object.h" />
+    <ClInclude Include="item_storage.h" />
     <ClInclude Include="network_proxy.h" />
     <ClInclude Include="player_db.h" />
     <ClInclude Include="game_database_session.h" />
@@ -119,6 +209,10 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     <ClInclude Include="session_io.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\3rdparty\jsonlib\lib_json\json_reader.cpp" />
+    <ClCompile Include="..\..\3rdparty\jsonlib\lib_json\json_value.cpp" />
+    <ClCompile Include="..\..\3rdparty\jsonlib\lib_json\json_writer.cpp" />
+    <ClCompile Include="bag_handler.cpp" />
     <ClCompile Include="chat_handler.cpp" />
     <ClCompile Include="game_database_session.cpp" />
     <ClCompile Include="game_service.cpp" />
@@ -136,6 +230,17 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     <ClCompile Include="player_manager.cpp" />
     <ClCompile Include="room_handler.cpp" />
     <ClCompile Include="room_manager.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\3rdparty\jsonlib\lib_json\json_internalarray.inl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\3rdparty\jsonlib\lib_json\json_internalmap.inl">
+      <FileType>Document</FileType>
+    </None>
+    <None Include="..\..\3rdparty\jsonlib\lib_json\json_valueiterator.inl">
+      <FileType>Document</FileType>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
