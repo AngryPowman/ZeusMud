@@ -73,6 +73,9 @@ public:
     void broadcast_room_info_change(uint32 room_id, const std::string& roomName, uint32 playersCount, bool isPublic);
     void room_info_change_handler(const NetworkMessage& message);
 
+    //ÎïÆ·Ä£¿é
+    void get_bag_items_handler(const NetworkMessage& message);
+
 private:
     void startHeartbeatCheck(long interval = SessionHeartbeat::CHECK_PERIOD);
     void stopHeartbeatCheck();
