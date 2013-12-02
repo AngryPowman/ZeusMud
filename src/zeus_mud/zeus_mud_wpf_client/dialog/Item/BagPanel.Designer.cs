@@ -32,7 +32,6 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnUseItem = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,8 +47,7 @@
             this.lsvItems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeader3});
             this.lsvItems.FullRowSelect = true;
             this.lsvItems.GridLines = true;
             this.lsvItems.Location = new System.Drawing.Point(4, 3);
@@ -63,22 +61,17 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "物品名称";
-            this.columnHeader1.Width = 128;
+            this.columnHeader1.Width = 156;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "持有数量";
-            this.columnHeader2.Width = 98;
+            this.columnHeader2.Width = 151;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "物品类型";
             this.columnHeader3.Width = 133;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "获得途径";
-            this.columnHeader4.Width = 120;
             // 
             // btnUseItem
             // 
@@ -156,7 +149,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button btnUseItem;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;

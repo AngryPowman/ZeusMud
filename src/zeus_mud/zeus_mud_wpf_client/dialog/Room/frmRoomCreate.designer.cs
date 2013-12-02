@@ -92,7 +92,7 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "房间密码";
             // 
-            // frmGameCreate
+            // frmRoomCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -105,8 +105,8 @@
             this.Controls.Add(this.btnCreate);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmGameCreate";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Name = "frmRoomCreate";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "创建游戏";
             this.Load += new System.EventHandler(this.frmGameCreate_Load);
             this.ResumeLayout(false);

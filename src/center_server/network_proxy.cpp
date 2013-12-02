@@ -78,6 +78,8 @@ void NetworkProxy::__internalNewConnectionEvent(const TcpConnectionPtr& connecti
 
 void NetworkProxy::__internalDataWriteFinishedEvent(const TcpConnectionPtr& connection, const DataWriteFinishedEventArgs& args)
 {
+    info_log("send data :");
+    info_log("  bytes_transferred = %d", args.data_len);
 }
 
 void NetworkProxy::__internalDataReadEvent(const TcpConnectionPtr& connection, const DataReadEventArgs& args)

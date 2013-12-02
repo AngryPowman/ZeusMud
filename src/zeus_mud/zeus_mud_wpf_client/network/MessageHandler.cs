@@ -6,11 +6,13 @@
 //===================================================================
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Wpf.network;
 
 namespace zeus_mud_wpf_client.network
@@ -40,7 +42,21 @@ namespace zeus_mud_wpf_client.network
             };
 
             BindingFlags flag = BindingFlags.Public | BindingFlags.Instance;
-            object returnValue = method.Invoke(handlerInfo.proxy_object, flag, Type.DefaultBinder, parameters, null);
+            Control control = handlerInfo.proxy_object as Control;
+
+            while (!control.IsHandleCreated)
+            {
+                ;
+            } 
+        
+            if (control.IsHandleCreated)
+            {
+                object returnValue = method.Invoke(handlerInfo.proxy_object, flag, Type.DefaultBinder, parameters, null);
+            }
+            else 
+            {
+                Debug.Print("Object handle not created!");
+            }
         }
     }
 

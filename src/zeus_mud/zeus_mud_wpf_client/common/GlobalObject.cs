@@ -15,22 +15,22 @@ namespace Wpf.ZuesMud
     class GlobalObject
     {
         //登录窗口实例
-        public static frmLogin LoginForm { get; set; }
+        public static frmLogin LoginWindowInstance { get; set; }
 
         //注册窗口实例
-        public static frmRegister RegisterForm { get; set; }
+        public static frmRegister RegisterWindowInstance { get; set; }
 
         //游戏主窗口实例
-        public static GameMainWindow MainWindow { get; set; }
+        public static GameMainWindow MainWindowInstance { get; set; }
 
         //玩家信息面板实例
-        public static ProfilePanel ProfileForm { get; set; }
+        public static ProfilePanel ProfilePanelInstance { get; set; }
 
         //房间列表面板实例
-        public static RoomListPanel RoomListPanelForm { get; set; }
+        public static RoomListPanel RoomListPanelInstance { get; set; }
 
         //背包窗口实例
-        public static frmBag BagWindow { get; set; }
+        public static frmBag BagWindowInstance { get; set; }
 
 
         public static string ConfigPath = Environment.CurrentDirectory + @"\Config.xml";

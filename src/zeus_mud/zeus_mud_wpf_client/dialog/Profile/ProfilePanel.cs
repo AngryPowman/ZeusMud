@@ -23,13 +23,13 @@ namespace zeus_mud_wpf_client.dialog
         public ProfilePanel()
         {
             InitializeComponent();
-
-            //登录消息注册
-            OpcodesProxy.registerHandler<ProfilePanel>(Opcodes.S2CGetPlayerProfileRsp, this.getPlayerProfileCallback, this);
         }
 
         private void frmProfile_Load(object sender, EventArgs e)
         {
+            //登录消息注册
+            OpcodesProxy.registerHandler<ProfilePanel>(Opcodes.S2CGetPlayerProfileRsp, this.getPlayerProfileCallback, this);
+
             loadProfile();
 
             //开始心跳线程
@@ -129,11 +129,11 @@ namespace zeus_mud_wpf_client.dialog
 
         private void lnkOpenBag_LinkClicked(object sender, EventArgs e)
         {
-            if (GlobalObject.BagWindow == null)
+            if (GlobalObject.BagWindowInstance == null)
             {
-                GlobalObject.BagWindow = new Item.frmBag();
+                GlobalObject.BagWindowInstance = new Item.frmBag();
             }
-            GlobalObject.BagWindow.ShowDialog();
+            GlobalObject.BagWindowInstance.ShowDialog();
         }
     }
 }

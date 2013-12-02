@@ -25,8 +25,8 @@ namespace zeus_mud_wpf_client
             System.Windows.Forms.Application.SetCompatibleTextRenderingDefault(false);
 
             //曲线救国，在启动器中实例化Winform对象
-            GlobalObject.LoginForm = new frmLogin();
-            GlobalObject.LoginForm.Show();
+            GlobalObject.LoginWindowInstance = new frmLogin();
+            GlobalObject.LoginWindowInstance.Show();
         }
     }
 }
