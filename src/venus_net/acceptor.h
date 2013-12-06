@@ -5,6 +5,8 @@
 #include "inet_address.h"
 #include "network_common.h"
 #include "io_service.h"
+#include "tcp_connection_manager.h"
+
 
 using namespace boost::asio;
 
