@@ -44,3 +44,5 @@ bin32/
 obj32/
 /3rdparty/google/protobuf/vsprojects/debug_static_mt/*.lastbuildstate
 /3rdparty/google/protobuf/vsprojects/x64/debug_static_md/*.lastbuildstate
+
+/3rdparty/poco/Data/*.user
