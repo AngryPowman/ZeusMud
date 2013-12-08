@@ -25,6 +25,9 @@
 *.opensdf
 *.log
 *.exp
+*.lastbuildstate
+*.user
+*.vsdx
 
 !/3rdparty/protobuf_lib/*.lib
 !/lib/poco_libs/*.lib
@@ -38,11 +41,10 @@ Debug/
 Release/
 /output/mud_client/*.exe
 /output/mud_server/*.exe
+/output/mud_server/*.dll
+lib/
+lib64/
 bin64/
 obj64/
 bin32/
 obj32/
-/3rdparty/google/protobuf/vsprojects/debug_static_mt/*.lastbuildstate
-/3rdparty/google/protobuf/vsprojects/x64/debug_static_md/*.lastbuildstate
-
-/3rdparty/poco/Data/*.user

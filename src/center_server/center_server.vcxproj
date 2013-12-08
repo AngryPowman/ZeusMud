@@ -68,15 +68,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug_mt|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IntDir>obj64\</IntDir>
+    <OutDir>../../output/mud_server/</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug_mt|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IntDir>obj\</IntDir>
+    <OutDir>../../output/mud_server/</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release_mt|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <IntDir>obj64\</IntDir>
+    <OutDir>../../output/mud_server/</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release_mt|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <IntDir>obj\</IntDir>
+    <OutDir>../../output/mud_server/</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug_mt|x64'">
     <ClCompile>
@@ -98,8 +106,8 @@
       <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/poco/lib64;../venus_net/lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist "../../output/mud_server" mkdir "../../output/mud_server"
-xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
+      <Command>-- if not exist "../../output/mud_server" mkdir "../../output/mud_server"
+-- xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug_mt|Win32'">
@@ -122,8 +130,8 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
       <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/poco/lib;../venus_net/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist "../../output/mud_server" mkdir "../../output/mud_server"
-xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release_mt|x64'">
@@ -149,8 +157,8 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
       <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/poco/lib64;../venus_net/lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist "../../output/mud_server" mkdir "../../output/mud_server"
-xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
+      <Command>-- if not exist "../../output/mud_server" mkdir "../../output/mud_server"
+-- xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release_mt|Win32'">
@@ -176,8 +184,8 @@ xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
       <AdditionalLibraryDirectories>$(OutputPath);../../3rdparty/poco/lib;../venus_net/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>if not exist "../../output/mud_server" mkdir "../../output/mud_server"
-xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
+      <Command>-- if not exist "../../output/mud_server" mkdir "../../output/mud_server"
+-- xcopy /Y /Q "$(TargetPath)" "../../output/mud_server"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
