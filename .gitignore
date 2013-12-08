@@ -12,7 +12,7 @@
 *.la
 *.a
 
-// for visual studio
+# for visual studio
 *.ilk
 *.tlog
 *.obj
@@ -23,6 +23,8 @@
 *.aps
 *.suo
 *.opensdf
+*.log
+*.exp
 
 !/3rdparty/protobuf_lib/*.lib
 !/lib/poco_libs/*.lib
@@ -36,8 +38,9 @@ Debug/
 Release/
 /output/mud_client/*.exe
 /output/mud_server/*.exe
-
-/output/mud_server/*.log
-/output/mud_client/Config.xml
-
-/docs/readme/*.vsdx
+bin64/
+obj64/
+bin32/
+obj32/
+/3rdparty/google/protobuf/vsprojects/debug_static_mt/*.lastbuildstate
+/3rdparty/google/protobuf/vsprojects/x64/debug_static_md/*.lastbuildstate
