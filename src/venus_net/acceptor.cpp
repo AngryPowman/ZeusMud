@@ -88,8 +88,15 @@ void Acceptor::registerAcceptedEvent(const AcceptedEvent& event)
 
 void Acceptor::accept()
 {
-    //创建一个新的连接（事后增加连接池，避免开辟内存的开销）
-    TcpConnectionPtr new_connection(new TcpConnection(_io_service)); 
+   //采用连接池，并定制智能指针的删除器
+	TcpConnectionPtr  new_connection( 
+		TcpConnectionManager::getInstance().createConnection( _io_service ),
+		std::bind( 
+		&TcpConnectionManager::destoryConnection, 
+		TcpConnectionManager::getInstancePtr(), 
+		std::placeholders::_1
+		)
+	 );
 
     //投递一个accept请求到io队列，并回调到acceptHandler
     _acceptor.async_accept(
